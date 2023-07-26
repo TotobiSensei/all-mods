@@ -34,6 +34,114 @@ class Update
         }
     }
 
+    public function mod($form)
+    {
+        $modId = $form["modId"];
+        $name = $form["name"];
+        $description = $form["description"];
+        $categoryId = $form["categoryId"];
+        $img = $form["img"];
+        $link = $form["link"];
+
+        if(empty($name) || empty($link))
+        {
+            throw new Exception("Поле название и ссылки должны быть обьязательно заполненны!");
+        }
+
+        if(!filter_var($link, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED))
+        {
+            throw new Exception("Некорректная ссылка!");
+        }
+
+        try
+        {
+            $query = "SELECT img FROM image WHERE obj_id = :objId AND obj_type = 'mod'";
+
+            $stmt = $this->db->prepare($query);
+            $stmt->bindParam(":objId", $modId);
+            $stmt->execute();
+            $oldImg = $stmt->fetch();
+
+            $oldImg = "..".$oldImg["img"];
+
+            if(isset($img) && $img["error"] == 0)
+            {
+                $allowType = ["image/jpeg", "image/png", "image/jpg"];
+                $allowSize = 1024 * 1024 * 5;
+
+                if(in_array($img["type"], $allowType) && $img["size"] <= $allowSize)
+                {
+                    $fileName = uniqid()."_".$img["name"];
+                    
+                    $destination = "../assets/img/mod_img/".$fileName;
+
+                    if(!move_uploaded_file($img["tmp_name"], $destination))
+                    {
+                        throw new Exception("Ошибка при загрузке изображения!");
+                    }
+                }
+            }
+            else
+            {
+                $destination =  $oldImg;
+            }
+        }
+        catch(PDOException $e)
+        {
+            echo $e;
+        }
+
+        $destination = str_replace("..", "", $destination);
+
+        try
+        {
+            $this->db->beginTransaction();
+
+                $query = "UPDATE mods SET name = :name, description = :description, category_id = :categoryId, file_name = :link, updated = NOW() WHERE id = :modId";
+
+                $stmt = $this->db->prepare($query);
+
+                $stmt->bindParam(":name", $name);
+                $stmt->bindParam(":description", $description);
+                $stmt->bindParam(":categoryId", $categoryId);
+                $stmt->bindParam(":link", $link);
+                $stmt->bindParam(":modId", $modId);
+
+                $stmt->execute();
+
+                $query = "UPDATE image SET img = :img WHERE obj_id = :modId AND obj_type = 'mod'";
+
+                $stmt = $this->db->prepare($query);
+
+                
+
+                $stmt->bindParam(":img", $destination);
+                $stmt->bindParam(":modId", $modId);
+
+                $stmt->execute();
+
+                if($stmt->rowCount() > 0)
+                {
+                    unlink($oldImg);
+                }
+
+            $this->db->commit();
+        }
+        catch(PDOException $e)
+        {
+            $this->db->rollBack();
+
+            echo $e;
+
+            $destination = "..".$destination;
+            
+            if(!strpos($destination, "default") && $destination !== $oldImg)
+            {
+                unlink($destination);
+            }
+        }
+    }
+
     public function profile($form)
     {
         $img = $form["image"];

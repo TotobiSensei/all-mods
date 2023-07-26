@@ -83,6 +83,10 @@ if(isset($_SESSION["error"]))
                         <div class="right">
                             <div class="name">
                                 <h1><?= $data["name"] ?></h1>
+                                <div onclick="location.href='/view/upload.php?mod=<?= $data['id'] ?>'" class="edit">
+                                    <span>Редактировать</span>
+                                    <span>&#9999;</span>
+                                </div>
                             </div>
                             <div class="description">
                                 <span>

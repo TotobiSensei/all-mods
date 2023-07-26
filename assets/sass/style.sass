@@ -192,7 +192,26 @@ header
 			.right
 				padding: 5px 10px
 				.name
+					display: flex
+					flex-direction: row
+					justify-content: space-between
+					align-items: center
 					margin-bottom: 5px
+					.edit
+						display: flex
+						align-items: center
+						justify-content: center
+						cursor: pointer
+						color: black
+						&:hover
+							color: #ff5252
+							transition: background-color 1s
+						span:nth-child(1)
+							font-size: 18px
+							font-weight: bold
+						span:nth-child(2)
+							display: inline-block
+							transform: rotate(120deg)
 				.description
 					margin-bottom: 5px
 					font-size: 18px

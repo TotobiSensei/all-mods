@@ -234,7 +234,30 @@ header nav .user .log-out .link {
   padding: 5px 10px;
 }
 .mod-page .info-block .top .right .name {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 5px;
+}
+.mod-page .info-block .top .right .name .edit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: black;
+}
+.mod-page .info-block .top .right .name .edit:hover {
+  color: #ff5252;
+  transition: background-color 1s;
+}
+.mod-page .info-block .top .right .name .edit span:nth-child(1) {
+  font-size: 18px;
+  font-weight: bold;
+}
+.mod-page .info-block .top .right .name .edit span:nth-child(2) {
+  display: inline-block;
+  transform: rotate(120deg);
 }
 .mod-page .info-block .top .right .description {
   margin-bottom: 5px;
