@@ -2,55 +2,21 @@
 require_once __DIR__ . "/assets/php/initClasses.php";
 
 Render::header();
+
+$read = new Read();
 ?>
-<p>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic ipsa architecto quia rerum cupiditate placeat obcaecati sed in quis! Necessitatibus minima tempore, delectus reiciendis commodi recusandae quia impedit sapiente veniam.
-</p>
-<p>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic ipsa architecto quia rerum cupiditate placeat obcaecati sed in quis! Necessitatibus minima tempore, delectus reiciendis commodi recusandae quia impedit sapiente veniam.
-</p>
-<p>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic ipsa architecto quia rerum cupiditate placeat obcaecati sed in quis! Necessitatibus minima tempore, delectus reiciendis commodi recusandae quia impedit sapiente veniam.
-</p>
-<p>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic ipsa architecto quia rerum cupiditate placeat obcaecati sed in quis! Necessitatibus minima tempore, delectus reiciendis commodi recusandae quia impedit sapiente veniam.
-</p>
-<p>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic ipsa architecto quia rerum cupiditate placeat obcaecati sed in quis! Necessitatibus minima tempore, delectus reiciendis commodi recusandae quia impedit sapiente veniam.
-</p>
-<p>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic ipsa architecto quia rerum cupiditate placeat obcaecati sed in quis! Necessitatibus minima tempore, delectus reiciendis commodi recusandae quia impedit sapiente veniam.
-</p>
-<p>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic ipsa architecto quia rerum cupiditate placeat obcaecati sed in quis! Necessitatibus minima tempore, delectus reiciendis commodi recusandae quia impedit sapiente veniam.
-</p>
-<p>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic ipsa architecto quia rerum cupiditate placeat obcaecati sed in quis! Necessitatibus minima tempore, delectus reiciendis commodi recusandae quia impedit sapiente veniam.
-</p>
-<p>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic ipsa architecto quia rerum cupiditate placeat obcaecati sed in quis! Necessitatibus minima tempore, delectus reiciendis commodi recusandae quia impedit sapiente veniam.
-</p>
-<p>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic ipsa architecto quia rerum cupiditate placeat obcaecati sed in quis! Necessitatibus minima tempore, delectus reiciendis commodi recusandae quia impedit sapiente veniam.
-</p>
-<p>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic ipsa architecto quia rerum cupiditate placeat obcaecati sed in quis! Necessitatibus minima tempore, delectus reiciendis commodi recusandae quia impedit sapiente veniam.
-</p>
-<p>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic ipsa architecto quia rerum cupiditate placeat obcaecati sed in quis! Necessitatibus minima tempore, delectus reiciendis commodi recusandae quia impedit sapiente veniam.
-</p>
-<p>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic ipsa architecto quia rerum cupiditate placeat obcaecati sed in quis! Necessitatibus minima tempore, delectus reiciendis commodi recusandae quia impedit sapiente veniam.
-</p>
-<p>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic ipsa architecto quia rerum cupiditate placeat obcaecati sed in quis! Necessitatibus minima tempore, delectus reiciendis commodi recusandae quia impedit sapiente veniam.
-</p>
-<p>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic ipsa architecto quia rerum cupiditate placeat obcaecati sed in quis! Necessitatibus minima tempore, delectus reiciendis commodi recusandae quia impedit sapiente veniam.
-</p>
-<p>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic ipsa architecto quia rerum cupiditate placeat obcaecati sed in quis! Necessitatibus minima tempore, delectus reiciendis commodi recusandae quia impedit sapiente veniam.
-</p>
+<section class="home">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <span class="header">Моды с наивышим рейтингом: </span>
+                <div class="top-mods">
+                    <?= $read->topMods() ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <?php
 Render::footer();
 ?>

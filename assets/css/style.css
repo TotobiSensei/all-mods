@@ -75,6 +75,44 @@ header nav .user .log-out .link {
   font-weight: bold;
 }
 
+.home {
+  margin-top: 20px;
+}
+.home .header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.home .top-mods .main-carousel {
+  background: #EEE;
+}
+.home .top-mods .main-carousel .carousel-cell {
+  position: relative;
+  width: 80%;
+  height: 250px;
+  margin-right: 10px;
+  background: #ffffff;
+}
+.home .top-mods .main-carousel .carousel-cell .name {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #ff5252;
+  font-size: 30px;
+  font-weight: bold;
+}
+.home .top-mods .main-carousel .carousel-cell .img {
+  height: 100%;
+  width: 100%;
+}
+.home .top-mods .main-carousel .carousel-cell .img img {
+  height: 100%;
+  width: 100%;
+}
+
 .games .item {
   margin: 10px 0px;
   background-color: #e3e3e3;
@@ -229,6 +267,7 @@ header nav .user .log-out .link {
 }
 .mod-page .info-block .top .left img {
   width: 100%;
+  height: 100%;
 }
 .mod-page .info-block .top .right {
   padding: 5px 10px;
@@ -692,6 +731,7 @@ header nav .user .log-out .link {
   box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
   width: 35%;
   height: 450px;
+  background-color: white;
 }
 .auth span {
   display: flex;
@@ -761,6 +801,7 @@ header nav .user .log-out .link {
   box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
   width: 35%;
   min-height: 500px;
+  background-color: white;
 }
 .sign-in span {
   display: flex;

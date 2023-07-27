@@ -28,6 +28,7 @@
     </footer>
 </div>
 <script src="/assets/js/script.js"></script>
+<script src="/assets/js/user_img.js"></script>
 </body>
 
 </html>

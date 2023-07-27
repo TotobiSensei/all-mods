@@ -31,7 +31,9 @@ if(isset($_GET["logOut"]))
     <link rel="stylesheet" href="/assets/css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="/assets/css/bootstrap-grid.min.css.map">
     <link rel="stylesheet" href="/assets/css/cropper.min.css">
+    <link rel="stylesheet" href="/assets/css/flickity.min.css">
     <script src="/assets/js/cropper.min.js"></script>
+    <script src="/assets/js/flickity.pkgd.min.js"></script>
     <title>Document</title>
 </head>
 

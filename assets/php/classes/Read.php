@@ -256,6 +256,56 @@ class Read
         }
     }
 
+    public function topMods()
+    {
+        try
+        {
+            $query = "
+                SELECT
+                    mods.*,
+                    COALESCE((
+                        SELECT SUM(rating) FROM reviews WHERE obj_type = 'mod' AND obj_id = mods.id
+                    ) / (
+                        SELECT COUNT(rating) FROM reviews WHERE obj_type = 'mod' AND obj_id = mods.id
+                    ), 0) AS avg_rating,
+                    image.img
+                FROM 
+                    mods
+                LEFT JOIN
+                    image ON mods.id = image.obj_id AND image.obj_type = 'mod'
+                ORDER BY 
+                    avg_rating DESC
+                LIMIT
+                    5
+            ";
+
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            $data = $stmt->fetchAll();
+
+            ?>
+            <div class="main-carousel"> 
+            <?php
+                foreach($data as $item)
+                {
+            ?>
+                    <div class="carousel-cell">
+                        <div class="name"><?= mb_strimwidth($item["name"], 0, 13, "...")  ?></div>
+                        <div class="img"><img src="<?= $item["img"]?>" alt=""></div>
+                    </div>
+                    
+            <?php 
+                } 
+            ?>
+            </div>
+            <?php
+        }
+        catch(PDOException $e)
+        {
+            echo $e;
+        }
+    }
+
     public function mod($objId)
     {
         try
