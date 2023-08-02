@@ -63,6 +63,85 @@ class Read
         }
     }
 
+    public function topThemes()
+    {
+        try
+        {
+            $query = "
+                SELECT
+                    themes.*,
+                    (SELECT count FROM views WHERE views.obj_id = themes.id AND views.obj_type = 'theme') AS views,
+                    MAX(comments.date) as last_comment,
+                    COALESCE(
+                        (SELECT SUM(rating) FROM reviews WHERE obj_id = themes.id AND obj_type = 'theme')
+                        /
+                        (SELECT COUNT(rating) FROM reviews WHERE obj_id = themes.id AND obj_type = 'theme')
+                        ) as avg_rating
+                FROM
+                    themes
+                LEFT JOIN
+                    comments ON themes.id = comments.obj_id AND comments.obj_type = 'theme'
+                GROUP BY
+                    themes.id
+                ORDER BY
+                    avg_rating DESC
+                LIMIT 3
+            ";
+
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            $data = $stmt->fetchAll();
+
+            if(!empty($data))
+            {
+                foreach($data as $item)
+                {
+                    ?>
+                        <div class="col-12">
+                            <div class="theme">
+                                <div class="head-block">
+                                    <div class="name">
+                                        <h1>
+                                            <?= $item["header"] ?>
+                                        </h1>
+                                    </div>
+                                    <div class="topic">
+                                        <span>
+                                            <?= $item["topic"] ?>
+                                        </span>
+                                    </div>
+                                    
+                                </div>
+                                <div class="date-block">
+                                    <div class="create-date">
+                                        <span>Создано: <?= $item["date"] ?></span>
+                                    </div>
+                                    <div class="update-date">
+                                        <?= isset($item["updated"]) ? "<span>Обновленно: {$item["updated"]} </span>" : "" ?>
+                                    </div>
+                                    <div class="last-message">
+                                        <?= isset($item["last_mess"]) ? "<span>Последние сообщение: {$item["last_mess"]}</span>" : "" ?>
+                                    </div>
+                                </div>
+                                <div class="views-block">
+                                    <div class="views">Просмотры: <?= isset($item["views"]) ? $item["views"] : 0 ?></div>
+                                </div>
+                                <div class="theme-button">
+                                    <a href="/view/template/theme_page.php?theme=<?= $item["id"] ?>">Перейти</a>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    <?
+                }
+            }
+        }
+        catch(PDOException $e)
+        {
+            echo $e;
+        }
+    }
+
     public function comment($objId, $objType, $pagination = NULL)
     {
         try
@@ -290,8 +369,18 @@ class Read
                 {
             ?>
                     <div class="carousel-cell">
-                        <div class="name"><?= mb_strimwidth($item["name"], 0, 13, "...")  ?></div>
-                        <div class="img"><img src="<?= $item["img"]?>" alt=""></div>
+                       <div class="content">
+                            <div class="left-block">
+                                <div class="img"><img src="<?= $item["img"]?>" alt=""></div>
+                            </div>
+                            <div class="right-block">
+                                <div class="name"><?= mb_strimwidth($item["name"], 0, 15, "...")  ?></div>
+                                <div class="description"><?= mb_strimwidth($item["description"], 0, 100, "...")  ?></div>
+                                <div onclick="location.href='/view/template/mod_page.php?mod-id=<?= $item['id'] ?>'" class="button">
+                                    <a href="/view/template/mod_page.php?mod-id=<?= $item["id"] ?>">Подpобнее</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     
             <?php 

@@ -73,26 +73,57 @@ header
 		.main-carousel 
 			background: #EEE
 			.carousel-cell
-				position: relative
-				width: 80%
+				width: 66%
 				height: 250px
 				margin-right: 10px
 				background: #ffffff
-				.name
-					position: absolute
-					bottom: 0
-					left: 50%
-					transform: translateX(-50% )
-					color: #ff5252
-					font-size: 30px
-					font-weight: bold
-				.img
-					height: 100%
+				.content
+					display: flex
 					width: 100%
-					img
+					height: 100%
+					.left-block, .rigth-block
+						flex: 1
+					.left-block
+						width: 50%
+						.img
+							height: 100%
+							width: 100%
+							img
+								height: 100%
+								width: 100%
+					.right-block
+						display: flex
+						flex-direction: column
+						width: 50%
 						height: 100%
-						width: 100%
-  
+						padding: 15px
+						text-align: center
+						.name
+							color: #000000
+							font-size: 30px
+							font-weight: bold
+							margin-bottom: 5px
+						.description
+							font-size: 20px
+							word-wrap: break-word
+						.button
+							margin-top: auto
+							height: 35px
+							background-color: #ff5252
+							padding-top: 5px
+							cursor: pointer
+							&:hover
+									background: #e44c4c
+									transition: background-color 0.3s ease-in-out
+									
+							a
+								color: white
+								font-size: 18px
+								text-decoration: none
+								cursor: pointer
+								
+							
+	
 //SECTION games
 .games
 	.item
@@ -714,7 +745,7 @@ header
 				background-color: #FF7A73
 				transition: 0.3s
 //forum
-.themes
+.themes, .top-themes
 	.add-theme
 		display: flex
 		justify-content: center

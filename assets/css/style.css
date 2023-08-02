@@ -89,28 +89,64 @@ header nav .user .log-out .link {
   background: #EEE;
 }
 .home .top-mods .main-carousel .carousel-cell {
-  position: relative;
-  width: 80%;
+  width: 66%;
   height: 250px;
   margin-right: 10px;
   background: #ffffff;
 }
-.home .top-mods .main-carousel .carousel-cell .name {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #ff5252;
+.home .top-mods .main-carousel .carousel-cell .content {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+.home .top-mods .main-carousel .carousel-cell .content .left-block, .home .top-mods .main-carousel .carousel-cell .content .rigth-block {
+  flex: 1;
+}
+.home .top-mods .main-carousel .carousel-cell .content .left-block {
+  width: 50%;
+}
+.home .top-mods .main-carousel .carousel-cell .content .left-block .img {
+  height: 100%;
+  width: 100%;
+}
+.home .top-mods .main-carousel .carousel-cell .content .left-block .img img {
+  height: 100%;
+  width: 100%;
+}
+.home .top-mods .main-carousel .carousel-cell .content .right-block {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 100%;
+  padding: 15px;
+  text-align: center;
+}
+.home .top-mods .main-carousel .carousel-cell .content .right-block .name {
+  color: #000000;
   font-size: 30px;
   font-weight: bold;
+  margin-bottom: 5px;
 }
-.home .top-mods .main-carousel .carousel-cell .img {
-  height: 100%;
-  width: 100%;
+.home .top-mods .main-carousel .carousel-cell .content .right-block .description {
+  font-size: 20px;
+  word-wrap: break-word;
 }
-.home .top-mods .main-carousel .carousel-cell .img img {
-  height: 100%;
-  width: 100%;
+.home .top-mods .main-carousel .carousel-cell .content .right-block .button {
+  margin-top: auto;
+  height: 35px;
+  background-color: #ff5252;
+  padding-top: 5px;
+  cursor: pointer;
+}
+.home .top-mods .main-carousel .carousel-cell .content .right-block .button:hover {
+  background: #e44c4c;
+  transition: background-color 0.3s ease-in-out;
+}
+.home .top-mods .main-carousel .carousel-cell .content .right-block .button a {
+  color: white;
+  font-size: 18px;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .games .item {
@@ -857,13 +893,13 @@ header nav .user .log-out .link {
   transition: 0.3s;
 }
 
-.themes .add-theme {
+.themes .add-theme, .top-themes .add-theme {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 10px;
 }
-.themes .add-theme a {
+.themes .add-theme a, .top-themes .add-theme a {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -874,21 +910,21 @@ header nav .user .log-out .link {
   color: white;
   text-decoration: none;
 }
-.themes .add-theme a:hover {
+.themes .add-theme a:hover, .top-themes .add-theme a:hover {
   background-color: #ea4d4d;
 }
-.themes .theme {
+.themes .theme, .top-themes .theme {
   display: flex;
   justify-content: space-between;
   margin: 10px 0px;
   background-color: white;
   box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.2);
 }
-.themes .theme .head-block {
+.themes .theme .head-block, .top-themes .theme .head-block {
   margin-left: 10px;
   min-width: 50%;
 }
-.themes .theme .date-block {
+.themes .theme .date-block, .top-themes .theme .date-block {
   width: 25%;
   display: flex;
   flex-direction: column;
@@ -896,13 +932,13 @@ header nav .user .log-out .link {
   justify-content: center;
   font-size: 14px;
 }
-.themes .theme .views-block {
+.themes .theme .views-block, .top-themes .theme .views-block {
   width: 15%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.themes .theme .theme-button {
+.themes .theme .theme-button, .top-themes .theme .theme-button {
   width: 10%;
   display: flex;
   align-items: center;
@@ -910,21 +946,21 @@ header nav .user .log-out .link {
   flex-direction: column;
   font-weight: bold;
 }
-.themes .theme .theme-button a {
+.themes .theme .theme-button a, .top-themes .theme .theme-button a {
   text-decoration: none;
   color: #ff5252;
 }
-.themes .theme .theme-button a:hover {
+.themes .theme .theme-button a:hover, .top-themes .theme .theme-button a:hover {
   color: #f04e4e;
 }
-.themes .theme .theme-button form input[type=submit] {
+.themes .theme .theme-button form input[type=submit], .top-themes .theme .theme-button form input[type=submit] {
   border: none;
   background: inherit;
   cursor: pointer;
   color: #ff5252;
   font-weight: bold;
 }
-.themes .theme .theme-button form input[type=submit]:hover {
+.themes .theme .theme-button form input[type=submit]:hover, .top-themes .theme .theme-button form input[type=submit]:hover {
   color: #f04e4e;
 }
 

@@ -15,6 +15,13 @@ $read = new Read();
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col">
+                <div class="top-themes">
+                    <?= $read->topThemes() ?>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 <?php
