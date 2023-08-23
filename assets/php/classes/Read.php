@@ -291,7 +291,7 @@ class Read
             ?>
                     <div class="carousel-cell">
                         <div class="name"><?= mb_strimwidth($item["name"], 0, 13, "...")  ?></div>
-                        <div class="img"><img src="<?= $item["img"]?>" alt=""></div>
+                        <div class="img"><img src="assets\img\mod_img\64c10a2714b31_sticker.jpeg" alt=""></div>
                     </div>
                     
             <?php 
