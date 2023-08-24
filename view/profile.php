@@ -1,13 +1,27 @@
 <?php
 require_once __DIR__ . "/../assets/php/initClasses.php";
+Render::header();
 
 $userId = $_SESSION["user"];
-Render::header();
+
+$create = new Create();
 $reviews = new Reviews();
 $read = new Read();
 
 $user = $read->profileData($userId);
 $mods = $read->userMods($userId);
+
+if(isset($_POST["createNews"]))
+{
+    $form = [
+        "title" => $_POST["title"],
+        "content" => $_POST["content"],
+        "img" => $_FILES["img"],
+        "userId" => $_POST["userId"],
+    ];
+
+    $create->news($form);
+}
 // echo "<pre>";
 // var_dump($mods);
 // echo "</pre>";
@@ -71,6 +85,9 @@ $mods = $read->userMods($userId);
                         <div onclick="location.href='?files'" class="tab">
                             <span>files</span>
                         </div>
+                        <div onclick="location.href='?create-news'" class="tab">
+                            <span>CreateNews</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -79,7 +96,7 @@ $mods = $read->userMods($userId);
                     <div class="content">
                         <?php
                             switch (true) {
-                                case strpos($_SERVER["REQUEST_URI"], "about") || !strpos($_SERVER["REQUEST_URI"], "files"):
+                                case strpos($_SERVER["REQUEST_URI"], "about") || !strpos($_SERVER["REQUEST_URI"], "?"):
                         ?>
                                     <div class="about-block">
                                         <div class="name">
@@ -127,6 +144,11 @@ $mods = $read->userMods($userId);
                                         <?php endforeach; ?>
                                     </div>
                         <?php
+                                    break;
+                                case strpos($_SERVER["REQUEST_URI"], "create-news"):
+                                    
+                                    require_once __DIR__ . "/CreateNews.php";
+
                                     break;
                             }
                         ?>

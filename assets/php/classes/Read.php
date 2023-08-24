@@ -477,4 +477,65 @@ class Read
             echo $e;
         }
     }
+
+    public function allNews()
+        {
+            try
+            {
+                $query = "
+                    SELECT
+                        news.*,
+                        image.img,
+                        users.login
+                    FROM
+                        news
+                    LEFT JOIN
+                        image ON news.id = image.obj_id AND image.obj_type = 'news'
+                    LEFT JOIN
+                        users ON news.user_id = users.id
+                ";
+
+                $stmt = $this->db->prepare($query);
+                $stmt->execute();
+                $data = $stmt->fetchAll();
+
+                return $data;
+            }
+            catch(PDOException $e)
+            {
+                echo $e;
+            }
+        }
+
+        public function news($objId)
+        {
+            try
+            {
+                $query = "
+                SELECT
+                    news.*,
+                    image.img,
+                    users.login
+                FROM
+                    news
+                LEFT JOIN
+                    image ON news.id = image.obj_id AND image.obj_type = 'news'
+                LEFT JOIN
+                    users ON news.user_id = users.id
+                WHERE
+                    news.id = :objId
+                ";
+
+                $stmt = $this->db->prepare($query);
+                $stmt->bindParam(":objId", $objId);
+                $stmt->execute();
+                $data = $stmt->fetch();
+
+                return $data;
+            }
+            catch(PDOException $e)
+            {
+                echo $e;
+            }
+        }
 }

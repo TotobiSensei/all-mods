@@ -148,4 +148,74 @@ class Create
         }
 
     }
+
+    public function news($form)
+    {
+        $img = $form["img"];
+        $title = $form["title"];
+        $content = $form["content"];
+        $userId = $form["userId"];
+
+        try
+        {
+            $this->db->beginTransaction();
+
+            if(isset($img) && $img["error"] == 0)
+            {
+                $allowType = ["image/jpeg", "image/png", "image/jpg"];
+                $allowSize = 1024 * 1024 * 5;
+
+                if( in_array($img["type"], $allowType) && $img["size"] <= $allowSize)
+                {
+                    $fileName = uniqid()."_".$img["name"];
+
+                    $destination = "../assets/img/news_img/" . $fileName;
+
+                    if (!move_uploaded_file($img["tmp_name"], $destination))
+                    {
+                        throw new Exception("Ошибка при загрузке файла! Файл должен быть формата ЖИПЕГ, ПНГ или ЖиПГ");
+                    }
+                    
+                }
+
+            }
+            else
+            {
+                $destination = "/assets/img/news_img/news_default_img.png";
+            }
+
+            $query = "INSERT INTO news SET title = :title, content = :content, date = NOW(), user_id = :userId";
+
+            $stmt = $this->db->prepare($query);
+            $stmt->bindParam(":title", $title);
+            $stmt->bindParam(":content", $content);
+            $stmt->bindParam(":userId", $userId);
+            $stmt->execute();
+
+            $objId = $this->db->lastInsertId();
+
+            $destination = str_replace("..", "", $destination);
+
+            $query = "INSERT INTO image SET obj_id = :objId, obj_type = 'news', img = :destination";
+
+            $stmt = $this->db->prepare($query);
+            $stmt->bindParam(":objId", $objId);
+            $stmt->bindParam(":destination", $destination);
+            $stmt->execute();
+
+            $this->db->commit();
+        }
+        catch(PDOException $e)
+        {
+            $this->db->rollBack();
+
+            $destination = ".." . $destination;
+            if(!strpos($destination, "default"))
+            {
+                unlink($destination);
+            }
+
+            echo $e;
+        }
+    }
 }
