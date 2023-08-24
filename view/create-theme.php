@@ -7,6 +7,9 @@ $auth = new Authentication();
 $create = new Create();
 $read = new Read();
 $update = new Update();
+$delete = new Delete();
+
+$currentURL = "http://". $_SERVER["HTTP_HOST"];
 
 if(!$auth->checkAUth())
 {
@@ -28,7 +31,7 @@ if(isset($_POST["themeId"]))
         ];
 
         $update->theme($form);
-        header("Location: http://all-mods/view/themes.php");
+        header("Location: ".$currentURL."/view/themes.php");
     }
 }
 else
@@ -43,10 +46,16 @@ else
         ];
 
         $create->theme($form);
-        header("Location: http://all-mods/view/themes.php");
+        header("Location: ".$currentURL."/view/themes.php");
     }
 }
-var_dump($_POST);
+
+if(isset($_POST["delete"]))
+{
+    $themeId = $_POST["themeId"];
+
+    $delete->theme($themeId);
+}
 
 ?>
 <form action="" method="POST">
@@ -56,6 +65,7 @@ var_dump($_POST);
     <input type="text" name="topic" id=""value="<?= @$data["topic"] ?>">
     <textarea name="text" id="" cols="30" rows="10"><?= @$data["text"] ?></textarea>
     <input type="submit" name="send" value="Создать">
+    <input type="submit" name="delete" value="Delete">
 </form>
 <?php
 Render::footer();

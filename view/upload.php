@@ -3,9 +3,10 @@ require_once __DIR__ . "/../assets/php/initClasses.php";
 
 Render::header();
 
+$create = new Create();
 $read = new Read();
 $update = new Update();
-$create = new Create();
+$delete = new Delete();
 
 if(isset($_GET["mod"]))
 {
@@ -52,6 +53,12 @@ if(isset($_POST["btn"]))
         $error = $e->getMessage();
     }
 }
+if(isset($_POST["delete"]))
+{
+    $modId = $_POST["modId"];
+
+    $delete->mod($modId);
+}
             
 ?>
 <?= @$error ?>
@@ -81,7 +88,10 @@ if(isset($_POST["btn"]))
                             <option value="<?= $category["id"] ?>" <?= isset($modId) && $mod['category_id'] === $category["id"] ? 'selected' : '' ?>><?= $category["name"] ?></option>
                         <?php endforeach; ?>
                     </select>
-                    <input type="submit" name="btn" value="Upload">
+                    <div class="buttons">
+                        <input type="submit" name="btn" value="Upload">
+                        <input type="submit" name="delete" value="Delete">
+                    </div>
                 </form>
             </div>
         </div>

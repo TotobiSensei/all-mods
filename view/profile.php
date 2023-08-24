@@ -5,12 +5,18 @@ $userId = $_SESSION["user"];
 Render::header();
 $reviews = new Reviews();
 $read = new Read();
+$update = new Update();
 
 $user = $read->profileData($userId);
 $mods = $read->userMods($userId);
+
 // echo "<pre>";
 // var_dump($mods);
 // echo "</pre>";
+if(isset($_POST["closeReport"]))
+{
+    $update->closeReport($_POST["objId"],$_POST["objType"]);
+}
 ?>
 <section class="profile-header">
     <div class="container-fluid">
@@ -71,6 +77,9 @@ $mods = $read->userMods($userId);
                         <div onclick="location.href='?files'" class="tab">
                             <span>files</span>
                         </div>
+                        <div onclick="location.href='?reports'" class="tab">
+                            <span>Reports</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -79,7 +88,7 @@ $mods = $read->userMods($userId);
                     <div class="content">
                         <?php
                             switch (true) {
-                                case strpos($_SERVER["REQUEST_URI"], "about") || !strpos($_SERVER["REQUEST_URI"], "files"):
+                                case strpos($_SERVER["REQUEST_URI"], "about") || !strpos($_SERVER["REQUEST_URI"], "?"):
                         ?>
                                     <div class="about-block">
                                         <div class="name">
@@ -127,6 +136,132 @@ $mods = $read->userMods($userId);
                                         <?php endforeach; ?>
                                     </div>
                         <?php
+                                    break;
+                                case (strpos($_SERVER["REQUEST_URI"], "reports") || strpos($_SERVER["REQUEST_URI"], "report")):
+                                    if (!isset($_GET["report"])){
+                        ?>
+                                        <div class="reports-block">
+                                            <?php
+                                                foreach($read->allReports() as $report):
+                                            ?>
+                                                <div class="report">
+                                                        <div class="left">
+                                                            <span>Жалоба на тему #<?= $report["obj_id"] ?></span>
+                                                            <span>Дата: 20.08.2023</span>
+                                                            <span>Количество жалоб: <?= $report["report_count"] ?></span>
+                                                            <span>Статус: 
+                                                                <span class="<?= $report["status"] === 0 ? "awaiting" : "checked" ?>">
+                                                                    <?= $report["status"] === 0 ? "Ожидает проверки" : "Закрыта" ?>
+                                                                </span>
+                                                            </span>
+                                                        </div>
+                                                        <div class="right">
+                                                            <span onclick="location.href='?report=<?= $report['obj_id']?>&type=<?= $report['obj_type']?>'">
+                                                                Посмотреть
+                                                            </span>
+                                                        </div>
+                                                </div>
+                                            <?php
+                                                endforeach;
+                                            ?>
+                                        </div>
+                        <?php
+                                    }
+                                    else
+                                    {
+                                        $reports = $read->report($_GET["report"], $_GET["type"]);
+
+                                        $objType = "";
+
+                                        if  ($_GET["type"] === "theme")
+                                        {
+                                            $objType = "тему";
+                                        }
+                                        elseif ($_GET["type"] === "mod")
+                                        {
+                                            $objType = "мод";
+                                        }
+                                        else
+                                        {
+                                            $objType = "коментарий";
+                                        }
+                                        
+                                        
+                        ?>
+                                        <div class="report-page">
+                                            <div class="top">
+                                                <span>Жалоба на <?=$objType." ".$reports["reportedObj"]?> </span>
+                                                <span>Автор <?= $reports["reportedUser"] ?></span>
+                                            </div>
+                                            <div class="middle">
+                                                <form action="" method="post">
+                                                    <input type="hidden" name="objId" value="<?= $_GET["report"] ?>">
+                                                    <input type="hidden" name="objType" value="<?= $_GET["type"] ?>">
+                                                    <input type="submit" name="closeReport" value="Закрыть жалобу">
+                                                    <input type="submit" value="Удалить запись">
+                                                    <select name="" id="">
+                                                        <option value="">на час</option>
+                                                        <option value="">на 12 часов</option>
+                                                        <option value="">на 1 день</option>
+                                                        <option value="">на неделю</option>
+                                                        <option value="">на месяц</option>
+                                                        <option value="">навсегда</option>
+                                                    </select>
+                                                    <input type="submit" value="Забанить юзера">
+                                                </form>
+                                                <hr>
+                                            </div>
+                                            <div class="bottom">
+                                                <?php
+                                                        
+                                                    foreach($reports as $key => $complaint):
+                                                        if($key === "reportedUser" || $key === "reportedObj")
+                                                        {
+                                                            break;
+                                                        }
+                                                ?>
+                                                        <div class="complaint">
+                                                            <div class="complaint-username">
+                                                                <span>Жалоба от <?= $complaint["reporting_user"] ?></span>
+                                                                <hr>
+                                                            </div>
+                                                            <div class="complaint-list">
+                                                                <div class="complaint-top">
+                                                                    <?php
+                                                                        if (isset($complaint["complaintList"]))
+                                                                        {
+                                                                            foreach($complaint["complaintList"] as $cmp):
+                                                                    ?>
+                                                                            <span><?= $cmp ?></span>
+                                                                    <?php
+                                                                            endforeach;
+                                                                        }
+                                                                        
+                                                                       
+                                                                    ?>
+                                                                   
+                                                                </div>
+                                                                <div class="complaint-bottom">
+                                                                    <?php
+                                                                        if (!empty($complaint["addition"])) :
+                                                                    ?>
+
+                                                                        <span>Другая причина :</span>
+                                                                        <span><?= $complaint["addition"] ?></span>
+                                                                    <?php
+                                                                        endif;
+                                                                    ?>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                <?php
+                                                    endforeach;
+                                                ?>
+                                            </div>
+                                        </div>
+                        <?
+                                    }    
+
                                     break;
                             }
                         ?>

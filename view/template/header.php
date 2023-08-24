@@ -1,8 +1,12 @@
 <?php
+session_start();
 require_once __DIR__ . "/../../assets/php/initClasses.php";
 
 $auth = new Authentication();
+$create = new Create();
 $read = new Read();
+$review = new Reviews();
+$views = new Views();
 
 if($auth->checkAuth())
 {
@@ -12,8 +16,6 @@ if($auth->checkAuth())
 if(isset($_GET["logOut"]))
 {
     $auth->logout();
-    header("Location: /");
-    exit;
 }
 
 // if($auth->checkAuth() !== true) header("Location: /"); exit;
@@ -26,10 +28,13 @@ if(isset($_GET["logOut"]))
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/assets/css/bootstrap-reboot.min.css">
+    <script src="/assets/js/jQuery.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="/assets/css/bootstrap-grid.min.css.map">
+    <script src="/assets/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/assets/css/cropper.min.css">
     <link rel="stylesheet" href="/assets/css/flickity.min.css">
     <script src="/assets/js/cropper.min.js"></script>
@@ -46,18 +51,18 @@ if(isset($_GET["logOut"]))
                         <div class="col">
                             <ul class="menu">
                                 <li class="item">
-                                    <a class="link" href="/">Home</a>
+                                    <a class="link" href="/">Главная</a>
                                 </li>
                                 <li class="item">
-                                    <a class="link" href="/view/games.php">Mods</a></li>
+                                    <a class="link" href="/view/games.php">Моды</a></li>
                                 <li class="item">
-                                    <a class="link" href="/view/themes.php">Forum</a>
+                                    <a class="link" href="/view/themes.php">Форум</a>
                                 </li>
                                 <li class="item">
-                                    <a class="link" href="#">test</a>
+                                    <a class="link" href="#">Контакты</a>
                                 </li>
                                 <li class="item">
-                                    <a class="link" href="#">test</a>
+                                    <a class="link" href="#">F.A.Q.</a>
                                 </li>
                             </ul>
                         </div>
@@ -68,7 +73,7 @@ if(isset($_GET["logOut"]))
                                     {
                                 ?>
                                         <li class="item">
-                                            <a class="link" href="/view/upload.php">Upload</a>
+                                            <a class="link" href="/view/upload.php">Загрузить</a>
                                         </li class="item">
                                         <li class="item profile">
                                             <img src="<?= $user["img"] ?>" alt="">

@@ -2,7 +2,10 @@
 require_once __DIR__ . "/../assets/php/initClasses.php";
 Render::header();
 
+@$userId = $_SESSION["user"];
+
 $auth = new Authentication();
+$moder = new Moderation();
 $read = new Read();
 
 if(isset($_GET["sort"]) && $_GET["sort"] !== "default")
@@ -105,7 +108,7 @@ else
                             </div>
                             <div class="theme-button">
                                 <a href="/view/template/theme_page.php?theme=<?= $item["id"] ?>">Перейти</a>
-                                <?php if($auth->checkAuth() && $_SESSION["user"] === $item["user_id"]): ?>
+                                <?php if(($auth->checkAuth() && $userId === $item["user_id"]) || ($moder->isAdmin($userId) || $moder->isModerator($userId))): ?>
                                     <form action="/view/create-theme.php" method="post">
                                         <input type="hidden" name="update" value="1">
                                         <input type="hidden" name="themeId" value="<?= $item["id"] ?>">

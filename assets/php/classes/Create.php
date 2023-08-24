@@ -148,4 +148,34 @@ class Create
         }
 
     }
+
+    public function report($form)
+    {
+        $objId = $form["objId"];
+        $objType = $form["objType"];
+        $reportingUser = $form["reportingUser"];
+        $reportType = $form["reportType"];
+        $addition = $form["addition"];
+
+        $reportsTmp = implode("/", $reportType);
+
+        try
+        {
+            $query = "INSERT INTO reports SET obj_id = :objId, obj_type = :objType, reporting_user_id = :reportingUser, report_type = :reportType, addition = :addtion";
+
+            $stmt = $this->db->prepare($query);
+
+            $stmt->bindParam(":objId", $objId);
+            $stmt->bindParam(":objType", $objType);
+            $stmt->bindParam(":reportingUser", $reportingUser);
+            $stmt->bindParam(":reportType", $reportsTmp);
+            $stmt->bindParam(":addtion", $addition);
+
+            $stmt->execute();
+        }
+        catch(PDOException $e)
+        {
+            echo $e;
+        }
+    }
 }

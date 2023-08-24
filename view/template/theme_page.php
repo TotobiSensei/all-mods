@@ -2,6 +2,7 @@
 require_once __DIR__ . "/../../assets/php/initClasses.php";
 
 Render::header();
+// var_dump($_POST);
 $themeId = $_GET["theme"];
 @$userId = $_SESSION["user"];
 
@@ -60,7 +61,23 @@ if(isset($_POST["rating"]))
    {
         $_SESSION["error"] = $e->getMessage();
    }
+    header("Location: $currentURL");
+}
+//report
+if (isset($_POST["send-report"]))
+{
+    $form = [
+        "objId" => $_POST["objId"],
+        "objType" =>  $_POST["objType"],
+        "reportingUser" =>  $_POST["reportingUser"],
+        "reportType" =>  $_POST["report"],
+        "addition" =>  $_POST["addition"],
+    ];
+    
+    $create->report($form);
+
     // header("Location: $currentURL");
+
 }
 
 if(isset($_SESSION["error"]))
@@ -70,51 +87,48 @@ if(isset($_SESSION["error"]))
     unset($_SESSION["error"]);
     echo "</div>";
 }
+
+
 ?>
 <section class="theme-page">
     <div class="container">
         <div class="row">
             <div class="col">
                 <div class="theme-header">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col">
-                                <div class="content">
-                                    <div class="head">
-                                        <h1>
-                                            <?= $data["header"] ?>
-                                        </h1>
-                                        <span>👁 <?= $data["count"] ?></span>
-                                    </div>
-                                    <div class="topic">
-                                        <h3>
-                                            <?= $data["topic"] ?>
-                                        </h3>
-                                    </div>
-                                    <div class="body">
-                                        <span>
-                                            <?= $data["text"] ?>
-                                        </span>
-                                    </div>
-                                </div>
+                    <div class="content">
+                        <div class="top">
+                            <div class="head">
+                                <span class="header">
+                                    <?= $data["header"] ?>
+                                </span>
+                                <span class="topic">
+                                    <?= $data["topic"] ?>
+                                </span>
                             </div>
+                            <span>👁 <?= $data["count"] ?></span>
                         </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="info">
-                                    <div class="author">
-                                        <span>Автор: <?= $data["login"] ?></span>
-                                    </div>
-                                    <div class="create-date">
-                                        <span>Создано: <?= $data["date"] ?></span>
-                                    </div>
-                                    <div class="update-date">
-                                        <?= isset($data["updated"]) ? "<span>Обновленно: {$data["updated"]} </span>" : "" ?>
-                                    </div>
+                        <div class="middle">
+                            <span>
+                                <?= $data["text"] ?>
+                            </span>
+                        </div>
+                        <div class="bottom">
+                            <div class="left">
+                                <div class="author">
+                                    <span>Автор: <?= $data["login"] ?></span>
+                                </div>
+                                <div class="create-date">
+                                    <span>Создано: <?= $data["date"] ?></span>
+                                </div>
+                                <div class="update-date">
+                                    <?= isset($data["updated"]) ? "<span>Обновленно: {$data["updated"]} </span>" : "" ?>
                                 </div>
                             </div>
-                            <div class="col">
+                            <div class="right">
                                 <?= $review->reviewRender($themeId, "theme", ["userId" => $userId, "postCreatorId" => $data["user_id"]]) ?>
+                                <?= Render::reportForm($themeId, $userId, "theme"); ?>
+
+                                
                             </div>
                         </div>
                     </div>
@@ -122,9 +136,9 @@ if(isset($_SESSION["error"]))
             </div>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col-12">
                 <div class="form-block">
-                    <form action="" method="post" class="d-flex flex-column">
+                    <form action="" method="post">
                         <label for="message">Коментарий: </label>
                         <textarea name="message" id=""></textarea>
                         <input type="submit" name="send" value="Отправить">
@@ -141,37 +155,37 @@ if(isset($_SESSION["error"]))
                                 <?php
                                     foreach($comments as $comment) :
                                 ?>
-                                        <div class="answer">
-                                            <div class="row">
-                                                <div class="col-2">
-                                                    <div class="user-info">
-                                                        <img class="user-img" src="<?= $comment["img"] ?>"
-                                                            alt="">
-                                                        <span class="user-name"><?= $comment["login"] ?></span>
-                                                    </div>
+                                <div class="answer">
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <div class="user-info">
+                                                <img class="user-img" src="<?= $comment["img"] ?>" alt="">
+                                                <span class="user-name"><?= $comment["login"] ?></span>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="message">
+                                                <div class="top">
+                                                    <div class="text"><?= $comment["message"] ?></div>
                                                 </div>
-                                                <div class="col">
-                                                    <div class="message">
-                                                        <div class="top">
-                                                            <div class="text"><?= $comment["message"] ?></div>
+                                                <div class="bottom">
+                                                    <div class="date-block">
+                                                        <div class="date">
+                                                            <span>Отправлено: <?= $comment["date"] ?></span>
                                                         </div>
-                                                        <div class="bottom">
-                                                            <div class="date-block">
-                                                                <div class="date">
-                                                                    <span>Отправлено: <?= $comment["date"] ?></span>
-                                                                </div>
-                                                                <div class="update">
-                                                                    <span>
-                                                                        Обновлен: 27.07.2023
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                            <?= $review->reviewRender($themeId, "comment", ["commentId" => $comment["id"], "userId" => $userId, "postCreatorId" => $comment["user_id"]]) ?>
+                                                        <div class="update">
+                                                            <span>
+                                                                Обновлен: 27.07.2023
+                                                            </span>
                                                         </div>
                                                     </div>
+                                                    <?= $review->reviewRender($themeId, "comment", ["commentId" => $comment["id"], "userId" => $userId, "postCreatorId" => $comment["user_id"]]) ?>
+                                                    <?= Render::reportForm($comment["id"], $userId, "comment"); ?>
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
                                 <?php
                                     endforeach;
                                 ?>

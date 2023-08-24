@@ -7,6 +7,8 @@ $modId = $_GET["mod-id"];// MOD ID
 @$userId = $_SESSION["user"];
 $currentURL = "http://". $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
 
+$auth = new Authentication();
+$moder = new Moderation();
 $create = new Create();
 $read = new Read();
 $review = new Reviews();
@@ -83,10 +85,12 @@ if(isset($_SESSION["error"]))
                         <div class="right">
                             <div class="name">
                                 <h1><?= $data["name"] ?></h1>
-                                <div onclick="location.href='/view/upload.php?mod=<?= $data['id'] ?>'" class="edit">
-                                    <span>Редактировать</span>
-                                    <span>&#9999;</span>
-                                </div>
+                                <?php if (($auth->checkAuth() && $userId === $data["user_id"]) || ($moder->isAdmin($userId) || $moder->isModerator($userId))) : ?>
+                                    <div onclick="location.href='/view/upload.php?mod=<?= $data['id'] ?>'" class="edit">
+                                        <span>Редактировать</span>
+                                        <span>&#9999;</span>
+                                    </div>
+                                <?php endif; ?>
                             </div>
                             <div class="description">
                                 <span>

@@ -644,6 +644,90 @@ header nav .user .log-out .link {
 .profile-content .right-block .content .files-block .file .downloads {
   margin-right: 10px;
 }
+.profile-content .right-block .content .reports-block {
+  display: flex;
+  flex-direction: column;
+}
+.profile-content .right-block .content .reports-block .report {
+  display: flex;
+  width: 100%;
+  height: 75px;
+  margin-top: 10px;
+  box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.2);
+}
+.profile-content .right-block .content .reports-block .report .left {
+  height: 100%;
+  width: 85%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 10px;
+}
+.profile-content .right-block .content .reports-block .report .left span .checked {
+  color: green;
+  font-weight: bold;
+}
+.profile-content .right-block .content .reports-block .report .left span .awaiting {
+  color: red;
+  font-weight: bold;
+}
+.profile-content .right-block .content .reports-block .report .right {
+  height: 100%;
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile-content .right-block .content .reports-block .report .right span {
+  color: #ff5252;
+  font-weight: bold;
+  cursor: pointer;
+}
+.profile-content .right-block .content .reports-block .report .right span:hover {
+  color: #ca4141;
+  transition: 0.3s;
+}
+.profile-content .right-block .content .report-page .top {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+.profile-content .right-block .content .report-page .middle {
+  margin-bottom: 15px;
+}
+.profile-content .right-block .content .report-page .bottom {
+  display: flex;
+  flex-wrap: wrap;
+}
+.profile-content .right-block .content .report-page .bottom .complaint {
+  display: flex;
+  flex-direction: column;
+  min-height: 250px;
+  width: 420px;
+  box-shadow: 1px 2px 3px 2px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+.profile-content .right-block .content .report-page .bottom .complaint .complaint-username {
+  margin-bottom: 10px;
+}
+.profile-content .right-block .content .report-page .bottom .complaint .complaint-list {
+  display: flex;
+  flex-direction: column;
+}
+.profile-content .right-block .content .report-page .bottom .complaint .complaint-list .complaint-top {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+.profile-content .right-block .content .report-page .bottom .complaint .complaint-list .complaint-bottom {
+  display: flex;
+  flex-direction: column;
+}
+.profile-content .right-block .content .report-page .bottom .complaint .complaint-list .complaint-bottom span:nth-child(1) {
+  font-weight: bold;
+}
 
 .profile-edit {
   display: flex;
@@ -970,23 +1054,51 @@ header nav .user .log-out .link {
   background-color: white;
   box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.2);
 }
-.theme-page .theme-header .content .head {
+.theme-page .theme-header .content {
+  padding: 10px 15px;
+  min-height: 200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.theme-page .theme-header .content .top {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 15px;
+}
+.theme-page .theme-header .content .top .head {
+  display: flex;
+  flex-direction: column;
+}
+.theme-page .theme-header .content .top .head .header {
+  font-size: 27px;
+  font-weight: bold;
+}
+.theme-page .theme-header .content .top .head .topic {
+  font-size: 23px;
+}
+.theme-page .theme-header .content .middle {
+  margin-bottom: auto;
+  margin-bottom: 15px;
+  padding: 0px 20px;
+}
+.theme-page .theme-header .content .bottom {
+  display: flex;
+  justify-content: space-between;
+}
+.theme-page .theme-header .content .bottom .left {
+  display: flex;
+  justify-content: space-between;
+}
+.theme-page .theme-header .content .bottom .left .author {
+  margin-right: 10px;
+}
+.theme-page .theme-header .content .bottom .left .create-date {
+  margin-right: 10px;
+}
+.theme-page .theme-header .content .bottom .right {
+  display: flex;
   align-items: center;
-}
-.theme-page .theme-header .content .head span {
-  font-size: 20px;
-}
-.theme-page .theme-header .info {
-  margin-top: 15px;
-  display: flex;
-  justify-content: space-between;
-}
-.theme-page .theme-header .actions {
-  margin-top: 15px;
-  display: flex;
-  justify-content: flex-end;
 }
 .theme-page .answer-block {
   margin-top: 15px;
@@ -1032,7 +1144,12 @@ header nav .user .log-out .link {
 .theme-page .answer-block .answer .message .bottom .date-block .date {
   margin-right: 10px;
 }
+.theme-page .form-block {
+  display: flex;
+  width: 100%;
+}
 .theme-page .form-block form textarea {
+  width: 100%;
   min-height: 125px;
   resize: vertical;
 }
@@ -1086,9 +1203,16 @@ header nav .user .log-out .link {
   background-color: #ff5252;
   color: white;
 }
+.upload-page form input[type=submit]:hover {
+  background-color: #e34747;
+  transition: 0.3s;
+}
 .upload-page form label {
   text-align: center;
   font-weight: bold;
+}
+.upload-page form .buttons {
+  display: flex;
 }
 
 .options .sort-wrap {
@@ -1239,6 +1363,7 @@ footer nav ul .item .link:hover {
 
 .post-action {
   display: flex;
+  align-items: center;
   justify-content: flex-end;
   flex: 1;
   height: 20px;
@@ -1299,18 +1424,74 @@ footer nav ul .item .link:hover {
   color: red;
   text-shadow: 1px 1px 1px #fc5454;
 }
-.post-action .report {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+.report-button {
+  background-color: inherit;
+  border: none;
+  color: #ff5252;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.report-button:hover {
+  color: #dc4747;
+  transition: 0.3s;
+}
+
+.popup-block {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(101, 101, 101, 0.2666666667);
+  z-index: 9999;
+}
+.popup-block .popup {
+  padding: 25px;
+  background-color: #ffffff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  min-height: 200px;
+}
+.popup-block span {
   font-weight: bold;
 }
-.post-action .report a:nth-child(1) {
-  color: red;
-  text-decoration: none;
+.popup-block form {
+  display: flex;
+  flex-direction: column;
 }
-.post-action .report a:nth-child(1):hover {
-  color: #d24141;
+.popup-block form textarea {
+  min-height: 100px;
+  margin-bottom: 10px;
+}
+.popup-block form .buttons input[type=submit] {
+  margin-right: 5px;
+  border: none;
+  background-color: #ff5252;
+  color: white;
+  height: 30px;
+  width: 125px;
+  cursor: pointer;
+}
+.popup-block form .buttons input[type=submit]:hover {
+  background-color: #d44444;
+}
+.popup-block form .buttons button {
+  height: 30px;
+  width: 125px;
+  border: none;
+  background-color: #6e6e6e;
+  color: white;
+  outline: none;
+  cursor: pointer;
+}
+.popup-block form .buttons button:hover {
+  background-color: #5d5d5d;
 }
 
 .cropper-crop-box, .cropper-view-box {

@@ -566,4 +566,120 @@ class Read
             echo $e;
         }
     }
+
+    public function allReports()
+    {
+        try
+        {
+            $query = "
+            SELECT 
+                reports.obj_id,
+                reports.obj_type,
+                reports.status,
+                COUNT(reports.id) AS report_count
+            FROM 
+                reports
+            GROUP BY
+                reports.obj_id,
+                reports.obj_type,
+                reports.status";
+
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+
+            $data = $stmt->fetchAll();
+
+            return $data;
+        }
+        catch(PDOException $e)
+        {
+            echo $e;
+        }
+    }
+
+    public function report($objId, $objType)
+    {
+        $table = "";
+        $column = "";
+
+        if ($objType === 'mod')
+        {
+            $table = "mods";
+            $column = "name";
+        }
+        elseif ($objType === "theme")
+        {
+            $table = "themes";
+            $column = "header";
+        }
+        else
+        {
+            $table = "comments";
+            $column = "id";
+        }
+
+        try
+        {
+            $query = "
+                SELECT
+                    users.login,
+                    $table.$column AS name
+                FROM
+                    reports
+                LEFT JOIN
+                    $table ON reports.obj_id = $table.id AND reports.obj_type = '$objType'
+                LEFT JOIN
+                    users ON users.id = $table.user_id
+                WHERE
+                    reports.obj_id = :objId
+            ";
+
+            $stmt = $this->db->prepare($query);
+            $stmt->bindParam(":objId", $objId);
+            $stmt->execute();
+            $headerData = $stmt->fetch();
+
+            $query = "
+                SELECT 
+                    reports.report_type, reports.addition,
+                    users.login as reporting_user
+                FROM 
+                    reports
+                LEFT JOIN
+                    users ON reports.reporting_user_id = users.id
+                WHERE
+                    reports.obj_id = :objId
+                ";
+
+            $stmt = $this->db->prepare($query);
+            $stmt->bindParam(":objId", $objId);
+            $stmt->execute();
+            $data = $stmt->fetchAll();
+
+            $count = 0;
+            foreach($data as $complaint)
+            {
+                $count++;
+                if(strpos($complaint["report_type"], "/") !== FALSE)
+                {
+                    $data[$count-1]["complaintList"] = explode("/", $complaint["report_type"]);
+                   
+                }else
+                {
+                    $data[$count-1]["complaintList"] = explode("/", $complaint["report_type"]);
+                }
+                unset($data[$count-1]["report_type"]);
+            }
+
+            $data["reportedUser"] = $headerData["login"];
+            $data["reportedObj"] = $headerData["name"];
+            
+
+            return $data;
+        }
+        catch(PDOException $e)
+        {
+            echo $e;
+        }
+    }
 }

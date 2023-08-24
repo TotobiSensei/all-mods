@@ -8,7 +8,7 @@ trait Helper
 
     private function removeUriParam($param)
     {
-        $currentURL = $_SERVER['REQUEST_URI'];
+        $currentURL = "http://". $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
         $currentURL = preg_replace('/[?&]' . preg_quote($param, '/') . '=[^&#]+/', '', $currentURL);
 
         header("Location: $currentURL");

@@ -113,8 +113,6 @@ class Update
 
                 $stmt = $this->db->prepare($query);
 
-                
-
                 $stmt->bindParam(":img", $destination);
                 $stmt->bindParam(":modId", $modId);
 
@@ -122,7 +120,11 @@ class Update
 
                 if($stmt->rowCount() > 0)
                 {
-                    unlink($oldImg);
+                    if(!strpos($oldImg, "default"))
+                    {
+                        unlink($oldImg);
+                    }
+                    
                 }
 
             $this->db->commit();
@@ -316,6 +318,25 @@ class Update
         catch(Exception $e)
         {
             $_SESSION["error"] = $e;
+        }
+    }
+
+    public function closeReport($objId, $objType)
+    {
+        try
+        {
+            $query = "UPDATE reports SET status = 1 WHERE obj_id = :objId AND obj_type = :objType";
+
+            $stmt = $this->db->prepare($query);
+            $stmt->bindParam(":objId", $objId);
+            $stmt->bindParam(":objType", $objType);
+            $stmt->execute();
+
+            header("Location: http://". $_SERVER["HTTP_HOST"] ."/view/profile.php?reports");
+        }
+        catch(PDOException $e)
+        {
+            echo $e;
         }
     }
 }

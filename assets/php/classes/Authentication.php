@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 class Authentication
 {
@@ -18,6 +17,8 @@ class Authentication
             $stmt = $this->db->prepare("SELECT * FROM users WHERE login = :login");
             $stmt->execute(["login" => $login]);
             $user = $stmt->fetch();
+
+
             $_SESSION["user"] = $user["id"];
             
             return true;
@@ -30,6 +31,8 @@ class Authentication
     {
         session_unset();
         session_destroy();
+        header("Location: /");
+        exit;
     }
 
     public function checkAuth()
