@@ -74,6 +74,9 @@ header nav .user .log-out .link {
   font-size: 20px;
   font-weight: bold;
 }
+header nav .user .messages .link {
+  font-size: 25px;
+}
 
 .home {
   margin-top: 20px;
@@ -1255,6 +1258,172 @@ header nav .user .log-out .link {
 }
 .options .sort-wrap form input[type=submit]:hover {
   background-color: rgb(214, 75, 75);
+}
+
+.private-messages {
+  margin: 15px;
+}
+.private-messages .col, .private-messages .col-4 {
+  padding: 0 !important;
+}
+.private-messages .message-list {
+  max-height: 85vh;
+  width: 100%;
+  overflow: auto;
+}
+.private-messages .message-list .row {
+  margin: 0 !important;
+}
+.private-messages .message-list .message {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  height: 100px;
+  width: 100%;
+  display: flex;
+  border-bottom: 2px solid #9d9d9d;
+}
+.private-messages .message-list .message:hover {
+  background-color: rgba(183, 183, 183, 0.5176470588);
+  transition: 0.3s;
+}
+.private-messages .message-list .message .left img {
+  padding: 10px;
+  height: 100px;
+  width: 100px;
+}
+.private-messages .message-list .message .right {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.private-messages .message-list .message .right .top {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0px;
+}
+.private-messages .message-list .message .right .top .author {
+  font-weight: bold;
+}
+.private-messages .message-list .message .right .top .date {
+  margin-right: 5px;
+}
+.private-messages .message-window {
+  display: flex;
+  flex-direction: column;
+  height: 85vh;
+  width: 100%;
+  background-color: #e1e1e1;
+}
+.private-messages .message-window .message-list {
+  display: flex;
+  flex-direction: column-reverse;
+  flex-grow: 1;
+  overflow: auto;
+  margin-bottom: 10px;
+}
+.private-messages .message-window .message-list .top {
+  display: flex;
+  flex-direction: column;
+}
+.private-messages .message-window .message-list .top .message-body {
+  display: flex;
+  max-width: 50%;
+  min-height: 50px;
+}
+.private-messages .message-window .message-list .top .message-body .left {
+  display: flex;
+  align-items: flex-end;
+}
+.private-messages .message-window .message-list .top .message-body .left img {
+  height: 50px;
+  width: 50px;
+}
+.private-messages .message-window .message-list .top .message-body .right {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  padding: 5px;
+  border-radius: 10px;
+  flex-grow: 1;
+  background-color: #fff;
+}
+.private-messages .message-window .message-list .top .message-body .right .text {
+  font-size: 18px;
+}
+.private-messages .message-window .message-list .top .message-body .right .date {
+  font-size: 13px;
+}
+.private-messages .message-window .message-list .my-message {
+  align-items: flex-start;
+}
+.private-messages .message-window .message-list .my-message .left {
+  margin-left: 10px;
+}
+.private-messages .message-window .message-list .my-message .right {
+  margin-left: 5px;
+}
+.private-messages .message-window .message-list .my-message .right span:nth-child(2) {
+  display: flex;
+  justify-content: flex-end;
+}
+.private-messages .message-window .message-list .other-message {
+  align-items: flex-end;
+}
+.private-messages .message-window .message-list .other-message .message-body {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.private-messages .message-window .message-list .other-message .message-body .left {
+  margin-right: 10px;
+}
+.private-messages .message-window .message-list .other-message .message-body .right {
+  margin-right: 5px;
+}
+.private-messages .message-window .message-list .other-message .message-body .right span:nth-child(2) {
+  display: flex;
+  justify-content: flex-end;
+}
+.private-messages .message-window .bottom {
+  width: 100%;
+  background-color: rgba(194, 194, 194, 0.8392156863);
+}
+.private-messages .message-window .bottom form {
+  position: relative;
+}
+.private-messages .message-window .bottom form textarea {
+  background-color: inherit;
+  width: 100%;
+  padding-right: 50px;
+  border: none;
+  outline: none;
+  height: auto;
+  max-height: 150px;
+  resize: none;
+}
+.private-messages .message-window .bottom form input[type=submit] {
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(-50%, -50%);
+  border: 2px solid #ff5252;
+  border-radius: 20px;
+  vertical-align: middle;
+  font-size: 27px;
+  line-height: 1;
+  color: #ff5252;
+  cursor: pointer;
+}
+.private-messages .message-window .bottom form input[type=submit]:hover {
+  border: 2px solid #e84b4b;
+  color: #e84b4b;
+  transition: 0.3s;
 }
 
 footer {

@@ -74,7 +74,10 @@ if(isset($_GET["logOut"]))
                                 ?>
                                         <li class="item">
                                             <a class="link" href="/view/upload.php">Загрузить</a>
-                                        </li class="item">
+                                        </li>
+                                        <li class="item messages">
+                                            <a class="link" href="/view/messages.php">&#128386;</a>
+                                        </li>
                                         <li class="item profile">
                                             <img src="<?= $user["img"] ?>" alt="">
                                             <a class="link" href="/view/profile.php"><?= $user["login"]?></a>
