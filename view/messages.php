@@ -2,6 +2,52 @@
 require_once __DIR__ . "/../assets/php/initClasses.php";
 
 Render::header();
+
+$auth  = new Authentication();
+
+if ($auth->checkAuth())
+{
+    $sessId = $_SESSION["user"];
+    @$userId = $_GET["dialog"];
+    $currentUrl = "http://" . $_SERVER["HTTP_HOST"] . $_SERVER["SCRIPT_NAME"];
+
+    if (isset($_POST["sendMessage"]))
+    {
+        $create  = new Create();
+
+        $form = [
+            "fromUserId" => $_POST["fromUserId"],
+            "toUserId" => $_POST["toUserId"],
+            "message" => $_POST["message"],
+        ];
+
+        $create->message($form);
+    }
+
+    $read = new Read();
+    
+    $dialogueList = $read->dialogueList($sessId);
+
+    // var_dump( $dialogueList);
+
+    if (isset($_GET["dialog"]))
+    {
+        $toUserId = htmlspecialchars($_GET["dialog"]);
+
+        $messages = $read->dialog($sessId, $toUserId);
+
+        // echo "<pre>";
+        // var_dump($messages);
+        // echo "</pre>";
+    }
+
+}
+else
+{
+    header("Location: /");
+}
+
+
 ?>
 <section class="private-messages">
     <div class="container-fluid">
@@ -10,164 +56,22 @@ Render::header();
                 <div class="message-list">
                     <div class="row">
                         <div class="col">
-                            <div class="message">
-                                <div class="left">
-                                    <img src="/assets/img/users_logo/15_64e85e05e0f42.jpeg" alt="">
-                                </div>
-                                <div class="right">
-                                    <div class="top">
-                                        <div class="author">aboba</div>
-                                        <div class="date">12.03.2023</div>
+                            <?php foreach ($dialogueList as $dialog) : ?>
+                                <div onclick="location.href='<?= $currentUrl?>?dialog=<?= $dialog['interlocutor_id']?>'" class="message">
+                                    <div class="left">
+                                        <img src="<?= $dialog["interlocutor_img"] ?>" alt="">
                                     </div>
-                                    <div class="bottom">
-                                        <div class="text">dfasdfasdfadsfgasdgasddgfasdga</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="message">
-                                <div class="left">
-                                    <img src="/assets/img/users_logo/15_64e85e05e0f42.jpeg" alt="">
-                                </div>
-                                <div class="right">
-                                    <div class="top">
-                                        <div class="author">aboba</div>
-                                        <div class="date">12.03.2023</div>
-                                    </div>
-                                    <div class="bottom">
-                                        <div class="text">dfasdfasdfadsfgasdgasddgfasdga</div>
+                                    <div class="right">
+                                        <div class="top">
+                                            <div class="author"><?= $dialog["interlocutor_name"] ?></div>
+                                            <div class="date"><?= $dialog["date"] ?></div>
+                                        </div>
+                                        <div class="bottom">
+                                            <div class="text"><?= $dialog["message"] ?></div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="message">
-                                <div class="left">
-                                    <img src="/assets/img/users_logo/15_64e85e05e0f42.jpeg" alt="">
-                                </div>
-                                <div class="right">
-                                    <div class="top">
-                                        <div class="author">aboba</div>
-                                        <div class="date">12.03.2023</div>
-                                    </div>
-                                    <div class="bottom">
-                                        <div class="text">dfasdfasdfadsfgasdgasddgfasdga</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="message">
-                                <div class="left">
-                                    <img src="/assets/img/users_logo/15_64e85e05e0f42.jpeg" alt="">
-                                </div>
-                                <div class="right">
-                                    <div class="top">
-                                        <div class="author">aboba</div>
-                                        <div class="date">12.03.2023</div>
-                                    </div>
-                                    <div class="bottom">
-                                        <div class="text">dfasdfasdfadsfgasdgasddgfasdga</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="message">
-                                <div class="left">
-                                    <img src="/assets/img/users_logo/15_64e85e05e0f42.jpeg" alt="">
-                                </div>
-                                <div class="right">
-                                    <div class="top">
-                                        <div class="author">aboba</div>
-                                        <div class="date">12.03.2023</div>
-                                    </div>
-                                    <div class="bottom">
-                                        <div class="text">dfasdfasdfadsfgasdgasddgfasdga</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="message">
-                                <div class="left">
-                                    <img src="/assets/img/users_logo/15_64e85e05e0f42.jpeg" alt="">
-                                </div>
-                                <div class="right">
-                                    <div class="top">
-                                        <div class="author">aboba</div>
-                                        <div class="date">12.03.2023</div>
-                                    </div>
-                                    <div class="bottom">
-                                        <div class="text">dfasdfasdfadsfgasdgasddgfasdga</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="message">
-                                <div class="left">
-                                    <img src="/assets/img/users_logo/15_64e85e05e0f42.jpeg" alt="">
-                                </div>
-                                <div class="right">
-                                    <div class="top">
-                                        <div class="author">aboba</div>
-                                        <div class="date">12.03.2023</div>
-                                    </div>
-                                    <div class="bottom">
-                                        <div class="text">dfasdfasdfadsfgasdgasddgfasdga</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="message">
-                                <div class="left">
-                                    <img src="/assets/img/users_logo/15_64e85e05e0f42.jpeg" alt="">
-                                </div>
-                                <div class="right">
-                                    <div class="top">
-                                        <div class="author">aboba</div>
-                                        <div class="date">12.03.2023</div>
-                                    </div>
-                                    <div class="bottom">
-                                        <div class="text">dfasdfasdfadsfgasdgasddgfasdga</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="message">
-                                <div class="left">
-                                    <img src="/assets/img/users_logo/15_64e85e05e0f42.jpeg" alt="">
-                                </div>
-                                <div class="right">
-                                    <div class="top">
-                                        <div class="author">aboba</div>
-                                        <div class="date">12.03.2023</div>
-                                    </div>
-                                    <div class="bottom">
-                                        <div class="text">dfasdfasdfadsfgasdgasddgfasdga</div>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>
@@ -175,33 +79,59 @@ Render::header();
             <div class="col">
                 <div class="message-window">
                     <div class="message-list">
-                        <div class="top my-message">
-                            <div class="message-body">
-                                <div class="left">
-                                    <img src="/assets/img/users_logo/15_64e85e05e0f42.jpeg" alt="">
-                                </div>
-                                <div class="right">
-                                    <span class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex quaerat doloremque sunt eum voluptates ut autem assumenda minima eligendi adipisci, labore quod obcaecati voluptatum explicabo! Consequatur ea tempora omnis modi!</span>
-                                    <span class="date">23.09.2023</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="top other-message">
-                            <div class="message-body">
-                                <div class="left">
-                                    <img src="/assets/img/users_logo/15_64e85e05e0f42.jpeg" alt="">
-                                </div>
-                                <div class="right">
-                                    <span class="text">Каво бля?</span>
-                                    <span class="date">23.09.2023</span>
-                                </div>
-                            </div>
-                        </div>
+                        <?php
+                            if (!empty($messages))
+                            {
+                                foreach($messages as $message)
+                                {
+                                    if($message["from_user_id"] === $sessId) 
+                                    {
+                        ?>
+                                        <div class="top my-message">
+                                            <div class="message-body">
+                                                <div class="left">
+                                                    <img src="<?=  $message["img"] ?>" alt="">
+                                                </div>
+                                                <div class="right">
+                                                    <span class="text"><?= $message["message"] ?></span>
+                                                    <span class="date"><?= $message["date"] ?></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                        <?php
+                                    }
+                                    else
+                                    {
+                        ?>
+                                        <div class="top other-message">
+                                            <div class="message-body">
+                                                <div class="left">
+                                                    <img src="<?=  $message["img"] ?>" alt="">
+                                                </div>
+                                                <div class="right">
+                                                    <span class="text"><?= $message["message"] ?></span>
+                                                    <span class="date"><?= $message["date"] ?></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                    <?php
+                                    }
+                                }
+                            }
+                            else
+                            {
+                    ?>
+
+                    <?php   
+                            }
+                    ?>
                     </div>
                     <div class="bottom">
-                        <form action="">
-                            <textarea  name="" id=""></textarea>
-                            <input type="submit" value="&#10148;">
+                        <form action="" method="POST">
+                            <input type="hidden" name="fromUserId" value="<?= $sessId ?>">
+                            <input type="hidden" name="toUserId" value="<?= $userId?>" >
+                            <textarea  name="message" id=""></textarea>
+                            <input type="submit" name="sendMessage" value="&#10148;" id="sendMessage">
                         </form>
                     </div>
                 </div>

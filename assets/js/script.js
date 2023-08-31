@@ -71,3 +71,13 @@ modals.forEach(function (modal) {
     }
   });
 });
+//
+document.getElementById("sendMessage")
+  .addEventListener('keyup', function(e)
+  {
+    if (e.code === "Enter")
+    {
+      e.preventDefault();
+      document.querySelector("form").submit();
+    }
+  });

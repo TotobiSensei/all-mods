@@ -80,7 +80,7 @@ if(isset($_GET["logOut"]))
                                         </li>
                                         <li class="item profile">
                                             <img src="<?= $user["img"] ?>" alt="">
-                                            <a class="link" href="/view/profile.php"><?= $user["login"]?></a>
+                                            <a class="link" href="/view/profile.php?user=<?=  $_SESSION["user"]?>"><?= $user["login"]?></a>
                                         </li>
                                         <li class="item log-out">
                                             <a class="link" href="?logOut=1">&#9032;</a>

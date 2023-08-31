@@ -1,6 +1,8 @@
 <?php
 class Read
 {
+    use Helper;
+
     private $db;
 
     public function __construct()
@@ -674,6 +676,102 @@ class Read
             $data["reportedUser"] = $headerData["login"];
             $data["reportedObj"] = $headerData["name"];
             
+
+            return $data;
+        }
+        catch(PDOException $e)
+        {
+            echo $e;
+        }
+    }
+
+    public function dialogueList($id)
+    {
+        try
+        {
+           
+            $query = "
+            SELECT
+                m.message,
+                m.date,
+                u.id AS interlocutor_id,
+                u.login AS interlocutor_name,
+                i.img AS interlocutor_img
+            FROM messages m
+            JOIN (
+                SELECT MAX(date) AS max_date, dialog_id
+                FROM messages
+                WHERE from_user_id = ? OR to_user_id = ?
+                GROUP BY dialog_id
+            ) t ON m.dialog_id = t.dialog_id AND m.date = t.max_date
+            JOIN users u ON
+                (CASE
+                    WHEN m.from_user_id = ? THEN m.to_user_id = u.id
+                    WHEN m.to_user_id = ? THEN m.from_user_id = u.id
+                END)
+            LEFT JOIN 
+                image i ON u.id = i.obj_id AND i.obj_type = 'user' 
+            WHERE m.from_user_id = ? OR m.to_user_id = ?
+            ";
+
+            $stmt = $this->db->prepare($query);
+            $stmt->execute([$id, $id, $id, $id, $id, $id, ]);
+            $data = $stmt->fetchAll();
+
+            for($i=0; $i < count($data); $i++)
+            {
+                $timestamp = $data[$i]["date"];
+
+                $newDate = (new DateTime("@" . $timestamp))->format("d-m-Y");
+
+                $data[$i]["date"] = $newDate;
+
+
+            }
+
+            return $data;
+        }
+        catch(PDOException $e)
+        {
+            echo $e;
+        }
+    }
+
+    public function dialog($fromUserId, $toUserId)
+    {
+        $dialogId = $this->generateDialogId($fromUserId, $toUserId);
+
+        try
+        {
+            $query = "
+                SELECT 
+                    m.*,
+                    i.img
+                FROM
+                    messages m
+                LEFT JOIN
+                    image i ON m.from_user_id = i.obj_id AND i.obj_type = 'user'
+                WHERE
+                    m.dialog_id = :dialogId
+                ORDER BY
+                    m.date DESC
+            ";
+
+            $stmt = $this->db->prepare($query);
+            $stmt->bindValue(":dialogId", $dialogId);
+            $stmt->execute();
+            $data = $stmt->fetchAll();
+
+            for($i=0; $i < count($data); $i++)
+            {
+                $timestamp = $data[$i]["date"];
+
+                $newDate = (new DateTime("@" . $timestamp))->format("d-m-Y");
+
+                $data[$i]["date"] = $newDate;
+
+
+            }
 
             return $data;
         }
