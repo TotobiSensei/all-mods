@@ -63,6 +63,85 @@ class Read
         }
     }
 
+    public function topThemes()
+    {
+        try
+        {
+            $query = "
+                SELECT
+                    themes.*,
+                    (SELECT count FROM views WHERE views.obj_id = themes.id AND views.obj_type = 'theme') AS views,
+                    MAX(comments.date) as last_comment,
+                    COALESCE(
+                        (SELECT SUM(rating) FROM reviews WHERE obj_id = themes.id AND obj_type = 'theme')
+                        /
+                        (SELECT COUNT(rating) FROM reviews WHERE obj_id = themes.id AND obj_type = 'theme')
+                        ) as avg_rating
+                FROM
+                    themes
+                LEFT JOIN
+                    comments ON themes.id = comments.obj_id AND comments.obj_type = 'theme'
+                GROUP BY
+                    themes.id
+                ORDER BY
+                    avg_rating DESC
+                LIMIT 3
+            ";
+
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            $data = $stmt->fetchAll();
+
+            if(!empty($data))
+            {
+                foreach($data as $item)
+                {
+                    ?>
+                        <div class="col-12">
+                            <div class="theme">
+                                <div class="head-block">
+                                    <div class="name">
+                                        <h1>
+                                            <?= $item["header"] ?>
+                                        </h1>
+                                    </div>
+                                    <div class="topic">
+                                        <span>
+                                            <?= $item["topic"] ?>
+                                        </span>
+                                    </div>
+                                    
+                                </div>
+                                <div class="date-block">
+                                    <div class="create-date">
+                                        <span>Создано: <?= $item["date"] ?></span>
+                                    </div>
+                                    <div class="update-date">
+                                        <?= isset($item["updated"]) ? "<span>Обновленно: {$item["updated"]} </span>" : "" ?>
+                                    </div>
+                                    <div class="last-message">
+                                        <?= isset($item["last_mess"]) ? "<span>Последние сообщение: {$item["last_mess"]}</span>" : "" ?>
+                                    </div>
+                                </div>
+                                <div class="views-block">
+                                    <div class="views">Просмотры: <?= isset($item["views"]) ? $item["views"] : 0 ?></div>
+                                </div>
+                                <div class="theme-button">
+                                    <a href="/view/template/theme_page.php?theme=<?= $item["id"] ?>">Перейти</a>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    <?
+                }
+            }
+        }
+        catch(PDOException $e)
+        {
+            echo $e;
+        }
+    }
+
     public function comment($objId, $objType, $pagination = NULL)
     {
         try
@@ -290,8 +369,23 @@ class Read
                 {
             ?>
                     <div class="carousel-cell">
+<<<<<<< HEAD
                         <div class="name"><?= mb_strimwidth($item["name"], 0, 13, "...")  ?></div>
                         <div class="img"><img src="assets\img\mod_img\64c10a2714b31_sticker.jpeg" alt=""></div>
+=======
+                       <div class="content">
+                            <div class="left-block">
+                                <div class="img"><img src="<?= $item["img"]?>" alt=""></div>
+                            </div>
+                            <div class="right-block">
+                                <div class="name"><?= mb_strimwidth($item["name"], 0, 15, "...")  ?></div>
+                                <div class="description"><?= mb_strimwidth($item["description"], 0, 100, "...")  ?></div>
+                                <div onclick="location.href='/view/template/mod_page.php?mod-id=<?= $item['id'] ?>'" class="button">
+                                    <a href="/view/template/mod_page.php?mod-id=<?= $item["id"] ?>">Подpобнее</a>
+                                </div>
+                            </div>
+                        </div>
+>>>>>>> master
                     </div>
                     
             <?php 
@@ -538,4 +632,119 @@ class Read
                 echo $e;
             }
         }
+    public function allReports()
+    {
+        try
+        {
+            $query = "
+            SELECT 
+                reports.obj_id,
+                reports.obj_type,
+                reports.status,
+                COUNT(reports.id) AS report_count
+            FROM 
+                reports
+            GROUP BY
+                reports.obj_id,
+                reports.obj_type,
+                reports.status";
+
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+
+            $data = $stmt->fetchAll();
+
+            return $data;
+        }
+        catch(PDOException $e)
+        {
+            echo $e;
+        }
+    }
+
+    public function report($objId, $objType)
+    {
+        $table = "";
+        $column = "";
+
+        if ($objType === 'mod')
+        {
+            $table = "mods";
+            $column = "name";
+        }
+        elseif ($objType === "theme")
+        {
+            $table = "themes";
+            $column = "header";
+        }
+        else
+        {
+            $table = "comments";
+            $column = "id";
+        }
+
+        try
+        {
+            $query = "
+                SELECT
+                    users.login,
+                    $table.$column AS name
+                FROM
+                    reports
+                LEFT JOIN
+                    $table ON reports.obj_id = $table.id AND reports.obj_type = '$objType'
+                LEFT JOIN
+                    users ON users.id = $table.user_id
+                WHERE
+                    reports.obj_id = :objId
+            ";
+
+            $stmt = $this->db->prepare($query);
+            $stmt->bindParam(":objId", $objId);
+            $stmt->execute();
+            $headerData = $stmt->fetch();
+
+            $query = "
+                SELECT 
+                    reports.report_type, reports.addition,
+                    users.login as reporting_user
+                FROM 
+                    reports
+                LEFT JOIN
+                    users ON reports.reporting_user_id = users.id
+                WHERE
+                    reports.obj_id = :objId
+                ";
+
+            $stmt = $this->db->prepare($query);
+            $stmt->bindParam(":objId", $objId);
+            $stmt->execute();
+            $data = $stmt->fetchAll();
+
+            $count = 0;
+            foreach($data as $complaint)
+            {
+                $count++;
+                if(strpos($complaint["report_type"], "/") !== FALSE)
+                {
+                    $data[$count-1]["complaintList"] = explode("/", $complaint["report_type"]);
+                   
+                }else
+                {
+                    $data[$count-1]["complaintList"] = explode("/", $complaint["report_type"]);
+                }
+                unset($data[$count-1]["report_type"]);
+            }
+
+            $data["reportedUser"] = $headerData["login"];
+            $data["reportedObj"] = $headerData["name"];
+            
+
+            return $data;
+        }
+        catch(PDOException $e)
+        {
+            echo $e;
+        }
+    }
 }

@@ -9,12 +9,10 @@ $read = new Read();
 <section class='index-content index-content_modify'>
 
     <aside class='top-mods top-mods_modify'>
-        <h2 class="top-mods__subtitile top-mods__subtitile-modify">Top Mods!</h2>
-        <div class="top-mod top-mod_modify">
-            <img src="assets\img\mod_img\64c24ea35490d_mavpa.w575.jpg" alt=""
-                class="top-mod__img top-mod__img_modify"><a href=""></a></img>
-            <h3 class='top-mod__subtitle top-mod__subtitle_modify'>sdfsfsdfsfdsfds</h3>
-        </div>
+                <div class="top-themes">
+                    <?= $read->topThemes() ?>
+                </div>
+ 
     </aside>
     <div class="news-container">
     <?php
@@ -38,7 +36,7 @@ $read = new Read();
     <?php
         endforeach
     ?>
-    </div>
+        
 </section>
 
 <?php

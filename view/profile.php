@@ -7,6 +7,7 @@ $userId = $_SESSION["user"];
 $create = new Create();
 $reviews = new Reviews();
 $read = new Read();
+$update = new Update();
 
 $user = $read->profileData($userId);
 $mods = $read->userMods($userId);
@@ -25,6 +26,10 @@ if(isset($_POST["createNews"]))
 // echo "<pre>";
 // var_dump($mods);
 // echo "</pre>";
+if(isset($_POST["closeReport"]))
+{
+    $update->closeReport($_POST["objId"],$_POST["objType"]);
+}
 ?>
 <section class="profile-header">
     <div class="container-fluid">

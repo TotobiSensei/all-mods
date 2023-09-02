@@ -59,6 +59,9 @@ header
 				.link
 					font-size: 20px
 					font-weight: bold
+			.messages
+				.link
+					font-size: 25px
 //INDEX
 .home
 	margin-top: 20px
@@ -73,26 +76,57 @@ header
 		.main-carousel 
 			background: #EEE
 			.carousel-cell
-				position: relative
-				width: 80%
+				width: 66%
 				height: 250px
 				margin-right: 10px
 				background: #ffffff
-				.name
-					position: absolute
-					bottom: 0
-					left: 50%
-					transform: translateX(-50% )
-					color: #ff5252
-					font-size: 30px
-					font-weight: bold
-				.img
-					height: 100%
+				.content
+					display: flex
 					width: 100%
-					img
+					height: 100%
+					.left-block, .rigth-block
+						flex: 1
+					.left-block
+						width: 50%
+						.img
+							height: 100%
+							width: 100%
+							img
+								height: 100%
+								width: 100%
+					.right-block
+						display: flex
+						flex-direction: column
+						width: 50%
 						height: 100%
-						width: 100%
-  
+						padding: 15px
+						text-align: center
+						.name
+							color: #000000
+							font-size: 30px
+							font-weight: bold
+							margin-bottom: 5px
+						.description
+							font-size: 20px
+							word-wrap: break-word
+						.button
+							margin-top: auto
+							height: 35px
+							background-color: #ff5252
+							padding-top: 5px
+							cursor: pointer
+							&:hover
+									background: #e44c4c
+									transition: background-color 0.3s ease-in-out
+									
+							a
+								color: white
+								font-size: 18px
+								text-decoration: none
+								cursor: pointer
+								
+							
+	
 //SECTION games
 .games
 	.item
@@ -501,6 +535,79 @@ header
 							font-size: 23px
 					.downloads
 						margin-right: 10px
+			.reports-block
+				display: flex
+				flex-direction: column
+				.report
+					display: flex
+					width: 100%
+					height: 75px
+					margin-top: 10px
+					box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.2)
+					.left
+						height: 100%
+						width: 85%
+						display: flex
+						justify-content: space-between
+						align-items: center
+						margin-left: 10px
+						span
+							.checked
+								color: green
+								font-weight: bold
+							.awaiting
+								color: red
+								font-weight: bold
+					.right
+						height: 100%
+						width: 15%
+						display: flex
+						justify-content: center
+						align-items: center
+						span
+							color: #ff5252
+							font-weight: bold
+							cursor: pointer
+							&:hover
+								color: #ca4141
+								transition: 0.3s
+			.report-page
+				.top
+					margin-bottom: 15px
+					display: flex
+					flex-direction: column
+				.middle
+					margin-bottom: 15px
+				.bottom
+					display: flex
+					flex-wrap: wrap
+					.complaint
+						display: flex
+						flex-direction: column
+						min-height: 250px
+						width: 420px
+						box-shadow: 1px 2px 3px 2px rgba(0, 0, 0, 0.2)
+						padding: 10px
+						margin-right: 15px
+						margin-bottom: 15px
+						.complaint-username
+							margin-bottom: 10px
+						.complaint-list
+							display: flex
+							flex-direction: column
+							.complaint-top
+								display: flex
+								flex-direction: column
+								margin-bottom: 10px
+							.complaint-bottom
+								display: flex
+								flex-direction: column
+								span:nth-child(1)
+									font-weight: bold
+
+
+					
+
 //PROFILE EDIT
 .profile-edit
 	display: flex
@@ -714,7 +821,7 @@ header
 				background-color: #FF7A73
 				transition: 0.3s
 //forum
-.themes
+.themes, .top-themes
 	.add-theme
 		display: flex
 		justify-content: center
@@ -783,20 +890,41 @@ header
 		background-color: white
 		box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.2)
 		.content
-			.head
+			padding: 10px 15px
+			min-height: 200px
+			width: 100%
+			display: flex
+			flex-direction: column
+			.top
 				display: flex
 				justify-content: space-between
-				align-items: center
-				span
-					font-size: 20px
-		.info
-			margin-top: 15px
-			display: flex
-			justify-content: space-between
-		.actions
-			margin-top: 15px
-			display: flex
-			justify-content: flex-end
+				margin-bottom: 15px
+				.head
+					display: flex
+					flex-direction: column
+					.header
+						font-size: 27px
+						font-weight: bold
+					.topic
+						font-size: 23px
+			.middle
+				margin-bottom: auto
+				margin-bottom: 15px
+				padding: 0px 20px
+			.bottom
+				display: flex
+				justify-content: space-between
+				.left
+					display: flex
+					justify-content: space-between
+					.author
+						margin-right: 10px
+					.create-date
+						margin-right: 10px
+				.right
+					display: flex
+					align-items: center
+			
 	.answer-block
 		margin-top: 15px
 		.answer
@@ -832,8 +960,11 @@ header
 						.date
 							margin-right: 10px
 	.form-block
+		display: flex
+		width: 100%
 		form
 			textarea
+				width: 100%
 				min-height: 125px
 				resize: vertical
 			input[type="submit"]
@@ -880,9 +1011,14 @@ header
 			margin: 0px auto
 			background-color: #ff5252
 			color: white
+			&:hover
+				background-color: #e34747
+				transition: 0.3s
 		label
 			text-align: center
 			font-weight: bold
+		.buttons
+			display: flex
 //sorts
 .options
 	.sort-wrap
@@ -920,7 +1056,142 @@ header
 				font-weight: bold
 				&:hover
 					background-color: rgb(214, 75, 75)
+//MESSAGES
+.private-messages
+	margin: 15px
+	.col, .col-4
+		padding: 0!important
+	.message-list
+		max-height:85vh
+		width: 100%
+		overflow: auto
+		.row
+			margin: 0!important
+		.message
+			display: flex
+			justify-content: space-between
+			background-color: white
+			user-select: none
+			height: 100px
+			width: 100%
+			display: flex
+			border-bottom: 2px solid #9d9d9d
+			&:hover
+				background-color: #b7b7b784
+				transition: 0.3s
+			.left
+				img
+					padding: 10px
+					height: 100px
+					width: 100px
+			.right
+				display: flex
+				flex-direction: column
+				flex-grow: 1
+				.top
+					display: flex
+					justify-content: space-between
+					margin: 5px 0px
+					.author
+						font-weight: bold
+					.date
+						margin-right: 5px
+	.message-window
+		display: flex
+		flex-direction: column
+		height: 85vh
+		width: 100%
+		background-color: #e1e1e1
+		.message-list
+			display: flex
+			flex-direction: column-reverse
+			flex-grow: 1
+			overflow: auto
+			margin-bottom: 10px
+			.top 
+				display: flex
+				flex-direction: column
+				.message-body
+					display: flex
+					max-width: 50%
+					min-height: 50px
+					.left
+						display: flex
+						align-items: flex-end
+						img
+							height: 50px
+							width: 50px
+					.right
+						display: flex
+						flex-direction: column
+						height: 100%
+						width: 100%
+						padding: 5px
+						border-radius: 10px
+						flex-grow: 1
+						background-color: #fff
+						.text
+							font-size: 18px
+						.date
+							font-size: 13px
+			.my-message
+				align-items: flex-start
+				.left
+					margin-left: 10px
+				.right
+					margin-left: 5px
+					span:nth-child(2)
+						display: flex
+						justify-content: flex-end
 
+			.other-message
+				align-items: flex-end
+				.message-body
+					display: flex
+					flex-direction: row-reverse
+					.left
+						margin-right: 10px
+					.right
+						margin-right: 5px
+						span:nth-child(2)
+							display: flex
+							justify-content: flex-end
+		.bottom
+			width: 100%
+			background-color: #c2c2c2d6
+			form
+				position: relative
+				textarea
+					background-color: inherit
+					width: 100%
+					padding-right: 50px
+					border: none
+					outline: none
+					height: auto
+					max-height: 150px
+					resize: none
+				input[type="submit"]
+					height: 40px
+					width: 40px
+					position: absolute
+					top: 50%
+					right: 0
+					transform: translate(-50%, -50%)
+					border: 2px solid #ff5252
+					border-radius: 20px
+					vertical-align: middle
+					font-size: 27px
+					line-height: 1
+					color: #ff5252
+					cursor: pointer
+					&:hover
+						border: 2px solid #e84b4b
+						color: #e84b4b
+						transition: 0.3s
+					
+					
+		
+// 
 footer
 	width: 100%
 	min-height: 50px
@@ -994,7 +1265,6 @@ footer
 	margin: 15px 0px
 	.pagination
 		font-size: 18px
-		
 		a
 			margin: 0px 3px
 			background-color: #ff5252
@@ -1009,6 +1279,7 @@ footer
 //comment review
 .post-action
 	display: flex
+	align-items: center
 	justify-content: flex-end
 	flex: 1
 	height: 20px
@@ -1059,16 +1330,64 @@ footer
 			&:hover
 				color: red
 				text-shadow: 1px 1px 1px #fc5454
-	.report
-		display: flex
-		align-items: center
-		justify-content: center
+//report
+.report-button
+	background-color: inherit
+	border: none
+	color: #ff5252
+	font-size: 20px
+	font-weight: bold
+	cursor: pointer
+	&:hover
+		color: #dc4747
+		transition: 0.3s
+.popup-block
+	display: none
+	position: fixed
+	width: 100%
+	height: 100%
+	top: 0
+	left: 0
+	background-color: #65656544
+	z-index: 9999
+	.popup
+		padding: 25px
+		background-color: #ffffff
+		position: absolute
+		top: 50%
+		left: 50%
+		transform: translate(-50%, -50%)
+		width: 400px
+		min-height: 200px
+	span
 		font-weight: bold
-		a:nth-child(1)
-			color: red
-			text-decoration: none
-			&:hover
-				color: #d24141
+	form
+		display: flex
+		flex-direction: column
+		textarea
+			min-height: 100px
+			margin-bottom: 10px
+		.buttons
+			input[type="submit"]
+				margin-right: 5px
+				border: none
+				background-color: #ff5252
+				color: white
+				height: 30px
+				width: 125px
+				cursor: pointer
+				&:hover
+					background-color: #d44444
+			button
+				height: 30px
+				width: 125px
+				border: none
+				background-color: #6e6e6e
+				color: white
+				outline: none
+				cursor: pointer
+				&:hover
+					background-color: #5d5d5d
 //круглая облсать обрезания аватара
 .cropper-crop-box, .cropper-view-box 
 	border-radius: 50%

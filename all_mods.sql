@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
+<<<<<<< HEAD
 -- Время создания: Авг 24 2023 г., 19:33
+=======
+-- Время создания: Авг 24 2023 г., 13:21
+>>>>>>> master
 -- Версия сервера: 5.7.33
 -- Версия PHP: 8.0.14
 
@@ -131,6 +135,7 @@ CREATE TABLE `image` (
 
 INSERT INTO `image` (`obj_id`, `obj_type`, `img`) VALUES
 (17, 'user', '/assets/img/users_logo/aboba_64afc9798870e.jpeg'),
+<<<<<<< HEAD
 (15, 'user', '/assets/img/users_logo/15_64e7793c4bf93.jpeg'),
 (16, 'user', '/assets/img/users_logo/16_64b79b7f30297.jpeg'),
 (18, 'user', '/assets/img/users_logo/18_64ca12de4436d.jpeg'),
@@ -138,6 +143,16 @@ INSERT INTO `image` (`obj_id`, `obj_type`, `img`) VALUES
 (1, 'news', '/assets/img/news_img/64e78126981ae_1316921.jpg'),
 (2, 'news', '/assets/img/news_img/64e7857a17d45_mavpa.w575.jpg'),
 (3, 'news', '/assets/img/news_img/64e785b353b61_look-vector-art-tears-aqua-hd-wallpaper-preview.jpg');
+=======
+(15, 'user', '/assets/img/users_logo/15_64d0e697a487b.jpeg'),
+(16, 'user', '/assets/img/users_logo/16_64b79b7f30297.jpeg'),
+(1, 'game', '/assets/img/game_img/tes_skyrim.jpg.jpg'),
+(18, 'user', '/assets/img/users_logo/18_64ca12de4436d.jpeg'),
+(20, 'user', '/assets/img/users_logo/20_64d0ea7852672.jpeg'),
+(1, 'mod', '/assets/img/mod_img/64e72e1ab0e33_sticker.jpg'),
+(2, 'mod', '/assets/img/mod_img/64e72e24b885a_1316921.jpg'),
+(3, 'mod', '/assets/img/mod_img/64e72e7356041_look-vector-art-tears-aqua-hd-wallpaper-preview.jpg');
+>>>>>>> master
 
 -- --------------------------------------------------------
 
@@ -189,6 +204,7 @@ INSERT INTO `mods_categories` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
 -- Структура таблицы `news`
 --
 
@@ -212,6 +228,8 @@ INSERT INTO `news` (`id`, `title`, `content`, `date`, `user_id`) VALUES
 -- --------------------------------------------------------
 
 --
+=======
+>>>>>>> master
 -- Структура таблицы `reports`
 --
 
@@ -408,12 +426,15 @@ ALTER TABLE `games`
   ADD PRIMARY KEY (`id`);
 
 --
+<<<<<<< HEAD
 -- Индексы таблицы `image`
 --
 ALTER TABLE `image`
   ADD KEY `obj_id` (`obj_id`);
 
 --
+=======
+>>>>>>> master
 -- Индексы таблицы `mods`
 --
 ALTER TABLE `mods`
@@ -428,12 +449,15 @@ ALTER TABLE `mods_categories`
   ADD PRIMARY KEY (`id`);
 
 --
+<<<<<<< HEAD
 -- Индексы таблицы `news`
 --
 ALTER TABLE `news`
   ADD PRIMARY KEY (`id`);
 
 --
+=======
+>>>>>>> master
 -- Индексы таблицы `reports`
 --
 ALTER TABLE `reports`
@@ -494,12 +518,15 @@ ALTER TABLE `mods_categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+<<<<<<< HEAD
 -- AUTO_INCREMENT для таблицы `news`
 --
 ALTER TABLE `news`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+=======
+>>>>>>> master
 -- AUTO_INCREMENT для таблицы `reports`
 --
 ALTER TABLE `reports`
