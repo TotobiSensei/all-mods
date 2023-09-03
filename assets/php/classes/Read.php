@@ -99,37 +99,48 @@ class Read
                     ?>
                         <div class="col-12">
                             <div class="theme">
-                                <div class="head-block">
-                                    <div class="name">
-                                        <h1>
-                                            <?= $item["header"] ?>
-                                        </h1>
+                                <div class="container-fluid">
+                                    <div class="row justify-content-between">
+                                        <div class="col-3 head-block">
+                                            <div class="name">
+                                                <h1>
+                                                    <?= $item["header"] ?>
+                                                </h1>
+                                            </div>
+                                            <div class="topic">
+                                                <span>
+                                                    <?= $item["topic"] ?>
+                                                </span>
+                                            </div>
+                                         </div>
+                                         <div class="col-3 views-block">
+                                            <div class="views">Просмотры: <?= isset($item["views"]) ? $item["views"] : 0 ?></div>
+                                        </div>
                                     </div>
-                                    <div class="topic">
-                                        <span>
-                                            <?= $item["topic"] ?>
-                                        </span>
+                                
+
+                                    <div class="row  justify-content-between">
+                                        <div class="col-2 theme-button">
+                                             <a href="/view/template/theme_page.php?theme=<?= $item["id"] ?>">Перейти</a>
+                                        </div>
+                                        <div class="col-4  date-block">
+                                            <div class="create-date">
+                                                <span>Создано: <?= $item["date"] ?></span>
+                                            </div>
+                                            <div class="update-date">
+                                                <?= isset($item["updated"]) ? "<span>Обновленно: {$item["updated"]} </span>" : "" ?>
+                                             </div>
+                                            <div class="last-message">
+                                                <?= isset($item["last_mess"]) ? "<span>Последние сообщение: {$item["last_mess"]}</span>" : "" ?>
+                                            </div>
+                                        </div>
+                                        
                                     </div>
-                                    
                                 </div>
-                                <div class="date-block">
-                                    <div class="create-date">
-                                        <span>Создано: <?= $item["date"] ?></span>
-                                    </div>
-                                    <div class="update-date">
-                                        <?= isset($item["updated"]) ? "<span>Обновленно: {$item["updated"]} </span>" : "" ?>
-                                    </div>
-                                    <div class="last-message">
-                                        <?= isset($item["last_mess"]) ? "<span>Последние сообщение: {$item["last_mess"]}</span>" : "" ?>
-                                    </div>
-                                </div>
-                                <div class="views-block">
-                                    <div class="views">Просмотры: <?= isset($item["views"]) ? $item["views"] : 0 ?></div>
-                                </div>
-                                <div class="theme-button">
-                                    <a href="/view/template/theme_page.php?theme=<?= $item["id"] ?>">Перейти</a>
-                                   
-                                </div>
+                                
+                                
+                                
+                                
                             </div>
                         </div>
                     <?
@@ -369,10 +380,8 @@ class Read
                 {
             ?>
                     <div class="carousel-cell">
-<<<<<<< HEAD
                         <div class="name"><?= mb_strimwidth($item["name"], 0, 13, "...")  ?></div>
                         <div class="img"><img src="assets\img\mod_img\64c10a2714b31_sticker.jpeg" alt=""></div>
-=======
                        <div class="content">
                             <div class="left-block">
                                 <div class="img"><img src="<?= $item["img"]?>" alt=""></div>
@@ -385,7 +394,6 @@ class Read
                                 </div>
                             </div>
                         </div>
->>>>>>> master
                     </div>
                     
             <?php 
