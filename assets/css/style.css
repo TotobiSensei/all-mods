@@ -989,6 +989,29 @@ header nav .user .messages .link {
   transition: 0.3s;
 }
 
+.show-top_themes_btn-block {
+  position: fixed;
+  top: 124px;
+  left: -78px;
+  width: 200px;
+  height: 50px;
+  padding: 0 30px 5px 0;
+  background-color: rgb(214, 75, 75);
+  transform: rotate(90deg);
+  z-index: 100;
+  opacity: 89%;
+  font-size: 20px;
+}
+
+.show-top_themes_btn {
+  color: white;
+  cursor: pointer;
+}
+
+.themes,
+.top-themes {
+  display: none;
+}
 .themes .add-theme,
 .top-themes .add-theme {
   display: flex;
@@ -1023,7 +1046,7 @@ header nav .user .messages .link {
 .themes .theme .head-block,
 .top-themes .theme .head-block {
   margin-left: 10px;
-  min-width: 50%;
+  width: auto;
 }
 .themes .theme .date-block,
 .top-themes .theme .date-block {
@@ -1693,4 +1716,219 @@ footer nav ul .item .link:hover {
 .cropper-view-box {
   box-shadow: 0 0 0 1px #39f;
   outline: 0;
+}
+
+.index-content_modify {
+  display: flex;
+}
+
+.top-mods_modify {
+  max-height: 500px;
+  margin-bottom: 30px;
+  background-color: #f1f1f1;
+  box-shadow: 4px 4px 14px 2px #6a5e5f;
+  border-radius: 2px;
+  overflow-y: auto;
+}
+
+.top-mods_modify::-webkit-scrollbar {
+  width: 10px;
+  background-color: #d3d3d3;
+}
+
+.top-mods_modify::-webkit-scrollbar-thumb {
+  background-color: #6a5e5f;
+  border-radius: 5px;
+  height: 20px;
+}
+
+.top-mods__subtitile-modify {
+  font-size: 30px;
+  margin-left: 20px;
+  margin-top: 10px;
+  color: #413736;
+}
+
+.top-mod_modify {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  background-color: #d3d3d3;
+}
+
+.top-mod_modify:hover {
+  box-shadow: 4px 4px 14px 2px black;
+  border-radius: 3px;
+  transition: 0.2s all ease-in-out;
+}
+
+.top-mod_modify:first-child {
+  margin-top: 20px;
+}
+
+.top-mod__img_modify {
+  width: 80px;
+  height: 80px;
+  margin-right: 40px;
+  border-radius: 50px;
+}
+
+.top-mod__subtitle_modify {
+  position: relative;
+  top: 30px;
+  margin-right: 5px;
+  color: #413736;
+}
+
+.block-devinder {
+  margin-left: 10px;
+  background-color: black;
+  height: 800px;
+}
+
+/* News Block */
+.mods-news_modify {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  max-width: 1000px;
+  margin: 10px 0 60px 150px;
+}
+
+.mods-news__subtitle {
+  margin-bottom: 30px;
+  font-size: 50px;
+}
+
+.news-block_modify {
+  display: flex;
+  flex-direction: column;
+  margin: 0 10px 30px 20px;
+  max-width: 300px;
+  max-height: 500px;
+  background-color: white;
+  border-radius: 2px;
+  box-shadow: 1px 2px 5px 4px black;
+}
+
+.news-block_modify span {
+  color: white;
+  background-color: #ff5252;
+  padding: 6px;
+  border-radius: 4px;
+}
+
+.news-block_modify:hover span {
+  cursor: pointer;
+}
+
+.news-block__img_modify {
+  height: 200px;
+  margin-bottom: 20px;
+}
+
+.news-block__description_modify {
+  max-width: 300px;
+  overflow-wrap: normal;
+  padding: 10px;
+}
+
+.add-block_modify {
+  margin: 0 0 30px 40px;
+}
+
+.add-block__settings form {
+  display: flex;
+  flex-direction: column;
+  margin-left: 100px;
+  max-width: 500px;
+}
+
+.create-form input {
+  margin: 10px;
+}
+
+/* ///////////// */
+.conteiner_modify {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0px auto;
+  max-width: 1280px;
+}
+
+.add-block__settings_modify {
+  align-self: center;
+  font-size: 30px;
+}
+
+.add-block__btn-constructor_modify {
+  position: relative;
+  left: 30px;
+  margin: 50px 0 150px 0;
+}
+
+.add-block__btn_modify {
+  margin: 0 20px 0 0;
+  font-size: 24px;
+  background-color: #6a5e5f;
+  color: white;
+  border-radius: 3px;
+  padding: 10px;
+}
+
+.label_modify {
+  margin: 20px 0 30px 0;
+  background-color: white;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+#previewImg {
+  font-size: 26px;
+}
+
+#news-title {
+  height: 50px;
+  border: none;
+  box-shadow: 11px 12px 29px 2px black;
+  font-size: 25px;
+}
+
+#news-content {
+  border: none;
+  box-shadow: 11px 12px 29px 2px black;
+  margin: 30px 0 40px 0;
+}
+
+.submit {
+  font-size: 35px;
+}
+
+#news-title, #news-content, .submit {
+  outline: none;
+}
+
+.news-container {
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  flex-basis: 1243px;
+  padding: 30px;
+}
+
+.news-container::-webkit-scrollbar {
+  width: 0px;
+}
+
+body::-webkit-scrollbar {
+  width: 0px;
+}
+
+/* ////newsdate */
+.news-date {
+  margin-bottom: 10px;
 }/*# sourceMappingURL=style.css.map */
