@@ -1,6 +1,7 @@
 <?php
 class Create
 {
+    use Helper;
     private $db;
 
     public function __construct()
@@ -100,7 +101,7 @@ class Create
         }
         else
         {
-            $destination = "/assets/img/mod_img/mod_default_img.png";
+            $destination = "/assets/img/mod_img/mod_default_img.jpg";
         }
 
         try
@@ -172,6 +173,34 @@ class Create
             $stmt->bindParam(":addtion", $addition);
 
             $stmt->execute();
+        }
+        catch(PDOException $e)
+        {
+            echo $e;
+        }
+    }
+
+    public function message($form)
+    {
+        $fromUserId = $form["fromUserId"];
+        $toUserId = $form["toUserId"];
+        $message = $form["message"];
+        $date = time();
+        $dialogId = $this->generateDialogId($fromUserId, $toUserId);
+
+        try
+        {
+            $query = "INSERT INTO messages SET message = :message, date = :date, from_user_id = :fromUserId, to_user_id = :toUserId, dialog_id = :dialogId";
+
+            $stmt = $this->db->prepare($query);
+            $stmt->bindParam(":message", $message);
+            $stmt->bindParam(":date", $date);
+            $stmt->bindParam(":fromUserId", $fromUserId);
+            $stmt->bindParam(":toUserId", $toUserId);
+            $stmt->bindParam(":dialogId", $dialogId);
+            $stmt->execute();
+
+            header("Location: http://". $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
         }
         catch(PDOException $e)
         {

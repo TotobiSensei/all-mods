@@ -1,6 +1,14 @@
 <?php
 trait Helper
 {
+    private function generateDialogId($user1, $user2)
+    {
+        $minId = min($user1, $user2);
+        $maxId = max($user1, $user2);
+
+        return $minId.$maxId;
+    }
+
     private function issetUriParam($var) {
         $params = $_GET;
         return isset($params[$var]);

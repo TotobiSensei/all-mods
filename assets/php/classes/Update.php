@@ -157,7 +157,7 @@ class Update
                 $maxSize = 5 * 1024 * 1024;
 
                 $fileMimeType = mime_content_type($img);
-                if($fileMimeType !== "image/jpeg" && $fileMimeType !== "image/png")
+                if($fileMimeType !== "image/jpeg" && $fileMimeType !== "image/png" && $fileMimeType !== "image/gif")
                 {
                     throw new Exception("Ошибка! Используйте изображения с расширением JPEG или PNG");
                 }
@@ -333,6 +333,22 @@ class Update
             $stmt->execute();
 
             header("Location: http://". $_SERVER["HTTP_HOST"] ."/view/profile.php?reports");
+        }
+        catch(PDOException $e)
+        {
+            echo $e;
+        }
+    }
+
+    public function messageStatus($id)
+    {
+        try
+        {
+            $query = "UPDATE messages SET status = 1 WHERE id = :id";
+
+            $stmt = $this->db->prepare($query);
+            $stmt->bindValue(":id", $id);
+            $stmt->execute();
         }
         catch(PDOException $e)
         {

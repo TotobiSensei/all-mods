@@ -158,7 +158,7 @@ if(isset($_SESSION["error"]))
                                 <div class="answer">
                                     <div class="row">
                                         <div class="col-2">
-                                            <div class="user-info">
+                                            <div onclick="location.href='../profile.php?user=<?= $comment['user_id'] ?>'" class="user-info">
                                                 <img class="user-img" src="<?= $comment["img"] ?>" alt="">
                                                 <span class="user-name"><?= $comment["login"] ?></span>
                                             </div>

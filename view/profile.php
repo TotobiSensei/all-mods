@@ -1,18 +1,29 @@
 <?php
 require_once __DIR__ . "/../assets/php/initClasses.php";
 
-$userId = $_SESSION["user"];
 Render::header();
+
+$sessId = $_SESSION["user"];
+
 $reviews = new Reviews();
 $read = new Read();
 $update = new Update();
+$moderation = new Moderation();
 
-$user = $read->profileData($userId);
-$mods = $read->userMods($userId);
+if(isset($_GET["user"]))
+{
+    $userId = $_GET["user"];
+    $user = $read->profileData($userId);
+    $mods = $read->userMods($userId);
 
-// echo "<pre>";
-// var_dump($mods);
-// echo "</pre>";
+    $currentURL = "http://" . $_SERVER["HTTP_HOST"] . $_SERVER["SCRIPT_NAME"] . "?user=" . $_GET["user"];
+}
+else
+{
+    header("Location: /");
+}
+
+
 if(isset($_POST["closeReport"]))
 {
     $update->closeReport($_POST["objId"],$_POST["objType"]);
@@ -34,29 +45,38 @@ if(isset($_POST["closeReport"]))
                                 <div class="name">
                                     <span><?= $user["login"] ?></span>
                                 </div>
+                                <?php if ($userId == $sessId) : ?>
                                 <div onclick="location.href='/view/profile-edit.php?user=<?= $user['id'] ?>'" class="edit">
                                     <span>Редактировать</span>
                                     <span>&#9999;</span>
                                 </div>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
                     <hr>
                     <div class="row">
                         <div class="col">
-                            <div class="right-bottom">
+                            <div class="right-middle">
                                 <div class="role">
                                     <span>Роль:</span>
                                     <span><?= $user["role"] ?></span>
                                 </div>
                                 <div class="likes">
                                     <span>&#10084;</span>
-                                    <span><?= $user["likes"] ?></span>
+                                    <span><?= !empty($user["likes"]) ? $user["likes"] : 0 ?></span>
                                 </div>
                                 <div class="views">
                                     <span>&#128065;</span>
-                                    <span><?= $user["views"] ?></span>
+                                    <span><?= !empty($user["views"]) ? $user["views"] : 0 ?></span>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="right-bottom">
+                                <a href="/view/messages.php?dialog=<?= $userId ?>">Написать</a>
                             </div>
                         </div>
                     </div>
@@ -71,15 +91,17 @@ if(isset($_POST["closeReport"]))
             <div class="col-2 left">
                 <div class="left-block">
                     <div class="tabs">
-                        <div onclick="location.href='?about'" class="tab">
+                        <div onclick="location.href='<?= $currentURL ?>&about'" class="tab">
                             <span>about</span>
                         </div>
-                        <div onclick="location.href='?files'" class="tab">
+                        <div onclick="location.href='<?= $currentURL ?>&files'" class="tab">
                             <span>files</span>
                         </div>
-                        <div onclick="location.href='?reports'" class="tab">
+                        <?php if ($userId == $sessId && ($moderation->isAdmin($userId) || $moderation->isModerator($userId))) :?>
+                        <div onclick="location.href='<?= $currentURL ?>&reports'" class="tab">
                             <span>Reports</span>
                         </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -88,7 +110,7 @@ if(isset($_POST["closeReport"]))
                     <div class="content">
                         <?php
                             switch (true) {
-                                case strpos($_SERVER["REQUEST_URI"], "about") || !strpos($_SERVER["REQUEST_URI"], "?"):
+                                case strpos($_SERVER["REQUEST_URI"], "about") || !strpos($_SERVER["REQUEST_URI"], "&"):
                         ?>
                                     <div class="about-block">
                                         <div class="name">
@@ -156,7 +178,7 @@ if(isset($_POST["closeReport"]))
                                                             </span>
                                                         </div>
                                                         <div class="right">
-                                                            <span onclick="location.href='?report=<?= $report['obj_id']?>&type=<?= $report['obj_type']?>'">
+                                                            <span onclick="location.href='<?= $currentURL ?>&report=<?= $report['obj_id']?>&type=<?= $report['obj_type']?>'">
                                                                 Посмотреть
                                                             </span>
                                                         </div>

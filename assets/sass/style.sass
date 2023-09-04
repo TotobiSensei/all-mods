@@ -354,6 +354,7 @@ header
 				flex-direction: column
 				justify-content: center
 				align-items: center
+				cursor: pointer
 				.user-img
 					margin: 10px 0px
 					height: 125px
@@ -439,10 +440,21 @@ header
 				span:nth-child(2)
 					display: inline-block
 					transform: rotate(120deg)
-		.right-bottom
+		.right-middle
 			display: flex
+			margin-bottom: 20px
 			div
 				min-width: 100px
+		.right-bottom
+			a
+				padding: 10px 15px
+				background-color: #ff5252
+				color: white
+				font-size: 18px
+				text-decoration: none
+				&:hover
+					background-color: #e34848
+					transition: 0.3s
 .profile-content
 	display: flex
 	margin-top: 15px
@@ -938,6 +950,10 @@ header
 				flex-direction: column
 				justify-content: center
 				align-items: center
+				cursor: pointer
+				&:hover
+					background-color: #00000016
+					transition: 0.3s
 				.user-img
 					margin: 10px 0px
 					height: 125px
@@ -1061,7 +1077,7 @@ header
 	margin: 15px
 	.col, .col-4
 		padding: 0!important
-	.message-list
+	.dialog-list
 		max-height:85vh
 		width: 100%
 		overflow: auto
@@ -1111,6 +1127,7 @@ header
 			.top 
 				display: flex
 				flex-direction: column
+				margin: 10px 0px
 				.message-body
 					display: flex
 					max-width: 50%

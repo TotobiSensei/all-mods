@@ -11,17 +11,21 @@ $pagination = new Pagination(9, count($read->mods($gameId)));
 if(isset($_GET["sort"]) && $_GET["sort"] !== "default" || isset($_GET["category"]))
 {
     $sortBy = !empty($_GET["sort"]) ? $_GET["sort"] : "name";
-    $sortOrder = $_GET["sortOrder"];
+    $sortOrder = !empty($_GET["sortOrder"]) ? $_GET["sortOrder"] : "DESC";
     $category = $_GET["category"];
-    $sort = new Sort("mods", $sortBy, $sortOrder, $category);
+    $sort = new Sort([
+        "itemsPerPage" => $pagination->getItemsPerPage(), 
+        "offset" => $pagination->getOffset()
+    ]);
 
-    $mods = $sort->sortItemsBy($pagination->getItemsPerPage(), $pagination->getOffset());
+    $mods = $sort->sortMods($sortBy, $sortOrder, $category);
+    // var_dump($mods);
 }
-else
-{
-    $mods = $read->mods($gameId, [$pagination->getItemsPerPage(), $pagination->getOffset()]);
-    // $mods = $mod->showAll($gameId, $pagination->getItemsPerPage(), $pagination->getOffset());
-}
+// else
+// {
+//     $mods = $read->mods($gameId, [$pagination->getItemsPerPage(), $pagination->getOffset()]);
+//     // $mods = $mod->showAll($gameId, $pagination->getItemsPerPage(), $pagination->getOffset());
+// }
 
 if(isset($_GET["game"]))
 {
@@ -35,7 +39,7 @@ if(isset($_GET["game"]))
                         <input type="hidden" name="game" value="<?= $gameId ?>">
                         <input type="hidden" name="category" value="<?= $_GET["category"] ?? "" ?>">
                         <select class="sort-input" name="sort">
-                            <option value="name" <?= !isset($_GET["sort"])? 'selected' : '' ?>>по умолчанию</option>
+                            <option value="" <?= !isset($_GET["sort"])? 'selected' : '' ?>>по умолчанию</option>
                             <option value="rating" <?= @$_GET["sort"] === 'rating' ? 'selected' : '' ?>>по рейтингу
                             </option>
                             <option value="views" <?= @$_GET["sort"] === 'views' ? 'selected' : '' ?>>по просмотрам
@@ -44,13 +48,13 @@ if(isset($_GET["game"]))
                             </option>
                             <option value="update" <?= @$_GET["sort"] === 'update' ? 'selected' : '' ?>>по дате
                                 обновления</option>
-                            <option value="downloads" <?= @$_GET["sort"] === 'downloads' ? 'selected' : '' ?>>по
-                                загрузкам</option>
+                            <!-- <option value="downloads" <?= @$_GET["sort"] === 'downloads' ? 'selected' : '' ?>>по
+                                загрузкам</option> -->
                         </select>
                         <select class="order-input" name="sortOrder" id="">
                             <option value="DESC" <?= @$_GET["sortOrder"] === "DESC" ? "selected" : "" ?>>по убыванию
                             </option>
-                            <option value="ASC" <?= @$_GET["sortOrder"] ==="ASC" ? "selected" : "" ?>>по возростанию
+                            <option value="ASC" <?= @$_GET["sortOrder"] === "ASC" ? "selected" : "" ?>>по возростанию
                             </option>
                         </select>
                         <input type="submit" value="Сортировать">
