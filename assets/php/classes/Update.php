@@ -157,7 +157,7 @@ class Update
                 $maxSize = 5 * 1024 * 1024;
 
                 $fileMimeType = mime_content_type($img);
-                if($fileMimeType !== "image/jpeg" && $fileMimeType !== "image/png")
+                if($fileMimeType !== "image/jpeg" && $fileMimeType !== "image/png" && $fileMimeType !== "image/gif")
                 {
                     throw new Exception("Ошибка! Используйте изображения с расширением JPEG или PNG");
                 }
@@ -338,5 +338,10 @@ class Update
         {
             echo $e;
         }
+    }
+
+    public function messageStatus($id)
+    {
+        
     }
 }

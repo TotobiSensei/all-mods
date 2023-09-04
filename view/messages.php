@@ -3,6 +3,7 @@ require_once __DIR__ . "/../assets/php/initClasses.php";
 
 Render::header();
 
+var_dump($_POST);
 $auth  = new Authentication();
 
 if ($auth->checkAuth())
@@ -53,7 +54,7 @@ else
     <div class="container-fluid">
         <div class="row">
             <div class="col-4">
-                <div class="message-list">
+                <div class="dialog-list">
                     <div class="row">
                         <div class="col">
                             <?php foreach ($dialogueList as $dialog) : ?>
@@ -78,7 +79,7 @@ else
             </div>
             <div class="col">
                 <div class="message-window">
-                    <div class="message-list">
+                    <div class="message-list" id="message-list">
                         <?php
                             if (!empty($messages))
                             {
@@ -87,7 +88,7 @@ else
                                     if($message["from_user_id"] === $sessId) 
                                     {
                         ?>
-                                        <div class="top my-message">
+                                        <div class="top my-message" id="message-<?=  $message["id"] ?>" data-message-id = "<?=  $message["id"] ?>">
                                             <div class="message-body">
                                                 <div class="left">
                                                     <img src="<?=  $message["img"] ?>" alt="">
@@ -103,7 +104,7 @@ else
                                     else
                                     {
                         ?>
-                                        <div class="top other-message">
+                                        <div class="top other-message" id="message-<?=  $message["id"] ?>"  data-message-id = "<?=  $message["id"] ?>">
                                             <div class="message-body">
                                                 <div class="left">
                                                     <img src="<?=  $message["img"] ?>" alt="">

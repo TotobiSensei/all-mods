@@ -1284,15 +1284,15 @@ header nav .user .messages .link {
 .private-messages .col, .private-messages .col-4 {
   padding: 0 !important;
 }
-.private-messages .message-list {
+.private-messages .dialog-list {
   max-height: 85vh;
   width: 100%;
   overflow: auto;
 }
-.private-messages .message-list .row {
+.private-messages .dialog-list .row {
   margin: 0 !important;
 }
-.private-messages .message-list .message {
+.private-messages .dialog-list .message {
   display: flex;
   justify-content: space-between;
   background-color: white;
@@ -1304,29 +1304,29 @@ header nav .user .messages .link {
   display: flex;
   border-bottom: 2px solid #9d9d9d;
 }
-.private-messages .message-list .message:hover {
+.private-messages .dialog-list .message:hover {
   background-color: rgba(183, 183, 183, 0.5176470588);
   transition: 0.3s;
 }
-.private-messages .message-list .message .left img {
+.private-messages .dialog-list .message .left img {
   padding: 10px;
   height: 100px;
   width: 100px;
 }
-.private-messages .message-list .message .right {
+.private-messages .dialog-list .message .right {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
-.private-messages .message-list .message .right .top {
+.private-messages .dialog-list .message .right .top {
   display: flex;
   justify-content: space-between;
   margin: 5px 0px;
 }
-.private-messages .message-list .message .right .top .author {
+.private-messages .dialog-list .message .right .top .author {
   font-weight: bold;
 }
-.private-messages .message-list .message .right .top .date {
+.private-messages .dialog-list .message .right .top .date {
   margin-right: 5px;
 }
 .private-messages .message-window {
