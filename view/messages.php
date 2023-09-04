@@ -99,6 +99,7 @@ else
                                                 <div class="right">
                                                     <span class="text"><?= $message["message"] ?></span>
                                                     <span class="date"><?= $message["date"] ?></span>
+                                                    <span class="<?= $message["status"] === 0 ? "замість сих букв напишеш клас кіть сообщеніж не чекнуто" : "а сюда кіть чекнуто"?>"><?= $message["status"] ?></span>
                                                 </div>
                                             </div>
                                         </div>

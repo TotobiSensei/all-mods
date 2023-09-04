@@ -37,65 +37,65 @@ try {
     throw error;
   }
 }
-const messageList = document.getElementById('message-list');
+// const messageList = document.getElementById('message-list');
 
-    messageList.addEventListener('scroll', () => {
-        const visibleMessageIds = getVisibleMessageIds();
-        visibleMessageIds.forEach((messageId) => {
-            changeMessageStatus(messageId);
-        });
-    });
+//     messageList.addEventListener('scroll', () => {
+//         const visibleMessageIds = getVisibleMessageIds();
+//         visibleMessageIds.forEach((messageId) => {
+//             changeMessageStatus(messageId);
+//         });
+//     });
 
-    function getVisibleMessageIds() {
-        const visibleMessageIds = [];
-        const messages = messageList.children;
+//     function getVisibleMessageIds() {
+//         const visibleMessageIds = [];
+//         const messages = messageList.children;
 
-        for (let i = 0; i < messages.length; i++) {
-            const message = messages[i];
-            if (isMessageVisible(message)) {
-                const messageId = message.id;
-                visibleMessageIds.push(messageId);
-            }
-        }
+//         for (let i = 0; i < messages.length; i++) {
+//             const message = messages[i];
+//             if (isMessageVisible(message)) {
+//                 const messageId = message.id;
+//                 visibleMessageIds.push(messageId);
+//             }
+//         }
 
-        return visibleMessageIds;
-    }
+//         return visibleMessageIds;
+//     }
 
-    function isMessageVisible(message) {
-        const rect = message.getBoundingClientRect();
-        return rect.top >= 0 && rect.bottom <= messageList.clientHeight;
-    }
+//     function isMessageVisible(message) {
+//         const rect = message.getBoundingClientRect();
+//         return rect.top >= 0 && rect.bottom <= messageList.clientHeight;
+//     }
 
-  function changeMessageStatus(messageId)
-  {
-    const xhr = new XMLHttpRequest();
+//   function changeMessageStatus(messageId)
+//   {
+//     const xhr = new XMLHttpRequest();
 
-    const currentUrl = window.location.href;
+//     const currentUrl = window.location.href;
 
-    xhr.open("POST", currentUrl, true);
+//     xhr.open("POST", currentUrl, true);
 
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+//     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-    const data = new FormData();
+//     const data = new FormData();
 
-    data.append("messageId", messageId);
+//     data.append("messageId", messageId);
 
-    xhr.onreadystatechange = function ()
-    {
-       if (xhr.readyState === 4 && xhr.status === 200)
-       {
-          console.log("good");
+//     xhr.onreadystatechange = function ()
+//     {
+//        if (xhr.readyState === 4 && xhr.status === 200)
+//        {
+//           console.log("good");
 
-          window.location.reload();
-       }
-       else
-       {
-          console.log("erro");
-       }
-    }
+//           window.location.reload();
+//        }
+//        else
+//        {
+//           console.log("erro");
+//        }
+//     }
 
-    xhr.send(data);
-  }
+//     xhr.send(data);
+//   }
 try
 {
 
