@@ -39,6 +39,8 @@ if(isset($_GET["logOut"]))
     <link rel="stylesheet" href="/assets/css/flickity.min.css">
     <script src="/assets/js/cropper.min.js"></script>
     <script src="/assets/js/flickity.pkgd.min.js"></script>
+    <script src="/assets/js/bundle.js" defer></script>
+    <script src="/assets/js/user_img.js" defer></script>
     <title>Document</title>
 </head>
 
