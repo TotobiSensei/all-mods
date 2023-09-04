@@ -28,13 +28,13 @@ if(isset($_GET["logOut"]))
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/assets/css/bootstrap-reboot.min.css">
-    <script src="/assets/js/jQuery.js"></script>
+    <!-- <script src="/assets/js/jQuery.js"></script> -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="/assets/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="/assets/css/bootstrap-grid.min.css">
-    <link rel="stylesheet" href="/assets/css/bootstrap-grid.min.css.map">
-    <script src="/assets/js/bootstrap.min.js"></script>
+    <!-- <link rel="stylesheet" href="/assets/css/bootstrap-grid.min.css.map"> -->
+    <!-- <script src="/assets/js/bootstrap.min.js"></script> -->
     <link rel="stylesheet" href="/assets/css/cropper.min.css">
     <link rel="stylesheet" href="/assets/css/flickity.min.css">
     <script src="/assets/js/cropper.min.js"></script>

@@ -97,7 +97,7 @@ if(isset($_POST["closeReport"]))
                         <div onclick="location.href='<?= $currentURL ?>&files'" class="tab">
                             <span>files</span>
                         </div>
-                        <?php if ($userId === $sessId && ($moderation->isAdmin($userId) || $moderation->isModerator($userId))) :?>
+                        <?php if ($userId == $sessId && ($moderation->isAdmin($userId) || $moderation->isModerator($userId))) :?>
                         <div onclick="location.href='<?= $currentURL ?>&reports'" class="tab">
                             <span>Reports</span>
                         </div>
@@ -178,7 +178,7 @@ if(isset($_POST["closeReport"]))
                                                             </span>
                                                         </div>
                                                         <div class="right">
-                                                            <span onclick="location.href='?report=<?= $report['obj_id']?>&type=<?= $report['obj_type']?>'">
+                                                            <span onclick="location.href='<?= $currentURL ?>&report=<?= $report['obj_id']?>&type=<?= $report['obj_type']?>'">
                                                                 Посмотреть
                                                             </span>
                                                         </div>

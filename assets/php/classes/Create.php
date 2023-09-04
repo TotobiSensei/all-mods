@@ -101,7 +101,7 @@ class Create
         }
         else
         {
-            $destination = "/assets/img/mod_img/mod_default_img.png";
+            $destination = "/assets/img/mod_img/mod_default_img.jpg";
         }
 
         try
