@@ -342,6 +342,17 @@ class Update
 
     public function messageStatus($id)
     {
-        
+        try
+        {
+            $query = "UPDATE messages SET status = 1 WHERE id = :id";
+
+            $stmt = $this->db->prepare($query);
+            $stmt->bindValue(":id", $id);
+            $stmt->execute();
+        }
+        catch(PDOException $e)
+        {
+            echo $e;
+        }
     }
 }

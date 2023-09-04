@@ -29,7 +29,6 @@ if ($auth->checkAuth())
     
     $dialogueList = $read->dialogueList($sessId);
 
-    // var_dump( $dialogueList);
 
     if (isset($_GET["dialog"]))
     {
@@ -37,9 +36,13 @@ if ($auth->checkAuth())
 
         $messages = $read->dialog($sessId, $toUserId);
 
-        // echo "<pre>";
-        // var_dump($messages);
-        // echo "</pre>";
+    }
+
+    if (isset($_POST["messageId"]))
+    {
+        $update = new Update();
+
+        $update->messageStatus($_POST["messageId"]);
     }
 
 }
