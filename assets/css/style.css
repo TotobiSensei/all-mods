@@ -991,7 +991,7 @@ header nav .user .messages .link {
 
 .show-top_themes_btn-block {
   position: fixed;
-  top: 124px;
+  top: 324px;
   left: -78px;
   width: 200px;
   height: 50px;
@@ -1006,12 +1006,28 @@ header nav .user .messages .link {
 .show-top_themes_btn {
   color: white;
   cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
-.themes,
-.top-themes {
+.top-themes-show {
+  position: fixed;
+  top: 50px;
+  left: 0px;
+  width: 600px;
+  height: auto;
+  transform: rotate(0deg);
+}
+
+.top-themes-display {
+  display: block;
+}
+
+.hiden {
   display: none;
 }
+
 .themes .add-theme,
 .top-themes .add-theme {
   display: flex;
@@ -1926,6 +1942,12 @@ footer nav ul .item .link:hover {
 
 body::-webkit-scrollbar {
   width: 0px;
+}
+
+.open-news-btn_modify {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 /* ////newsdate */

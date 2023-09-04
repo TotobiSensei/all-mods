@@ -1026,7 +1026,7 @@
 
   .show-top_themes_btn-block {
     position: fixed;
-    top: 124px;
+    top: 324px;
     left: -78px;
     width: 200px;
     height: 50px;
@@ -1041,12 +1041,29 @@
   .show-top_themes_btn {
     color: white;
     cursor:pointer;
+    user-select: none;
+  }
+
+  .top-themes-show {
+    position: fixed;
+      top: 50px;
+      left: 0px;
+    width: 600px;
+    height: auto;
+    transform: rotate(0deg);
+  }
+
+  .top-themes-display {
+    display: block;
+  }
+
+  .hiden {
+    display: none;
   }
   
   .themes,
   .top-themes { 
-    display: none;
-  
+    
     .add-theme {
       display: flex;
       justify-content: center;
@@ -1978,6 +1995,10 @@
     width: 0px;
   }
   
+
+  .open-news-btn_modify {
+    user-select: none;
+  }
   
   /* ////newsdate */
   
