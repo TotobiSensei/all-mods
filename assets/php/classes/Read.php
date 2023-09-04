@@ -99,9 +99,9 @@ class Read
                     ?>
                         <div class="col-12">
                             <div class="theme">
-                                <div class="container-fluid">
-                                    <div class="row justify-content-between">
-                                        <div class="col-3 head-block">
+                                <div class="container-fluid ">
+                                    <div class="row px-2 justify-content-between">
+                                        <div class="col-4 head-block">
                                             <div class="name">
                                                 <h1>
                                                     <?= $item["header"] ?>
@@ -113,17 +113,17 @@ class Read
                                                 </span>
                                             </div>
                                          </div>
-                                         <div class="col-3 views-block">
+                                         <div class="col-5  views-block">
                                             <div class="views">Просмотры: <?= isset($item["views"]) ? $item["views"] : 0 ?></div>
                                         </div>
                                     </div>
                                 
 
                                     <div class="row  justify-content-between">
-                                        <div class="col-2 theme-button">
+                                        <div class="col-3 theme-button">
                                              <a href="/view/template/theme_page.php?theme=<?= $item["id"] ?>">Перейти</a>
                                         </div>
-                                        <div class="col-4  date-block">
+                                        <div class="col-5  date-block">
                                             <div class="create-date">
                                                 <span>Создано: <?= $item["date"] ?></span>
                                             </div>
