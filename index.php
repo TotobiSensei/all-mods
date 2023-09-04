@@ -37,7 +37,7 @@ $read = new Read();
             <?= $read->topThemes() ?>
         </aside>
     </div>
-         <div class="row justify-content-end  show-top_themes_btn">Open Top Themes>></div>
+         <div class="row justify-content-end  show-top_themes_btn">Open Top Themes</div>
 </div>
 
 <?php
