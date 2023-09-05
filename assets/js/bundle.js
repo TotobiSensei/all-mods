@@ -2,6 +2,78 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./assets/js/modules/check-message.js":
+/*!********************************************!*\
+  !*** ./assets/js/modules/check-message.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _services_post_data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./services/post-data */ "./assets/js/modules/services/post-data.js");
+
+// import getData from "./services/get-data";
+
+'use strict'
+
+function checkMessageStatus(perentBlock) {
+  const container = document.querySelector(perentBlock);
+  
+  const containerRec = container.getBoundingClientRect();
+
+  container.addEventListener('scroll',  async (e) => {
+
+    const containerElem = container.children;
+ 
+
+    for (let i = 0; i < containerElem.length; i++) {
+        const element = containerElem[i];
+        const elementRec = element.getBoundingClientRect();
+        if (elementRec.top >= containerRec.top && elementRec.bottom <= containerRec.bottom) {
+           const data = new FormData()
+            data.append("messageId", element.id)
+            
+            
+
+           await (0,_services_post_data__WEBPACK_IMPORTED_MODULE_0__["default"])("http://allmods/view/messages.php", data)
+           .then(data => {
+            // Обработка данных, полученных от сервера
+            console.log('Успешный ответ:', data);
+        })
+        .catch(error => {
+            // Обработка ошибки Fetch или обработки ответа
+            console.error('There was a problem with the fetch operation:', error);
+        });
+
+            
+            }
+          
+    }
+});
+
+
+    // const containerElemRec = element.getBoundingClientRect();
+
+    // if (containerElemRec.top >= containerRec.top && containerElemRec.bottom <= containerRec.bottom) {
+    //     console.log('Ne govno')
+    // } else {
+    //     console.log('govno')
+    // }
+
+
+
+    
+
+    
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (checkMessageStatus);
+
+
+/***/ }),
+
 /***/ "./assets/js/modules/modal-action.js":
 /*!*******************************************!*\
   !*** ./assets/js/modules/modal-action.js ***!
@@ -110,6 +182,42 @@ function paginationReplacement() {
   }
 
   /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (paginationReplacement);
+
+/***/ }),
+
+/***/ "./assets/js/modules/services/post-data.js":
+/*!*************************************************!*\
+  !*** ./assets/js/modules/services/post-data.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+
+
+    
+async function postData(url= "", data = {}) {
+    const response = await fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: data
+    })
+    .then(response => {
+        if (!response.ok) {
+            // Обработка ошибки, если статус ответа не в диапазоне 200-299
+            throw new Error('Network response was not ok');
+        }
+       
+    })
+}
+
+
+
+    /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (postData);
 
 /***/ }),
 
@@ -275,6 +383,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_modal_action__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/modal-action */ "./assets/js/modules/modal-action.js");
 /* harmony import */ var _modules_user_img__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/user_img */ "./assets/js/modules/user_img.js");
 /* harmony import */ var _modules_pagination_replacement__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/pagination-replacement */ "./assets/js/modules/pagination-replacement.js");
+/* harmony import */ var _modules_check_message__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/check-message */ "./assets/js/modules/check-message.js");
+
 
 
 
@@ -283,6 +393,8 @@ window.addEventListener('DOMContentLoaded', () => {
     (0,_modules_modal_action__WEBPACK_IMPORTED_MODULE_0__["default"])();
     (0,_modules_user_img__WEBPACK_IMPORTED_MODULE_1__["default"])();
     (0,_modules_pagination_replacement__WEBPACK_IMPORTED_MODULE_2__["default"])();
+
+    (0,_modules_check_message__WEBPACK_IMPORTED_MODULE_3__["default"])(".message-list");
 })
 })();
 
