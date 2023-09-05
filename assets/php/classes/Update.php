@@ -340,14 +340,15 @@ class Update
         }
     }
 
-    public function messageStatus($id)
+    public function messageStatus($id, $userId)
     {
         try
         {
-            $query = "UPDATE messages SET status = 1 WHERE id = :id";
+            $query = "UPDATE messages SET status = 1 WHERE (id = :id) AND from_user_id != :userId";
 
             $stmt = $this->db->prepare($query);
             $stmt->bindValue(":id", $id);
+            $stmt->bindValue(":userId", $userId);
             $stmt->execute();
         }
         catch(PDOException $e)

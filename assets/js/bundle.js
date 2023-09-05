@@ -32,23 +32,32 @@ function checkMessageStatus(perentBlock) {
         const element = containerElem[i];
         const elementRec = element.getBoundingClientRect();
         if (elementRec.top >= containerRec.top && elementRec.bottom <= containerRec.bottom) {
-           const data = new FormData()
-            data.append("messageId", element.id)
             
+            const currentUrl = window.location.href;
+            const formData = new FormData();
+            formData.append("messageId", element.id); // Замените на нужное значение
             
+            fetch(currentUrl, {
+                method: "POST",
+                body: formData,
+            })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then((responseData) => {
+                // Обработка данных, полученных от сервера
+                console.log('Успешный ответ:', responseData.messageIdп);
+            })
+            .catch((error) => {
+                // Обработка ошибки Fetch или обработки ответа
+                console.error('There was a problem with the fetch operation:', error);
+            });
 
-           await (0,_services_post_data__WEBPACK_IMPORTED_MODULE_0__["default"])("http://allmods/view/messages.php", data)
-           .then(data => {
-            // Обработка данных, полученных от сервера
-            console.log('Успешный ответ:', data);
-        })
-        .catch(error => {
-            // Обработка ошибки Fetch или обработки ответа
-            console.error('There was a problem with the fetch operation:', error);
-        });
-
             
-            }
+        }
           
     }
 });

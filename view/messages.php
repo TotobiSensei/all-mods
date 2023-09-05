@@ -42,7 +42,7 @@ if ($auth->checkAuth())
     {
         $update = new Update();
 
-        $update->messageStatus($_POST["messageId"]);
+        $update->messageStatus($_POST["messageId"], $sessId);
     }
 
 }
@@ -91,7 +91,7 @@ else
                                     if($message["from_user_id"] === $sessId) 
                                     {
                         ?>
-                                        <div class="top my-message" id="message-<?=  $message["id"] ?>" data-message-id = "<?=  $message["id"] ?>">
+                                        <div class="top my-message" id="<?=  $message["id"] ?>" data-message-id = "<?=  $message["id"] ?>">
                                             <div class="message-body">
                                                 <div class="left">
                                                     <img src="<?=  $message["img"] ?>" alt="">
@@ -108,7 +108,7 @@ else
                                     else
                                     {
                         ?>
-                                        <div class="top other-message" id="message-<?=  $message["id"] ?>"  data-message-id = "<?=  $message["id"] ?>">
+                                        <div class="top other-message" id="<?=  $message["id"] ?>"  data-message-id = "<?=  $message["id"] ?>">
                                             <div class="message-body">
                                                 <div class="left">
                                                     <img src="<?=  $message["img"] ?>" alt="">
