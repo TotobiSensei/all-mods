@@ -10,76 +10,123 @@
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   checkMessageStatusInActionExpo: () => (/* binding */ checkMessageStatusInActionExpo),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _services_post_data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./services/post-data */ "./assets/js/modules/services/post-data.js");
 
-// import getData from "./services/get-data";
 
-'use strict'
+function checkMessageStatus(blockElem, blockRec) {
 
-function checkMessageStatus(perentBlock) {
-  const container = document.querySelector(perentBlock);
-  
-  const containerRec = container.getBoundingClientRect();
+    blockElem.forEach(elem => {
+    const containerElementRec = elem.getBoundingClientRect();
+    const isUnchecked = elem.querySelector(".uncheced") !== null;
 
-  container.addEventListener('scroll',  async (e) => {
+    // перевірка класа анчек при загрузці (до собитія)
+    if ( containerElementRec.top >= blockRec.top && containerElementRec.bottom <= blockRec.bottom) {
+        // тут ми вказуємо шо нас цікавить тільки озер месаге
+        if (elem.classList.contains("other-message")) {
+            // перевірка на класс 
+            if (isUnchecked) {
 
-    const containerElem = container.children;
- 
-
-    for (let i = 0; i < containerElem.length; i++) {
-        const element = containerElem[i];
-        const elementRec = element.getBoundingClientRect();
-        if (elementRec.top >= containerRec.top && elementRec.bottom <= containerRec.bottom) {
-            
-            const currentUrl = window.location.href;
-            const formData = new FormData();
-            formData.append("messageId", element.id); // Замените на нужное значение
-            
-            fetch(currentUrl, {
-                method: "POST",
-                body: formData,
-            })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.text();
-            })
-            .then((responseData) => {
-                // Обработка данных, полученных от сервера
-                console.log('Успешный ответ:', responseData.messageIdп);
-            })
-            .catch((error) => {
-                // Обработка ошибки Fetch или обработки ответа
-                console.error('There was a problem with the fetch operation:', error);
-            });
-
-            
+                const formData = new FormData();
+                formData.append("messageId", elem.id);
+                const currentUrl = window.location.href;
+                
+                (0,_services_post_data__WEBPACK_IMPORTED_MODULE_0__["default"])(currentUrl,formData)
+                .then((responseData) => {
+                    // Обработка данных, полученных от сервера
+                })
+                .catch((error) => {
+                    // Обработка ошибки Fetch или обработки ответа
+                    console.error('There was a problem with the fetch operation:', error);
+                });
+    
+            } else {
+                console.log("Повідомлення перевірено")
+            }
         }
-          
     }
-});
 
+  })
 
-    // const containerElemRec = element.getBoundingClientRect();
-
-    // if (containerElemRec.top >= containerRec.top && containerElemRec.bottom <= containerRec.bottom) {
-    //     console.log('Ne govno')
-    // } else {
-    //     console.log('govno')
-    // }
-
-
-
-    
-
-    
+  
 }
 
+
+function checkMessageStatusInAction(block, blockElem, blockRec) {
+    block.addEventListener('scroll', () => {
+    blockElem.forEach(elem => {
+        const containerElementRec = elem.getBoundingClientRect();
+        const isUnchecked = elem.querySelector(".uncheced");
+    
+        // перевірка класа анчек при загрузці (до собитія)
+        if ( containerElementRec.top >= blockRec.top && containerElementRec.bottom <= blockRec.bottom) {
+            // тут ми вказуємо шо нас цікавить тільки озер месаге
+            if (elem.classList.contains("other-message")) {
+                // перевірка на класс 
+                if (isUnchecked  !== null ) {
+    
+                    const formData = new FormData();
+                    formData.append("messageId", elem.id);
+                    const currentUrl = window.location.href;
+                    
+                    (0,_services_post_data__WEBPACK_IMPORTED_MODULE_0__["default"])(currentUrl,formData)
+                    .then((responseData) => {
+                        // Обработка данных, полученных от сервера
+                        responseData.ok ? isUnchecked.innerHTML = 1 : isUnchecked.innerHTML = 0;
+                        console.log('Успешный ответ:', responseData);
+                    })
+                    .catch((error) => {
+                        // Обработка ошибки Fetch или обработки ответа
+                        console.error('There was a problem with the fetch operation:', error);
+                    });
+        
+                } else {
+                    console.log("Повідомлення перевірено")
+                }
+            }
+        }
+    
+      })
+    })
+}
+
+
+const  checkMessageStatusInActionExpo = checkMessageStatusInAction;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (checkMessageStatus);
 
+
+/***/ }),
+
+/***/ "./assets/js/modules/message-action.js":
+/*!*********************************************!*\
+  !*** ./assets/js/modules/message-action.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _check_message__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./check-message */ "./assets/js/modules/check-message.js");
+
+
+
+function messageAction(perentBlock) {
+    const container = document.querySelector(perentBlock);
+    const containerRec = container.getBoundingClientRect();
+    const containerElem = Array.from(container.children);
+    const currentUrl = window.location.href;
+    // функція яка провіряє статус смс при прогрузці
+    (0,_check_message__WEBPACK_IMPORTED_MODULE_0__["default"])(containerElem, containerRec)
+    // функція яка провіря статус смс при скролі
+    ;(0,_check_message__WEBPACK_IMPORTED_MODULE_0__.checkMessageStatusInActionExpo)(container, containerElem, containerRec)
+
+//   фильтр на сообщение собеседника ЗАДАЧА 3
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (messageAction);
 
 /***/ }),
 
@@ -204,15 +251,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-
-
     
-async function postData(url= "", data = {}) {
-    const response = await fetch(url, {
+async function postData(url = "", data = {}) {
+ await fetch(url, {
         method: "POST",
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-        },
         body: data
     })
     .then(response => {
@@ -220,7 +262,8 @@ async function postData(url= "", data = {}) {
             // Обработка ошибки, если статус ответа не в диапазоне 200-299
             throw new Error('Network response was not ok');
         }
-       
+
+        return response.text()
     })
 }
 
@@ -392,7 +435,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_modal_action__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/modal-action */ "./assets/js/modules/modal-action.js");
 /* harmony import */ var _modules_user_img__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/user_img */ "./assets/js/modules/user_img.js");
 /* harmony import */ var _modules_pagination_replacement__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/pagination-replacement */ "./assets/js/modules/pagination-replacement.js");
-/* harmony import */ var _modules_check_message__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/check-message */ "./assets/js/modules/check-message.js");
+/* harmony import */ var _modules_message_action__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/message-action */ "./assets/js/modules/message-action.js");
 
 
 
@@ -403,7 +446,7 @@ window.addEventListener('DOMContentLoaded', () => {
     (0,_modules_user_img__WEBPACK_IMPORTED_MODULE_1__["default"])();
     (0,_modules_pagination_replacement__WEBPACK_IMPORTED_MODULE_2__["default"])();
 
-    (0,_modules_check_message__WEBPACK_IMPORTED_MODULE_3__["default"])(".message-list");
+    (0,_modules_message_action__WEBPACK_IMPORTED_MODULE_3__["default"])(".message-list");
 })
 })();
 
