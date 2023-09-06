@@ -1,66 +1,81 @@
 import postData from "./services/post-data";
-// import getData from "./services/get-data";
 
-'use strict'
+function checkMessageStatus(blockElem, blockRec) {
 
-function checkMessageStatus(perentBlock) {
-  const container = document.querySelector(perentBlock);
-  
-  const containerRec = container.getBoundingClientRect();
+    blockElem.forEach(elem => {
+    const containerElementRec = elem.getBoundingClientRect();
+    const isUnchecked = elem.querySelector(".uncheced") !== null;
 
-  container.addEventListener('scroll',  async (e) => {
+    // перевірка класа анчек при загрузці (до собитія)
+    if ( containerElementRec.top >= blockRec.top && containerElementRec.bottom <= blockRec.bottom) {
+        // тут ми вказуємо шо нас цікавить тільки озер месаге
+        if (elem.classList.contains("other-message")) {
+            // перевірка на класс 
+            if (isUnchecked) {
 
-    const containerElem = container.children;
- 
-
-    for (let i = 0; i < containerElem.length; i++) {
-        const element = containerElem[i];
-        const elementRec = element.getBoundingClientRect();
-        if (elementRec.top >= containerRec.top && elementRec.bottom <= containerRec.bottom) {Ц
-            
-            const currentUrl = window.location.href;
-            const formData = new FormData();
-            formData.append("messageId", element.id); // Замените на нужное значение
-            
-            fetch(currentUrl, {
-                method: "POST",
-                body: formData,
-            })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.text();
-            })
-            .then((responseData) => {
-                // Обработка данных, полученных от сервера
-                console.log('Успешный ответ:', responseData);
-            })
-            .catch((error) => {
-                // Обработка ошибки Fetch или обработки ответа
-                console.error('There was a problem with the fetch operation:', error);
-            });
-
-            
+                const formData = new FormData();
+                formData.append("messageId", elem.id);
+                const currentUrl = window.location.href;
+                
+                postData(currentUrl,formData)
+                .then((responseData) => {
+                    // Обработка данных, полученных от сервера
+                })
+                .catch((error) => {
+                    // Обработка ошибки Fetch или обработки ответа
+                    console.error('There was a problem with the fetch operation:', error);
+                });
+    
+            } else {
+                console.log("Повідомлення перевірено")
+            }
         }
-          
     }
-});
 
+  })
 
-    // const containerElemRec = element.getBoundingClientRect();
-
-    // if (containerElemRec.top >= containerRec.top && containerElemRec.bottom <= containerRec.bottom) {
-    //     console.log('Ne govno')
-    // } else {
-    //     console.log('govno')
-    // }
-
-
-
-    
-
-    
+  
 }
 
+
+function checkMessageStatusInAction(block, blockElem, blockRec) {
+    block.addEventListener('scroll', () => {
+    blockElem.forEach(elem => {
+        const containerElementRec = elem.getBoundingClientRect();
+        const isUnchecked = elem.querySelector(".uncheced");
+    
+        // перевірка класа анчек при загрузці (до собитія)
+        if ( containerElementRec.top >= blockRec.top && containerElementRec.bottom <= blockRec.bottom) {
+            // тут ми вказуємо шо нас цікавить тільки озер месаге
+            if (elem.classList.contains("other-message")) {
+                // перевірка на класс 
+                if (isUnchecked  !== null ) {
+    
+                    const formData = new FormData();
+                    formData.append("messageId", elem.id);
+                    const currentUrl = window.location.href;
+                    
+                    postData(currentUrl,formData)
+                    .then((responseData) => {
+                        // Обработка данных, полученных от сервера
+                        responseData.ok ? isUnchecked.innerHTML = 1 : isUnchecked.innerHTML = 0;
+                        console.log('Успешный ответ:', responseData);
+                    })
+                    .catch((error) => {
+                        // Обработка ошибки Fetch или обработки ответа
+                        console.error('There was a problem with the fetch operation:', error);
+                    });
+        
+                } else {
+                    console.log("Повідомлення перевірено")
+                }
+            }
+        }
+    
+      })
+    })
+}
+
+
+export const  checkMessageStatusInActionExpo = checkMessageStatusInAction;
 export default checkMessageStatus;
