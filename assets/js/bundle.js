@@ -130,7 +130,7 @@ function messageAction(perentBlock) {
     const container = document.querySelector(perentBlock);
     const containerRec = container.getBoundingClientRect();
     const containerElem = Array.from(container.children);
-    const currentUrl = window.location.href;
+    // const currentUrl = window.location.href;
     // функція яка провіряє статус смс при прогрузці
     (0,_check_message__WEBPACK_IMPORTED_MODULE_0__["default"])(containerElem, containerRec)
     // функція яка провіря статус смс при скролі
@@ -251,6 +251,34 @@ function paginationReplacement() {
   }
 
   /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (paginationReplacement);
+
+/***/ }),
+
+/***/ "./assets/js/modules/send-message-methods.js":
+/*!***************************************************!*\
+  !*** ./assets/js/modules/send-message-methods.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _services_post_data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./services/post-data */ "./assets/js/modules/services/post-data.js");
+ 
+ 
+ function keyModyfier(form) {
+    const formBlock = document.querySelector(form);
+    console.log(formBlock);
+    formBlock.addEventListener("keydown", (e) => {
+        if (e.code === "Enter") {
+
+                    formBlock.submit();
+        }
+    })
+ }
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (keyModyfier);
 
 /***/ }),
 
@@ -441,6 +469,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_user_img__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/user_img */ "./assets/js/modules/user_img.js");
 /* harmony import */ var _modules_pagination_replacement__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/pagination-replacement */ "./assets/js/modules/pagination-replacement.js");
 /* harmony import */ var _modules_message_action__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/message-action */ "./assets/js/modules/message-action.js");
+/* harmony import */ var _modules_send_message_methods__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/send-message-methods */ "./assets/js/modules/send-message-methods.js");
+
 
 
 
@@ -452,6 +482,7 @@ window.addEventListener('DOMContentLoaded', () => {
     (0,_modules_pagination_replacement__WEBPACK_IMPORTED_MODULE_2__["default"])();
 
     (0,_modules_message_action__WEBPACK_IMPORTED_MODULE_3__["default"])(".message-list");
+    (0,_modules_send_message_methods__WEBPACK_IMPORTED_MODULE_4__["default"])('.bottom form')
 })
 })();
 
