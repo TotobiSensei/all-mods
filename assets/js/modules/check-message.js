@@ -18,8 +18,15 @@ function checkMessageStatus(blockElem, blockRec) {
                 const currentUrl = window.location.href;
                 
                 postData(currentUrl,formData)
-                .then((responseData) => {
-                    // Обработка данных, полученных от сервера
+                .then(response => {
+                    if (!response.ok) {
+                        // Обработка ошибки, если статус ответа не в диапазоне 200-299
+                        throw new Error('Network response was not ok');
+                    }
+            
+                    response.ok ? isUnchecked.innerHTML = 1 : isUnchecked.innerHTML = 0;
+    
+                    return   response.text();
                 })
                 .catch((error) => {
                     // Обработка ошибки Fetch или обработки ответа
@@ -43,23 +50,29 @@ function checkMessageStatusInAction(block, blockElem, blockRec) {
     blockElem.forEach(elem => {
         const containerElementRec = elem.getBoundingClientRect();
         const isUnchecked = elem.querySelector(".uncheced");
-    
+        console.log(blockRec.top)
+        console.log(blockRec.top + (block.offsetHeight - blockRec.top) )
         // перевірка класа анчек при загрузці (до собитія)
-        if ( containerElementRec.top >= blockRec.top && containerElementRec.bottom <= blockRec.bottom) {
+        if ( containerElementRec.top >= blockRec.top + (block.offsetHeight - blockRec.top) && containerElementRec.bottom <= blockRec.bottom) {
             // тут ми вказуємо шо нас цікавить тільки озер месаге
             if (elem.classList.contains("other-message")) {
                 // перевірка на класс 
                 if (isUnchecked  !== null ) {
-    
                     const formData = new FormData();
                     formData.append("messageId", elem.id);
                     const currentUrl = window.location.href;
+                
                     
-                    postData(currentUrl,formData)
-                    .then((responseData) => {
-                        // Обработка данных, полученных от сервера
-                        responseData.ok ? isUnchecked.innerHTML = 1 : isUnchecked.innerHTML = 0;
-                        console.log('Успешный ответ:', responseData);
+                    postData(currentUrl,formData) 
+                    .then(response => {
+                        if (!response.ok) {
+                            // Обработка ошибки, если статус ответа не в диапазоне 200-299
+                            throw new Error('Network response was not ok');
+                        }
+                        // ця перевірка не працює тому що немає відповіді зі сторони сервера === мій респонс андефайнд
+                        response.ok ? isUnchecked.innerHTML = 1 : isUnchecked.innerHTML = 0;
+        
+                        return   response.text();
                     })
                     .catch((error) => {
                         // Обработка ошибки Fetch или обработки ответа
