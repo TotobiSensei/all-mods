@@ -1,7 +1,6 @@
 <?php
 require_once __DIR__ . "/../initClasses.php";
 
-var_dump($_POST);
 $create = new Create();
 $moderation = new Moderation();
 
@@ -21,5 +20,6 @@ if(isset($_POST["send"]))
 
     $create->comment($form);
 
-    header("Location: {$_SERVER['HTTP_REFERER']}");
 }
+
+header("Location: {$_SERVER['HTTP_REFERER']}");

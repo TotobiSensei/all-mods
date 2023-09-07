@@ -1432,6 +1432,15 @@ header nav .user .messages .link {
 .private-messages .message-window .message-list .top .message-body .right .date {
   font-size: 13px;
 }
+.private-messages .message-window .message-list .top .message-body .right .unchecked, .private-messages .message-window .message-list .top .message-body .right .checked {
+  font-weight: bold;
+}
+.private-messages .message-window .message-list .top .message-body .right .unchecked {
+  color: #7d7d7d;
+}
+.private-messages .message-window .message-list .top .message-body .right .checked {
+  color: #ff5252;
+}
 .private-messages .message-window .message-list .my-message {
   align-items: flex-start;
 }

@@ -11,7 +11,7 @@ if ($auth->checkAuth())
     @$userId = $_GET["dialog"];
     $currentUrl = "http://" . $_SERVER["HTTP_HOST"] . $_SERVER["SCRIPT_NAME"];
 
-    if (isset($_POST["sendMessage"]))
+    if (isset($_POST["message"]) && !empty(trim($_POST["message"])))
     {
         $create  = new Create();
 
@@ -98,7 +98,7 @@ else
                                                 <div class="right">
                                                     <span class="text"><?= $message["message"] ?></span>
                                                     <span class="date"><?= $message["date"] ?></span>
-                                                    <span id='gg' class="<?= $message["status"] === 0 ? "uncheced" : "checked"?>"><?= $message["status"] ?></span>
+                                                    <span class="<?= $message["status"] === 0 ? "unchecked" : "checked"?>">&#10004;</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -115,7 +115,7 @@ else
                                                 <div class="right">
                                                     <span class="text"><?= $message["message"] ?></span>
                                                     <span class="date"><?= $message["date"] ?></span>
-                                                    <span id='gg' class="<?= $message["status"] === 0 ? "uncheced" : "checked"?>"><?= $message["status"] ?></span>
+                                                    <span class="<?= $message["status"] === 0 ? "unchecked" : "checked"?>">&#10004;</span>
                                                 </div>
                                             </div>
                                         </div>

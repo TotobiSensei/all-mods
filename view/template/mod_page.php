@@ -2,6 +2,7 @@
 require_once __DIR__ . "/../../assets/php/initClasses.php";
 
 Render::header();
+var_dump($_POST);
 
 $modId = $_GET["mod-id"];// MOD ID
 @$sessId = $_SESSION["user"];
@@ -94,7 +95,7 @@ if(isset($_SESSION["error"]))
                             <tbody>
                                 <tr>
                                     <td>Рейтинг</td>
-                                    <td><?= $review->reviewRender($modId, "mod");?></td>
+                                    <td><?= Render::modsRating($modId, "mod", $sessId)?></td>
                                 </tr>
                                 <tr>
                                     <td>Просмотры</td>
@@ -155,7 +156,7 @@ if(isset($_SESSION["error"]))
                                                             </span>
                                                         </div>
                                                     </div>
-                                                    <?= $review->reviewRender($modId, "comment", ["commentId" => $comment["id"], "sessId" => $sessId, "postCreatorId" => $comment["user_id"]]) ?>
+                                                    <?= $review->reviewRender($modId, "comment", ["commentId" => $comment["id"], "userId" => $sessId, "postCreatorId" => $comment["user_id"]]) ?>
                                                 </div>
                                             </div>
                                         </div>

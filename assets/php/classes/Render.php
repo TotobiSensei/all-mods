@@ -1,6 +1,9 @@
 <?php
 class Render
 {
+    private static $auth;
+    private static $db;
+
     public static function header()
     {
         return require_once __DIR__ . "/../../../view/template/header.php";
@@ -84,5 +87,128 @@ class Render
                 </div>
             </div>
         <?
+    }
+
+    public static function modsRating($objId, $objType, $userId = NULL)
+    {
+        self::init();
+
+        try
+            {
+                $query = "SELECT * FROM reviews WHERE obj_id = :objId AND obj_type = :objType AND rating > 0";
+                $stmt = self::$db->prepare($query);
+                $stmt->bindParam(":objId", $objId);
+                $stmt->bindParam(":objType", $objType);
+                $stmt->execute();
+                $data = $stmt->fetchAll();
+
+                $rating = 0;
+
+                if(!empty($data))
+                {
+                    
+
+                    $count = count($data);
+
+                    foreach($data as $row)
+                    {
+                        $rating += $row["rating"];
+                    }
+
+                    $rating /= $count;
+                }
+                ?>
+
+                    <form action="http://all-mods/assets/php/handlers/review.php" class="rating-form" method="POST">
+                        <input type="hidden" name="objId" value="<?= $objId ?>">
+                        <input type="hidden" name="objType" value="<?= $objType ?>">
+                        <input type="hidden" name="userId" value="<?= @$userId ?>">
+                        <?php 
+                            for($i=1; $i<=5; $i++) : 
+                                $active = ceil($rating) >= $i ? "active" : "" ;
+                                if(!self::$auth->checkAuth() || !strpos($_SERVER["REQUEST_URI"], "mod-id")) :
+                        ?>
+                                    <span class="static <?= $active ?>">★</span>
+                        <?php
+                                else :
+                        ?>
+                                    <label for="" class="<?= $active ?>">
+                                        <span>★</span>
+                                        <input type="submit" name="star" value="<?= $i ?>">
+                                    </label>
+                        <?php
+                                endif;
+                            endfor;
+                        ?>
+                    </form>
+
+                <?
+            }
+            catch(PDOException $e)
+            {
+                echo $e;
+            }
+    }
+
+    public static function userRating($objId, $objType, $usersId = [])
+    {
+        self::init();
+
+        try
+        {
+            $userId = $usersId["userId"];
+            $objCreatorId = $usersId["objCreatorId"];
+
+            $query = "SELECT SUM(rating) as sum FROM reviews WHERE obj_id = :objId AND obj_type = :objType GROUP BY obj_id";
+
+            $stmt = self::$db->prepare($query);
+            $stmt->bindValue(":objId", $objId);
+            $stmt->bindValue(":objType", $objType);
+            $stmt->execute();
+            $sum = $stmt->fetch();
+
+            $query = "SELECT rating FROM reviews WHERE obj_id = :objId AND obj_type = :objType AND user_id = :userId";
+            $stmt = self::$db->prepare($query);
+            $stmt->bindValue(":objId", $objId);
+            $stmt->bindValue(":objType", $objType);
+            $stmt->bindValue(":userId", $userId);
+            $stmt->execute();
+            $classActiveStatus = $stmt->fetch();
+
+            $activeUp = isset($classActiveStatus["rating"]) && $classActiveStatus["rating"] === 1 ? "active" : "";
+            $activeDown = isset($classActiveStatus["rating"]) && $classActiveStatus["rating"] === -1 ? "active" : "";
+            ?>
+                <form class="post-action" action="" method="post">
+                    <div class="reviews">
+                        <input type="hidden" name="objId" value="<?= $objId ?>">
+                        <input type="hidden" name="objType" value="<?= $objType ?>">
+                        <input type="hidden" name="userId" value="<?= $userId ?>">
+                        <input type="hidden" name="objCreatorId" value="<?= $objCreatorId ?>">
+                        <label class="up" for="rating">
+                            <span class="<?= $activeUp ?>">&#128402</span>
+                            <input  id="rating" type="submit" name="rating" value="up">
+                        </label>
+            <?php
+                        
+                        echo !empty($sum) ? "<span>{$sum['sum']}</span>" : "";
+            ?>
+                        <label class="down" for="rating">
+                            <span class="<?= $activeDown ?>">&#128403;</span>
+                            <input  id="rating" type="submit" name="rating" value="down">
+                        </label>
+                    </div>
+                </form>
+            <?php
+        }
+        catch (PDOException $e)
+        {
+            echo $e;
+        }
+    }
+
+    private static function init()
+    {
+        self::$auth = new Authentication();
+        self::$db = Database::pdo();
     }
 }

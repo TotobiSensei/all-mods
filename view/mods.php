@@ -103,7 +103,7 @@ if(isset($_GET["game"]))
                             <span><?= $mods[$i]["name"] ?></span>
                         </div>
                         <div class="rating">
-                            <?= $review->reviewRender($mods[$i]["id"], "mod") ?>
+                            <?= Render::modsRating($mods[$i]["id"], "mod")?>
                         </div>
                         <div class="description">
                             <span><?= mb_strimwidth($mods[$i]["description"], 0, 100, "...") ?></span>

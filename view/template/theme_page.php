@@ -37,7 +37,7 @@ if(isset($_POST["rating"]))
         $reviewData = [
             "objId" => $objId,
             "objType" => $objType,
-            "sessId" => $sessId,
+            "userId" => $sessId,
             "postCreatorId" => $postCreatorId,
             "rating" => $rating
         ];
@@ -117,7 +117,7 @@ if(isset($_SESSION["error"]))
                                 </div>
                             </div>
                             <div class="right">
-                                <?= $review->reviewRender($themeId, "theme", ["sessId" => $sessId, "postCreatorId" => $data["user_id"]]) ?>
+                                <?= $review->reviewRender($themeId, "theme", ["userId" => $sessId, "postCreatorId" => $data["user_id"]]) ?>
                                 <?= Render::reportForm($themeId, $sessId, "theme"); ?>
 
                                 
@@ -161,7 +161,7 @@ if(isset($_SESSION["error"]))
                                                             </span>
                                                         </div>
                                                     </div>
-                                                    <?= $review->reviewRender($themeId, "comment", ["commentId" => $comment["id"], "sessId" => $sessId, "postCreatorId" => $comment["user_id"]]) ?>
+                                                    <?= $review->reviewRender($themeId, "comment", ["commentId" => $comment["id"], "userId" => $sessId, "postCreatorId" => $comment["user_id"]]) ?>
                                                     <?= Render::reportForm($comment["id"], $sessId, "comment"); ?>
                                                 </div>
                                             </div>
