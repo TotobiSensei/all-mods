@@ -19,13 +19,12 @@ if(isset($_GET["sort"]) && $_GET["sort"] !== "default" || isset($_GET["category"
     ]);
 
     $mods = $sort->sortMods($sortBy, $sortOrder, $category);
-    // var_dump($mods);
+  
 }
-// else
-// {
-//     $mods = $read->mods($gameId, [$pagination->getItemsPerPage(), $pagination->getOffset()]);
-//     // $mods = $mod->showAll($gameId, $pagination->getItemsPerPage(), $pagination->getOffset());
-// }
+else
+{
+    $mods = $read->mods($gameId, [$pagination->getItemsPerPage(), $pagination->getOffset()]);
+}
 
 if(isset($_GET["game"]))
 {

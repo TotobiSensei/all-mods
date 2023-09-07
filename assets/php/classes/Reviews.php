@@ -39,22 +39,29 @@ class Reviews
 
                     $rating /= $count;
                 }
+                ?>
 
-                echo "<div class=\"rating-area\">";
-                    for($i=5; $i>=1; $i--)
-                    {
-                        $active = ceil($rating) >= $i ? "class=\"active\"" : "";
-            
-                    if(!$this->auth->checkAuth() || !$this->issetUriParam("mod-id"))
-                    {
-                            echo "<span $active></span>";
-                    }
-                    else
-                    {
-                            echo "<a $active href=\"{$_SERVER['REQUEST_URI']}&rating=$i\"></a>";
-                    }
-                    }
-                echo "</div>";
+                    <form action="" class="rating-form" method="POST">
+                        <?php 
+                            for($i=1; $i<=5; $i++) : 
+                                $active = ceil($rating) >= $i ? "active" : "" ;
+                                if(!$this->auth->checkAuth() || !$this->issetUriParam("mod-id")) :
+                        ?>
+                                    <span class="static <?= $active ?>">★</span>
+                        <?php
+                                else :
+                        ?>
+                                    <label for="" class="<?= $active ?>">
+                                        <span>★</span>
+                                        <input type="submit" name="star" value="<?= $i ?>">
+                                    </label>
+                        <?php
+                                endif;
+                            endfor;
+                        ?>
+                    </form>
+
+                <?
             }
             catch(PDOException $e)
             {

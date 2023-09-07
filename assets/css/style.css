@@ -1,4 +1,3 @@
-@charset "UTF-8";
 * {
   font-family: "Roboto", sans-serif;
 }
@@ -711,6 +710,61 @@ header nav .user .messages .link {
 .profile-content .right-block .content .report-page .middle {
   margin-bottom: 15px;
 }
+.profile-content .right-block .content .report-page .middle form {
+  display: flex;
+  justify-content: space-between;
+}
+.profile-content .right-block .content .report-page .middle form div {
+  display: flex;
+  flex-direction: column;
+}
+.profile-content .right-block .content .report-page .middle form label {
+  font-weight: bold;
+}
+.profile-content .right-block .content .report-page .middle form .form-left {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+.profile-content .right-block .content .report-page .middle form .form-left input[type=text] {
+  height: 100px;
+  width: 100%;
+}
+.profile-content .right-block .content .report-page .middle form .form-middle {
+  margin-right: 10px;
+}
+.profile-content .right-block .content .report-page .middle form .form-middle select {
+  margin-bottom: 5px;
+  min-height: 35px;
+  font-size: 19px;
+  text-align: center;
+}
+.profile-content .right-block .content .report-page .middle form .form-middle input[type=submit] {
+  height: 100%;
+  border: none;
+  background-color: red;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
+.profile-content .right-block .content .report-page .middle form .form-middle input[type=submit]:hover {
+  background-color: #b30606;
+  transition: 0.3s;
+}
+.profile-content .right-block .content .report-page .middle form .form-right input[type=submit] {
+  height: 50%;
+  border: none;
+  font-weight: bold;
+  color: white;
+}
+.profile-content .right-block .content .report-page .middle form .form-right input[type=submit]:nth-child(1) {
+  margin-top: 32px;
+  margin-bottom: 5px;
+  background-color: #00a010;
+}
+.profile-content .right-block .content .report-page .middle form .form-right input[type=submit]:nth-child(2) {
+  background-color: #e1a502;
+}
 .profile-content .right-block .content .report-page .bottom {
   display: flex;
   flex-wrap: wrap;
@@ -1372,6 +1426,7 @@ header nav .user .messages .link {
   background-color: #fff;
 }
 .private-messages .message-window .message-list .top .message-body .right .text {
+  padding: 5px;
   font-size: 18px;
 }
 .private-messages .message-window .message-list .top .message-body .right .date {
@@ -1475,57 +1530,6 @@ footer nav ul .item .link:hover {
   color: #B18152;
 }
 
-.rating-area {
-  overflow: hidden;
-  width: 150px;
-  margin: 0 auto;
-}
-
-.rating-area:not(:checked) > a,
-.rating-area:not(:checked) > span {
-  float: right;
-  width: 30px;
-  padding: 0;
-  cursor: pointer;
-  font-size: 29px;
-  line-height: 32px;
-  color: lightgrey;
-  text-shadow: 1px 1px #bbb;
-  text-decoration: none;
-}
-
-.rating-area:not(:checked) > a:before,
-.rating-area:not(:checked) > span:before {
-  content: "★";
-}
-
-.rating-area > a:checked,
-.rating-area > span:checked {
-  color: gold;
-  text-shadow: 1px 1px #c60;
-}
-
-.rating-area:not(:checked) > a:hover,
-.rating-area:not(:checked) > a:hover ~ a {
-  color: #fef606;
-}
-
-.rating-area > a:hover,
-.rating-area > a:hover ~ a {
-  color: gold;
-  text-shadow: 1px 1px goldenrod;
-}
-
-.rate-area > a:active {
-  position: relative;
-}
-
-.rating-area > a.active,
-.rating-area > span.active {
-  color: gold;
-  text-shadow: 1px 1px #c60;
-}
-
 .pagination-wrap {
   display: flex;
   justify-content: center;
@@ -1547,6 +1551,36 @@ footer nav ul .item .link:hover {
 }
 .pagination-wrap .pagination .active {
   background-color: #d34444;
+}
+
+.rating-form {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 20px;
+}
+.rating-form label, .rating-form .static {
+  position: relative;
+  font-size: 25px;
+  padding: 2px;
+  color: #a7a7a7;
+}
+.rating-form label input[type=submit], .rating-form .static input[type=submit] {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  cursor: pointer;
+}
+.rating-form label:hover, .rating-form label:hover ~ label {
+  color: #fef606;
+  text-shadow: 1px 1px goldenrod;
+}
+.rating-form label.active, .rating-form .static.active {
+  color: #fef606;
+  text-shadow: 1px 1px goldenrod;
 }
 
 .post-action {
@@ -1611,6 +1645,36 @@ footer nav ul .item .link:hover {
 .post-action .reviews .down:hover {
   color: red;
   text-shadow: 1px 1px 1px #fc5454;
+}
+
+.answer-form {
+  width: 100%;
+  max-height: 250px;
+  margin-bottom: 15px;
+}
+.answer-form form {
+  display: flex;
+  flex-direction: column;
+}
+.answer-form form textarea {
+  max-height: 215px;
+  width: 100%;
+  border: none;
+  outline: none;
+}
+.answer-form form input[type=submit] {
+  margin-left: auto;
+  height: 35px;
+  width: 125px;
+  border: none;
+  background-color: #ff5252;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+.answer-form form input[type=submit]:hover {
+  background-color: #df4747;
+  transition: 0.3s;
 }
 
 .report-button {

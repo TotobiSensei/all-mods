@@ -3,7 +3,6 @@ require_once __DIR__ . "/../assets/php/initClasses.php";
 
 Render::header();
 
-var_dump($_POST);
 $auth  = new Authentication();
 
 if ($auth->checkAuth())
@@ -71,7 +70,7 @@ else
                                             <div class="date"><?= $dialog["date"] ?></div>
                                         </div>
                                         <div class="bottom">
-                                            <div class="text"><?= $dialog["message"] ?></div>
+                                            <div class="text"><?= mb_strimwidth($dialog["message"], 0, 30, '...', 'UTF-8') ?></div>
                                         </div>
                                     </div>
                                 </div>

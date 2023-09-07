@@ -168,6 +168,8 @@ class Read
                         users ON comments.user_id = users.id
                     WHERE 
                         comments.obj_id = :obj_id AND  comments.obj_type = :obj_type
+                    ORDER BY
+                        comments.date DESC
                     LIMIT :itemsPerPage OFFSET :offset";
 
                 $stmt = $this->db->prepare($query);
@@ -177,6 +179,13 @@ class Read
                 $stmt->bindParam(":offset", $offset);
                 $stmt->execute();
                 $data = $stmt->fetchAll();
+
+               
+
+                for($i=0; $i<count($data); $i++)
+                {
+                    $data[$i]["date"] =  $dateTime = (new DateTime("@" . $data[$i]["date"]))->format("H:i d:m:H");
+                }
 
                 return $data;
             }
@@ -624,7 +633,7 @@ class Read
         {
             $query = "
                 SELECT
-                    users.login,
+                    users.id, users.login,
                     $table.$column AS name
                 FROM
                     reports
@@ -673,6 +682,7 @@ class Read
                 unset($data[$count-1]["report_type"]);
             }
 
+            $data["reportedUserId"] = $headerData["id"];
             $data["reportedUser"] = $headerData["login"];
             $data["reportedObj"] = $headerData["name"];
             
@@ -712,6 +722,8 @@ class Read
             LEFT JOIN 
                 image i ON u.id = i.obj_id AND i.obj_type = 'user' 
             WHERE m.from_user_id = ? OR m.to_user_id = ?
+            ORDER BY
+                t.max_date DESC
             ";
 
             $stmt = $this->db->prepare($query);

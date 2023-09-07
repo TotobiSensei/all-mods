@@ -590,6 +590,53 @@ header
 					flex-direction: column
 				.middle
 					margin-bottom: 15px
+					form
+						display: flex
+						justify-content: space-between
+						div
+							display: flex
+							flex-direction: column
+						label
+							font-weight: bold
+						.form-left
+							flex-grow: 1
+							margin-right: 10px
+							input[type="text"]
+								height: 100px
+								width: 100%
+						.form-middle
+							margin-right: 10px
+							select
+								margin-bottom: 5px
+								min-height: 35px
+								font-size: 19px
+								text-align: center
+							input[type="submit"]
+								height: 100%
+								border: none
+								background-color: red
+								font-size: 20px
+								font-weight: bold
+								color: white
+								cursor: pointer
+								&:hover
+									background-color: #b30606
+									transition: 0.3s
+						.form-right
+							input[type="submit"]
+								height: 50%
+								border: none
+								font-weight: bold
+								color: white
+							input[type="submit"]:nth-child(1)
+								margin-top: 32px
+								margin-bottom: 5px
+								background-color: #00a010
+							input[type="submit"]:nth-child(2)
+								background-color: #e1a502
+								
+							
+								
 				.bottom
 					display: flex
 					flex-wrap: wrap
@@ -1148,6 +1195,7 @@ header
 						flex-grow: 1
 						background-color: #fff
 						.text
+							padding: 5px
 							font-size: 18px
 						.date
 							font-size: 13px
@@ -1233,49 +1281,7 @@ footer
 					padding: 0px 5px
 					&:hover
 						color: #B18152
-//rating
-.rating-area
-	overflow: hidden 
-	width: 150px
-	margin: 0 auto
-.rating-area:not(:checked) > a,
-.rating-area:not(:checked) > span
-	float: right
-	width: 30px
-	padding: 0
-	cursor: pointer
-	font-size: 29px
-	line-height: 32px
-	color: lightgrey
-	text-shadow: 1px 1px #bbb
-	text-decoration: none
-
-.rating-area:not(:checked) > a:before,
-.rating-area:not(:checked) > span:before
-	content: '★'
-
-.rating-area > a:checked,
-.rating-area > span:checked
-	color: gold
-	text-shadow: 1px 1px #c60
-
-.rating-area:not(:checked) > a:hover,
-.rating-area:not(:checked) > a:hover ~ a
-	color: #fef606
-
-.rating-area > a:hover,
-.rating-area > a:hover ~ a
-	color: gold
-	text-shadow: 1px 1px goldenrod
-
-.rate-area > a:active 
-	position: relative
-
-.rating-area > a.active,
-.rating-area > span.active
-	color: gold
-	text-shadow: 1px 1px #c60
-//
+//pagination
 .pagination-wrap
 	display: flex
 	justify-content: center
@@ -1293,6 +1299,33 @@ footer
 				background-color: #d34444
 		.active
 			background-color: #d34444
+//rating test form
+.rating-form
+	display: flex
+	justify-content: flex-start
+	align-items: center
+	min-height: 20px
+	label, .static
+		position: relative
+		font-size: 25px
+		padding: 2px
+		color: #a7a7a7
+		input[type="submit"]
+			height: 100%
+			width: 100%
+			opacity: 0
+			position: absolute
+			left: 0
+			top: 0
+			cursor: pointer
+	label:hover, label:hover ~ label
+		color: #fef606
+		text-shadow: 1px 1px goldenrod
+	label.active, .static.active
+		color: #fef606
+		text-shadow: 1px 1px goldenrod
+	
+
 //comment review
 .post-action
 	display: flex
@@ -1347,6 +1380,31 @@ footer
 			&:hover
 				color: red
 				text-shadow: 1px 1px 1px #fc5454
+//comment form
+.answer-form
+	width: 100%
+	max-height: 250px
+	margin-bottom: 15px
+	form
+		display: flex
+		flex-direction: column
+		textarea
+			max-height: 215px
+			width: 100%
+			border: none
+			outline: none
+		input[type="submit"]
+			margin-left: auto
+			height: 35px
+			width: 125px
+			border: none
+			background-color: #ff5252
+			color: white
+			font-weight: bold
+			cursor: pointer
+			&:hover
+				background-color: #df4747
+				transition: 0.3s
 //report
 .report-button
 	background-color: inherit

@@ -65,4 +65,24 @@ class Render
             </div>
         <?php
     }
+
+    public static function answerForm($objId, $objType, $userId)
+    {
+        ?>
+            <div class="row">
+                <div class="col">
+                    <div class="answer-form">
+                        <form action="http://all-mods/assets/php/handlers/comment.php" method="POST">
+                            <input type="hidden" name="objId" value="<?= $objId ?>">
+                            <input type="hidden" name="objType" value="<?= $objType ?>">
+                            <input type="hidden" name="userId" value="<?= $userId ?>">
+                            <label for=""></label>
+                            <textarea name="message"></textarea>
+                            <input type="submit" name="send" value="Отправить">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <?
+    }
 }
