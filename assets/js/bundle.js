@@ -1,76 +1,6 @@
 /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
-
-/***/ "./assets/js/modules/Up-date-messages.js":
-/*!***********************************************!*\
-  !*** ./assets/js/modules/Up-date-messages.js ***!
-  \***********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-
-// Функция, которая отправляет AJAX-запрос для обновления статуса сообщения
-function updateMessageStatus(messageId) {
-    const xhr = new XMLHttpRequest();
-    const currentUrl = window.location.href;
-
-    xhr.open("POST", currentUrl, true); // Замените на URL вашего серверного скрипта
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            const response = xhr.responseText;
-            if (xhr.status === 200) {
-                // Если запрос успешен, изменяем класс на "checked"
-                console.log("ok")
-                const message = document.getElementById(messageId);
-                if (message) {
-                    const span = message.querySelector(".unchecked");
-                    if (span) {
-                        span.classList.remove("unchecked");
-                        span.classList.add("checked");
-                    }
-                }
-            }
-            else
-            {
-                console.log("Response from server:", response);
-            }
-        }
-    };
-    xhr.send("messageId=" + messageId);
-}
-
-// Функция, которая проверяет видимые сообщения и отправляет AJAX-запросы при скроллинге
-function checkVisibleMessages() {
-    const messageList = document.getElementById("message-list");
-    if (!messageList) return; // Проверка на наличие списка сообщений
-
-    const otherMessages = messageList.querySelectorAll(".other-message");
-
-    otherMessages.forEach(function(otherMessage) {
-        const message = otherMessage.querySelector(".unchecked");
-        if (!message) return; // Пропускаем, если нет span с классом "unchecked"
-        
-        const messageId = otherMessage.id;
-        const rect = otherMessage.getBoundingClientRect();
-        
-
-        if (rect.top >= 0 && rect.bottom <= (messageList.clientHeight + messageList.getBoundingClientRect().top)) {
-            // Если сообщение видимо в области, отправляем AJAX-запрос
-            updateMessageStatus(messageId);
-            console.log("Checking message with messageId:", messageId);
-        }
-    });
-}
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (checkVisibleMessages);
-
-/***/ }),
 
 /***/ "./assets/js/modules/chat-scrolling-action.js":
 /*!****************************************************!*\
@@ -78,7 +8,6 @@ function checkVisibleMessages() {
   \****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -103,7 +32,6 @@ function chatObserv(chatContainer) {
   \*****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -153,39 +81,12 @@ class ChatSrollMeth {
 
 /***/ }),
 
-/***/ "./assets/js/modules/message-action.js":
-/*!*********************************************!*\
-  !*** ./assets/js/modules/message-action.js ***!
-  \*********************************************/
-/***/ (() => {
-
-// import checkMessageStatus from "./check-message";
-// import {checkMessageStatusInActionExpo} from "./check-message";
-
-// function messageAction(perentBlock) {
-//     const container = document.querySelector(perentBlock);
-//     const containerRec = container.getBoundingClientRect();
-//     const containerElem = Array.from(container.children);
-//     // const currentUrl = window.location.href;
-//     // функція яка провіряє статус смс при прогрузці
-//     checkMessageStatus(containerElem, containerRec)
-//     // функція яка провіря статус смс при скролі
-//     checkMessageStatusInActionExpo(container, containerElem, containerRec)
-
-// //   фильтр на сообщение собеседника ЗАДАЧА 3
-// }
-
-// export default messageAction;
-
-/***/ }),
-
 /***/ "./assets/js/modules/modal-action.js":
 /*!*******************************************!*\
   !*** ./assets/js/modules/modal-action.js ***!
   \*******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -262,7 +163,6 @@ function modalAction() {
   \*****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -298,7 +198,6 @@ function paginationReplacement() {
   \***************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -326,7 +225,6 @@ __webpack_require__.r(__webpack_exports__);
   \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -351,7 +249,6 @@ async function postData(url = "", data) {
   \***************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -469,18 +366,6 @@ function userIMg() {
 /******/ 	}
 /******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/compat get default export */
-/******/ 	(() => {
-/******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = (module) => {
-/******/ 			var getter = module && module.__esModule ?
-/******/ 				() => (module['default']) :
-/******/ 				() => (module);
-/******/ 			__webpack_require__.d(getter, { a: getter });
-/******/ 			return getter;
-/******/ 		};
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -511,9 +396,8 @@ function userIMg() {
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-"use strict";
 /*!*************************************!*\
   !*** ./assets/js/modul-colector.js ***!
   \*************************************/
@@ -521,34 +405,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_modal_action__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/modal-action */ "./assets/js/modules/modal-action.js");
 /* harmony import */ var _modules_user_img__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/user_img */ "./assets/js/modules/user_img.js");
 /* harmony import */ var _modules_pagination_replacement__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/pagination-replacement */ "./assets/js/modules/pagination-replacement.js");
-/* harmony import */ var _modules_message_action__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/message-action */ "./assets/js/modules/message-action.js");
-/* harmony import */ var _modules_message_action__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_modules_message_action__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _modules_send_message_methods__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/send-message-methods */ "./assets/js/modules/send-message-methods.js");
-/* harmony import */ var _modules_chat_scrolling_action__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/chat-scrolling-action */ "./assets/js/modules/chat-scrolling-action.js");
-/* harmony import */ var _modules_Up_date_messages__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/Up-date-messages */ "./assets/js/modules/Up-date-messages.js");
+/* harmony import */ var _modules_send_message_methods__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/send-message-methods */ "./assets/js/modules/send-message-methods.js");
+/* harmony import */ var _modules_chat_scrolling_action__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/chat-scrolling-action */ "./assets/js/modules/chat-scrolling-action.js");
 
 
 
 
 
+// import checkVisibleMessages from "./modules/Up-date-messages";
 
-
-
-window.addEventListener("load", _modules_Up_date_messages__WEBPACK_IMPORTED_MODULE_6__["default"]);
+// window.addEventListener("load", checkVisibleMessages);
 
 window.addEventListener("DOMContentLoaded", () => {
     // Отправляем AJAX-запросы для видимых сообщений при загрузке страницы
 // Отправляем AJAX-запросы для видимых сообщений при скроллинге в области "message-list"
-document.getElementById("message-list").addEventListener("scroll", _modules_Up_date_messages__WEBPACK_IMPORTED_MODULE_6__["default"]);
+// document.getElementById("message-list").addEventListener("scroll", checkVisibleMessages);
 
 
     (0,_modules_modal_action__WEBPACK_IMPORTED_MODULE_0__["default"])();
     (0,_modules_user_img__WEBPACK_IMPORTED_MODULE_1__["default"])();
     (0,_modules_pagination_replacement__WEBPACK_IMPORTED_MODULE_2__["default"])();
 
-    _modules_message_action__WEBPACK_IMPORTED_MODULE_3___default()(".message-list");
-    (0,_modules_send_message_methods__WEBPACK_IMPORTED_MODULE_4__["default"])(".bottom form")
-    ;(0,_modules_chat_scrolling_action__WEBPACK_IMPORTED_MODULE_5__["default"])(".message-list")
+    (0,_modules_send_message_methods__WEBPACK_IMPORTED_MODULE_3__["default"])(".bottom form")
+    ;(0,_modules_chat_scrolling_action__WEBPACK_IMPORTED_MODULE_4__["default"])(".message-list")
 
 })
 })();
