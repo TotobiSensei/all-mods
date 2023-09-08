@@ -4,7 +4,7 @@ require_once __DIR__ . "/../initClasses.php";
 $create = new Create();
 $moderation = new Moderation();
 
-if(isset($_POST["send"]))
+if(isset($_POST["sendMessage"]))
 {
     $themeId = $_POST["objId"];
     $objType = $_POST["objType"];

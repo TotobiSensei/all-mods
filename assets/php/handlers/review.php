@@ -22,5 +22,18 @@ if (true)
         $review->addModReview($form);
     }
 
+    if (isset($_POST["rating"]))
+    {
+        $form = [
+            "objId"           => $_POST["objId"],
+            "objType"          => $_POST["objType"],
+            "userId"          => $_POST["userId"],
+            "objCreatorId"    => $_POST["objCreatorId"],
+            "rating"           => $_POST["rating"],
+        ];
+
+        $review->addUserReview($form);
+    }
+
     header("Location: {$_SERVER['HTTP_REFERER']}");
 }

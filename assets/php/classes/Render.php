@@ -3,6 +3,8 @@ class Render
 {
     private static $auth;
     private static $db;
+    private static $read;
+    private static $sessId;
 
     public static function header()
     {
@@ -81,7 +83,7 @@ class Render
                             <input type="hidden" name="userId" value="<?= $userId ?>">
                             <label for=""></label>
                             <textarea name="message"></textarea>
-                            <input type="submit" name="send" value="Отправить">
+                            <input type="submit" name="sendMessage" value="Отправить">
                         </form>
                     </div>
                 </div>
@@ -178,7 +180,7 @@ class Render
             $activeUp = isset($classActiveStatus["rating"]) && $classActiveStatus["rating"] === 1 ? "active" : "";
             $activeDown = isset($classActiveStatus["rating"]) && $classActiveStatus["rating"] === -1 ? "active" : "";
             ?>
-                <form class="post-action" action="" method="post">
+                <form class="post-action" action="http://all-mods/assets/php/handlers/review.php" method="post">
                     <div class="reviews">
                         <input type="hidden" name="objId" value="<?= $objId ?>">
                         <input type="hidden" name="objType" value="<?= $objType ?>">
@@ -206,9 +208,78 @@ class Render
         }
     }
 
+    public static function comments($objId, $objType)
+    {
+        self::init();
+
+        try
+        {
+            $itemsCount = count(self::$read->comment($objId, $objType));
+
+            $pagination = new Pagination(5, $itemsCount);
+
+            $comments = self::$read->comment($objId, $objType, [$pagination->getItemsPerPage(), $pagination->getOffset()]);
+
+            ?>
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="answer-block">
+                                <?php
+                                    foreach($comments as $comment) :
+                                ?>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="answer">
+                                                <div class="left">
+                                                    <img class="user-img" src="<?= $comment["img"] ?>" alt="">
+                                                    <a class="user-name" href="http://all-mods/view/profile.php?user=<?= $comment['user_id'] ?>"><?= $comment["login"] ?></a>
+                                                </div>
+                                                <div class="right">
+                                                    <div class="top">
+                                                        <div class="message">
+                                                            <?= $comment["message"] ?>
+                                                        </div>
+                                                    </div>
+                                                    <div class="bottom">
+                                                        <div class="date-block">
+                                                            <div class="date">
+                                                                <span>Отправлено: <?= $comment["date"] ?></span>
+                                                            </div>
+                                                            <div class="update">
+                                                                <span>
+                                                                    Обновлен: 27.07.2023
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <?= Render::userRating($comment["id"], "comment", ["userId" => self::$sessId, "objCreatorId" =>  $comment["user_id"],] ) ?>
+                                                        <?= Render::reportForm($comment["id"], self::$sessId, "theme"); ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php
+                                    endforeach;
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                    <?= $itemsCount > 5 ? $pagination->renderLink() : ""; ?>
+                </div>
+            <?php
+        }
+        catch (PDOException $e)
+        {
+            echo $e;
+        }
+    }
+
     private static function init()
     {
-        self::$auth = new Authentication();
-        self::$db = Database::pdo();
+        self::$auth     = new Authentication();
+        self::$read     = new Read();
+        self::$db       = Database::pdo();
+        self::$sessId   = $_SESSION["user"];
     }
 }

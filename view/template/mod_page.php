@@ -2,55 +2,19 @@
 require_once __DIR__ . "/../../assets/php/initClasses.php";
 
 Render::header();
-var_dump($_POST);
 
 $modId = $_GET["mod-id"];// MOD ID
 @$sessId = $_SESSION["user"];
-$currentURL = "http://". $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
 
 $auth = new Authentication();
 $moder = new Moderation();
-$create = new Create();
 $read = new Read();
-$review = new Reviews();
 $views = new Views();
-$pagination = new Pagination(5, count($read->comment($modId, "mod")));
 
 $data = $read->mod($modId);
-$comments = $read->comment($modId, "mod", [$pagination->getItemsPerPage(), $pagination->getOffset()]);
 
 $views->incViewsCount($modId, $data["user_id"], 'mod');
 
-
-
-if(isset($_GET["rating"]) || isset($_POST["rating"]))
-{
-    $objId = isset($_POST["comment"]) ? $_POST["comment"] : $modId;
-
-    $objType  =  isset($_POST["objType"]) ? $_POST["objType"] : "mod";
-
-    $postCreatorId = $_POST["postCreatorId"];
-
-    $rating = isset($_POST["rating"]) ? $_POST["rating"] : $_GET["rating"];
-
-   try
-   {
-        $reviewData = [
-            "objId" => $objId,
-            "objType" => $objType,
-            "userId" => $sessId,
-            "postCreatorId" => $postCreatorId,
-            "rating" => $rating
-        ];
-    
-        $review->addReview($reviewData);
-        // header("Location: $currentURL");
-   }
-   catch(Exception $e)
-   {
-        $_SESSION["error"] = $e->getMessage();
-   }
-}
 
 if(isset($_SESSION["error"]))
 {
@@ -122,56 +86,10 @@ if(isset($_SESSION["error"]))
                 </div>
             </div>
         </div>
-        <?php Render::answerForm($modId, 'mod', $sessId) ?>
-        <div class="row">
-            <div class="col">
-                <div class="answer-block">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col">
-                                <?php
-                                        foreach($comments as $comment) :
-                                    ?>
-                                <div class="answer">
-                                    <div class="row">
-                                        <div class="col-2">
-                                            <div class="user-info">
-                                                <img class="user-img" src="<?= $comment["img"] ?>" alt="">
-                                                <span class="user-name"><?= $comment["login"] ?></span>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="message">
-                                                <div class="top">
-                                                    <div class="text"><?= $comment["message"] ?></div>
-                                                </div>
-                                                <div class="bottom">
-                                                    <div class="date-block">
-                                                        <div class="date">
-                                                            <span>Отправлено: <?= $comment["date"] ?></span>
-                                                        </div>
-                                                        <div class="update">
-                                                            <span>
-                                                                Обновлен: 27.07.2023
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <?= $review->reviewRender($modId, "comment", ["commentId" => $comment["id"], "userId" => $sessId, "postCreatorId" => $comment["user_id"]]) ?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <?php
-                                        endforeach;
-                                    ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <?php $pagination->renderLink() ?>
+        <?php 
+            Render::answerForm($modId, 'mod', $sessId);
+            Render::comments($modId, 'mod');
+        ?>
     </div>
 </section>
 <?php

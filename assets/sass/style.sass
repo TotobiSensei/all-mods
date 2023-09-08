@@ -319,63 +319,6 @@ header
 				&:hover
 					background-color: #e64949
 					transition: 0.3s
-	.form-block
-		form
-			label
-				font-size: 19px
-				font-weight: bold
-			textarea
-				min-height: 125px
-				resize: vertical
-				outline: none
-			input[type="submit"]
-				color: white
-				background-color: #ff5252
-				border: none
-				border-radius: 30px
-				margin-top: 10px
-				margin-left: auto
-				display: block
-				height: 45px
-				width: 15%
-				font-weight: bold
-				&:hover
-					background-color: #e24949
-					transition: 0.3s
-	.answer-block
-		.answer
-			min-height: 150px
-			min-width: 1024px
-			margin: 15px auto
-			background-color: white
-			box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.2)
-			.user-info
-				display: flex
-				flex-direction: column
-				justify-content: center
-				align-items: center
-				cursor: pointer
-				.user-img
-					margin: 10px 0px
-					height: 125px
-					width: 125px
-				.user-name
-					display: flex
-					font-size: 20px
-					font-weight: bold
-			.message
-				display: flex
-				flex-direction: column
-				.top
-					min-height: 125px
-					padding: 15px
-				.bottom
-					display: flex
-					.date-block
-						display: flex
-						align-items: flex-start
-						.date
-							margin-right: 10px
 		.warning
 			margin: 0px auto
 			box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.2)
@@ -386,26 +329,26 @@ header
 				display: flex
 				justify-content: center
 				padding: 10px 0px
-		.message
-			margin-bottom: 20px
-			form
+		// .message
+		// 	margin-bottom: 20px
+		// 	form
 				
-				textarea
-					min-height: 125px
-					resize: vertical
-				input[type="submit"]
-					color: white
-					background-color: #E09696
-					border: none
-					border-radius: 30px
-					margin-top: 10px
-					margin-left: auto
-					display: block
-					height: 45px
-					width: 15%
-					&:hover
-						background-color: #880000
-						transition: 0.3s
+		// 		textarea
+		// 			min-height: 125px
+		// 			resize: vertical
+		// 		input[type="submit"]
+		// 			color: white
+		// 			background-color: #E09696
+		// 			border: none
+		// 			border-radius: 30px
+		// 			margin-top: 10px
+		// 			margin-left: auto
+		// 			display: block
+		// 			height: 45px
+		// 			width: 15%
+		// 			&:hover
+		// 				background-color: #880000
+		// 				transition: 0.3s
 //PROFILE
 .profile-header
 	margin-top: 10px
@@ -1411,6 +1354,88 @@ footer
 			&:hover
 				background-color: #df4747
 				transition: 0.3s
+//coment block
+.answer-block
+	width: 100%
+	.answer
+		display: flex
+		min-height: 200px
+		width: 85%
+		margin: 0 auto
+		background-color: white
+		box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.2)
+		margin-bottom: 20px
+		.left
+			display: flex
+			flex-direction: column
+			justify-content: flex-start
+			align-items: center
+			width: 20%
+			height: 100%
+			.user-img
+				height: 125px
+				width: 125px
+				margin-top: 10px
+				margin-bottom: 5px
+			.user-name
+				color: black
+				font-weight: bold
+				font-size: 19px
+				text-decoration: none
+		.right
+			display: flex
+			flex-direction: column
+			flex-grow: 1
+			width: 80%
+			padding: 10px
+			.top
+				font-size: 20px
+				height: 100%
+				width: 100%
+				margin-bottom: 10px
+			.bottom
+				display: flex
+				justify-content: space-between
+				align-items: center
+				.date-block
+					display: flex
+					justify-content: space-between
+					.date
+						margin-right: 10px
+				
+	// .answer
+	// 	min-height: 150px
+	// 	min-width: 1024px
+	// 	margin: 15px auto
+	// 	background-color: white
+	// 	box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.2)
+	// 	.user-info
+	// 		display: flex
+	// 		flex-direction: column
+	// 		justify-content: center
+	// 		align-items: center
+	// 		cursor: pointer
+	// 		.user-img
+	// 			margin: 10px 0px
+	// 			height: 125px
+	// 			width: 125px
+	// 		.user-name
+	// 			display: flex
+	// 			font-size: 20px
+	// 			font-weight: bold
+	// 	.message
+	// 		display: flex
+	// 		flex-direction: column
+	// 		.top
+	// 			min-height: 125px
+	// 			padding: 15px
+	// 		.bottom
+	// 			display: flex
+	// 			.date-block
+	// 				display: flex
+	// 				align-items: flex-start
+	// 				.date
+	// 					margin-right: 10px
 //report
 .report-button
 	background-color: inherit

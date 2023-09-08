@@ -1,5 +1,4 @@
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./assets/js/modules/Up-date-messages.js":
@@ -8,6 +7,7 @@
   \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -78,6 +78,7 @@ function checkVisibleMessages() {
   \****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -102,6 +103,7 @@ function chatObserv(chatContainer) {
   \*****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -155,75 +157,25 @@ class ChatSrollMeth {
 /*!*******************************************!*\
   !*** ./assets/js/modules/modal-action.js ***!
   \*******************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (() => {
 
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
+// 'use strict'
 
-
-function modalAction() {
-    try {
-        var elem = document.querySelector('.main-carousel');
-        var flkty = new Flickity(elem, {
-          cellAlign: 'center',
-          contain: true,
-          wrapAround: true // Включаем бесконечную прокрутку
-        });
+// function modalAction() {
+//     try {
+       
   
-        //report popup
+//         //report popup
         
-        // Функция для открытия модального окна
-        function openModal(targetId) {
-            const modal = document.getElementById(targetId);
-            if (modal) {
-            modal.style.display = "block";
-            }
-        }
         
-        // Функция для закрытия модального окна
-        function closeModal(targetId) {
-            const modal = document.getElementById(targetId);
-            if (modal) {
-            modal.style.display = "none";
-            }
-        }
-        
-        // Привязываем открытие и закрытие к соответствующим элементам
-        const openModalBtns = document.querySelectorAll(".report-button");
-        const closeBtns = document.querySelectorAll(".close-btn");
-        
-        openModalBtns.forEach(function (openModalBtn) {
-            openModalBtn.addEventListener("click", function () {
-            const targetId = openModalBtn.getAttribute("data-target");
-            openModal(targetId);
-            });
-        });
-        
-        closeBtns.forEach(function (closeBtn) {
-            closeBtn.addEventListener("click", function () {
-            const targetId = closeBtn.getAttribute("data-target");
-            closeModal(targetId);
-            });
-        });
-  
-        // Предотвращение взаимодействия пользователя с контентом за пределами окна
-        const modals = document.querySelectorAll(".popup-block");
-              modals.forEach(function (modal) {
-                modal.addEventListener("click", function (event) {
-            if (event.target === modal) {
-                    const targetId = modal.getAttribute("id");
-                    closeModal(targetId);
-            }
-    });
-  });
-    } catch {
+    
+//   });
+//     } catch {
 
-    }
-}
+//     }
+// }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (modalAction);
+// export default modalAction;
 
 /***/ }),
 
@@ -233,6 +185,7 @@ function modalAction() {
   \*****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -268,6 +221,7 @@ function paginationReplacement() {
   \***************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -295,6 +249,7 @@ __webpack_require__.r(__webpack_exports__);
   \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -319,6 +274,7 @@ async function postData(url = "", data) {
   \***************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -436,6 +392,18 @@ function userIMg() {
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -466,13 +434,15 @@ function userIMg() {
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
+"use strict";
 /*!*************************************!*\
   !*** ./assets/js/modul-colector.js ***!
   \*************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_modal_action__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/modal-action */ "./assets/js/modules/modal-action.js");
+/* harmony import */ var _modules_modal_action__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_modules_modal_action__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _modules_user_img__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/user_img */ "./assets/js/modules/user_img.js");
 /* harmony import */ var _modules_pagination_replacement__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/pagination-replacement */ "./assets/js/modules/pagination-replacement.js");
 /* harmony import */ var _modules_send_message_methods__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/send-message-methods */ "./assets/js/modules/send-message-methods.js");
@@ -493,7 +463,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
 document.getElementById("message-list").addEventListener("scroll", _modules_Up_date_messages__WEBPACK_IMPORTED_MODULE_5__["default"]);
 
 
-    (0,_modules_modal_action__WEBPACK_IMPORTED_MODULE_0__["default"])();
+    _modules_modal_action__WEBPACK_IMPORTED_MODULE_0___default()();
     (0,_modules_user_img__WEBPACK_IMPORTED_MODULE_1__["default"])();
     (0,_modules_pagination_replacement__WEBPACK_IMPORTED_MODULE_2__["default"])();
 
