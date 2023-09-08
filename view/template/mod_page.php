@@ -2,9 +2,10 @@
 require_once __DIR__ . "/../../assets/php/initClasses.php";
 
 Render::header();
+var_dump($_POST);
 
 $modId = $_GET["mod-id"];// MOD ID
-@$userId = $_SESSION["user"];
+@$sessId = $_SESSION["user"];
 $currentURL = "http://". $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
 
 $auth = new Authentication();
@@ -20,21 +21,7 @@ $comments = $read->comment($modId, "mod", [$pagination->getItemsPerPage(), $pagi
 
 $views->incViewsCount($modId, $data["user_id"], 'mod');
 
-if(isset($_POST["send"]))
-{
-    $message = $_POST["message"];
 
-    $form = [
-        "objId" => $modId,
-        "objType" => "mod",
-        "userId" => $userId,
-        "message" => $message,
-    ];
-
-    $create->comment($form);
-
-    header("Location: $currentURL");
-}
 
 if(isset($_GET["rating"]) || isset($_POST["rating"]))
 {
@@ -51,7 +38,7 @@ if(isset($_GET["rating"]) || isset($_POST["rating"]))
         $reviewData = [
             "objId" => $objId,
             "objType" => $objType,
-            "userId" => $userId,
+            "userId" => $sessId,
             "postCreatorId" => $postCreatorId,
             "rating" => $rating
         ];
@@ -85,7 +72,7 @@ if(isset($_SESSION["error"]))
                         <div class="right">
                             <div class="name">
                                 <h1><?= $data["name"] ?></h1>
-                                <?php if (($auth->checkAuth() && $userId === $data["user_id"]) || ($moder->isAdmin($userId) || $moder->isModerator($userId))) : ?>
+                                <?php if (($auth->checkAuth() && $sessId === $data["user_id"]) || ($moder->isAdmin($sessId) || $moder->isModerator($sessId))) : ?>
                                     <div onclick="location.href='/view/upload.php?mod=<?= $data['id'] ?>'" class="edit">
                                         <span>Редактировать</span>
                                         <span>&#9999;</span>
@@ -108,7 +95,7 @@ if(isset($_SESSION["error"]))
                             <tbody>
                                 <tr>
                                     <td>Рейтинг</td>
-                                    <td><?= $review->reviewRender($modId, "mod");?></td>
+                                    <td><?= Render::modsRating($modId, "mod", $sessId)?></td>
                                 </tr>
                                 <tr>
                                     <td>Просмотры</td>
@@ -135,17 +122,7 @@ if(isset($_SESSION["error"]))
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="form-block">
-                    <form action="" method="post" class="d-flex flex-column">
-                        <label for="message">Коментарий: </label>
-                        <textarea name="message" id=""></textarea>
-                        <input type="submit" name="send" value="Отправить">
-                    </form>
-                </div>
-            </div>
-        </div>
+        <?php Render::answerForm($modId, 'mod', $sessId) ?>
         <div class="row">
             <div class="col">
                 <div class="answer-block">
@@ -179,7 +156,7 @@ if(isset($_SESSION["error"]))
                                                             </span>
                                                         </div>
                                                     </div>
-                                                    <?= $review->reviewRender($modId, "comment", ["commentId" => $comment["id"], "userId" => $userId, "postCreatorId" => $comment["user_id"]]) ?>
+                                                    <?= $review->reviewRender($modId, "comment", ["commentId" => $comment["id"], "userId" => $sessId, "postCreatorId" => $comment["user_id"]]) ?>
                                                 </div>
                                             </div>
                                         </div>

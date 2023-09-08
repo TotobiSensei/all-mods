@@ -3,7 +3,6 @@ require_once __DIR__ . "/../assets/php/initClasses.php";
 
 Render::header();
 
-var_dump($_POST);
 $auth  = new Authentication();
 
 if ($auth->checkAuth())
@@ -12,7 +11,7 @@ if ($auth->checkAuth())
     @$userId = $_GET["dialog"];
     $currentUrl = "http://" . $_SERVER["HTTP_HOST"] . $_SERVER["SCRIPT_NAME"];
 
-    if (isset($_POST["message"]))
+    if (isset($_POST["message"]) && !empty(trim($_POST["message"])))
     {
         $create  = new Create();
 
@@ -71,7 +70,7 @@ else
                                             <div class="date"><?= $dialog["date"] ?></div>
                                         </div>
                                         <div class="bottom">
-                                            <div class="text"><?= $dialog["message"] ?></div>
+                                            <div class="text"><?= mb_strimwidth($dialog["message"], 0, 30, '...', 'UTF-8') ?></div>
                                         </div>
                                     </div>
                                 </div>
@@ -99,7 +98,7 @@ else
                                                 <div class="right">
                                                     <span class="text"><?= $message["message"] ?></span>
                                                     <span class="date"><?= $message["date"] ?></span>
-                                                    <span id='gg' class="<?= $message["status"] === 0 ? "uncheced" : "checked"?>"><?= $message["status"] ?></span>
+                                                    <span class="<?= $message["status"] === 0 ? "unchecked" : "checked"?>">&#10004;</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -116,7 +115,7 @@ else
                                                 <div class="right">
                                                     <span class="text"><?= $message["message"] ?></span>
                                                     <span class="date"><?= $message["date"] ?></span>
-                                                    <span id='gg' class="<?= $message["status"] === 0 ? "uncheced" : "checked"?>"><?= $message["status"] ?></span>
+                                                    <span class="<?= $message["status"] === 0 ? "unchecked" : "checked"?>">&#10004;</span>
                                                 </div>
                                             </div>
                                         </div>

@@ -42,13 +42,14 @@ class Create
 
         try
         {
-            $query = "INSERT INTO comments SET obj_id = :objId, obj_type = :objType, user_id = :userId, message = :message, date = NOW()";
+            $query = "INSERT INTO comments SET obj_id = :objId, obj_type = :objType, user_id = :userId, message = :message, date = :time";
 
             $stmt = $this->db->prepare($query);
             $stmt->bindParam("objId", $objId);
             $stmt->bindParam("objType", $objType);
             $stmt->bindParam("userId", $userId);
             $stmt->bindParam("message", $message);
+            $stmt->bindParam("time", time());
             $stmt->execute();
         }
         catch(PDOException $e)
@@ -204,6 +205,61 @@ class Create
         }
         catch(PDOException $e)
         {
+            echo $e;
+        }
+    }
+
+    public function ban($form)
+    {
+        $userId         = $form["userId"];
+        $banTime        = $form["banTime"];
+        $reason         = $form["reason"];
+        $reportObjId    = $form["reportObjId"];
+        $reportObjType  = $form["reportObjType"];
+
+        try
+        {
+            $this->db->beginTransaction();
+
+            $systemInfoId = 0;
+            $banPeriod = (new DateTime())->modify("+{$banTime} houry")->format("H:i:s d:m:Y");
+            $banInfo = "Вы забанены ";
+            $dialogId = $this->generateDialogId($systemInfoId, $userId);
+
+            if (!empty(trim($reason)))
+            {
+                $banInfo = $banInfo . "по причине : " . $reason . " , " . " до : " . $banPeriod . " . " . "Соблюдайте правила нашего сообщества!";
+            }
+            else
+            {
+                $banInfo = $banInfo . " до :" . $banPeriod . " . " . " Соблюдайте правила нашего сообщества!";
+            }
+
+            $query = "INSERT INTO messages SET message = :banInfo, date = :date, from_user_id = :systemInfo, to_user_id = :userId, dialog_id = :dialogId";
+
+            $stmt = $this->db->prepare($query);
+            $stmt->bindValue(":banInfo", $banInfo);
+            $stmt->bindValue(":date", time());
+            $stmt->bindValue(":systemInfo", $systemInfoId);
+            $stmt->bindValue(":userId", $userId);
+            $stmt->bindValue(":dialogId", $dialogId);
+            $stmt->execute();
+
+            $banTimestamp = time() + (60 * 60 * $banTime);
+
+            $query = "INSERT INTO ban_list SET banned_user_id = :userId, ban_time = :banTime, reason = :reason";
+
+            $stmt = $this->db->prepare($query);
+            $stmt->bindValue(":userId", $userId);
+            $stmt->bindValue(":banTime", $banTimestamp);
+            $stmt->bindValue(":reason", $reason);
+            $stmt->execute();
+
+            $this->db->commit();
+        }
+        catch(PDOException $e)
+        {
+            $this->db->rollBack();
             echo $e;
         }
     }

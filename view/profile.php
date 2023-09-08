@@ -6,9 +6,10 @@ Render::header();
 $sessId = $_SESSION["user"];
 
 $reviews = new Reviews();
+$moderation = new Moderation();
+$create = new Create();
 $read = new Read();
 $update = new Update();
-$moderation = new Moderation();
 
 if(isset($_GET["user"]))
 {
@@ -27,6 +28,19 @@ else
 if(isset($_POST["closeReport"]))
 {
     $update->closeReport($_POST["objId"],$_POST["objType"]);
+}
+
+if (isset($_POST["banUser"]) && isset($_POST["banTime"]))
+{
+    $form = [
+        "userId"        => $_POST["reportedUserId"], 
+        "banTime"       => $_POST["banTime"], 
+        "reason"        => $_POST["reason"], 
+        "reportObjId"   => $_POST["objId"],     
+        "reportObjType" => $_POST["objType"],     
+    ];
+
+    $create->ban($form);
 }
 ?>
 <section class="profile-header">
@@ -217,19 +231,29 @@ if(isset($_POST["closeReport"]))
                                             </div>
                                             <div class="middle">
                                                 <form action="" method="post">
+                                                    <input type="hidden" name="reportedUserId" value="<?= $reports["reportedUserId"] ?>">
                                                     <input type="hidden" name="objId" value="<?= $_GET["report"] ?>">
                                                     <input type="hidden" name="objType" value="<?= $_GET["type"] ?>">
-                                                    <input type="submit" name="closeReport" value="Закрыть жалобу">
-                                                    <input type="submit" value="Удалить запись">
-                                                    <select name="" id="">
-                                                        <option value="">на час</option>
-                                                        <option value="">на 12 часов</option>
-                                                        <option value="">на 1 день</option>
-                                                        <option value="">на неделю</option>
-                                                        <option value="">на месяц</option>
-                                                        <option value="">навсегда</option>
-                                                    </select>
-                                                    <input type="submit" value="Забанить юзера">
+                                                    <div class="form-left">
+                                                        <label for="reason">Причина бана:</label>
+                                                        <input type="text" name="reason">
+                                                    </div>
+                                                    <div class="form-middle">
+                                                        <label for="banTime">время бана :</label>
+                                                        <select name="banTime" id="">
+                                                            <option value="1">на час</option>
+                                                            <option value="12">на 12 часов</option>
+                                                            <option value="24">на 1 день</option>
+                                                            <option value="168">на неделю</option>
+                                                            <option value="720">на месяц</option>
+                                                            <option value="forever">навсегда</option>
+                                                        </select>
+                                                        <input type="submit" name="banUser" value="Забанить юзера">
+                                                    </div>
+                                                    <div class="form-right">
+                                                        <input type="submit" name="closeReport" value="Закрыть жалобу">
+                                                        <input type="submit" value="Удалить запись">
+                                                    </div>
                                                 </form>
                                                 <hr>
                                             </div>
@@ -237,7 +261,7 @@ if(isset($_POST["closeReport"]))
                                                 <?php
                                                         
                                                     foreach($reports as $key => $complaint):
-                                                        if($key === "reportedUser" || $key === "reportedObj")
+                                                        if($key === "reportedUser" || $key === "reportedObj" || $key === "reportedUserId")
                                                         {
                                                             break;
                                                         }

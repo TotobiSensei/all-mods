@@ -19,13 +19,12 @@ if(isset($_GET["sort"]) && $_GET["sort"] !== "default" || isset($_GET["category"
     ]);
 
     $mods = $sort->sortMods($sortBy, $sortOrder, $category);
-    // var_dump($mods);
+  
 }
-// else
-// {
-//     $mods = $read->mods($gameId, [$pagination->getItemsPerPage(), $pagination->getOffset()]);
-//     // $mods = $mod->showAll($gameId, $pagination->getItemsPerPage(), $pagination->getOffset());
-// }
+else
+{
+    $mods = $read->mods($gameId, [$pagination->getItemsPerPage(), $pagination->getOffset()]);
+}
 
 if(isset($_GET["game"]))
 {
@@ -104,7 +103,7 @@ if(isset($_GET["game"]))
                             <span><?= $mods[$i]["name"] ?></span>
                         </div>
                         <div class="rating">
-                            <?= $review->reviewRender($mods[$i]["id"], "mod") ?>
+                            <?= Render::modsRating($mods[$i]["id"], "mod")?>
                         </div>
                         <div class="description">
                             <span><?= mb_strimwidth($mods[$i]["description"], 0, 100, "...") ?></span>

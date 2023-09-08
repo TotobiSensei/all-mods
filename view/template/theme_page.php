@@ -4,7 +4,7 @@ require_once __DIR__ . "/../../assets/php/initClasses.php";
 Render::header();
 // var_dump($_POST);
 $themeId = $_GET["theme"];
-@$userId = $_SESSION["user"];
+@$sessId = $_SESSION["user"];
 
 $currentURL = "http://". $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
 
@@ -13,26 +13,13 @@ $create = new Create();
 $review = new Reviews();
 $views = new Views();
 $pagination = new Pagination(5, count($read->comment($themeId, "theme")));
+$moderation = new Moderation();
 
 $data = $read->themes($themeId);
 $comments = $read->comment($themeId, "theme", [$pagination->getItemsPerPage(), $pagination->getOffset()]);
 $views->incViewsCount($themeId, $data["user_id"], "theme");
 
-if(isset($_POST["send"]))
-{
-    $message = $_POST["message"];
 
-    $form = [
-        "objId" => $themeId,
-        "objType" => "theme",
-        "userId" => $userId,
-        "message" => $message,
-    ];
-
-    $create->comment($form);
-
-    header("Location: $currentURL");
-}
 
 if(isset($_POST["rating"]))
 {
@@ -50,7 +37,7 @@ if(isset($_POST["rating"]))
         $reviewData = [
             "objId" => $objId,
             "objType" => $objType,
-            "userId" => $userId,
+            "userId" => $sessId,
             "postCreatorId" => $postCreatorId,
             "rating" => $rating
         ];
@@ -90,6 +77,11 @@ if(isset($_SESSION["error"]))
 
 
 ?>
+<?php if (isset($warning)) : ?>
+<div class="warning">
+    <?= $warning ?>
+</div>
+<?php endif; ?>
 <section class="theme-page">
     <div class="container">
         <div class="row">
@@ -125,8 +117,8 @@ if(isset($_SESSION["error"]))
                                 </div>
                             </div>
                             <div class="right">
-                                <?= $review->reviewRender($themeId, "theme", ["userId" => $userId, "postCreatorId" => $data["user_id"]]) ?>
-                                <?= Render::reportForm($themeId, $userId, "theme"); ?>
+                                <?= $review->reviewRender($themeId, "theme", ["userId" => $sessId, "postCreatorId" => $data["user_id"]]) ?>
+                                <?= Render::reportForm($themeId, $sessId, "theme"); ?>
 
                                 
                             </div>
@@ -135,17 +127,7 @@ if(isset($_SESSION["error"]))
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="form-block">
-                    <form action="" method="post">
-                        <label for="message">Коментарий: </label>
-                        <textarea name="message" id=""></textarea>
-                        <input type="submit" name="send" value="Отправить">
-                    </form>
-                </div>
-            </div>
-        </div>
+        <?= Render::answerForm($themeId, 'theme', $sessId)  ?>
         <div class="row">
             <div class="col">
                 <div class="answer-block">
@@ -179,8 +161,8 @@ if(isset($_SESSION["error"]))
                                                             </span>
                                                         </div>
                                                     </div>
-                                                    <?= $review->reviewRender($themeId, "comment", ["commentId" => $comment["id"], "userId" => $userId, "postCreatorId" => $comment["user_id"]]) ?>
-                                                    <?= Render::reportForm($comment["id"], $userId, "comment"); ?>
+                                                    <?= $review->reviewRender($themeId, "comment", ["commentId" => $comment["id"], "userId" => $sessId, "postCreatorId" => $comment["user_id"]]) ?>
+                                                    <?= Render::reportForm($comment["id"], $sessId, "comment"); ?>
                                                 </div>
                                             </div>
                                         </div>
