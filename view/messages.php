@@ -12,7 +12,7 @@ if ($auth->checkAuth())
     @$userId = $_GET["dialog"];
     $currentUrl = "http://" . $_SERVER["HTTP_HOST"] . $_SERVER["SCRIPT_NAME"];
 
-    if (isset($_POST["sendMessage"]))
+    if (isset($_POST["message"]))
     {
         $create  = new Create();
 
@@ -137,7 +137,7 @@ else
                             <input type="hidden" name="fromUserId" value="<?= $sessId ?>">
                             <input type="hidden" name="toUserId" value="<?= $userId?>" >
                             <textarea  name="message" id=""></textarea>
-                            <input type="submit" name="sendMessage" value="&#10148;" id="sendMessage">
+                            <input type="submit" name="message" value="&#10148;" id="message">
                         </form>
                     </div>
                 </div>
