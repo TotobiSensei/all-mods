@@ -2,6 +2,78 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./assets/js/modules/chat-scrolling-action.js":
+/*!****************************************************!*\
+  !*** ./assets/js/modules/chat-scrolling-action.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _chat_scrolling_methods__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./chat-scrolling-methods */ "./assets/js/modules/chat-scrolling-methods.js");
+
+
+function chatObserv(chatContainer) {
+    const observer = new _chat_scrolling_methods__WEBPACK_IMPORTED_MODULE_0__["default"](chatContainer)
+
+    observer.getScrollPos();
+    observer.setScrollPos();
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (chatObserv);
+
+/***/ }),
+
+/***/ "./assets/js/modules/chat-scrolling-methods.js":
+/*!*****************************************************!*\
+  !*** ./assets/js/modules/chat-scrolling-methods.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+
+
+class ChatSrollMeth {
+    constructor(chatContainer) {
+        this.chatContainer = chatContainer;
+    
+        this.storagedScrollPos = 0;
+        this.chatBlock = document.querySelector(this.chatContainer);
+        this.getSevedScrollTop = localStorage.getItem("chatScrollPos");
+      
+    }
+
+    getScrollPos() {
+        
+        this.chatBlock.addEventListener("scroll", () => {
+             this.storagedScrollPos = this.chatBlock.scrollTop;
+             localStorage.setItem("chatScrollPos", this.storagedScrollPos)
+             console.log(this.storagedScrollPos)
+            
+        })
+
+        console.log(this.storagedScrollPos)
+    }
+
+    setScrollPos() {
+        console.log(localStorage.getItem("chatScrollPos"))
+        if (this.getSevedScrollTop) {
+            this.chatBlock.scrollTop = this.getSevedScrollTop;
+        }
+    }
+
+}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ChatSrollMeth);
+
+/***/ }),
+
 /***/ "./assets/js/modules/check-message.js":
 /*!********************************************!*\
   !*** ./assets/js/modules/check-message.js ***!
@@ -66,8 +138,7 @@ function checkMessageStatusInAction(block, blockElem, blockRec) {
     blockElem.forEach(elem => {
         const containerElementRec = elem.getBoundingClientRect();
         const isUnchecked = elem.querySelector(".uncheced");
-        console.log(blockRec.top)
-        console.log(blockRec.top + (block.offsetHeight - blockRec.top) )
+      
         // перевірка класа анчек при загрузці (до собитія)
         if ( containerElementRec.top >= blockRec.top + (block.offsetHeight - blockRec.top) && containerElementRec.bottom <= blockRec.bottom) {
             // тут ми вказуємо шо нас цікавить тільки озер месаге
@@ -269,7 +340,6 @@ __webpack_require__.r(__webpack_exports__);
  
  function keyModyfier(form) {
     const formBlock = document.querySelector(form);
-    console.log(formBlock);
     formBlock.addEventListener("keydown", (e) => {
         if (e.code === "Enter") {
 
@@ -470,19 +540,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_pagination_replacement__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/pagination-replacement */ "./assets/js/modules/pagination-replacement.js");
 /* harmony import */ var _modules_message_action__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/message-action */ "./assets/js/modules/message-action.js");
 /* harmony import */ var _modules_send_message_methods__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/send-message-methods */ "./assets/js/modules/send-message-methods.js");
+/* harmony import */ var _modules_chat_scrolling_action__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/chat-scrolling-action */ "./assets/js/modules/chat-scrolling-action.js");
 
 
 
 
 
 
-window.addEventListener('DOMContentLoaded', () => {
+
+window.addEventListener("DOMContentLoaded", () => {
     (0,_modules_modal_action__WEBPACK_IMPORTED_MODULE_0__["default"])();
     (0,_modules_user_img__WEBPACK_IMPORTED_MODULE_1__["default"])();
     (0,_modules_pagination_replacement__WEBPACK_IMPORTED_MODULE_2__["default"])();
 
     (0,_modules_message_action__WEBPACK_IMPORTED_MODULE_3__["default"])(".message-list");
-    (0,_modules_send_message_methods__WEBPACK_IMPORTED_MODULE_4__["default"])('.bottom form')
+    (0,_modules_send_message_methods__WEBPACK_IMPORTED_MODULE_4__["default"])(".bottom form")
+    ;(0,_modules_chat_scrolling_action__WEBPACK_IMPORTED_MODULE_5__["default"])(".message-list")
+
 })
 })();
 

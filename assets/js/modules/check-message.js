@@ -50,8 +50,7 @@ function checkMessageStatusInAction(block, blockElem, blockRec) {
     blockElem.forEach(elem => {
         const containerElementRec = elem.getBoundingClientRect();
         const isUnchecked = elem.querySelector(".uncheced");
-        console.log(blockRec.top)
-        console.log(blockRec.top + (block.offsetHeight - blockRec.top) )
+      
         // перевірка класа анчек при загрузці (до собитія)
         if ( containerElementRec.top >= blockRec.top + (block.offsetHeight - blockRec.top) && containerElementRec.bottom <= blockRec.bottom) {
             // тут ми вказуємо шо нас цікавить тільки озер месаге

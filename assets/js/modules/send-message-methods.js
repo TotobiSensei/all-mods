@@ -2,7 +2,6 @@
  
  function keyModyfier(form) {
     const formBlock = document.querySelector(form);
-    console.log(formBlock);
     formBlock.addEventListener("keydown", (e) => {
         if (e.code === "Enter") {
 
