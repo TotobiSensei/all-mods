@@ -2,6 +2,76 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./assets/js/modules/Up-date-messages.js":
+/*!***********************************************!*\
+  !*** ./assets/js/modules/Up-date-messages.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+
+// Функция, которая отправляет AJAX-запрос для обновления статуса сообщения
+function updateMessageStatus(messageId) {
+    const xhr = new XMLHttpRequest();
+    const currentUrl = window.location.href;
+
+    xhr.open("POST", currentUrl, true); // Замените на URL вашего серверного скрипта
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            const response = xhr.responseText;
+            if (xhr.status === 200) {
+                // Если запрос успешен, изменяем класс на "checked"
+                console.log("ok")
+                const message = document.getElementById(messageId);
+                if (message) {
+                    const span = message.querySelector(".unchecked");
+                    if (span) {
+                        span.classList.remove("unchecked");
+                        span.classList.add("checked");
+                    }
+                }
+            }
+            else
+            {
+                console.log("Response from server:", response);
+            }
+        }
+    };
+    xhr.send("messageId=" + messageId);
+}
+
+// Функция, которая проверяет видимые сообщения и отправляет AJAX-запросы при скроллинге
+function checkVisibleMessages() {
+    const messageList = document.getElementById("message-list");
+    if (!messageList) return; // Проверка на наличие списка сообщений
+
+    const otherMessages = messageList.querySelectorAll(".other-message");
+
+    otherMessages.forEach(function(otherMessage) {
+        const message = otherMessage.querySelector(".unchecked");
+        if (!message) return; // Пропускаем, если нет span с классом "unchecked"
+        
+        const messageId = otherMessage.id;
+        const rect = otherMessage.getBoundingClientRect();
+        
+
+        if (rect.top >= 0 && rect.bottom <= (messageList.clientHeight + messageList.getBoundingClientRect().top)) {
+            // Если сообщение видимо в области, отправляем AJAX-запрос
+            updateMessageStatus(messageId);
+            console.log("Checking message with messageId:", messageId);
+        }
+    });
+}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (checkVisibleMessages);
+
+/***/ }),
+
 /***/ "./assets/js/modules/chat-scrolling-action.js":
 /*!****************************************************!*\
   !*** ./assets/js/modules/chat-scrolling-action.js ***!
@@ -407,19 +477,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_pagination_replacement__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/pagination-replacement */ "./assets/js/modules/pagination-replacement.js");
 /* harmony import */ var _modules_send_message_methods__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/send-message-methods */ "./assets/js/modules/send-message-methods.js");
 /* harmony import */ var _modules_chat_scrolling_action__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/chat-scrolling-action */ "./assets/js/modules/chat-scrolling-action.js");
+/* harmony import */ var _modules_Up_date_messages__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/Up-date-messages */ "./assets/js/modules/Up-date-messages.js");
 
 
 
 
 
-// import checkVisibleMessages from "./modules/Up-date-messages";
 
-// window.addEventListener("load", checkVisibleMessages);
 
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("load", _modules_Up_date_messages__WEBPACK_IMPORTED_MODULE_5__["default"]);
+
+window.addEventListener("DOMContentLoaded", (e) => {
     // Отправляем AJAX-запросы для видимых сообщений при загрузке страницы
 // Отправляем AJAX-запросы для видимых сообщений при скроллинге в области "message-list"
-// document.getElementById("message-list").addEventListener("scroll", checkVisibleMessages);
+document.getElementById("message-list").addEventListener("scroll", _modules_Up_date_messages__WEBPACK_IMPORTED_MODULE_5__["default"]);
 
 
     (0,_modules_modal_action__WEBPACK_IMPORTED_MODULE_0__["default"])();
