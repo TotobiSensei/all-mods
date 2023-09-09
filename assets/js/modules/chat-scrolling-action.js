@@ -6,6 +6,9 @@ function chatObserv(chatContainer) {
 
         observer.getScrollPos();
         observer.setScrollPos();
+        observer.showJumpToMessageBtn();
+        observer.hideJumpToMessageBtn();
+        observer.JumpTo();
     } catch {
 
     }

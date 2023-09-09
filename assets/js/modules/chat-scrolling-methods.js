@@ -11,6 +11,10 @@ class ChatSrollMeth {
 
         // переменна у яку ми визиваєме дані про позицію з локального храниліща браузера
         this.getSevedScrollTop = localStorage.getItem("chatScrollPos");
+
+        // jumpToMessage variables 
+        this.scrollPercentage = 0;
+        this.jumpBtn = document.querySelector('.jump-btn');
       
     }
 
@@ -20,11 +24,9 @@ class ChatSrollMeth {
         this.chatBlock.addEventListener("scroll", () => {
              this.storagedScrollPos = this.chatBlock.scrollTop;
              localStorage.setItem("chatScrollPos", this.storagedScrollPos)
-             console.log(this.storagedScrollPos)
-            
         })
 
-        console.log(this.storagedScrollPos)
+        
     }
 
     // метод на перенос нас на сохраньонну позицію при откритії чата 
@@ -36,7 +38,58 @@ class ChatSrollMeth {
         }
     }
 
+    showJumpToMessageBtn() {
+        const getPercentage = () => {
+            this.scrollPercentage = Math.round((this.chatBlock.scrollTop / (this.chatBlock.scrollHeight - this.chatBlock.clientHeight)) * 100); 
+            if (this.scrollPercentage <= 90) {
+                this.jumpBtn.classList.remove('hiden')
+            } 
+        }
+
+        this.chatBlock.addEventListener("scroll", getPercentage);
+    }
+
+
+    hideJumpToMessageBtn() {
+        const getPercentage = () => {
+            this.scrollPercentage = Math.round((this.chatBlock.scrollTop / (this.chatBlock.scrollHeight - this.chatBlock.clientHeight)) * 100); 
+            if (this.scrollPercentage > 85 || this.scrollPercentage == 100) {
+                this.jumpBtn.classList.add('hiden')
+            }
+        }
+
+
+        this.chatBlock.addEventListener("scroll", getPercentage);   
+    }
+
+    JumpTo() {
+    //     const otherMessages = document.querySelectorAll(".other-message");
+    //     console.log(otherMessages)
+    //     otherMessages.forEach(function(otherMessage) {
+    //     const message = otherMessage.querySelector(".unchecked");
+    // })
+    this.jumpBtn.addEventListener("click", () => {
+        this.chatBlock.scrollTop = this.chatBlock.scrollHeight;
+        // if (message) {
+        //     message.scrollIntoView()
+        // } else {
+        //     this.chatBlock.scrollTop = this.chatBlock.scrollHeight;
+        // }
+    })
+       
+    }
+
 }
 
 
 export default ChatSrollMeth;
+
+
+
+
+// console.log(this.scrollPercentage)
+// this.jumpBtn = document.createElement('div')
+//     this.jumpBtn.classList.add('jump-btn')
+//     this.jumpBtn.innerHTML = `
+//         <span>Jump</span>
+//     `
