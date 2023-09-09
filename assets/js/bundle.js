@@ -1,4 +1,5 @@
 /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./assets/js/modules/Up-date-messages.js":
@@ -7,7 +8,6 @@
   \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -72,13 +72,43 @@ function checkVisibleMessages() {
 
 /***/ }),
 
+/***/ "./assets/js/modules/carusel.js":
+/*!**************************************!*\
+  !*** ./assets/js/modules/carusel.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function carusel() {
+    //ІНІЦІАЛІЗАЦІЯ КАРУСЕЛІ НА ГЛАВНІЙ!
+  try {
+    var elem = document.querySelector('.main-carousel');
+    var flkty = new Flickity(elem, {
+      cellAlign: 'center',
+      contain: true,
+      wrapAround: true // Включаем бесконечную прокрутку
+  });
+  } catch {
+
+  }   
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (carusel);
+
+
+
+
+/***/ }),
+
 /***/ "./assets/js/modules/chat-scrolling-action.js":
 /*!****************************************************!*\
   !*** ./assets/js/modules/chat-scrolling-action.js ***!
   \****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -87,10 +117,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function chatObserv(chatContainer) {
-    const observer = new _chat_scrolling_methods__WEBPACK_IMPORTED_MODULE_0__["default"](chatContainer)
+    try {
+        const observer = new _chat_scrolling_methods__WEBPACK_IMPORTED_MODULE_0__["default"](chatContainer)
 
-    observer.getScrollPos();
-    observer.setScrollPos();
+        observer.getScrollPos();
+        observer.setScrollPos();
+    } catch {
+
+    }
+    
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (chatObserv);
@@ -103,7 +138,6 @@ function chatObserv(chatContainer) {
   \*****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -157,25 +191,60 @@ class ChatSrollMeth {
 /*!*******************************************!*\
   !*** ./assets/js/modules/modal-action.js ***!
   \*******************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-// 'use strict'
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 
-// function modalAction() {
-//     try {
-       
-  
-//         //report popup
-        
-        
-    
-//   });
-//     } catch {
+function modalAction() {
+    function openModal(targetId) {
+        const modal = document.getElementById(targetId);
+        if (modal) {
+        modal.style.display = "block";
+        }
+    }
 
-//     }
-// }
+// Функция для закрытия модального окна
+    function closeModal(targetId) {
+        const modal = document.getElementById(targetId);
+        if (modal) {
+        modal.style.display = "none";
+        }
+    }
 
-// export default modalAction;
+// Привязываем открытие и закрытие к соответствующим элементам
+    const openModalBtns = document.querySelectorAll(".report-button");
+    const closeBtns = document.querySelectorAll(".close-btn");
+
+    openModalBtns.forEach(function (openModalBtn) {
+        openModalBtn.addEventListener("click", function () {
+        const targetId = openModalBtn.getAttribute("data-target");
+        openModal(targetId);
+        });
+    });
+
+    closeBtns.forEach(function (closeBtn) {
+        closeBtn.addEventListener("click", function () {
+            const targetId = closeBtn.getAttribute("data-target");
+            closeModal(targetId);
+        });
+    });
+
+// Предотвращение взаимодействия пользователя с контентом за пределами окна
+    const modals = document.querySelectorAll(".popup-block");
+        modals.forEach(function (modal) {
+            modal.addEventListener("click", function (event) {
+                if (event.target === modal) {
+                    const targetId = modal.getAttribute("id");
+                    closeModal(targetId);
+                }
+        });
+    });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (modalAction);
 
 /***/ }),
 
@@ -185,7 +254,6 @@ class ChatSrollMeth {
   \*****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -221,50 +289,27 @@ function paginationReplacement() {
   \***************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _services_post_data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./services/post-data */ "./assets/js/modules/services/post-data.js");
- 
  
  function keyModyfier(form) {
-    const formBlock = document.querySelector(form);
-    formBlock.addEventListener("keydown", (e) => {
-        if (e.code === "Enter") {
-
-                    formBlock.submit();
-        }
-    })
+    try {
+        const formBlock = document.querySelector(form);
+        formBlock.addEventListener("keydown", (e) => {
+            if (e.code === "Enter") {
+    
+                        formBlock.submit();
+            }
+        })
+    } catch {
+        
+    }
+   
  }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (keyModyfier);
-
-/***/ }),
-
-/***/ "./assets/js/modules/services/post-data.js":
-/*!*************************************************!*\
-  !*** ./assets/js/modules/services/post-data.js ***!
-  \*************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-    
-async function postData(url = "", data) {
- await fetch(url, {
-        method: "POST",
-        body: data
-    })
-}
-
-
-
-    /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (postData);
 
 /***/ }),
 
@@ -274,7 +319,6 @@ async function postData(url = "", data) {
   \***************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -392,18 +436,6 @@ function userIMg() {
 /******/ 	}
 /******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/compat get default export */
-/******/ 	(() => {
-/******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = (module) => {
-/******/ 			var getter = module && module.__esModule ?
-/******/ 				() => (module['default']) :
-/******/ 				() => (module);
-/******/ 			__webpack_require__.d(getter, { a: getter });
-/******/ 			return getter;
-/******/ 		};
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -434,20 +466,19 @@ function userIMg() {
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-"use strict";
 /*!*************************************!*\
   !*** ./assets/js/modul-colector.js ***!
   \*************************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _modules_modal_action__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/modal-action */ "./assets/js/modules/modal-action.js");
-/* harmony import */ var _modules_modal_action__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_modules_modal_action__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _modules_carusel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/carusel */ "./assets/js/modules/carusel.js");
 /* harmony import */ var _modules_user_img__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/user_img */ "./assets/js/modules/user_img.js");
 /* harmony import */ var _modules_pagination_replacement__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/pagination-replacement */ "./assets/js/modules/pagination-replacement.js");
 /* harmony import */ var _modules_send_message_methods__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/send-message-methods */ "./assets/js/modules/send-message-methods.js");
 /* harmony import */ var _modules_chat_scrolling_action__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/chat-scrolling-action */ "./assets/js/modules/chat-scrolling-action.js");
 /* harmony import */ var _modules_Up_date_messages__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/Up-date-messages */ "./assets/js/modules/Up-date-messages.js");
+/* harmony import */ var _modules_modal_action__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/modal-action */ "./assets/js/modules/modal-action.js");
 
 
 
@@ -455,21 +486,31 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+// Ініціалізація методів глобального обьекта
 window.addEventListener("load", _modules_Up_date_messages__WEBPACK_IMPORTED_MODULE_5__["default"]);
-
 window.addEventListener("DOMContentLoaded", (e) => {
-    // Отправляем AJAX-запросы для видимых сообщений при загрузке страницы
+
+// Отправляем AJAX-запросы для видимых сообщений при загрузке страницы
 // Отправляем AJAX-запросы для видимых сообщений при скроллинге в области "message-list"
-document.getElementById("message-list").addEventListener("scroll", _modules_Up_date_messages__WEBPACK_IMPORTED_MODULE_5__["default"]);
+try {
+    document.getElementById("message-list").addEventListener("scroll", _modules_Up_date_messages__WEBPACK_IMPORTED_MODULE_5__["default"]);
+} catch {
+    
+}
 
 
-    _modules_modal_action__WEBPACK_IMPORTED_MODULE_0___default()();
+
+
+
+// Ініціалізація модулів
     (0,_modules_user_img__WEBPACK_IMPORTED_MODULE_1__["default"])();
     (0,_modules_pagination_replacement__WEBPACK_IMPORTED_MODULE_2__["default"])();
-
+    (0,_modules_carusel__WEBPACK_IMPORTED_MODULE_0__["default"])();
     (0,_modules_send_message_methods__WEBPACK_IMPORTED_MODULE_3__["default"])(".bottom form")
     ;(0,_modules_chat_scrolling_action__WEBPACK_IMPORTED_MODULE_4__["default"])(".message-list")
-
+    ;(0,_modules_modal_action__WEBPACK_IMPORTED_MODULE_6__["default"])()
+    
 })
 })();
 
