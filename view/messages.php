@@ -131,6 +131,8 @@ else
                             }
                     ?>
                     </div>
+
+                    <div class="jump-btn"><img class="arrow-img" src="/assets/img/arrow_down.svg" alt="Arrow Down"></div>
                     <div class="bottom">
                         <form action="" method="POST">
                             <input type="hidden" name="fromUserId" value="<?= $sessId ?>">

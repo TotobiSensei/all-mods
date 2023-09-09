@@ -1301,6 +1301,22 @@ header nav .user .messages .link {
   width: 100%;
   background-color: #e1e1e1;
 }
+
+.private-messages .message-window .message-list::-webkit-scrollbar {
+  background-color: white;
+  border-radius: 20px;
+  width: 10px;
+}
+
+.private-messages .message-window .message-list::-webkit-scrollbar-thumb {
+  width: 10px;
+  background-color: #ff5252;
+  border-radius: 10px;
+  
+}
+
+
+			
 .private-messages .message-window .message-list {
   display: flex;
   flex-direction: column-reverse;
@@ -1732,3 +1748,22 @@ footer nav ul .item .link:hover {
   box-shadow: 0 0 0 1px #39f;
   outline: 0;
 }/*# sourceMappingURL=style.css.map */
+
+
+/* temporary styles */
+
+.jump-btn {
+  position: absolute;
+  left: 94%;
+  bottom: 15%;
+  background-color: #d44444;
+  border-radius: 70%;
+}
+
+.arrow-img {
+  height: 60px;
+}
+
+.hiden {
+  display: none;
+}
