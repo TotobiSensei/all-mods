@@ -23,6 +23,7 @@ try {
 
 
 // Ініціалізація модулів
+    checkVisibleMessages()
     userIMg();
     paginationReplacement();
     carusel();

@@ -7,8 +7,12 @@ function carusel() {
       contain: true,
       wrapAround: true // Включаем бесконечную прокрутку
   });
-  } catch {
 
+  if (!elem) {
+    throw new ReferenceError('Об"єкт не знайдено')
+  }
+  } catch(e) {
+    console.error(e.stack)
   }   
 }
 

@@ -3,20 +3,26 @@
 function paginationReplacement() {
     try {
         // Тут я звертаюся до потірбних мені блоків
-        const section = document.createElement('section'),
-        main = document.querySelector('main'),
-        paginationWrap = document.querySelector('.pagination-wrap'),  
+        const   section = document.createElement('section'),
+                main = document.querySelector('main'),
+                paginationWrap = document.querySelector('.pagination-wrap'),  
         // Тут тіпа кажеся шо мож сразу чек прописувати у іф, но тоді воно починає матюкатися на іф і мені прийшлося створювати ще одну змінну
-        check = main.querySelector('.pagination-wrap') 
+                check = main.querySelector('.pagination-wrap');
 
         //Перевірка -- якщо пагінація є в блоку мейн, тоді створити секцію і закинути в неї пагінацію .
         if (check) {
             main.insertAdjacentElement('afterend', section);
             section.insertAdjacentElement('afterbegin', paginationWrap);
         }
-    } catch {
 
-    }
+
+        if (section === undefined || main === undefined || paginationWrap === undefined) {
+            throw new ReferenceError('Блоки DOM-Tree не знайдено. Неможливо виконати функцію переміщення пагінації')
+          }
+          
+    } catch(e) {
+        console.error(e.stack)
+      } 
   }
 
   export default paginationReplacement;

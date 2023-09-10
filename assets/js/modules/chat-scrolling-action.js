@@ -9,9 +9,14 @@ function chatObserv(chatContainer) {
         observer.showJumpToMessageBtn();
         observer.hideJumpToMessageBtn();
         observer.JumpTo();
-    } catch {
 
-    }
+        if (!chatContainer) {
+            throw new ReferenceError('Аргумент функції не знайдено')
+          }
+          
+    } catch(e) {
+        console.error(e.stack)
+      } 
     
 }
 
