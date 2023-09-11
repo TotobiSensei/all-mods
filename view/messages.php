@@ -136,7 +136,7 @@ else
                             <input type="hidden" name="fromUserId" value="<?= $sessId ?>">
                             <input type="hidden" name="toUserId" value="<?= $userId?>" >
                             <textarea  name="message" id=""></textarea>
-                            <input type="submit" name="message" value="&#10148;" id="message">
+                            <input type="submit" name="sendMessage" value="&#10148;" id="message">
                         </form>
                     </div>
                 </div>
