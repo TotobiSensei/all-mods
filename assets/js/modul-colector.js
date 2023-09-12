@@ -2,7 +2,7 @@ import carusel from "./modules/carusel";
 import userIMg from "./modules/user_img";
 import paginationReplacement from "./modules/pagination-replacement";
 import keyModyfier from "./modules/send-message-methods";
-import chatObserv from "./modules/chat-scrolling-action";
+import chatObserv from "./modules/chat-action";
 import checkVisibleMessages from "./modules/Up-date-messages";
 import modalAction from "./modules/modal-action";
 

@@ -91,8 +91,12 @@ function carusel() {
       contain: true,
       wrapAround: true // Включаем бесконечную прокрутку
   });
-  } catch {
 
+  if (!elem) {
+    throw new ReferenceError('Об"єкт не знайдено')
+  }
+  } catch(e) {
+    console.error(e.stack)
   }   
 }
 
@@ -103,31 +107,38 @@ function carusel() {
 
 /***/ }),
 
-/***/ "./assets/js/modules/chat-scrolling-action.js":
-/*!****************************************************!*\
-  !*** ./assets/js/modules/chat-scrolling-action.js ***!
-  \****************************************************/
+/***/ "./assets/js/modules/chat-action.js":
+/*!******************************************!*\
+  !*** ./assets/js/modules/chat-action.js ***!
+  \******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _chat_scrolling_methods__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./chat-scrolling-methods */ "./assets/js/modules/chat-scrolling-methods.js");
+/* harmony import */ var _chat_methods__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./chat-methods */ "./assets/js/modules/chat-methods.js");
 
 
 function chatObserv(chatContainer) {
     try {
-        const observer = new _chat_scrolling_methods__WEBPACK_IMPORTED_MODULE_0__["default"](chatContainer)
+        const scrollOobserver = new _chat_methods__WEBPACK_IMPORTED_MODULE_0__.ChatSrollMeth(chatContainer),
+              jumpObserber = new _chat_methods__WEBPACK_IMPORTED_MODULE_0__.ChatJumpMEth(chatContainer)
 
-        observer.getScrollPos();
-        observer.setScrollPos();
-        observer.showJumpToMessageBtn();
-        observer.hideJumpToMessageBtn();
-        observer.JumpTo();
-    } catch {
+        scrollOobserver.getScrollPos();
+        scrollOobserver.setScrollPos();
+        scrollOobserver.showJumpToMessageBtn();
+        scrollOobserver.hideJumpToMessageBtn();
 
-    }
+        jumpObserber.JumpTo()
+
+        if (!chatContainer) {
+            throw new ReferenceError('Аргумент функції не знайдено')
+          }
+
+    } catch(e) {
+        console.error(e.stack)
+      } 
     
 }
 
@@ -135,15 +146,16 @@ function chatObserv(chatContainer) {
 
 /***/ }),
 
-/***/ "./assets/js/modules/chat-scrolling-methods.js":
-/*!*****************************************************!*\
-  !*** ./assets/js/modules/chat-scrolling-methods.js ***!
-  \*****************************************************/
+/***/ "./assets/js/modules/chat-methods.js":
+/*!*******************************************!*\
+  !*** ./assets/js/modules/chat-methods.js ***!
+  \*******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   ChatJumpMEth: () => (/* binding */ ChatJumpMEth),
+/* harmony export */   ChatSrollMeth: () => (/* binding */ ChatSrollMeth)
 /* harmony export */ });
 
 // Класс в якому я задав два метода для запоминанія позиції і її вивода
@@ -161,8 +173,7 @@ class ChatSrollMeth {
 
         // jumpToMessage variables 
         this.scrollPercentage = 0;
-        this.jumpBtn = document.querySelector('.jump-btn');
-      
+        this.jumpBtn = document.querySelector(".jump-btn");
     }
 
     // метод для зчитуванія позиції активної зони юзера перед його виходом з блока
@@ -185,61 +196,81 @@ class ChatSrollMeth {
         }
     }
 
+    // метод за допомогою якого ми виводимо кнопку джамп
     showJumpToMessageBtn() {
         const getPercentage = () => {
+            // тут ми получаємо прогресс скролла нашої сторінки
             this.scrollPercentage = Math.round((this.chatBlock.scrollTop / (this.chatBlock.scrollHeight - this.chatBlock.clientHeight)) * 100); 
-            if (this.scrollPercentage <= 90) {
-                this.jumpBtn.classList.remove('hiden')
+            // якщо умова спрацьовує ми виводимо кнопку 
+            if (this.scrollPercentage <= 99) {
+                this.jumpBtn.classList.remove("hiden")
             } 
         }
 
+        // тут ми накладаємо оброблювач подій 
         this.chatBlock.addEventListener("scroll", getPercentage);
     }
 
-
+ // метод за допомогою якого ми приховуємо  кнопку джамп
     hideJumpToMessageBtn() {
         const getPercentage = () => {
+            // тут ми получаємо прогресс скролла нашої сторінки
             this.scrollPercentage = Math.round((this.chatBlock.scrollTop / (this.chatBlock.scrollHeight - this.chatBlock.clientHeight)) * 100); 
-            if (this.scrollPercentage > 85 || this.scrollPercentage == 100) {
-                this.jumpBtn.classList.add('hiden')
+            // якщо умова спрацьовує ми ховаємо кнопку 
+            if (this.scrollPercentage >= 99 ) {
+                this.jumpBtn.classList.add("hiden")
             }
         }
 
-
+        // тут ми накладаємо оброблювач подій 
         this.chatBlock.addEventListener("scroll", getPercentage);   
-    }
-
-    JumpTo() {
-    //     const otherMessages = document.querySelectorAll(".other-message");
-    //     console.log(otherMessages)
-    //     otherMessages.forEach(function(otherMessage) {
-    //     const message = otherMessage.querySelector(".unchecked");
-    // })
-    this.jumpBtn.addEventListener("click", () => {
-        this.chatBlock.scrollTop = this.chatBlock.scrollHeight;
-        // if (message) {
-        //     message.scrollIntoView()
-        // } else {
-        //     this.chatBlock.scrollTop = this.chatBlock.scrollHeight;
-        // }
-    })
-       
     }
 
 }
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ChatSrollMeth);
+class ChatJumpMEth extends ChatSrollMeth {
+    constructor(chatContainer) {
+        super(chatContainer);
+        this.chatBlock = document.querySelector(this.chatContainer);
+        this.otherMessages = document.querySelectorAll(".other-message");
+        this.isUnchecked = false;
+    }
+
+    
+    // метод який виконує дію стрибка
+    JumpTo() {
+
+        // знизу до першої перевірки умови ми отримуємо наші смс та прапорець який ми використаємо аби виконати першу умову
+
+        this.otherMessages.forEach( otherMessage  => {
+            this.message = otherMessage.querySelector(".unchecked");
+
+            if (this.message) this.isUnchecked = true
+    })
+
+    // Якщо умова виконана тоді ми переносимося на непрочитану смск
+    if (this.isUnchecked) {
+        this.jumpBtn.addEventListener("click", () => {
+           const message =  document.querySelector(".other-message .unchecked");
+
+           if (message)  message.scrollIntoView({behavior: "smooth", block: "end", inline: "center"});
+        });
+        
+    }  else {
+    // Якщо умова не виконана тоді ми просто переносимося в кінець нашої сторінки
+        this.jumpBtn.addEventListener("click", () => {
+            this.chatBlock.scrollTop = this.chatBlock.scrollHeight;
+        })
+    }
+
+
+    
+    }   
+}
 
 
 
-
-// console.log(this.scrollPercentage)
-// this.jumpBtn = document.createElement('div')
-//     this.jumpBtn.classList.add('jump-btn')
-//     this.jumpBtn.innerHTML = `
-//         <span>Jump</span>
-//     `
 
 /***/ }),
 
@@ -319,20 +350,26 @@ __webpack_require__.r(__webpack_exports__);
 function paginationReplacement() {
     try {
         // Тут я звертаюся до потірбних мені блоків
-        const section = document.createElement('section'),
-        main = document.querySelector('main'),
-        paginationWrap = document.querySelector('.pagination-wrap'),  
+        const   section = document.createElement('section'),
+                main = document.querySelector('main'),
+                paginationWrap = document.querySelector('.pagination-wrap'),  
         // Тут тіпа кажеся шо мож сразу чек прописувати у іф, но тоді воно починає матюкатися на іф і мені прийшлося створювати ще одну змінну
-        check = main.querySelector('.pagination-wrap') 
+                check = main.querySelector('.pagination-wrap');
 
         //Перевірка -- якщо пагінація є в блоку мейн, тоді створити секцію і закинути в неї пагінацію .
         if (check) {
             main.insertAdjacentElement('afterend', section);
             section.insertAdjacentElement('afterbegin', paginationWrap);
         }
-    } catch {
 
-    }
+
+        if (section === undefined || main === undefined || paginationWrap === undefined) {
+            throw new ReferenceError('Блоки DOM-Tree не знайдено. Неможливо виконати функцію переміщення пагінації')
+          }
+          
+    } catch(e) {
+        console.error(e.stack)
+      } 
   }
 
   /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (paginationReplacement);
@@ -532,7 +569,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_user_img__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/user_img */ "./assets/js/modules/user_img.js");
 /* harmony import */ var _modules_pagination_replacement__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/pagination-replacement */ "./assets/js/modules/pagination-replacement.js");
 /* harmony import */ var _modules_send_message_methods__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/send-message-methods */ "./assets/js/modules/send-message-methods.js");
-/* harmony import */ var _modules_chat_scrolling_action__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/chat-scrolling-action */ "./assets/js/modules/chat-scrolling-action.js");
+/* harmony import */ var _modules_chat_action__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/chat-action */ "./assets/js/modules/chat-action.js");
 /* harmony import */ var _modules_Up_date_messages__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/Up-date-messages */ "./assets/js/modules/Up-date-messages.js");
 /* harmony import */ var _modules_modal_action__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/modal-action */ "./assets/js/modules/modal-action.js");
 
@@ -560,11 +597,12 @@ try {
 
 
 // Ініціалізація модулів
-    (0,_modules_user_img__WEBPACK_IMPORTED_MODULE_1__["default"])();
+    (0,_modules_Up_date_messages__WEBPACK_IMPORTED_MODULE_5__["default"])()
+    ;(0,_modules_user_img__WEBPACK_IMPORTED_MODULE_1__["default"])();
     (0,_modules_pagination_replacement__WEBPACK_IMPORTED_MODULE_2__["default"])();
     (0,_modules_carusel__WEBPACK_IMPORTED_MODULE_0__["default"])();
     (0,_modules_send_message_methods__WEBPACK_IMPORTED_MODULE_3__["default"])(".bottom form")
-    ;(0,_modules_chat_scrolling_action__WEBPACK_IMPORTED_MODULE_4__["default"])(".message-list")
+    ;(0,_modules_chat_action__WEBPACK_IMPORTED_MODULE_4__["default"])(".message-list")
     ;(0,_modules_modal_action__WEBPACK_IMPORTED_MODULE_6__["default"])()
     
 })
