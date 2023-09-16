@@ -43,7 +43,7 @@ class ChatSrollMeth {
             // тут ми получаємо прогресс скролла нашої сторінки
             this.scrollPercentage = Math.round((this.chatBlock.scrollTop / (this.chatBlock.scrollHeight - this.chatBlock.clientHeight)) * 100); 
             // якщо умова спрацьовує ми виводимо кнопку 
-            if (this.scrollPercentage <= 99) {
+            if (this.scrollPercentage <= 80) {
                 this.jumpBtn.classList.remove("hiden")
             } 
         }
@@ -58,7 +58,7 @@ class ChatSrollMeth {
             // тут ми получаємо прогресс скролла нашої сторінки
             this.scrollPercentage = Math.round((this.chatBlock.scrollTop / (this.chatBlock.scrollHeight - this.chatBlock.clientHeight)) * 100); 
             // якщо умова спрацьовує ми ховаємо кнопку 
-            if (this.scrollPercentage >= 99 ) {
+            if (this.scrollPercentage >= 90 ) {
                 this.jumpBtn.classList.add("hiden")
             }
         }
@@ -110,4 +110,40 @@ class ChatJumpMEth extends ChatSrollMeth {
     }   
 }
 
-export  {ChatSrollMeth, ChatJumpMEth};
+
+class ChatTextAreaMeth {
+    constructor(textareaSelector) {
+        this.textAreablock = document.querySelector(textareaSelector);
+        
+
+    }
+
+
+    textAreaIncrisHeight() {
+      
+       
+       
+            this.textAreablock.addEventListener("input", (e) => {
+                
+                console.log(e.target.value.length > 175)
+               
+                if(e.target.value.length > 175)  {
+                    e.target.style.height = "auto"
+                    e.target.style.height = (this.textAreablock.scrollHeight ) + 'px' ;  
+                }
+                    
+        })
+
+
+        this.textAreablock.addEventListener("input", (e) => {
+            // let contentLenght = e.target.value.length;
+            if (e.target.value.length === 175)  e.target.style.height = 60 + "px";
+                
+             if (e.target.value === '') e.target.style.height = "";
+        })
+
+    }
+
+}
+
+export  {ChatSrollMeth, ChatJumpMEth, ChatTextAreaMeth };

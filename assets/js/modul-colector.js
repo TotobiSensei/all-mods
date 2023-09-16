@@ -28,7 +28,8 @@ try {
     paginationReplacement();
     carusel();
     keyModyfier(".bottom form")
-    chatObserv(".message-list")
+    chatObserv(".message-list", "#textarea")
     modalAction()
     
 })
+
