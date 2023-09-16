@@ -120,17 +120,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _chat_methods__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./chat-methods */ "./assets/js/modules/chat-methods.js");
 
 
-function chatObserv(chatContainer) {
+function chatObserv(chatContainer, textAreaContainer) {
     try {
         const scrollOobserver = new _chat_methods__WEBPACK_IMPORTED_MODULE_0__.ChatSrollMeth(chatContainer),
-              jumpObserber = new _chat_methods__WEBPACK_IMPORTED_MODULE_0__.ChatJumpMEth(chatContainer)
-
+              jumpObserber = new _chat_methods__WEBPACK_IMPORTED_MODULE_0__.ChatJumpMEth(chatContainer),
+              textAreaObserver = new _chat_methods__WEBPACK_IMPORTED_MODULE_0__.ChatTextAreaMeth(textAreaContainer);
         scrollOobserver.getScrollPos();
         scrollOobserver.setScrollPos();
         scrollOobserver.showJumpToMessageBtn();
         scrollOobserver.hideJumpToMessageBtn();
 
         jumpObserber.JumpTo()
+
+        textAreaObserver.textAreaIncrisHeight()
 
         if (!chatContainer) {
             throw new ReferenceError('Аргумент функції не знайдено')
@@ -155,7 +157,8 @@ function chatObserv(chatContainer) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   ChatJumpMEth: () => (/* binding */ ChatJumpMEth),
-/* harmony export */   ChatSrollMeth: () => (/* binding */ ChatSrollMeth)
+/* harmony export */   ChatSrollMeth: () => (/* binding */ ChatSrollMeth),
+/* harmony export */   ChatTextAreaMeth: () => (/* binding */ ChatTextAreaMeth)
 /* harmony export */ });
 
 // Класс в якому я задав два метода для запоминанія позиції і її вивода
@@ -267,6 +270,42 @@ class ChatJumpMEth extends ChatSrollMeth {
 
     
     }   
+}
+
+
+class ChatTextAreaMeth {
+    constructor(textareaSelector) {
+        this.textAreablock = document.querySelector(textareaSelector);
+        
+
+    }
+
+
+    textAreaIncrisHeight() {
+      
+       
+       
+            this.textAreablock.addEventListener("input", (e) => {
+                
+                console.log(e.target.value.length > 175)
+               
+                if(e.target.value.length > 175)  {
+                    e.target.style.height = "auto"
+                    e.target.style.height = (this.textAreablock.scrollHeight ) + 'px' ;  
+                }
+                    
+        })
+
+
+        this.textAreablock.addEventListener("input", (e) => {
+            // let contentLenght = e.target.value.length;
+            if (e.target.value.length === 175)  e.target.style.height = 60 + "px";
+                
+             if (e.target.value === '') e.target.style.height = "";
+        })
+
+    }
+
 }
 
 
@@ -602,10 +641,12 @@ try {
     (0,_modules_pagination_replacement__WEBPACK_IMPORTED_MODULE_2__["default"])();
     (0,_modules_carusel__WEBPACK_IMPORTED_MODULE_0__["default"])();
     (0,_modules_send_message_methods__WEBPACK_IMPORTED_MODULE_3__["default"])(".bottom form")
-    ;(0,_modules_chat_action__WEBPACK_IMPORTED_MODULE_4__["default"])(".message-list")
+    ;(0,_modules_chat_action__WEBPACK_IMPORTED_MODULE_4__["default"])(".message-list", "#textarea")
     ;(0,_modules_modal_action__WEBPACK_IMPORTED_MODULE_6__["default"])()
     
 })
+
+
 })();
 
 /******/ })()

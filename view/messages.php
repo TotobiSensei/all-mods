@@ -118,6 +118,7 @@ else
                                                     <span class="<?= $message["status"] === 0 ? "unchecked" : "checked"?>">&#10004;</span>
                                                 </div>
                                             </div>
+                                            
                                         </div>
                     <?php
                                     }
@@ -137,7 +138,7 @@ else
                         <form action="" method="POST">
                             <input type="hidden" name="fromUserId" value="<?= $sessId ?>">
                             <input type="hidden" name="toUserId" value="<?= $userId?>" >
-                            <textarea  name="message" id=""></textarea>
+                            <textarea  name="message" id="textarea"  wrap="hard" autofocus></textarea>
                             <input type="submit" name="messageId" value="&#10148;" id="messageId">
                         </form>
                     </div>

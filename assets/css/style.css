@@ -1351,10 +1351,12 @@ header nav .user .messages .link {
   border-radius: 10px;
   flex-grow: 1;
   background-color: #fff;
+  overflow-wrap: anywhere;
 }
 .private-messages .message-window .message-list .top .message-body .right .text {
   padding: 5px;
   font-size: 18px;
+  width: 100%;
 }
 .private-messages .message-window .message-list .top .message-body .right .date {
   font-size: 13px;
@@ -1407,19 +1409,20 @@ header nav .user .messages .link {
 }
 .private-messages .message-window .bottom form textarea {
   background-color: inherit;
+  font-size: 20px;
+  height: 60px;
   width: 100%;
-  padding-right: 50px;
+  padding: 17px 90px 15px 20px;
   border: none;
   outline: none;
-  height: auto;
-  max-height: 150px;
+  max-height: 320px;
   resize: none;
 }
 .private-messages .message-window .bottom form input[type=submit] {
   height: 40px;
   width: 40px;
-  position: absolute;
-  top: 50%;
+  position: fixed;
+  top: 88.5%;
   right: 0;
   transform: translate(-50%, -50%);
   border: 2px solid #ff5252;
