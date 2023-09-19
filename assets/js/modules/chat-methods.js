@@ -1,9 +1,12 @@
-
+import {SelectorReferenceError} from "./services/error-liblrary";
 // Класс в якому я задав два метода для запоминанія позиції і її вивода
 // Я використав клас тому шо так намного проще передавати переменні внутрі двох функцій
 // В клас ми передаємо аргумент ( наш блок з смсками)
 class ChatSrollMeth {
-    constructor(chatContainer) {
+    constructor(chatContainer, jumpBtnSelector) {
+        this.__noSuchMethod__ = function(name) {
+            throw new TypeError(`Метода в класі ${name} не існує`)
+        };  
         this.chatContainer = chatContainer;
     // перемєнна яка хранить начальну скрольну позицію
         this.storagedScrollPos = 0;
@@ -14,7 +17,8 @@ class ChatSrollMeth {
 
         // jumpToMessage variables 
         this.scrollPercentage = 0;
-        this.jumpBtn = document.querySelector(".jump-btn");
+        this.jumpBtn = document.querySelector(jumpBtnSelector);
+   
     }
 
     // метод для зчитуванія позиції активної зони юзера перед його виходом з блока
@@ -71,17 +75,21 @@ class ChatSrollMeth {
 
 
 class ChatJumpMEth extends ChatSrollMeth {
-    constructor(chatContainer) {
-        super(chatContainer);
+    constructor(chatContainer,jumpBtnSelector) {
+        super(chatContainer, jumpBtnSelector);
+        this.__noSuchMethod__ = function(name) {
+            throw new TypeError(`Метода в класі ${name} не існує`)
+        };  
         this.chatBlock = document.querySelector(this.chatContainer);
         this.otherMessages = document.querySelectorAll(".other-message");
         this.isUnchecked = false;
     }
-
     
     // метод який виконує дію стрибка
     JumpTo() {
-
+        if (!this.jumpBtn) {
+            throw new ReferenceError('Помилка посилання')
+        }
         // знизу до першої перевірки умови ми отримуємо наші смс та прапорець який ми використаємо аби виконати першу умову
 
         this.otherMessages.forEach( otherMessage  => {
@@ -113,23 +121,22 @@ class ChatJumpMEth extends ChatSrollMeth {
 
 class ChatTextAreaMeth {
     constructor(textareaSelector) {
+        this.__noSuchMethod__ = function(name) {
+            throw new TypeError(`Метода в класі ${name} не існує`)
+        };  
         this.textAreablock = document.querySelector(textareaSelector);
         
 
     }
 
 
-    textAreaIncrisHeight() {
-      
-       
+    textAreaIncrisHeight() {      
        
             this.textAreablock.addEventListener("input", (e) => {
-                
-                console.log(e.target.value.length > 175)
-               
                 if(e.target.value.length > 175)  {
+                    console.log('ff')
                     e.target.style.height = "auto"
-                    e.target.style.height = (this.textAreablock.scrollHeight ) + 'px' ;  
+                    e.target.style.height = (this.textAreablock.scrollHeight ) + "px" ;  
                 }
                     
         })
@@ -139,11 +146,29 @@ class ChatTextAreaMeth {
             // let contentLenght = e.target.value.length;
             if (e.target.value.length === 175)  e.target.style.height = 60 + "px";
                 
-             if (e.target.value === '') e.target.style.height = "";
+             if (e.target.value === "") e.target.style.height = "";
         })
 
     }
-
 }
 
-export  {ChatSrollMeth, ChatJumpMEth, ChatTextAreaMeth };
+
+class ChatFocusOn extends ChatTextAreaMeth {
+    constructor(textareaSelector, chatContainer) {
+        super(textareaSelector);
+        this.__noSuchMethod__ = function(name) {
+            throw new TypeError(`Метода в класі ${name} не існує`)
+        };  
+        this.textAreablock = document.querySelector(textareaSelector);
+        this.chatBlock = document.querySelector(chatContainer);
+    }
+
+    pemanentFocusOn() {
+        this.chatBlock.addEventListener("click", () => {
+            this.textAreablock.focus()
+        })
+    }
+}
+
+
+export  {ChatSrollMeth, ChatJumpMEth, ChatTextAreaMeth, ChatFocusOn};

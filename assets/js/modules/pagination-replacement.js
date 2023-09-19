@@ -1,4 +1,4 @@
-'use strict'
+import { SelectorReferenceError } from "./services/error-liblrary";
 // Це функція яка створює секцію після мейна та переміщає туди пагінацію, вона в самому початку файлу бо шось матюкаєся джс на перші дві строки після визова функції
 function paginationReplacement() {
     try {
@@ -16,12 +16,12 @@ function paginationReplacement() {
         }
 
 
-        if (section === undefined || main === undefined || paginationWrap === undefined) {
-            throw new ReferenceError('Блоки DOM-Tree не знайдено. Неможливо виконати функцію переміщення пагінації')
+        if (!section  || !main || !paginationWrap) {
+            throw new SelectorReferenceError('Блоки DOM-Tree не знайдено. Неможливо виконати функцію переміщення пагінації')
           }
           
     } catch(e) {
-        console.error(e.stack)
+        console.error(e.message)
       } 
   }
 
