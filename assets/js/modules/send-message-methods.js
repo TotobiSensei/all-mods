@@ -1,4 +1,4 @@
-import { SelectorReferenceError } from "./services/error-liblrary";
+import { SelectorReferenceError, ErrorReader} from "./services/error-liblrary";
 
  
  function keyModyfier(form) {
@@ -14,8 +14,12 @@ import { SelectorReferenceError } from "./services/error-liblrary";
                         formBlock.submit();
             }
         })
-    } catch {
-        
+    } catch (err) {
+        if (err instanceof SelectorReferenceError) {
+            console.error(new ErrorReader("Початкова помилка: " + err.stack))
+        } else {
+            throw new Error(err.stack)
+        }
     }
    
  }
