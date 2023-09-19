@@ -82,22 +82,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-function carusel() {
-    //ІНІЦІАЛІЗАЦІЯ КАРУСЕЛІ НА ГЛАВНІЙ!
+/* harmony import */ var _services_error_liblrary__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./services/error-liblrary */ "./assets/js/modules/services/error-liblrary.js");
+
+
+function carusel(elemSelector) {
+  if (!elemSelector) throw new _services_error_liblrary__WEBPACK_IMPORTED_MODULE_0__.SelectorReferenceError("Невірно вказаний, або відсутній селектор классу Каруселі");
+
+  let elem = document.querySelector(elemSelector);
+  
   try {
-    var elem = document.querySelector('.main-carousel');
-    var flkty = new Flickity(elem, {
+    if (!elem) throw new _services_error_liblrary__WEBPACK_IMPORTED_MODULE_0__.MissingElementError(`Результат оброблення елемента - ${elem}`);
+
+    const flkty = new Flickity(elem, {
       cellAlign: 'center',
       contain: true,
       wrapAround: true // Включаем бесконечную прокрутку
   });
 
-  if (!elem) {
-    throw new ReferenceError('Об"єкт не знайдено')
+  if (!flkty) new _services_error_liblrary__WEBPACK_IMPORTED_MODULE_0__.MissingElementError(`Результат оброблення елемента - ${flkty}`);
+  
+  } catch (err) {
+    if (err instanceof _services_error_liblrary__WEBPACK_IMPORTED_MODULE_0__.MissingElementError ) {
+      console.error(new  _services_error_liblrary__WEBPACK_IMPORTED_MODULE_0__.ErrorReader("Відсутній елемент: " + err) );
+  } else if (err instanceof _services_error_liblrary__WEBPACK_IMPORTED_MODULE_0__.SelectorReferenceError ) {
+    console.error(new  _services_error_liblrary__WEBPACK_IMPORTED_MODULE_0__.ErrorReader("Помилка посилання: " + err));
+  } else {
+    throw new Error("Невідома  помилка " + err.stack)
   }
-  } catch(e) {
-    console.error(e.stack)
-  }   
+ 
+}
+
+      
+   
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (carusel);
@@ -118,30 +134,47 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _chat_methods__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./chat-methods */ "./assets/js/modules/chat-methods.js");
+/* harmony import */ var _services_error_liblrary__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./services/error-liblrary */ "./assets/js/modules/services/error-liblrary.js");
 
 
-function chatObserv(chatContainer, textAreaContainer) {
-    try {
-        const scrollOobserver = new _chat_methods__WEBPACK_IMPORTED_MODULE_0__.ChatSrollMeth(chatContainer),
-              jumpObserber = new _chat_methods__WEBPACK_IMPORTED_MODULE_0__.ChatJumpMEth(chatContainer),
-              textAreaObserver = new _chat_methods__WEBPACK_IMPORTED_MODULE_0__.ChatTextAreaMeth(textAreaContainer);
-        scrollOobserver.getScrollPos();
-        scrollOobserver.setScrollPos();
-        scrollOobserver.showJumpToMessageBtn();
-        scrollOobserver.hideJumpToMessageBtn();
 
-        jumpObserber.JumpTo()
+function chatObserv(chatContainer, textAreaContainer, jumpBtnSelector ) {
+      try {
+            if (chatContainer !== ".message-list") {
+                  throw new _services_error_liblrary__WEBPACK_IMPORTED_MODULE_1__.SelectorReferenceError(`Відсутній селектор контейнера чату`);
+        } else if (textAreaContainer !== "#textarea") {
+                  throw new _services_error_liblrary__WEBPACK_IMPORTED_MODULE_1__.SelectorReferenceError(`Відсутній селектор елемента форми Textarea`);
+        }
+  
+          const scrollOobserver = new _chat_methods__WEBPACK_IMPORTED_MODULE_0__.ChatSrollMeth(chatContainer, jumpBtnSelector),
+                jumpObserber = new _chat_methods__WEBPACK_IMPORTED_MODULE_0__.ChatJumpMEth(chatContainer,jumpBtnSelector),
+                textAreaObserver = new _chat_methods__WEBPACK_IMPORTED_MODULE_0__.ChatTextAreaMeth(textAreaContainer),
+                chatObserv = new _chat_methods__WEBPACK_IMPORTED_MODULE_0__.ChatFocusOn(textAreaContainer, chatContainer);
+                
+  
+          scrollOobserver.getScrollPos();
+          scrollOobserver.setScrollPos();
+          scrollOobserver.showJumpToMessageBtn();
+          scrollOobserver.hideJumpToMessageBtn();
+        
+          jumpObserber.JumpTo();
+      
+          textAreaObserver.textAreaIncrisHeight();
+  
+          chatObserv.pemanentFocusOn();
 
-        textAreaObserver.textAreaIncrisHeight()
-
-        if (!chatContainer) {
-            throw new ReferenceError('Аргумент функції не знайдено')
-          }
-
-    } catch(e) {
-        console.error(e.stack)
-      } 
-    
+      } catch (err) {
+            if (err instanceof SyntaxError) {
+                 console.error(new _services_error_liblrary__WEBPACK_IMPORTED_MODULE_1__.ErrorReader("Помилка виконання " + err));
+            } else if (err instanceof TypeError) {
+                  console.error( new _services_error_liblrary__WEBPACK_IMPORTED_MODULE_1__.ErrorReader("Помилка використання " + err.stack));
+            } else if (err instanceof ReferenceError) {
+                  console.error(new _services_error_liblrary__WEBPACK_IMPORTED_MODULE_1__.ErrorReader("Помилка використання " + err.stack));
+            } else {
+                  throw new Error("Невідома  помилка " + err.stack)
+            }
+      }
+      
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (chatObserv);
@@ -156,16 +189,21 @@ function chatObserv(chatContainer, textAreaContainer) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ChatFocusOn: () => (/* binding */ ChatFocusOn),
 /* harmony export */   ChatJumpMEth: () => (/* binding */ ChatJumpMEth),
 /* harmony export */   ChatSrollMeth: () => (/* binding */ ChatSrollMeth),
 /* harmony export */   ChatTextAreaMeth: () => (/* binding */ ChatTextAreaMeth)
 /* harmony export */ });
+/* harmony import */ var _services_error_liblrary__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./services/error-liblrary */ "./assets/js/modules/services/error-liblrary.js");
 
 // Класс в якому я задав два метода для запоминанія позиції і її вивода
 // Я використав клас тому шо так намного проще передавати переменні внутрі двох функцій
 // В клас ми передаємо аргумент ( наш блок з смсками)
 class ChatSrollMeth {
-    constructor(chatContainer) {
+    constructor(chatContainer, jumpBtnSelector) {
+        this.__noSuchMethod__ = function(name) {
+            throw new TypeError(`Метода в класі ${name} не існує`)
+        };  
         this.chatContainer = chatContainer;
     // перемєнна яка хранить начальну скрольну позицію
         this.storagedScrollPos = 0;
@@ -176,7 +214,8 @@ class ChatSrollMeth {
 
         // jumpToMessage variables 
         this.scrollPercentage = 0;
-        this.jumpBtn = document.querySelector(".jump-btn");
+        this.jumpBtn = document.querySelector(jumpBtnSelector);
+   
     }
 
     // метод для зчитуванія позиції активної зони юзера перед його виходом з блока
@@ -205,7 +244,7 @@ class ChatSrollMeth {
             // тут ми получаємо прогресс скролла нашої сторінки
             this.scrollPercentage = Math.round((this.chatBlock.scrollTop / (this.chatBlock.scrollHeight - this.chatBlock.clientHeight)) * 100); 
             // якщо умова спрацьовує ми виводимо кнопку 
-            if (this.scrollPercentage <= 99) {
+            if (this.scrollPercentage <= 80) {
                 this.jumpBtn.classList.remove("hiden")
             } 
         }
@@ -220,7 +259,7 @@ class ChatSrollMeth {
             // тут ми получаємо прогресс скролла нашої сторінки
             this.scrollPercentage = Math.round((this.chatBlock.scrollTop / (this.chatBlock.scrollHeight - this.chatBlock.clientHeight)) * 100); 
             // якщо умова спрацьовує ми ховаємо кнопку 
-            if (this.scrollPercentage >= 99 ) {
+            if (this.scrollPercentage >= 90 ) {
                 this.jumpBtn.classList.add("hiden")
             }
         }
@@ -233,17 +272,21 @@ class ChatSrollMeth {
 
 
 class ChatJumpMEth extends ChatSrollMeth {
-    constructor(chatContainer) {
-        super(chatContainer);
+    constructor(chatContainer,jumpBtnSelector) {
+        super(chatContainer, jumpBtnSelector);
+        this.__noSuchMethod__ = function(name) {
+            throw new TypeError(`Метода в класі ${name} не існує`)
+        };  
         this.chatBlock = document.querySelector(this.chatContainer);
         this.otherMessages = document.querySelectorAll(".other-message");
         this.isUnchecked = false;
     }
-
     
     // метод який виконує дію стрибка
     JumpTo() {
-
+        if (!this.jumpBtn) {
+            throw new ReferenceError('Помилка посилання')
+        }
         // знизу до першої перевірки умови ми отримуємо наші смс та прапорець який ми використаємо аби виконати першу умову
 
         this.otherMessages.forEach( otherMessage  => {
@@ -275,23 +318,22 @@ class ChatJumpMEth extends ChatSrollMeth {
 
 class ChatTextAreaMeth {
     constructor(textareaSelector) {
+        this.__noSuchMethod__ = function(name) {
+            throw new TypeError(`Метода в класі ${name} не існує`)
+        };  
         this.textAreablock = document.querySelector(textareaSelector);
         
 
     }
 
 
-    textAreaIncrisHeight() {
-      
-       
+    textAreaIncrisHeight() {      
        
             this.textAreablock.addEventListener("input", (e) => {
-                
-                console.log(e.target.value.length > 175)
-               
                 if(e.target.value.length > 175)  {
+                    console.log('ff')
                     e.target.style.height = "auto"
-                    e.target.style.height = (this.textAreablock.scrollHeight ) + 'px' ;  
+                    e.target.style.height = (this.textAreablock.scrollHeight ) + "px" ;  
                 }
                     
         })
@@ -301,12 +343,30 @@ class ChatTextAreaMeth {
             // let contentLenght = e.target.value.length;
             if (e.target.value.length === 175)  e.target.style.height = 60 + "px";
                 
-             if (e.target.value === '') e.target.style.height = "";
+             if (e.target.value === "") e.target.style.height = "";
         })
 
     }
-
 }
+
+
+class ChatFocusOn extends ChatTextAreaMeth {
+    constructor(textareaSelector, chatContainer) {
+        super(textareaSelector);
+        this.__noSuchMethod__ = function(name) {
+            throw new TypeError(`Метода в класі ${name} не існує`)
+        };  
+        this.textAreablock = document.querySelector(textareaSelector);
+        this.chatBlock = document.querySelector(chatContainer);
+    }
+
+    pemanentFocusOn() {
+        this.chatBlock.addEventListener("click", () => {
+            this.textAreablock.focus()
+        })
+    }
+}
+
 
 
 
@@ -384,6 +444,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _services_error_liblrary__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./services/error-liblrary */ "./assets/js/modules/services/error-liblrary.js");
 
 // Це функція яка створює секцію після мейна та переміщає туди пагінацію, вона в самому початку файлу бо шось матюкаєся джс на перші дві строки після визова функції
 function paginationReplacement() {
@@ -403,11 +464,11 @@ function paginationReplacement() {
 
 
         if (section === undefined || main === undefined || paginationWrap === undefined) {
-            throw new ReferenceError('Блоки DOM-Tree не знайдено. Неможливо виконати функцію переміщення пагінації')
+            throw new _services_error_liblrary__WEBPACK_IMPORTED_MODULE_0__.SelectorReferenceError('Блоки DOM-Tree не знайдено. Неможливо виконати функцію переміщення пагінації')
           }
           
     } catch(e) {
-        console.error(e.stack)
+        console.error(e.message)
       } 
   }
 
@@ -425,8 +486,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _services_error_liblrary__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./services/error-liblrary */ "./assets/js/modules/services/error-liblrary.js");
+
+
  
  function keyModyfier(form) {
+    if (form !== ".bottom form") {
+        throw new _services_error_liblrary__WEBPACK_IMPORTED_MODULE_0__.SelectorReferenceError("Невірно вказаний селектор форми")
+    }
+
     try {
         const formBlock = document.querySelector(form);
         formBlock.addEventListener("keydown", (e) => {
@@ -442,6 +510,66 @@ __webpack_require__.r(__webpack_exports__);
  }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (keyModyfier);
+
+/***/ }),
+
+/***/ "./assets/js/modules/services/error-liblrary.js":
+/*!******************************************************!*\
+  !*** ./assets/js/modules/services/error-liblrary.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ErrorReader: () => (/* binding */ ErrorReader),
+/* harmony export */   MissingElementError: () => (/* binding */ MissingElementError),
+/* harmony export */   SelectorReferenceError: () => (/* binding */ SelectorReferenceError),
+/* harmony export */   SyntaxError: () => (/* binding */ SyntaxError)
+/* harmony export */ });
+// Класс для читача помилок 
+class ErrorReader extends Error {
+    constructor(message,cause) {
+        super(message);
+        this.name = "ErrorReader";
+        this.cause = cause;
+    }
+}
+
+// Класс для помилок посилання
+class ReferenceError extends Error {
+    constructor(message) {
+        super(message);
+        this.name = this.constructor.name;
+    }
+}
+//  Класс для помилок посилання на селектор
+class SelectorReferenceError extends ReferenceError {
+    constructor(message) {
+        super(message);
+    }
+}
+
+
+
+// Класс для помилок типу Null || Undefined
+
+class MissingElementError extends Error {
+    constructor(message) {
+        super(message);
+        this.name = this.constructor.name;
+    }
+}
+
+// Класс для помилок невірного використання методів
+class SyntaxError extends Error {
+    constructor(message) {
+        super(message);
+        this.name = this.constructor.name;
+    }
+}
+
+
+
 
 /***/ }),
 
@@ -611,6 +739,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_chat_action__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/chat-action */ "./assets/js/modules/chat-action.js");
 /* harmony import */ var _modules_Up_date_messages__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/Up-date-messages */ "./assets/js/modules/Up-date-messages.js");
 /* harmony import */ var _modules_modal_action__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/modal-action */ "./assets/js/modules/modal-action.js");
+/* harmony import */ var _modules_services_error_liblrary__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/services/error-liblrary */ "./assets/js/modules/services/error-liblrary.js");
+
 
 
 
@@ -623,27 +753,29 @@ __webpack_require__.r(__webpack_exports__);
 window.addEventListener("load", _modules_Up_date_messages__WEBPACK_IMPORTED_MODULE_5__["default"]);
 window.addEventListener("DOMContentLoaded", (e) => {
 
-// Отправляем AJAX-запросы для видимых сообщений при загрузке страницы
-// Отправляем AJAX-запросы для видимых сообщений при скроллинге в области "message-list"
-try {
-    document.getElementById("message-list").addEventListener("scroll", _modules_Up_date_messages__WEBPACK_IMPORTED_MODULE_5__["default"]);
-} catch {
-    
-}
 
+    try {
+        // Отправляем AJAX-запросы для видимых сообщений при загрузке страницы
+        // Отправляем AJAX-запросы для видимых сообщений при скроллинге в области "message-list"
+        document.getElementById("message-list").addEventListener("scroll", _modules_Up_date_messages__WEBPACK_IMPORTED_MODULE_5__["default"]);
+    } catch (err) {
 
+    }
 
+    try {
+        // Ініціалізація модулів
+        (0,_modules_carusel__WEBPACK_IMPORTED_MODULE_0__["default"])(".main-carousel");
+        (0,_modules_Up_date_messages__WEBPACK_IMPORTED_MODULE_5__["default"])();
+        (0,_modules_user_img__WEBPACK_IMPORTED_MODULE_1__["default"])();
+        (0,_modules_pagination_replacement__WEBPACK_IMPORTED_MODULE_2__["default"])();
+        (0,_modules_send_message_methods__WEBPACK_IMPORTED_MODULE_3__["default"])(".bottom form");
+        (0,_modules_chat_action__WEBPACK_IMPORTED_MODULE_4__["default"])(".message-list","#textarea", ".jump-btn");
+        (0,_modules_modal_action__WEBPACK_IMPORTED_MODULE_6__["default"])();
+        
+    } finally {
+        console.log("All methods works properly")
+    }
 
-
-// Ініціалізація модулів
-    (0,_modules_Up_date_messages__WEBPACK_IMPORTED_MODULE_5__["default"])()
-    ;(0,_modules_user_img__WEBPACK_IMPORTED_MODULE_1__["default"])();
-    (0,_modules_pagination_replacement__WEBPACK_IMPORTED_MODULE_2__["default"])();
-    (0,_modules_carusel__WEBPACK_IMPORTED_MODULE_0__["default"])();
-    (0,_modules_send_message_methods__WEBPACK_IMPORTED_MODULE_3__["default"])(".bottom form")
-    ;(0,_modules_chat_action__WEBPACK_IMPORTED_MODULE_4__["default"])(".message-list", "#textarea")
-    ;(0,_modules_modal_action__WEBPACK_IMPORTED_MODULE_6__["default"])()
-    
 })
 
 
