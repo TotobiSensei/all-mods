@@ -42,6 +42,7 @@ if(isset($_GET["logOut"]))
     <script src="/assets/js/flickity.pkgd.min.js"></script>
     <!-- main script file -->
     <script src="/assets/js/bundle.js" defer></script>
+    <!-- <script src="/assets/js/bundle.js.map"  defer></script> -->
     <title>Document</title>
 </head>
 
