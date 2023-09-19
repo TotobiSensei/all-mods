@@ -463,7 +463,7 @@ function paginationReplacement() {
         }
 
 
-        if (section === undefined || main === undefined || paginationWrap === undefined) {
+        if (!section  || !main || !paginationWrap) {
             throw new _services_error_liblrary__WEBPACK_IMPORTED_MODULE_0__.SelectorReferenceError('Блоки DOM-Tree не знайдено. Неможливо виконати функцію переміщення пагінації')
           }
           
