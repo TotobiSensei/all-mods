@@ -503,8 +503,12 @@ __webpack_require__.r(__webpack_exports__);
                         formBlock.submit();
             }
         })
-    } catch {
-        
+    } catch (err) {
+        if (err instanceof _services_error_liblrary__WEBPACK_IMPORTED_MODULE_0__.SelectorReferenceError) {
+            console.error(new _services_error_liblrary__WEBPACK_IMPORTED_MODULE_0__.ErrorReader("Початкова помилка: " + err.stack))
+        } else {
+            throw new Error(err.stack)
+        }
     }
    
  }
