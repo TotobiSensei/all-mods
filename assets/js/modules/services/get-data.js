@@ -1,14 +1,8 @@
 'use strict' 
 
 async function getData(url) {
-        const action = await fetch(url)
-                .then((response) => {
-            return response.json()
-        })
-
+        const action = await fetch(url);
         return action;
-
-   
 }
 
 export default getData;
