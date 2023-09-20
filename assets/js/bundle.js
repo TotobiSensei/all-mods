@@ -587,36 +587,48 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _services_error_liblrary__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./services/error-liblrary */ "./assets/js/modules/services/error-liblrary.js");
 
-
-function userIMg() {
+function userIMg(data) {
+ 
   try {
-    var imagePreview = document.getElementById('image-preview');
-    var cropButton = document.getElementById('crop-button');
+    const {imagePrevSlc, cropBtnSlc,userIdSlc, imageInputSlc, userImageSlc, addImgSlc, toDataUrlSlc,cropImgSlc, ImgInputSlc, loadImgSlc} = data;
+    for (let prop in data) {
+      if (!data[prop]) {
+        throw new _services_error_liblrary__WEBPACK_IMPORTED_MODULE_0__.SelectorReferenceError(`Селектор ${prop} переданий некоректно`)
+      } 
+
+      if ( typeof(data[prop]) !== 'string') {
+        throw new _services_error_liblrary__WEBPACK_IMPORTED_MODULE_0__.SyntaxError(`Не вірно вказаний тип аргумента ${prop}. Oчікується передача String!`)
+      }
+    }
+
+    let imagePreview = document.getElementById(imagePrevSlc),
+         cropButton = document.getElementById(cropBtnSlc);
     
     if (imagePreview && cropButton) {
       imagePreview.style.display = 'none';
       cropButton.style.display = 'none';
     }
     
-    var userIdInput = document.getElementById('userId');
+    let userIdInput = document.getElementById(userIdSlc);
     if(userIdInput)
     {
-      var userId = userIdInput.value;
+      let userId = userIdInput.value;
     }
     
     
-    document.getElementById('image-input').addEventListener('change', function(event) {
-      var file = event.target.files[0];
-      var reader = new FileReader();
+    document.getElementById(imageInputSlc).addEventListener('change', function(event) {
+      let file = event.target.files[0],
+          reader = new FileReader();
     
       reader.onload = function(e) {
         // Показываем нужные элементы
-        document.getElementById('image-preview').style.display = 'block';
-        document.getElementById('crop-button').style.display = 'block';
+        document.getElementById(imagePrevSlc).style.display = 'block';
+        document.getElementById(cropBtnSlc).style.display = 'block';
     
-        document.getElementById('user-image').style.display = 'none';
-        document.getElementById('add-img').style.display = 'none';
+        document.getElementById(userImageSlc).style.display = 'none';
+        document.getElementById(addImgSlc).style.display = 'none';
         // Установка изображения в Cropper.js
         cropper.replace(e.target.result);
       };
@@ -625,8 +637,8 @@ function userIMg() {
     });
     
     // Остальной код остается без изменений
-    var image = document.getElementById('image-preview');
-    var cropper = new Cropper(image, {
+    let image = document.getElementById(imagePrevSlc);
+    let cropper = new Cropper(image, {
       aspectRatio: 1,
       crop: function(event) {
         // Обработчик события обрезки изображения
@@ -634,11 +646,11 @@ function userIMg() {
       zoomable: false
     });
     
-    document.getElementById('crop-button').addEventListener('click', function() {
-      var croppedCanvas = cropper.getCroppedCanvas();
-      var roundedCanvas = document.createElement('canvas');
-      var roundedContext = roundedCanvas.getContext('2d');
-      var radius = croppedCanvas.width / 2;
+    document.getElementById(cropBtnSlc).addEventListener('click', function() {
+      let croppedCanvas = cropper.getCroppedCanvas(),
+          roundedCanvas = document.createElement('canvas'),
+          roundedContext = roundedCanvas.getContext('2d'),
+           radius = croppedCanvas.width / 2;
       roundedCanvas.width = croppedCanvas.width;
       roundedCanvas.height = croppedCanvas.height;
       roundedContext.clearRect(0, 0, roundedCanvas.width, roundedCanvas.height);
@@ -647,10 +659,10 @@ function userIMg() {
       roundedContext.closePath();
       roundedContext.clip();
       roundedContext.drawImage(croppedCanvas, 0, 0, croppedCanvas.width, croppedCanvas.height);
-      var croppedImageURL = roundedCanvas.toDataURL('image/png');
-      var croppedImageInput = document.getElementById('cropped-image');
-      croppedImageInput.value = croppedImageURL;
-      var fileInput = document.getElementById('image-input');
+      let croppedImageURL = roundedCanvas.toDataURL(toDataUrlSlc),
+           croppedImageInput = document.getElementById(cropImgSlc);
+          croppedImageInput.value = croppedImageURL;
+      let fileInput = document.getElementById(ImgInputSlc);
       fileInput.value = null;
     
       // Скрываем блоки с обрезанным изображением
@@ -658,12 +670,18 @@ function userIMg() {
       // document.getElementById('crop-button').style.display = 'none';
     
       // Отправляем форму
-      var form = document.getElementById('load-img');
+      let form = document.getElementById(loadImgSlc);
       form.submit();
     });
     
-  } catch {
+  } catch (err) {
+    if (err instanceof _services_error_liblrary__WEBPACK_IMPORTED_MODULE_0__.SelectorReferenceError) {
+      console.error(new _services_error_liblrary__WEBPACK_IMPORTED_MODULE_0__.ErrorReader("Початкова помилка: " + err.stack))
+    }
 
+    if (err instanceof _services_error_liblrary__WEBPACK_IMPORTED_MODULE_0__.SyntaxError) {
+      console.error(new _services_error_liblrary__WEBPACK_IMPORTED_MODULE_0__.ErrorReader("Початкова помилка: " + err.stack))
+    }
   }
 }
 
@@ -770,7 +788,19 @@ window.addEventListener("DOMContentLoaded", (e) => {
         // Ініціалізація модулів
         (0,_modules_carusel__WEBPACK_IMPORTED_MODULE_0__["default"])(".main-carousel");
         (0,_modules_Up_date_messages__WEBPACK_IMPORTED_MODULE_5__["default"])();
-        (0,_modules_user_img__WEBPACK_IMPORTED_MODULE_1__["default"])();
+        (0,_modules_user_img__WEBPACK_IMPORTED_MODULE_1__["default"])({
+            imagePrevSlc: "image-preview", 
+            cropBtnSlc: "crop-button",
+            userIdSlc: "userId", 
+            imageInputSlc: "image-input", 
+            userImageSlc: "user-image", 
+            addImgSlc: "add-img", 
+            toDataUrlSlc: "image/png",
+            cropImgSlc: "cropped-image", 
+            ImgInputSlc: "image-input",
+            loadImgSlc: 'load-img'
+        
+        });
         (0,_modules_pagination_replacement__WEBPACK_IMPORTED_MODULE_2__["default"])();
         (0,_modules_send_message_methods__WEBPACK_IMPORTED_MODULE_3__["default"])(".bottom form");
         (0,_modules_chat_action__WEBPACK_IMPORTED_MODULE_4__["default"])(".message-list","#textarea", ".jump-btn");
