@@ -24,7 +24,19 @@ window.addEventListener("DOMContentLoaded", (e) => {
         // Ініціалізація модулів
         carusel(".main-carousel");
         checkVisibleMessages();
-        userIMg();
+        userIMg({
+            imagePrevSlc: "image-preview", 
+            cropBtnSlc: "crop-button",
+            userIdSlc: "userId", 
+            imageInputSlc: "image-input", 
+            userImageSlc: "user-image", 
+            addImgSlc: "add-img", 
+            toDataUrlSlc: "image/png",
+            cropImgSlc: "cropped-image", 
+            ImgInputSlc: "image-input",
+            loadImgSlc: 'load-img'
+        
+        });
         paginationReplacement();
         keyModyfier(".bottom form");
         chatObserv(".message-list","#textarea", ".jump-btn");

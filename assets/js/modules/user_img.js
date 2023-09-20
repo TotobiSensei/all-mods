@@ -1,33 +1,44 @@
-'use strict'
-
-function userIMg() {
+import { SelectorReferenceError, SyntaxError, ErrorReader} from "./services/error-liblrary";
+function userIMg(data) {
+ 
   try {
-    var imagePreview = document.getElementById('image-preview');
-    var cropButton = document.getElementById('crop-button');
+    const {imagePrevSlc, cropBtnSlc,userIdSlc, imageInputSlc, userImageSlc, addImgSlc, toDataUrlSlc,cropImgSlc, ImgInputSlc, loadImgSlc} = data;
+    for (let prop in data) {
+      if (!data[prop]) {
+        throw new SelectorReferenceError(`Селектор ${prop} переданий некоректно`)
+      } 
+
+      if ( typeof(data[prop]) !== 'string') {
+        throw new SyntaxError(`Не вірно вказаний тип аргумента ${prop}. Oчікується передача String!`)
+      }
+    }
+
+    let imagePreview = document.getElementById(imagePrevSlc),
+         cropButton = document.getElementById(cropBtnSlc);
     
     if (imagePreview && cropButton) {
       imagePreview.style.display = 'none';
       cropButton.style.display = 'none';
     }
     
-    var userIdInput = document.getElementById('userId');
+    let userIdInput = document.getElementById(userIdSlc);
     if(userIdInput)
     {
-      var userId = userIdInput.value;
+      let userId = userIdInput.value;
     }
     
     
-    document.getElementById('image-input').addEventListener('change', function(event) {
-      var file = event.target.files[0];
-      var reader = new FileReader();
+    document.getElementById(imageInputSlc).addEventListener('change', function(event) {
+      let file = event.target.files[0],
+          reader = new FileReader();
     
       reader.onload = function(e) {
         // Показываем нужные элементы
-        document.getElementById('image-preview').style.display = 'block';
-        document.getElementById('crop-button').style.display = 'block';
+        document.getElementById(imagePrevSlc).style.display = 'block';
+        document.getElementById(cropBtnSlc).style.display = 'block';
     
-        document.getElementById('user-image').style.display = 'none';
-        document.getElementById('add-img').style.display = 'none';
+        document.getElementById(userImageSlc).style.display = 'none';
+        document.getElementById(addImgSlc).style.display = 'none';
         // Установка изображения в Cropper.js
         cropper.replace(e.target.result);
       };
@@ -36,8 +47,8 @@ function userIMg() {
     });
     
     // Остальной код остается без изменений
-    var image = document.getElementById('image-preview');
-    var cropper = new Cropper(image, {
+    let image = document.getElementById(imagePrevSlc);
+    let cropper = new Cropper(image, {
       aspectRatio: 1,
       crop: function(event) {
         // Обработчик события обрезки изображения
@@ -45,11 +56,11 @@ function userIMg() {
       zoomable: false
     });
     
-    document.getElementById('crop-button').addEventListener('click', function() {
-      var croppedCanvas = cropper.getCroppedCanvas();
-      var roundedCanvas = document.createElement('canvas');
-      var roundedContext = roundedCanvas.getContext('2d');
-      var radius = croppedCanvas.width / 2;
+    document.getElementById(cropBtnSlc).addEventListener('click', function() {
+      let croppedCanvas = cropper.getCroppedCanvas(),
+          roundedCanvas = document.createElement('canvas'),
+          roundedContext = roundedCanvas.getContext('2d'),
+           radius = croppedCanvas.width / 2;
       roundedCanvas.width = croppedCanvas.width;
       roundedCanvas.height = croppedCanvas.height;
       roundedContext.clearRect(0, 0, roundedCanvas.width, roundedCanvas.height);
@@ -58,10 +69,10 @@ function userIMg() {
       roundedContext.closePath();
       roundedContext.clip();
       roundedContext.drawImage(croppedCanvas, 0, 0, croppedCanvas.width, croppedCanvas.height);
-      var croppedImageURL = roundedCanvas.toDataURL('image/png');
-      var croppedImageInput = document.getElementById('cropped-image');
-      croppedImageInput.value = croppedImageURL;
-      var fileInput = document.getElementById('image-input');
+      let croppedImageURL = roundedCanvas.toDataURL(toDataUrlSlc),
+           croppedImageInput = document.getElementById(cropImgSlc);
+          croppedImageInput.value = croppedImageURL;
+      let fileInput = document.getElementById(ImgInputSlc);
       fileInput.value = null;
     
       // Скрываем блоки с обрезанным изображением
@@ -69,12 +80,18 @@ function userIMg() {
       // document.getElementById('crop-button').style.display = 'none';
     
       // Отправляем форму
-      var form = document.getElementById('load-img');
+      let form = document.getElementById(loadImgSlc);
       form.submit();
     });
     
-  } catch {
+  } catch (err) {
+    if (err instanceof SelectorReferenceError) {
+      console.error(new ErrorReader("Початкова помилка: " + err.stack))
+    }
 
+    if (err instanceof SyntaxError) {
+      console.error(new ErrorReader("Початкова помилка: " + err.stack))
+    }
   }
 }
 
