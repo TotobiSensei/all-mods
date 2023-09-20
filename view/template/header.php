@@ -30,7 +30,7 @@ if(isset($_GET["logOut"]))
     <link rel="stylesheet" href="/assets/css/bootstrap-reboot.min.css">
     <!-- <script src="/assets/js/jQuery.js"></script> -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/src/style.css">
     <!-- <link rel="stylesheet" href="/assets/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="/assets/css/bootstrap-grid.min.css">
     <!-- <link rel="stylesheet" href="/assets/css/bootstrap-grid.min.css.map"> -->
@@ -41,7 +41,7 @@ if(isset($_GET["logOut"]))
     <script src="/assets/js/cropper.min.js"></script>
     <script src="/assets/js/flickity.pkgd.min.js"></script>
     <!-- main script file -->
-    <script src="/assets/js/bundle.js" defer></script>
+    <script src="/assets/src/bundle.js" defer></script>
     <!-- <script src="/assets/js/bundle.js.map"  defer></script> -->
     <title>Document</title>
 </head>
