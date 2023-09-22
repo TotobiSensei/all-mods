@@ -1,0 +1,205 @@
+.themes,
+  .top-themes {
+    .add-theme {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #ff5252;
+        height: 35px;
+        width: 250px;
+        font-size: 17px;
+        color: white;
+        text-decoration: none;
+        &:hover {
+          background-color: #ea4d4d;
+        }
+      }
+    }
+    .theme {
+      display: flex;
+      justify-content: space-between;
+      margin: 10px 0px;
+      background-color: white;
+      box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.2);
+      .head-block {
+        margin-left: 10px;
+        min-width: 50%;
+      }
+      .date-block {
+        width: 25%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        font-size: 14px;
+      }
+      .views-block {
+        width: 15%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .theme-button {
+        width: 10%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        font-weight: bold;
+        a {
+          text-decoration: none;
+          color: #ff5252;
+          &:hover {
+            color: #f04e4e;
+          }
+        }
+        form {
+          input[type="submit"] {
+            border: none;
+            background: inherit;
+            cursor: pointer;
+            color: #ff5252;
+            font-weight: bold;
+            &:hover {
+              color: #f04e4e;
+            }//theme-page
+          }
+        }
+      }
+    }
+  }
+  .theme-page {
+    .theme-header {
+      display: flex;
+      margin: 20px 0px;
+      background-color: white;
+      box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.2);
+      .content {
+        padding: 10px 15px;
+        min-height: 200px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        .top {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 15px;
+          .head {
+            display: flex;
+            flex-direction: column;
+            .header {
+              font-size: 27px;
+              font-weight: bold;
+            }
+            .topic {
+              font-size: 23px;
+            }
+          }
+        }
+        .middle {
+          margin-bottom: auto;
+          margin-bottom: 15px;
+          padding: 0px 20px;
+        }
+        .bottom {
+          display: flex;
+          justify-content: space-between;
+          .left {
+            display: flex;
+            justify-content: space-between;
+            .author {
+              margin-right: 10px;
+            }
+            .create-date {
+              margin-right: 10px;
+            }
+          }
+          .right {
+            display: flex;
+            align-items: center;
+          }
+        }
+      }
+    }
+    .answer-block {
+      margin-top: 15px;
+      .answer {
+        min-height: 150px;
+        min-width: 1024px;
+        margin: 15px auto;
+        background-color: white;
+        box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.2);
+        .user-info {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          &:hover {
+            background-color: #00000016;
+            transition: 0.3s;
+          }
+          .user-img {
+            margin: 10px 0px;
+            height: 125px;
+            width: 125px;
+          }
+          .user-name {
+            display: flex;
+            font-size: 20px;
+            font-weight: bold;
+          }
+        }
+        .message {
+          display: flex;
+          flex-direction: column;
+          .top {
+            min-height: 125px;
+            padding: 15px;
+          }
+          .bottom {
+            display: flex;
+            .date-block {
+              display: flex;
+              align-items: flex-start;
+              .date {
+                margin-right: 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+    .form-block {
+      display: flex;
+      width: 100%;
+      form {
+        textarea {
+          width: 100%;
+          min-height: 125px;
+          resize: vertical;
+        }
+        input[type="submit"] {
+          color: white;
+          background-color: #ff5252;
+          border: none;
+          border-radius: 30px;
+          margin-top: 10px;
+          margin-left: auto;
+          display: block;
+          height: 45px;
+          width: 15%;
+          font-weight: bold;
+          &:hover {
+            background-color: #e24949;
+            transition: 0.3s;
+          }//Сторінка завантаження модифікації
+        }
+      }
+    }
+  }

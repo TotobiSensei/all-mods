@@ -1,0 +1,91 @@
+.upload-page {
+    form {
+      display: flex;
+      flex-direction: column;
+      margin: 10px auto;
+      padding: 20px;
+      width: 500px;
+      background-color: white;
+      input {
+        border: none;
+        border-bottom: 1px solid black;
+        outline: none;
+        margin-bottom: 15px;
+        box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.2);
+        height: 35px;
+      }
+      textarea {
+        outline: none;
+      }
+      select {
+        border: none;
+        border-bottom: 1px solid black;
+        outline: none;
+        margin-bottom: 15px;
+        box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.2);
+        height: 35px;
+      }
+      input[type="submit"] {
+        width: 50%;
+        margin: 0px auto;
+        background-color: #ff5252;
+        color: white;
+        &:hover {
+          background-color: #e34747;
+          transition: 0.3s;
+        }
+      }
+      label {
+        text-align: center;
+        font-weight: bold;
+      }
+      .buttons {
+        display: flex;
+      }//sorts
+    }
+  }
+  .options {
+    .sort-wrap {
+      display: flex;
+      align-items: flex-start;
+      margin: 10px 0px;
+      form {
+        select {
+          height: 35px;
+          min-width: 50px;
+          text-align: center;
+          float: left;
+          outline: none;
+          cursor: pointer;
+          font-size: 16px;
+        }
+        .sort-input {
+          border-right: none;
+        }
+        .order-input {
+          border-left: none;
+          border-right: none;
+        }
+        .categories-input {
+          border-right: none;
+        }
+        input[type="submit"] {
+          border-left: none;
+          border-top: 1px solid;
+          border-right: 1px solid;
+          border-bottom: 1px solid;
+          border-color: black;
+          height: 35px;
+          min-width: 100px;
+          cursor: pointer;
+          background-color: #ff5252;
+          color: #ffffff;
+          font-size: 16px;
+          font-weight: bold;
+          &:hover {
+            background-color: rgb(214, 75, 75);
+          }//MESSAGES
+        }
+      }
+    }
+  }

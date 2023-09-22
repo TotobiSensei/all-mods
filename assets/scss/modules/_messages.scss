@@ -1,0 +1,183 @@
+.private-messages {
+    margin: 15px;
+    .col,
+    .col-4 {
+      padding: 0 !important;
+    }
+    .dialog-list {
+      max-height: 85vh;
+      width: 100%;
+      overflow: auto;
+      .row {
+        margin: 0 !important;
+      }
+      .message {
+        display: flex;
+        justify-content: space-between;
+        background-color: white;
+        user-select: none;
+        height: 100px;
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #9d9d9d;
+        &:hover {
+          background-color: #b7b7b784;
+          transition: 0.3s;
+        }
+        .left {
+          img {
+            padding: 10px;
+            height: 100px;
+            width: 100px;
+          }
+        }
+        .right {
+          display: flex;
+          flex-direction: column;
+          flex-grow: 1;
+          .top {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px 0px;
+            .author {
+              font-weight: bold;
+            }
+            .date {
+              margin-right: 5px;
+            }
+          }
+        }
+      }
+    }
+    .message-window {
+      display: flex;
+      flex-direction: column;
+      height: 85vh;
+      width: 100%;
+      background-color: #e1e1e1;
+      .message-list {
+        display: flex;
+        flex-direction: column-reverse;
+        flex-grow: 1;
+        overflow: auto;
+        margin-bottom: 10px;
+        .top {
+          display: flex;
+          flex-direction: column;
+          margin: 10px 0px;
+          .message-body {
+            display: flex;
+            max-width: 50%;
+            min-height: 50px;
+            .left {
+              display: flex;
+              align-items: flex-end;
+              img {
+                height: 50px;
+                width: 50px;
+              }
+            }
+            .right {
+              display: flex;
+              flex-direction: column;
+              height: 100%;
+              width: 100%;
+              padding: 5px;
+              border-radius: 10px;
+              flex-grow: 1;
+              background-color: #fff;
+              overflow-wrap: anywhere;
+              .text {
+                padding: 5px;
+                font-size: 18px;
+              }
+              .date {
+                font-size: 13px;
+              }
+              .unchecked,
+              .checked {
+                font-weight: bold;
+              }
+              .unchecked {
+                color: #7d7d7d;
+              }
+              .checked {
+                color: #ff5252;
+              }
+            }
+          }
+        }
+        .my-message {
+          align-items: flex-start;
+          .left {
+            margin-left: 10px;
+          }
+          .right {
+            margin-left: 5px;
+            span:nth-child(2) {
+              display: flex;
+              justify-content: flex-end;
+            }
+          }
+        }
+        .other-message {
+          align-items: flex-end;
+          .message-body {
+            display: flex;
+            flex-direction: row-reverse;
+            .left {
+              margin-right: 10px;
+            }
+            .right {
+              margin-right: 5px;
+              span:nth-child(2) {
+                display: flex;
+                justify-content: flex-end;
+              }
+            }
+          }
+        }
+      }
+      .bottom {
+        width: 100%;
+        background-color: #c2c2c2d6;
+        form {
+          position: relative;
+          textarea {
+            background-color: inherit;
+            font-size: 20px;
+            height: 60px;
+            width: 100%;
+            padding: 15px 90px 15px 20px;
+            border: none;
+            outline: none;
+            max-height: 320px;
+            resize: none;
+          }
+          input[type="submit"] {
+            height: 40px;
+            width: 40px;
+            position: fixed;
+            top: 88.5%;
+            right: 0;
+            transform: translate(-50%, -50%);
+            border: 2px solid #ff5252;
+            border-radius: 20px;
+            vertical-align: middle;
+            font-size: 27px;
+            line-height: 1;
+            color: #ff5252;
+            cursor: pointer;
+            &:hover {
+              border: 2px solid #e84b4b;
+              color: #e84b4b;
+              transition: 0.3s;
+            }
+  
+  
+  //
+          }
+        }
+      }
+    }
+  }

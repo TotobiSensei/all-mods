@@ -280,6 +280,6 @@ class Render
         self::$auth     = new Authentication();
         self::$read     = new Read();
         self::$db       = Database::pdo();
-        self::$sessId   = $_SESSION["user"];
+        self::$sessId   = @$_SESSION["user"];
     }
 }

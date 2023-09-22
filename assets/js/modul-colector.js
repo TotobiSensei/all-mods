@@ -6,7 +6,7 @@ import chatObserv from "./modules/chat-action";
 import checkVisibleMessages from "./modules/Up-date-messages";
 import modalAction from "./modules/modal-action";
 import { MissingElementError, SelectorReferenceError, ErrorReader} from "./modules/services/error-liblrary";
-import "/scss/style.scss";
+import "/assets/scss/styles-colector.scss";
 // Ініціалізація методів глобального обьекта
 window.addEventListener("load", checkVisibleMessages);
 window.addEventListener("DOMContentLoaded", (e) => {

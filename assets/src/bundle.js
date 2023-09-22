@@ -691,10 +691,10 @@ function userIMg(data) {
 
 /***/ }),
 
-/***/ "./scss/style.scss":
-/*!*************************!*\
-  !*** ./scss/style.scss ***!
-  \*************************/
+/***/ "./assets/scss/styles-colector.scss":
+/*!******************************************!*\
+  !*** ./assets/scss/styles-colector.scss ***!
+  \******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -774,7 +774,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_Up_date_messages__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/Up-date-messages */ "./assets/js/modules/Up-date-messages.js");
 /* harmony import */ var _modules_modal_action__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/modal-action */ "./assets/js/modules/modal-action.js");
 /* harmony import */ var _modules_services_error_liblrary__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/services/error-liblrary */ "./assets/js/modules/services/error-liblrary.js");
-/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../scss/style.scss */ "./scss/style.scss");
+/* harmony import */ var _assets_scss_styles_colector_scss__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../assets/scss/styles-colector.scss */ "./assets/scss/styles-colector.scss");
 
 
 

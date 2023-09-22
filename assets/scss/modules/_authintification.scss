@@ -1,0 +1,133 @@
+.auth {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 0 auto;
+    margin-top: 10%;
+    box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
+    width: 35%;
+    height: 450px;
+    background-color: white;
+    span {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 70px;
+      .error {
+        border: 2px solid red;
+        margin-top: 10px;
+        padding: 7px 17px;
+        font-size: 18px;
+      }
+      label {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      input[type="text"] {
+        width: 250px;
+        height: 35px;
+        border: none;
+        border-bottom: 1px solid;
+        outline: none;
+      }
+      input[type="password"] {
+        height: 35px;
+        width: 250px;
+        border: none;
+        border-bottom: 1px solid;
+        outline: none;
+      }
+      input[type="submit"] {
+        margin-top: 15px;
+        width: 65%;
+        height: 40px;
+        border-radius: 20px;
+        background-color: #ff0114;
+        color: white;
+        font-size: 19px;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+        &:hover {
+          background-color: #FF7A73;
+          transition: 0.3s;
+        }
+      }
+    }
+    .forgot-psw {
+      font-size: 19px;
+      margin-top: 25px;
+    }
+  }
+  .sign-in {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 0 auto;
+    margin-top: 10%;
+    box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
+    width: 35%;
+    min-height: 500px;
+    background-color: white;
+    span {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 70px;
+      .error {
+        border: 2px solid red;
+        margin-top: 10px;
+        padding: 7px 23px;
+        font-size: 17px;
+      }
+      label {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      input[type="text"] {
+        width: 250px;
+        height: 35px;
+        border: none;
+        border-bottom: 1px solid;
+        outline: none;
+      }
+      input[type="password"] {
+        height: 35px;
+        width: 250px;
+        border: none;
+        border-bottom: 1px solid;
+        outline: none;
+      }
+      input[type="submit"] {
+        margin: 15px 0;
+        width: 65%;
+        height: 40px;
+        border-radius: 20px;
+        background-color: #ff0114;
+        color: white;
+        font-size: 19px;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+        &:hover {
+          background-color: #FF7A73;
+          transition: 0.3s;
+        }//forum
+      }
+    }
+  }

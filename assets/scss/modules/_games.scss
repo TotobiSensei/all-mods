@@ -1,0 +1,54 @@
+.games {
+    .item {
+      margin: 10px 0px;
+      background-color: #e3e3e3;
+      display: flex;
+      flex-direction: column;
+      min-height: 100px;
+      width: 230px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      border-radius: 20px;
+    }
+    .img-block {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      img {
+        border-radius: 20px 20px 0px 0px;
+        height: 230px;
+        width: 230px;
+      }
+    }
+    .action-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      span {
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+      }
+      .button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #ff5252;
+        height: 40px;
+        width: 125px;
+        margin: 8px 0px;
+        border-radius: 20px;
+        &:hover {
+          background-color: #FF8080;
+          transition: 0.3s;
+        }
+        a {
+          font-size: 18px;
+          font-weight: bold;
+          text-decoration: none;
+          color: white;
+        }//mods section
+      }
+    }
+  }
