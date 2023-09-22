@@ -1,3 +1,5 @@
+@use "/assets/scss/modules/variables.scss";
+
 .pagination-wrap {
     display: flex;
     justify-content: center;
@@ -6,7 +8,7 @@
       font-size: 18px;
       a {
         margin: 0px 3px;
-        background-color: #ff5252;
+        background-color: variables.$primary-black-bg-color;
         padding: 3px 7px;
         text-decoration: none;
         color: white;
@@ -16,7 +18,7 @@
         }
       }
       .active {
-        background-color: #d34444;
+        background-color: variables.$primary-blue-bg-color;
       }//rating test form
     }
   }

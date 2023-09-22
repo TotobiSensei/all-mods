@@ -1,3 +1,5 @@
+@use "/assets/scss/modules/variables.scss";
+
 .post-action {
     display: flex;
     align-items: center;
@@ -79,12 +81,12 @@
         height: 35px;
         width: 125px;
         border: none;
-        background-color: #ff5252;
+        background-color: variables.$primary-blue-bg-color;
         color: white;
         font-weight: bold;
         cursor: pointer;
         &:hover {
-          background-color: #df4747;
+          background-color: variables.$primary-black-bg-color;
           transition: 0.3s;
         }//coment block
       }
@@ -92,11 +94,13 @@
   }
   .answer-block {
     width: 100%;
+    font-size: 1.8rem;
     .answer {
       display: flex;
       min-height: 200px;
       width: 85%;
       margin: 0 auto;
+      overflow-wrap: anywhere;
       background-color: white;
       box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.2);
       margin-bottom: 20px;
@@ -125,7 +129,7 @@
         flex-direction: column;
         flex-grow: 1;
         width: 80%;
-        padding: 10px;
+        padding: 2rem;
         .top {
           font-size: 20px;
           height: 100%;

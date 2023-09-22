@@ -1,13 +1,14 @@
+@use "/assets/scss/modules/variables.scss";
+
 .games {
     .item {
       margin: 10px 0px;
-      background-color: #e3e3e3;
+      background-color: white;
       display: flex;
       flex-direction: column;
       min-height: 100px;
       width: 230px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      border-radius: 20px;
     }
     .img-block {
       display: flex;
@@ -25,6 +26,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      padding: 1rem;
       span {
         font-size: 18px;
         font-weight: bold;
@@ -34,13 +36,13 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: #ff5252;
+        background-color: variables.$primary-black-bg-color;
         height: 40px;
         width: 125px;
         margin: 8px 0px;
-        border-radius: 20px;
+        border-radius: 0.5rem;
         &:hover {
-          background-color: #FF8080;
+          background-color: variables.$primary-blue-bg-color;
           transition: 0.3s;
         }
         a {

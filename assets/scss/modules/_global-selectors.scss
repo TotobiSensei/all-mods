@@ -1,3 +1,5 @@
+@use "/assets/scss/modules/variables.scss";
+
 * {
     font-family: "Roboto", sans-serif;
   }
@@ -6,6 +8,7 @@
     height: 100%;
     margin: 0;
     background-color: #f1f1f1;
+    font-size: 10px;
   }
   .wrapper {
     min-height: 100%;
@@ -14,33 +17,38 @@
   }
   main {
     flex: 1 1 auto;
+    margin: 5rem 0 0 0;
   }
 
   footer {
     width: 100%;
     min-height: 50px;
+    margin: 0 0 3rem 0;
     nav {
       width: 100%;
       height: 50px;
       margin: 0;
       padding: 0;
-      background-color: #ff5252;
-  
       ul {
         list-style-type: none;
         display: flex;
         justify-content: center;
         .item {
-          margin-top: 10px;
+          background-color: variables.$primary-black-bg-color;
+          margin: 1rem 2rem 0 0;
+          padding: 1rem;
           display: flex;
           align-items: center;
+          transition: background-color 0.3s ease-in-out;
+          &:hover {
+            background-color: variables.$primary-blue-bg-color;
+          }//pagination
           .link {
             text-decoration: none;
             color: white;
             padding: 0px 5px;
-            &:hover {
-              color: #B18152;
-            }//pagination
+            font-size: 2rem;
+           
           }
         }
       }

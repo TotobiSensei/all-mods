@@ -1,3 +1,5 @@
+@use "/assets/scss/modules/variables.scss";
+
 .upload-page {
     form {
       display: flex;
@@ -78,12 +80,12 @@
           height: 35px;
           min-width: 100px;
           cursor: pointer;
-          background-color: #ff5252;
+          background-color: variables.$primary-black-bg-color;
           color: #ffffff;
           font-size: 16px;
           font-weight: bold;
           &:hover {
-            background-color: rgb(214, 75, 75);
+            background-color: variables.$primary-blue-bg-color;
           }//MESSAGES
         }
       }

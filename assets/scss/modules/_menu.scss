@@ -1,12 +1,14 @@
+@use "/assets/scss/modules/variables.scss";
+
 header {
     position: realtive;
-    height: 50px;
+    height: 7rem;
+    background-color: white;
+    border-bottom: 0.1rem solid gray;
     nav {
-      position: fixed;
       width: 100%;
-      height: 50px;
-      margin: 0;
-      background-color: #ff5252;
+      height: 5rem;
+      margin-top: 1rem;
       z-index: 5;
   
       ul {
@@ -18,21 +20,23 @@ header {
         justify-content: flex-start;
         margin: 0;
         padding: 0;
-        height: 50px;
+        height: 5rem;
         .item {
-          background-color: #ff5252;
+          background-color: variables.$primary-black-bg-color;
+          margin: 0 1rem 0 0;
+
           display: flex;
           align-items: center;
           transition: background-color 0.3s ease-in-out;
           &:hover {
-            background-color: #e14b4b;
+            background-color: variables.$primary-blue-bg-color;;
           }
           .link {
             padding: 0px 20px;
             text-decoration: none;
             color: white;
             background-color: inherit;
-            font-size: 18px;
+            font-size: 1.8rem;
             font-weight: bold;
           }
         }

@@ -1,7 +1,9 @@
+@use "/assets/scss/modules/variables.scss";
+
 .report-button {
     background-color: inherit;
     border: none;
-    color: #ff5252;
+    color: variables.$primary-black-bg-color;
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;

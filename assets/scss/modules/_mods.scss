@@ -1,3 +1,5 @@
+@use "/assets/scss/modules/variables.scss";
+
 .mods {
     .mod {
       display: flex;
@@ -64,7 +66,7 @@
         justify-content: center;
         height: 35px;
         width: 100%;
-        background-color: #ff5252;
+        background-color: variables.$primary-blue-bg-color;
         a {
           width: 100%;
           height: 100%;
@@ -74,7 +76,7 @@
           color: white;
           text-decoration: none;
           &:hover {
-            background-color: #de4646;
+            background-color: variables.$primary-black-bg-color;
             transition: 0.3s ease-in-out;
           }
         }
@@ -117,9 +119,9 @@
               align-items: center;
               justify-content: center;
               cursor: pointer;
-              color: black;
+              color: variables.$primary-blue-bg-color;
               &:hover {
-                color: #ff5252;
+                color: variables.$primary-black-bg-color;
                 transition: background-color 1s;
               }
               span:nth-child(1) {
@@ -177,9 +179,9 @@
           text-decoration: none;
           color: white;
           font-size: 17px;
-          background-color: #ff5252;
+          background-color: variables.$primary-blue-bg-color;
           &:hover {
-            background-color: #e64949;
+            background-color: variables.$primary-black-bg-color;
             transition: 0.3s;
           }
         }
