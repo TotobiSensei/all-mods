@@ -220,24 +220,26 @@
   height: 35px;
   width: 125px;
   border: none;
-  background-color: #ff5252;
+  background-color: #6A8A82;
   color: white;
   font-weight: bold;
   cursor: pointer;
 }
 .answer-form form input[type=submit]:hover {
-  background-color: #df4747;
+  background-color: #282726;
   transition: 0.3s;
 }
 
 .answer-block {
   width: 100%;
+  font-size: 1.8rem;
 }
 .answer-block .answer {
   display: flex;
   min-height: 200px;
   width: 85%;
   margin: 0 auto;
+  overflow-wrap: anywhere;
   background-color: white;
   box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.2);
   margin-bottom: 20px;
@@ -267,7 +269,7 @@
   flex-direction: column;
   flex-grow: 1;
   width: 80%;
-  padding: 10px;
+  padding: 2rem;
 }
 .answer-block .answer .right .top {
   font-size: 20px;
@@ -569,13 +571,12 @@
 
 .games .item {
   margin: 10px 0px;
-  background-color: #e3e3e3;
+  background-color: white;
   display: flex;
   flex-direction: column;
   min-height: 100px;
   width: 230px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  border-radius: 20px;
 }
 .games .img-block {
   display: flex;
@@ -593,6 +594,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 1rem;
 }
 .games .action-block span {
   font-size: 18px;
@@ -603,14 +605,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ff5252;
+  background-color: #282726;
   height: 40px;
   width: 125px;
   margin: 8px 0px;
-  border-radius: 20px;
+  border-radius: 0.5rem;
 }
 .games .action-block .button:hover {
-  background-color: #FF8080;
+  background-color: #6A8A82;
   transition: 0.3s;
 }
 .games .action-block .button a {
@@ -629,6 +631,7 @@ body {
   height: 100%;
   margin: 0;
   background-color: #f1f1f1;
+  font-size: 10px;
 }
 
 .wrapper {
@@ -639,18 +642,19 @@ body {
 
 main {
   flex: 1 1 auto;
+  margin: 5rem 0 0 0;
 }
 
 footer {
   width: 100%;
   min-height: 50px;
+  margin: 0 0 3rem 0;
 }
 footer nav {
   width: 100%;
   height: 50px;
   margin: 0;
   padding: 0;
-  background-color: #ff5252;
 }
 footer nav ul {
   list-style-type: none;
@@ -658,17 +662,21 @@ footer nav ul {
   justify-content: center;
 }
 footer nav ul .item {
-  margin-top: 10px;
+  background-color: #282726;
+  margin: 1rem 2rem 0 0;
+  padding: 1rem;
   display: flex;
   align-items: center;
+  transition: background-color 0.3s ease-in-out;
+}
+footer nav ul .item:hover {
+  background-color: #6A8A82;
 }
 footer nav ul .item .link {
   text-decoration: none;
   color: white;
   padding: 0px 5px;
-}
-footer nav ul .item .link:hover {
-  color: #B18152;
+  font-size: 2rem;
 }
 
 .jump-btn {
@@ -764,14 +772,14 @@ footer nav ul .item .link:hover {
 
 header {
   position: realtive;
-  height: 50px;
+  height: 7rem;
+  background-color: white;
+  border-bottom: 0.1rem solid gray;
 }
 header nav {
-  position: fixed;
   width: 100%;
-  height: 50px;
-  margin: 0;
-  background-color: #ff5252;
+  height: 5rem;
+  margin-top: 1rem;
   z-index: 5;
 }
 header nav ul {
@@ -783,18 +791,19 @@ header nav .user {
   justify-content: flex-start;
   margin: 0;
   padding: 0;
-  height: 50px;
+  height: 5rem;
 }
 header nav .menu .item,
 header nav .user .item {
-  background-color: #ff5252;
+  background-color: #282726;
+  margin: 0 1rem 0 0;
   display: flex;
   align-items: center;
   transition: background-color 0.3s ease-in-out;
 }
 header nav .menu .item:hover,
 header nav .user .item:hover {
-  background-color: #e14b4b;
+  background-color: #6A8A82;
 }
 header nav .menu .item .link,
 header nav .user .item .link {
@@ -802,7 +811,7 @@ header nav .user .item .link {
   text-decoration: none;
   color: white;
   background-color: inherit;
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: bold;
 }
 header nav .user {
@@ -1082,13 +1091,13 @@ header nav .user .messages .link {
   height: 35px;
   min-width: 100px;
   cursor: pointer;
-  background-color: #ff5252;
+  background-color: #282726;
   color: #ffffff;
   font-size: 16px;
   font-weight: bold;
 }
 .options .sort-wrap form input[type=submit]:hover {
-  background-color: rgb(214, 75, 75);
+  background-color: #6A8A82;
 }
 
 .mods .mod {
@@ -1155,7 +1164,7 @@ header nav .user .messages .link {
   justify-content: center;
   height: 35px;
   width: 100%;
-  background-color: #ff5252;
+  background-color: #6A8A82;
 }
 .mods .mod .button a {
   width: 100%;
@@ -1167,7 +1176,7 @@ header nav .user .messages .link {
   text-decoration: none;
 }
 .mods .mod .button a:hover {
-  background-color: #de4646;
+  background-color: #282726;
   transition: 0.3s ease-in-out;
 }
 
@@ -1210,10 +1219,10 @@ header nav .user .messages .link {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: black;
+  color: #6A8A82;
 }
 .mod-page .info-block .top .right .name .edit:hover {
-  color: #ff5252;
+  color: #282726;
   transition: background-color 1s;
 }
 .mod-page .info-block .top .right .name .edit span:nth-child(1) {
@@ -1268,10 +1277,10 @@ header nav .user .messages .link {
   text-decoration: none;
   color: white;
   font-size: 17px;
-  background-color: #ff5252;
+  background-color: #6A8A82;
 }
 .mod-page .info-block .bottom .button:hover {
-  background-color: #e64949;
+  background-color: #282726;
   transition: 0.3s;
 }
 .mod-page .info-block .warning {
@@ -1297,7 +1306,7 @@ header nav .user .messages .link {
 }
 .pagination-wrap .pagination a {
   margin: 0px 3px;
-  background-color: #ff5252;
+  background-color: #282726;
   padding: 3px 7px;
   text-decoration: none;
   color: white;
@@ -1307,7 +1316,7 @@ header nav .user .messages .link {
   background-color: #d34444;
 }
 .pagination-wrap .pagination .active {
-  background-color: #d34444;
+  background-color: #6A8A82;
 }
 
 .profile-edit {
@@ -1773,7 +1782,7 @@ header nav .user .messages .link {
 .report-button {
   background-color: inherit;
   border: none;
-  color: #ff5252;
+  color: #282726;
   font-size: 20px;
   font-weight: bold;
   cursor: pointer;
