@@ -7,16 +7,16 @@
   align-items: flex-start;
   margin: 0 auto;
   margin-top: 10%;
-  box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.2);
   width: 35%;
-  height: 450px;
+  height: 45rem;
   background-color: white;
 }
 .auth span {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
-  font-size: 20px;
+  margin-top: 2rem;
+  font-size: 2rem;
   font-weight: bold;
 }
 .auth form {
@@ -24,40 +24,40 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 70px;
+  margin-top: 7rem;
 }
 .auth form .error {
-  border: 2px solid red;
-  margin-top: 10px;
-  padding: 7px 17px;
-  font-size: 18px;
+  border: 0.2rem solid red;
+  margin-top: 1rem;
+  padding: 0.7rem 1.7rem;
+  font-size: 1.8rem;
 }
 .auth form label {
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: bold;
 }
 .auth form input[type=text] {
-  width: 250px;
-  height: 35px;
+  width: 25rem;
+  height: 3.5rem;
   border: none;
-  border-bottom: 1px solid;
+  border-bottom: 0.1rem solid;
   outline: none;
 }
 .auth form input[type=password] {
-  height: 35px;
-  width: 250px;
+  height: 3.5rem;
+  width: 25rem;
   border: none;
-  border-bottom: 1px solid;
+  border-bottom: 0.1rem solid;
   outline: none;
 }
 .auth form input[type=submit] {
-  margin-top: 15px;
+  margin-top: 1.5rem;
   width: 65%;
-  height: 40px;
-  border-radius: 20px;
+  height: 4rem;
+  border-radius: 2rem;
   background-color: #ff0114;
   color: white;
-  font-size: 19px;
+  font-size: 1.9rem;
   font-weight: bold;
   border: none;
   cursor: pointer;
@@ -67,8 +67,8 @@
   transition: 0.3s;
 }
 .auth .forgot-psw {
-  font-size: 19px;
-  margin-top: 25px;
+  font-size: 1.9rem;
+  margin-top: 2.5rem;
 }
 
 .sign-in {
@@ -77,56 +77,56 @@
   align-items: flex-start;
   margin: 0 auto;
   margin-top: 10%;
-  box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.2);
   width: 35%;
-  min-height: 500px;
+  min-height: 50rem;
   background-color: white;
 }
 .sign-in span {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
-  font-size: 20px;
+  margin-top: 2rem;
+  font-size: 2rem;
   font-weight: bold;
 }
 .sign-in form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 70px;
+  margin-top: 7rem;
 }
 .sign-in form .error {
-  border: 2px solid red;
-  margin-top: 10px;
-  padding: 7px 23px;
-  font-size: 17px;
+  border: 0.2rem solid red;
+  margin-top: 1rem;
+  padding: 0.7rem 2.3rem;
+  font-size: 1.7rem;
 }
 .sign-in form label {
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: bold;
 }
 .sign-in form input[type=text] {
-  width: 250px;
-  height: 35px;
+  width: 25rem;
+  height: 3.5rem;
   border: none;
-  border-bottom: 1px solid;
+  border-bottom: 0.1rem solid;
   outline: none;
 }
 .sign-in form input[type=password] {
-  height: 35px;
-  width: 250px;
+  height: 3.5rem;
+  width: 25rem;
   border: none;
-  border-bottom: 1px solid;
+  border-bottom: 0.1rem solid;
   outline: none;
 }
 .sign-in form input[type=submit] {
-  margin: 15px 0;
+  margin: 1.5rem 0;
   width: 65%;
-  height: 40px;
-  border-radius: 20px;
+  height: 4rem;
+  border-radius: 2rem;
   background-color: #ff0114;
   color: white;
-  font-size: 19px;
+  font-size: 1.9rem;
   font-weight: bold;
   border: none;
   cursor: pointer;
@@ -141,20 +141,20 @@
   align-items: center;
   justify-content: flex-end;
   flex: 1;
-  height: 20px;
+  height: 2rem;
 }
 .post-action .reviews {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 20px;
+  margin-right: 2rem;
 }
 .post-action .reviews .up {
   display: inline-block;
-  font-size: 40px;
+  font-size: 4rem;
   color: gray;
   transform: scaleX(-1);
-  margin-right: 5px;
+  margin-right: 0.5rem;
   text-decoration: none;
 }
 .post-action .reviews .up input[type=submit] {
@@ -168,18 +168,18 @@
 }
 .post-action .reviews .up:hover {
   color: green;
-  text-shadow: 1px 1px 1px #54fc62;
+  text-shadow: 0.1rem 0.1rem 0.1rem #54fc62;
 }
 .post-action .reviews .up .active {
   color: green;
-  text-shadow: 1px 1px 1px #54fc62;
+  text-shadow: 0.1rem 0.1rem 0.1rem #54fc62;
 }
 .post-action .reviews .down {
   display: inline-block;
-  font-size: 40px;
+  font-size: 4rem;
   color: gray;
   transform: scaleX(-1);
-  margin-left: 5px;
+  margin-left: 0.5rem;
   text-decoration: none;
 }
 .post-action .reviews .down input[type=submit] {
@@ -193,32 +193,32 @@
 }
 .post-action .reviews .down .active {
   color: red;
-  text-shadow: 0px 0px 3px #fc5454;
+  text-shadow: 0 0 0.3rem #fc5454;
 }
 .post-action .reviews .down:hover {
   color: red;
-  text-shadow: 1px 1px 1px #fc5454;
+  text-shadow: 0.1rem 0.1rem 0.1rem #fc5454;
 }
 
 .answer-form {
   width: 100%;
-  max-height: 250px;
-  margin-bottom: 15px;
+  max-height: 25rem;
+  margin-bottom: 1.5rem;
 }
 .answer-form form {
   display: flex;
   flex-direction: column;
 }
 .answer-form form textarea {
-  max-height: 215px;
+  max-height: 21.5rem;
   width: 100%;
   border: none;
   outline: none;
 }
 .answer-form form input[type=submit] {
   margin-left: auto;
-  height: 35px;
-  width: 125px;
+  height: 3.5rem;
+  width: 12.5rem;
   border: none;
   background-color: #6A8A82;
   color: white;
@@ -236,13 +236,13 @@
 }
 .answer-block .answer {
   display: flex;
-  min-height: 200px;
+  min-height: 20rem;
   width: 85%;
   margin: 0 auto;
   overflow-wrap: anywhere;
   background-color: white;
-  box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.2);
-  margin-bottom: 20px;
+  box-shadow: 0 0.2rem 0.3rem 0.2rem rgba(0, 0, 0, 0.2);
+  margin-bottom: 2rem;
 }
 .answer-block .answer .left {
   display: flex;
@@ -253,15 +253,15 @@
   height: 100%;
 }
 .answer-block .answer .left .user-img {
-  height: 125px;
-  width: 125px;
-  margin-top: 10px;
-  margin-bottom: 5px;
+  height: 12.5rem;
+  width: 12.5rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
 }
 .answer-block .answer .left .user-name {
   color: black;
   font-weight: bold;
-  font-size: 19px;
+  font-size: 1.9rem;
   text-decoration: none;
 }
 .answer-block .answer .right {
@@ -272,10 +272,10 @@
   padding: 2rem;
 }
 .answer-block .answer .right .top {
-  font-size: 20px;
+  font-size: 2rem;
   height: 100%;
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
 }
 .answer-block .answer .right .bottom {
   display: flex;
@@ -287,7 +287,7 @@
   justify-content: space-between;
 }
 .answer-block .answer .right .bottom .date-block .date {
-  margin-right: 10px;
+  margin-right: 1rem;
 }
 
 .cropper-crop-box,
@@ -296,14 +296,14 @@
 }
 
 .cropper-view-box {
-  box-shadow: 0 0 0 1px #39f;
+  box-shadow: 0 0 0 0.1rem #39f;
   outline: 0;
-  height: 50px;
+  height: 5rem;
 }
 .cropper-view-box nav {
   position: fixed;
   width: 100%;
-  height: 50px;
+  height: 5rem;
   margin: 0;
   background-color: #ff5252;
   z-index: 5;
@@ -317,7 +317,7 @@
   justify-content: flex-start;
   margin: 0;
   padding: 0;
-  height: 50px;
+  height: 5rem;
 }
 .cropper-view-box nav .menu .item,
 .cropper-view-box nav .user .item {
@@ -332,11 +332,11 @@
 }
 .cropper-view-box nav .menu .item .link,
 .cropper-view-box nav .user .item .link {
-  padding: 0px 20px;
+  padding: 0 2rem;
   text-decoration: none;
   color: white;
   background-color: inherit;
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: bold;
 }
 .cropper-view-box nav .user {
@@ -344,19 +344,19 @@
   justify-content: flex-end;
 }
 .cropper-view-box nav .user .profile img {
-  width: 27px;
-  height: 27px;
-  margin-left: 20px;
+  width: 2.7rem;
+  height: 2.7rem;
+  margin-left: 2rem;
 }
 .cropper-view-box nav .user .profile .link {
-  padding: 0px 20px 0px 5px;
+  padding: 0 2rem 0 0.5rem;
 }
 .cropper-view-box nav .user .log-out .link {
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: bold;
 }
 .cropper-view-box nav .user .messages .link {
-  font-size: 25px;
+  font-size: 2.5rem;
 }
 
 .themes .add-theme,
@@ -364,7 +364,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 1rem;
 }
 .themes .add-theme a,
 .top-themes .add-theme a {
@@ -372,9 +372,9 @@
   align-items: center;
   justify-content: center;
   background-color: #ff5252;
-  height: 35px;
-  width: 250px;
-  font-size: 17px;
+  height: 3.5rem;
+  width: 25rem;
+  font-size: 1.7rem;
   color: white;
   text-decoration: none;
 }
@@ -386,13 +386,13 @@
 .top-themes .theme {
   display: flex;
   justify-content: space-between;
-  margin: 10px 0px;
+  margin: 1rem 0;
   background-color: white;
-  box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.2rem 0.3rem 0.2rem rgba(0, 0, 0, 0.2);
 }
 .themes .theme .head-block,
 .top-themes .theme .head-block {
-  margin-left: 10px;
+  margin-left: 1rem;
   min-width: 50%;
 }
 .themes .theme .date-block,
@@ -402,7 +402,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  font-size: 14px;
+  font-size: 1.4rem;
 }
 .themes .theme .views-block,
 .top-themes .theme .views-block {
@@ -444,13 +444,13 @@
 
 .theme-page .theme-header {
   display: flex;
-  margin: 20px 0px;
+  margin: 2rem 0;
   background-color: white;
-  box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.2rem 0.3rem 0.2rem rgba(0, 0, 0, 0.2);
 }
 .theme-page .theme-header .content {
-  padding: 10px 15px;
-  min-height: 200px;
+  padding: 1rem 1.5rem;
+  min-height: 20rem;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -458,23 +458,23 @@
 .theme-page .theme-header .content .top {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 15px;
+  margin-bottom: 1.5rem;
 }
 .theme-page .theme-header .content .top .head {
   display: flex;
   flex-direction: column;
 }
 .theme-page .theme-header .content .top .head .header {
-  font-size: 27px;
+  font-size: 2.7rem;
   font-weight: bold;
 }
 .theme-page .theme-header .content .top .head .topic {
-  font-size: 23px;
+  font-size: 2.3rem;
 }
 .theme-page .theme-header .content .middle {
   margin-bottom: auto;
-  margin-bottom: 15px;
-  padding: 0px 20px;
+  margin-bottom: 1.5rem;
+  padding: 0 2rem;
 }
 .theme-page .theme-header .content .bottom {
   display: flex;
@@ -485,24 +485,24 @@
   justify-content: space-between;
 }
 .theme-page .theme-header .content .bottom .left .author {
-  margin-right: 10px;
+  margin-right: 1rem;
 }
 .theme-page .theme-header .content .bottom .left .create-date {
-  margin-right: 10px;
+  margin-right: 1rem;
 }
 .theme-page .theme-header .content .bottom .right {
   display: flex;
   align-items: center;
 }
 .theme-page .answer-block {
-  margin-top: 15px;
+  margin-top: 1.5rem;
 }
 .theme-page .answer-block .answer {
-  min-height: 150px;
-  min-width: 1024px;
-  margin: 15px auto;
+  min-height: 15rem;
+  min-width: 102.4rem;
+  margin: 1.5rem auto;
   background-color: white;
-  box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.2rem 0.3rem 0.2rem rgba(0, 0, 0, 0.2);
 }
 .theme-page .answer-block .answer .user-info {
   display: flex;
@@ -516,13 +516,13 @@
   transition: 0.3s;
 }
 .theme-page .answer-block .answer .user-info .user-img {
-  margin: 10px 0px;
-  height: 125px;
-  width: 125px;
+  margin: 1rem 0;
+  height: 12.5rem;
+  width: 12.5rem;
 }
 .theme-page .answer-block .answer .user-info .user-name {
   display: flex;
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: bold;
 }
 .theme-page .answer-block .answer .message {
@@ -530,8 +530,8 @@
   flex-direction: column;
 }
 .theme-page .answer-block .answer .message .top {
-  min-height: 125px;
-  padding: 15px;
+  min-height: 12.5rem;
+  padding: 1.5rem;
 }
 .theme-page .answer-block .answer .message .bottom {
   display: flex;
@@ -541,7 +541,7 @@
   align-items: flex-start;
 }
 .theme-page .answer-block .answer .message .bottom .date-block .date {
-  margin-right: 10px;
+  margin-right: 1rem;
 }
 .theme-page .form-block {
   display: flex;
@@ -549,18 +549,18 @@
 }
 .theme-page .form-block form textarea {
   width: 100%;
-  min-height: 125px;
+  min-height: 12.5rem;
   resize: vertical;
 }
 .theme-page .form-block form input[type=submit] {
   color: white;
   background-color: #ff5252;
   border: none;
-  border-radius: 30px;
-  margin-top: 10px;
+  border-radius: 3rem;
+  margin-top: 1rem;
   margin-left: auto;
   display: block;
-  height: 45px;
+  height: 4.5rem;
   width: 15%;
   font-weight: bold;
 }
@@ -569,57 +569,49 @@
   transition: 0.3s;
 }
 
+.games .item-holder {
+  max-width: 23rem;
+  margin: 0 4rem 1rem 0;
+}
 .games .item {
-  margin: 10px 0px;
+  margin: 1rem 0;
   background-color: white;
   display: flex;
   flex-direction: column;
-  min-height: 100px;
-  width: 230px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  height: 35.2rem;
+  width: 23rem;
+  box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.9);
+}
+.games .item:hover {
+  box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.9);
 }
 .games .img-block {
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+}
+.games .img-block a {
   height: 100%;
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
   width: 100%;
 }
 .games .img-block img {
-  border-radius: 20px 20px 0px 0px;
-  height: 230px;
-  width: 230px;
+  height: 100%;
+  width: 23rem;
 }
 .games .action-block {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 1rem;
+  align-items: start;
 }
 .games .action-block span {
-  font-size: 18px;
+  font-size: 1.9rem;
   font-weight: bold;
-  text-align: center;
-}
-.games .action-block .button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #282726;
-  height: 40px;
-  width: 125px;
-  margin: 8px 0px;
-  border-radius: 0.5rem;
-}
-.games .action-block .button:hover {
-  background-color: #6A8A82;
-  transition: 0.3s;
-}
-.games .action-block .button a {
-  font-size: 18px;
-  font-weight: bold;
-  text-decoration: none;
-  color: white;
 }
 
 * {
@@ -630,7 +622,6 @@ html,
 body {
   height: 100%;
   margin: 0;
-  background-color: #f1f1f1;
   font-size: 10px;
 }
 
@@ -647,12 +638,12 @@ main {
 
 footer {
   width: 100%;
-  min-height: 50px;
+  min-height: 5rem;
   margin: 0 0 3rem 0;
 }
 footer nav {
   width: 100%;
-  height: 50px;
+  height: 5rem;
   margin: 0;
   padding: 0;
 }
@@ -675,7 +666,7 @@ footer nav ul .item:hover {
 footer nav ul .item .link {
   text-decoration: none;
   color: white;
-  padding: 0px 5px;
+  padding: 0 0.5rem;
   font-size: 2rem;
 }
 
@@ -688,7 +679,7 @@ footer nav ul .item .link {
 }
 
 .arrow-img {
-  height: 60px;
+  height: 6rem;
 }
 
 .hiden {
@@ -696,13 +687,13 @@ footer nav ul .item .link {
 }
 
 .home {
-  margin-top: 20px;
+  margin-top: 2rem;
 }
 .home .header {
   display: flex;
   justify-content: center;
-  margin-bottom: 10px;
-  font-size: 20px;
+  margin-bottom: 1rem;
+  font-size: 2rem;
   font-weight: bold;
 }
 .home .top-mods .main-carousel {
@@ -710,8 +701,8 @@ footer nav ul .item .link {
 }
 .home .top-mods .main-carousel .carousel-cell {
   width: 66%;
-  height: 250px;
-  margin-right: 10px;
+  height: 25rem;
+  margin-right: 1rem;
   background: #ffffff;
 }
 .home .top-mods .main-carousel .carousel-cell .content {
@@ -739,24 +730,24 @@ footer nav ul .item .link {
   flex-direction: column;
   width: 50%;
   height: 100%;
-  padding: 15px;
+  padding: 1.5rem;
   text-align: center;
 }
 .home .top-mods .main-carousel .carousel-cell .content .right-block .name {
   color: #000000;
-  font-size: 30px;
+  font-size: 3rem;
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 0.5rem;
 }
 .home .top-mods .main-carousel .carousel-cell .content .right-block .description {
-  font-size: 20px;
+  font-size: 2rem;
   word-wrap: break-word;
 }
 .home .top-mods .main-carousel .carousel-cell .content .right-block .button {
   margin-top: auto;
-  height: 35px;
+  height: 3.5rem;
   background-color: #ff5252;
-  padding-top: 5px;
+  padding-top: 0.5rem;
   cursor: pointer;
 }
 .home .top-mods .main-carousel .carousel-cell .content .right-block .button:hover {
@@ -765,7 +756,7 @@ footer nav ul .item .link {
 }
 .home .top-mods .main-carousel .carousel-cell .content .right-block .button a {
   color: white;
-  font-size: 18px;
+  font-size: 1.8rem;
   text-decoration: none;
   cursor: pointer;
 }
@@ -807,7 +798,7 @@ header nav .user .item:hover {
 }
 header nav .menu .item .link,
 header nav .user .item .link {
-  padding: 0px 20px;
+  padding: 0 2rem;
   text-decoration: none;
   color: white;
   background-color: inherit;
@@ -819,23 +810,23 @@ header nav .user {
   justify-content: flex-end;
 }
 header nav .user .profile img {
-  width: 27px;
-  height: 27px;
-  margin-left: 20px;
+  width: 2.7rem;
+  height: 2.7rem;
+  margin-left: 2rem;
 }
 header nav .user .profile .link {
-  padding: 0px 20px 0px 5px;
+  padding: 0 2rem 0 0.5rem;
 }
 header nav .user .log-out .link {
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: bold;
 }
 header nav .user .messages .link {
-  font-size: 25px;
+  font-size: 2.5rem;
 }
 
 .private-messages {
-  margin: 15px;
+  margin: 1.5rem;
 }
 .private-messages .col,
 .private-messages .col-4 {
@@ -854,19 +845,19 @@ header nav .user .messages .link {
   justify-content: space-between;
   background-color: white;
   user-select: none;
-  height: 100px;
+  height: 10rem;
   width: 100%;
   display: flex;
-  border-bottom: 2px solid #9d9d9d;
+  border-bottom: 0.2rem solid #9d9d9d;
 }
 .private-messages .dialog-list .message:hover {
   background-color: rgba(183, 183, 183, 0.5176470588);
   transition: 0.3s;
 }
 .private-messages .dialog-list .message .left img {
-  padding: 10px;
-  height: 100px;
-  width: 100px;
+  padding: 1rem;
+  height: 10rem;
+  width: 10rem;
 }
 .private-messages .dialog-list .message .right {
   display: flex;
@@ -876,13 +867,13 @@ header nav .user .messages .link {
 .private-messages .dialog-list .message .right .top {
   display: flex;
   justify-content: space-between;
-  margin: 5px 0px;
+  margin: 0.5rem 0;
 }
 .private-messages .dialog-list .message .right .top .author {
   font-weight: bold;
 }
 .private-messages .dialog-list .message .right .top .date {
-  margin-right: 5px;
+  margin-right: 0.5rem;
 }
 .private-messages .message-window {
   display: flex;
@@ -896,43 +887,43 @@ header nav .user .messages .link {
   flex-direction: column-reverse;
   flex-grow: 1;
   overflow: auto;
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
 }
 .private-messages .message-window .message-list .top {
   display: flex;
   flex-direction: column;
-  margin: 10px 0px;
+  margin: 1rem 0;
 }
 .private-messages .message-window .message-list .top .message-body {
   display: flex;
   max-width: 50%;
-  min-height: 50px;
+  min-height: 5rem;
 }
 .private-messages .message-window .message-list .top .message-body .left {
   display: flex;
   align-items: flex-end;
 }
 .private-messages .message-window .message-list .top .message-body .left img {
-  height: 50px;
-  width: 50px;
+  height: 5rem;
+  width: 5rem;
 }
 .private-messages .message-window .message-list .top .message-body .right {
   display: flex;
   flex-direction: column;
   height: 100%;
   width: 100%;
-  padding: 5px;
-  border-radius: 10px;
+  padding: 0.5rem;
+  border-radius: 1rem;
   flex-grow: 1;
   background-color: #fff;
   overflow-wrap: anywhere;
 }
 .private-messages .message-window .message-list .top .message-body .right .text {
-  padding: 5px;
-  font-size: 18px;
+  padding: 0.5rem;
+  font-size: 1.8rem;
 }
 .private-messages .message-window .message-list .top .message-body .right .date {
-  font-size: 13px;
+  font-size: 1.3rem;
 }
 .private-messages .message-window .message-list .top .message-body .right .unchecked,
 .private-messages .message-window .message-list .top .message-body .right .checked {
@@ -948,10 +939,10 @@ header nav .user .messages .link {
   align-items: flex-start;
 }
 .private-messages .message-window .message-list .my-message .left {
-  margin-left: 10px;
+  margin-left: 1rem;
 }
 .private-messages .message-window .message-list .my-message .right {
-  margin-left: 5px;
+  margin-left: 0.5rem;
 }
 .private-messages .message-window .message-list .my-message .right span:nth-child(2) {
   display: flex;
@@ -965,10 +956,10 @@ header nav .user .messages .link {
   flex-direction: row-reverse;
 }
 .private-messages .message-window .message-list .other-message .message-body .left {
-  margin-right: 10px;
+  margin-right: 1rem;
 }
 .private-messages .message-window .message-list .other-message .message-body .right {
-  margin-right: 5px;
+  margin-right: 0.5rem;
 }
 .private-messages .message-window .message-list .other-message .message-body .right span:nth-child(2) {
   display: flex;
@@ -983,32 +974,32 @@ header nav .user .messages .link {
 }
 .private-messages .message-window .bottom form textarea {
   background-color: inherit;
-  font-size: 20px;
-  height: 60px;
+  font-size: 2rem;
+  height: 6rem;
   width: 100%;
-  padding: 15px 90px 15px 20px;
+  padding: 1.5rem 9rem 1.5rem 2rem;
   border: none;
   outline: none;
-  max-height: 320px;
+  max-height: 32rem;
   resize: none;
 }
 .private-messages .message-window .bottom form input[type=submit] {
-  height: 40px;
-  width: 40px;
+  height: 4rem;
+  width: 4rem;
   position: fixed;
   top: 88.5%;
   right: 0;
   transform: translate(-50%, -50%);
-  border: 2px solid #ff5252;
-  border-radius: 20px;
+  border: 0.2rem solid #ff5252;
+  border-radius: 2rem;
   vertical-align: middle;
-  font-size: 27px;
+  font-size: 2.7rem;
   line-height: 1;
   color: #ff5252;
   cursor: pointer;
 }
 .private-messages .message-window .bottom form input[type=submit]:hover {
-  border: 2px solid #e84b4b;
+  border: 0.2rem solid #e84b4b;
   color: #e84b4b;
   transition: 0.3s;
 }
@@ -1016,33 +1007,33 @@ header nav .user .messages .link {
 .upload-page form {
   display: flex;
   flex-direction: column;
-  margin: 10px auto;
-  padding: 20px;
-  width: 500px;
+  margin: 1rem auto;
+  padding: 2rem;
+  width: 50rem;
   background-color: white;
 }
 .upload-page form input {
   border: none;
-  border-bottom: 1px solid black;
+  border-bottom: 0.1rem solid black;
   outline: none;
-  margin-bottom: 15px;
-  box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.2);
-  height: 35px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 0.1rem 0.1rem rgba(0, 0, 0, 0.2);
+  height: 3.5rem;
 }
 .upload-page form textarea {
   outline: none;
 }
 .upload-page form select {
   border: none;
-  border-bottom: 1px solid black;
+  border-bottom: 0.1rem solid black;
   outline: none;
-  margin-bottom: 15px;
-  box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.2);
-  height: 35px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 0.1rem 0.1rem rgba(0, 0, 0, 0.2);
+  height: 3.5rem;
 }
 .upload-page form input[type=submit] {
   width: 50%;
-  margin: 0px auto;
+  margin: 0 auto;
   background-color: #ff5252;
   color: white;
 }
@@ -1061,16 +1052,16 @@ header nav .user .messages .link {
 .options .sort-wrap {
   display: flex;
   align-items: flex-start;
-  margin: 10px 0px;
+  margin: 1rem 0;
 }
 .options .sort-wrap form select {
-  height: 35px;
-  min-width: 50px;
+  height: 3.5rem;
+  min-width: 5rem;
   text-align: center;
   float: left;
   outline: none;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 1.6rem;
 }
 .options .sort-wrap form .sort-input {
   border-right: none;
@@ -1084,16 +1075,16 @@ header nav .user .messages .link {
 }
 .options .sort-wrap form input[type=submit] {
   border-left: none;
-  border-top: 1px solid;
-  border-right: 1px solid;
-  border-bottom: 1px solid;
+  border-top: 0.1rem solid;
+  border-right: 0.1rem solid;
+  border-bottom: 0.1rem solid;
   border-color: black;
-  height: 35px;
-  min-width: 100px;
+  height: 3.5rem;
+  min-width: 10rem;
   cursor: pointer;
   background-color: #282726;
   color: #ffffff;
-  font-size: 16px;
+  font-size: 1.6rem;
   font-weight: bold;
 }
 .options .sort-wrap form input[type=submit]:hover {
@@ -1104,45 +1095,45 @@ header nav .user .messages .link {
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 500px;
-  width: 300px;
+  height: 50rem;
+  width: 30rem;
   background-color: white;
-  margin-bottom: 15px;
+  margin-bottom: 1.5rem;
   cursor: pointer;
 }
 .mods .mod:hover {
-  box-shadow: 0 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
   transition: 0.3s;
 }
 .mods .mod .img {
   height: 50%;
   width: 100%;
-  margin-bottom: 5px;
+  margin-bottom: 0.5rem;
 }
 .mods .mod .img img {
   height: 100%;
   width: 100%;
 }
 .mods .mod .name {
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 0.5rem;
 }
 .mods .mod .rating {
   display: flex;
   align-items: center;
-  margin-bottom: 5px;
+  margin-bottom: 0.5rem;
 }
 .mods .mod .rating .rating-area {
   width: 100%;
 }
 .mods .mod .rating span {
-  width: 30px !important;
-  font-size: 27px !important;
+  width: 3rem !important;
+  font-size: 2.7rem !important;
 }
 .mods .mod .description {
-  padding: 0px 25px;
-  font-size: 17px;
+  padding: 0 2.5rem;
+  font-size: 1.7rem;
 }
 .mods .mod .date {
   display: flex;
@@ -1150,28 +1141,28 @@ header nav .user .messages .link {
   margin-top: auto;
 }
 .mods .mod .date .upload {
-  margin-right: 5px;
+  margin-right: 0.5rem;
 }
 .mods .mod .date .upload span {
-  font-size: 14px;
+  font-size: 1.4rem;
 }
 .mods .mod .date .updated span {
-  font-size: 14px;
+  font-size: 1.4rem;
 }
 .mods .mod .button {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 35px;
+  height: 3.5rem;
   width: 100%;
   background-color: #6A8A82;
 }
 .mods .mod .button a {
   width: 100%;
   height: 100%;
-  padding-top: 5px;
+  padding-top: 0.5rem;
   text-align: center;
-  font-size: 16px;
+  font-size: 1.6rem;
   color: white;
   text-decoration: none;
 }
@@ -1184,14 +1175,14 @@ header nav .user .messages .link {
   display: flex;
   flex-direction: column;
   background-color: white;
-  margin-top: 15px;
-  padding: 20px;
+  margin-top: 1.5rem;
+  padding: 2rem;
 }
 .mod-page .info-block .top {
   display: flex;
   width: 100%;
-  max-height: 500px;
-  margin-bottom: 10px;
+  max-height: 50rem;
+  margin-bottom: 1rem;
 }
 .mod-page .info-block .top .left,
 .mod-page .info-block .top .right {
@@ -1205,14 +1196,14 @@ header nav .user .messages .link {
   height: 100%;
 }
 .mod-page .info-block .top .right {
-  padding: 5px 10px;
+  padding: 0.5rem 1rem;
 }
 .mod-page .info-block .top .right .name {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 5px;
+  margin-bottom: 0.5rem;
 }
 .mod-page .info-block .top .right .name .edit {
   display: flex;
@@ -1226,7 +1217,7 @@ header nav .user .messages .link {
   transition: background-color 1s;
 }
 .mod-page .info-block .top .right .name .edit span:nth-child(1) {
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: bold;
 }
 .mod-page .info-block .top .right .name .edit span:nth-child(2) {
@@ -1234,35 +1225,35 @@ header nav .user .messages .link {
   transform: rotate(120deg);
 }
 .mod-page .info-block .top .right .description {
-  margin-bottom: 5px;
-  font-size: 18px;
+  margin-bottom: 0.5rem;
+  font-size: 1.8rem;
 }
 .mod-page .info-block .top .right .author {
-  font-size: 18px;
+  font-size: 1.8rem;
 }
 .mod-page .info-block .top .right .author span:nth-child(1) {
   font-weight: bold;
 }
 .mod-page .info-block .middle {
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
 }
 .mod-page .info-block .middle table {
   width: 100%;
 }
 .mod-page .info-block .middle table tr {
-  height: 35px;
-  border-top: 1px solid black;
+  height: 3.5rem;
+  border-top: 0.1rem solid black;
 }
 .mod-page .info-block .middle table tr td {
   width: 50%;
-  font-size: 18px;
+  font-size: 1.8rem;
 }
 .mod-page .info-block .middle table tr td .rating-area {
   margin: 0 !important;
   margin-right: auto;
 }
 .mod-page .info-block .middle table tr:last-child {
-  border-bottom: 1px solid black;
+  border-bottom: 0.1rem solid black;
 }
 .mod-page .info-block .bottom {
   width: 100%;
@@ -1270,13 +1261,13 @@ header nav .user .messages .link {
 .mod-page .info-block .bottom .button {
   display: block;
   width: 50%;
-  height: 35px;
+  height: 3.5rem;
   margin-left: auto;
-  padding-top: 4px;
+  padding-top: 0.4rem;
   text-align: center;
   text-decoration: none;
   color: white;
-  font-size: 17px;
+  font-size: 1.7rem;
   background-color: #6A8A82;
 }
 .mod-page .info-block .bottom .button:hover {
@@ -1284,33 +1275,33 @@ header nav .user .messages .link {
   transition: 0.3s;
 }
 .mod-page .info-block .warning {
-  margin: 0px auto;
-  box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+  box-shadow: 0 0.2rem 0.3rem 0.2rem rgba(0, 0, 0, 0.2);
   width: 80%;
-  height: 50px;
-  margin-bottom: 20px;
+  height: 5rem;
+  margin-bottom: 2rem;
 }
 .mod-page .info-block .warning span {
   display: flex;
   justify-content: center;
-  padding: 10px 0px;
+  padding: 1rem 0;
 }
 
 .pagination-wrap {
   display: flex;
   justify-content: center;
-  margin: 15px 0px;
+  margin: 1.5rem 0;
 }
 .pagination-wrap .pagination {
-  font-size: 18px;
+  font-size: 1.8rem;
 }
 .pagination-wrap .pagination a {
-  margin: 0px 3px;
+  margin: 0 0.3rem;
   background-color: #282726;
-  padding: 3px 7px;
+  padding: 0.3rem 0.7rem;
   text-decoration: none;
   color: white;
-  border-radius: 5px;
+  border-radius: 0.5rem;
 }
 .pagination-wrap .pagination a:hover {
   background-color: #d34444;
@@ -1323,43 +1314,43 @@ header nav .user .messages .link {
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin: 10px;
+  margin: 1rem;
 }
 .profile-edit form {
   display: flex;
   flex-direction: column;
-  width: 500px;
+  width: 50rem;
   background-color: white;
-  padding: 10px 20px;
+  padding: 1rem 2rem;
 }
 .profile-edit form label {
-  font-size: 19px;
+  font-size: 1.9rem;
   font-weight: bold;
   text-align: center;
 }
 .profile-edit form input[type=text] {
   border: none;
   outline: none;
-  height: 35px;
-  font-size: 19px;
-  border-bottom: 1px black solid;
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+  height: 3.5rem;
+  font-size: 1.9rem;
+  border-bottom: 0.1rem black solid;
+  box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, 0.2);
 }
 .profile-edit form input[type=date] {
   border: none;
   outline: none;
-  height: 35px;
-  font-size: 19px;
-  border-bottom: 1px black solid;
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+  height: 3.5rem;
+  font-size: 1.9rem;
+  border-bottom: 0.1rem black solid;
+  box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, 0.2);
 }
 .profile-edit form textarea {
-  min-height: 125px;
+  min-height: 12.5rem;
 }
 .profile-edit form input[type=submit] {
-  width: 200px;
-  height: 35px;
-  font-size: 19px;
+  width: 20rem;
+  height: 3.5rem;
+  font-size: 1.9rem;
   border: none;
   background-color: #ff5252;
   color: white;
@@ -1384,17 +1375,17 @@ header nav .user .messages .link {
   max-height: 100%;
 }
 .profile-edit form .image-preview-container .user-image {
-  width: 250px;
-  height: 250px;
+  width: 25rem;
+  height: 25rem;
 }
 .profile-edit form .image-preview-container .add-img {
   position: absolute;
   bottom: 0%;
   left: 50%;
   transform: translate(-50%, 6%);
-  width: 250px;
-  height: 125px;
-  border-radius: 0 0 125px 125px;
+  width: 25rem;
+  height: 12.5rem;
+  border-radius: 0 0 12.5rem 12.5rem;
   background-color: rgba(0, 0, 0, 0.389);
   z-index: 1;
   cursor: pointer;
@@ -1406,7 +1397,7 @@ header nav .user .messages .link {
 .profile-edit form .image-preview-container .add-img span {
   color: white;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 2rem;
   position: absolute;
   bottom: 35%;
   left: 50%;
@@ -1418,22 +1409,22 @@ header nav .user .messages .link {
   bottom: 0;
   left: 50%;
   transform: translate(-50%, 6%);
-  width: 250px;
-  height: 125px;
-  border-radius: 0 0 125px 125px;
+  width: 25rem;
+  height: 12.5rem;
+  border-radius: 0 0 12.5rem 12.5rem;
 }
 .profile-edit form .image-preview-container .crop-button {
   margin-left: auto;
 }
 .profile-edit .load-profile-data input {
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
 }
 .profile-edit .load-profile-data textarea {
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
 }
 
 .profile-header {
-  margin-top: 10px;
+  margin-top: 1rem;
 }
 .profile-header .left-block {
   display: flex;
@@ -1441,7 +1432,7 @@ header nav .user .messages .link {
   justify-self: center;
 }
 .profile-header .left-block img {
-  height: 150px;
+  height: 15rem;
   margin: auto;
 }
 .profile-header .right-block .rigth-top {
@@ -1451,7 +1442,7 @@ header nav .user .messages .link {
 .profile-header .right-block .rigth-top .name {
   display: flex;
   align-items: flex-start;
-  font-size: 25px;
+  font-size: 2.5rem;
   font-weight: bold;
 }
 .profile-header .right-block .rigth-top .edit {
@@ -1466,7 +1457,7 @@ header nav .user .messages .link {
   transition: background-color 1s;
 }
 .profile-header .right-block .rigth-top .edit span:nth-child(1) {
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: bold;
 }
 .profile-header .right-block .rigth-top .edit span:nth-child(2) {
@@ -1475,16 +1466,16 @@ header nav .user .messages .link {
 }
 .profile-header .right-block .right-middle {
   display: flex;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
 }
 .profile-header .right-block .right-middle div {
-  min-width: 100px;
+  min-width: 10rem;
 }
 .profile-header .right-block .right-bottom a {
-  padding: 10px 15px;
+  padding: 1rem 1.5rem;
   background-color: #ff5252;
   color: white;
-  font-size: 18px;
+  font-size: 1.8rem;
   text-decoration: none;
 }
 .profile-header .right-block .right-bottom a:hover {
@@ -1494,7 +1485,7 @@ header nav .user .messages .link {
 
 .profile-content {
   display: flex;
-  margin-top: 15px;
+  margin-top: 1.5rem;
 }
 .profile-content .left,
 .profile-content .left-block {
@@ -1509,11 +1500,11 @@ header nav .user .messages .link {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  border-bottom: 2px solid black;
-  font-size: 15px;
+  border-bottom: 0.2rem solid black;
+  font-size: 1.5rem;
   width: 100%;
-  height: 50px;
-  border-width: 1px;
+  height: 5rem;
+  border-width: 0.1rem;
   color: #fff;
   border-color: #241d13;
   font-weight: bold;
@@ -1527,48 +1518,48 @@ header nav .user .messages .link {
 .profile-content .right-block {
   background-color: white;
   padding: 0;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
 }
 .profile-content .right-block .content {
   min-height: 65vh;
-  padding: 20px 40px;
+  padding: 2rem 4rem;
 }
 .profile-content .right-block .content .about-block .name {
-  margin-bottom: 5px;
+  margin-bottom: 0.5rem;
 }
 .profile-content .right-block .content .about-block .name span:nth-child(1) {
   font-weight: bold;
-  margin-right: 5px;
+  margin-right: 0.5rem;
 }
 .profile-content .right-block .content .about-block .name span:nth-child(2) {
-  font-size: 18px;
+  font-size: 1.8rem;
 }
 .profile-content .right-block .content .about-block .surname {
-  margin-bottom: 5px;
+  margin-bottom: 0.5rem;
 }
 .profile-content .right-block .content .about-block .surname span:nth-child(1) {
   font-weight: bold;
-  margin-right: 5px;
+  margin-right: 0.5rem;
 }
 .profile-content .right-block .content .about-block .surname span:nth-child(2) {
-  font-size: 18px;
+  font-size: 1.8rem;
 }
 .profile-content .right-block .content .about-block .age {
-  margin-bottom: 5px;
+  margin-bottom: 0.5rem;
 }
 .profile-content .right-block .content .about-block .age span:nth-child(1) {
   font-weight: bold;
-  margin-right: 5px;
+  margin-right: 0.5rem;
 }
 .profile-content .right-block .content .about-block .age span:nth-child(2) {
-  font-size: 18px;
+  font-size: 1.8rem;
 }
 .profile-content .right-block .content .about-block .about span:nth-child(1) {
   font-weight: bold;
-  margin-right: 5px;
+  margin-right: 0.5rem;
 }
 .profile-content .right-block .content .about-block .about span:nth-child(2) {
-  font-size: 18px;
+  font-size: 1.8rem;
 }
 .profile-content .right-block .content .files-block {
   display: flex;
@@ -1578,32 +1569,32 @@ header nav .user .messages .link {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-height: 50px;
-  min-width: 280px;
-  box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.2);
-  margin: 10px 5px;
+  min-height: 5rem;
+  min-width: 28rem;
+  box-shadow: 0 0.2rem 0.3rem 0.2rem rgba(0, 0, 0, 0.2);
+  margin: 1rem 0.5rem;
   cursor: pointer;
 }
 .profile-content .right-block .content .files-block .file .name {
-  max-width: 100px;
-  font-size: 18px;
+  max-width: 10rem;
+  font-size: 1.8rem;
   font-weight: bold;
-  margin-left: 10px;
+  margin-left: 1rem;
   word-wrap: break-word;
-  padding: 5px 0px;
+  padding: 0.5rem 0;
 }
 .profile-content .right-block .content .files-block .file .rating span:nth-child(1) {
   vertical-align: middle;
-  font-size: 30px;
+  font-size: 3rem;
 }
 .profile-content .right-block .content .files-block .file .rating span:nth-child(2) {
   vertical-align: middle;
 }
 .profile-content .right-block .content .files-block .file .views span:nth-child(1) {
-  font-size: 23px;
+  font-size: 2.3rem;
 }
 .profile-content .right-block .content .files-block .file .downloads {
-  margin-right: 10px;
+  margin-right: 1rem;
 }
 .profile-content .right-block .content .reports-block {
   display: flex;
@@ -1612,9 +1603,9 @@ header nav .user .messages .link {
 .profile-content .right-block .content .reports-block .report {
   display: flex;
   width: 100%;
-  height: 75px;
-  margin-top: 10px;
-  box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.2);
+  height: 7.5rem;
+  margin-top: 1rem;
+  box-shadow: 0 0.2rem 0.3rem 0.2rem rgba(0, 0, 0, 0.2);
 }
 .profile-content .right-block .content .reports-block .report .left {
   height: 100%;
@@ -1622,7 +1613,7 @@ header nav .user .messages .link {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-left: 10px;
+  margin-left: 1rem;
 }
 .profile-content .right-block .content .reports-block .report .left span .checked {
   color: green;
@@ -1649,12 +1640,12 @@ header nav .user .messages .link {
   transition: 0.3s;
 }
 .profile-content .right-block .content .report-page .top {
-  margin-bottom: 15px;
+  margin-bottom: 1.5rem;
   display: flex;
   flex-direction: column;
 }
 .profile-content .right-block .content .report-page .middle {
-  margin-bottom: 15px;
+  margin-bottom: 1.5rem;
 }
 .profile-content .right-block .content .report-page .middle form {
   display: flex;
@@ -1669,26 +1660,26 @@ header nav .user .messages .link {
 }
 .profile-content .right-block .content .report-page .middle form .form-left {
   flex-grow: 1;
-  margin-right: 10px;
+  margin-right: 1rem;
 }
 .profile-content .right-block .content .report-page .middle form .form-left input[type=text] {
-  height: 100px;
+  height: 10rem;
   width: 100%;
 }
 .profile-content .right-block .content .report-page .middle form .form-middle {
-  margin-right: 10px;
+  margin-right: 1rem;
 }
 .profile-content .right-block .content .report-page .middle form .form-middle select {
-  margin-bottom: 5px;
-  min-height: 35px;
-  font-size: 19px;
+  margin-bottom: 0.5rem;
+  min-height: 3.5rem;
+  font-size: 1.9rem;
   text-align: center;
 }
 .profile-content .right-block .content .report-page .middle form .form-middle input[type=submit] {
   height: 100%;
   border: none;
   background-color: red;
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: bold;
   color: white;
   cursor: pointer;
@@ -1704,8 +1695,8 @@ header nav .user .messages .link {
   color: white;
 }
 .profile-content .right-block .content .report-page .middle form .form-right input[type=submit]:nth-child(1) {
-  margin-top: 32px;
-  margin-bottom: 5px;
+  margin-top: 3.2rem;
+  margin-bottom: 0.5rem;
   background-color: #00a010;
 }
 .profile-content .right-block .content .report-page .middle form .form-right input[type=submit]:nth-child(2) {
@@ -1718,15 +1709,15 @@ header nav .user .messages .link {
 .profile-content .right-block .content .report-page .bottom .complaint {
   display: flex;
   flex-direction: column;
-  min-height: 250px;
-  width: 420px;
-  box-shadow: 1px 2px 3px 2px rgba(0, 0, 0, 0.2);
-  padding: 10px;
-  margin-right: 15px;
-  margin-bottom: 15px;
+  min-height: 25rem;
+  width: 42rem;
+  box-shadow: 0.1rem 0.2rem 0.3rem 0.2rem rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  margin-right: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 .profile-content .right-block .content .report-page .bottom .complaint .complaint-username {
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
 }
 .profile-content .right-block .content .report-page .bottom .complaint .complaint-list {
   display: flex;
@@ -1735,7 +1726,7 @@ header nav .user .messages .link {
 .profile-content .right-block .content .report-page .bottom .complaint .complaint-list .complaint-top {
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
 }
 .profile-content .right-block .content .report-page .bottom .complaint .complaint-list .complaint-bottom {
   display: flex;
@@ -1749,13 +1740,13 @@ header nav .user .messages .link {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  min-height: 20px;
+  min-height: 2rem;
 }
 .rating-form label,
 .rating-form .static {
   position: relative;
-  font-size: 25px;
-  padding: 2px;
+  font-size: 2.5rem;
+  padding: 0.2rem;
   color: #a7a7a7;
 }
 .rating-form label input[type=submit],
@@ -1771,19 +1762,19 @@ header nav .user .messages .link {
 .rating-form label:hover,
 .rating-form label:hover ~ label {
   color: #fef606;
-  text-shadow: 1px 1px goldenrod;
+  text-shadow: 0.1rem 0.1rem goldenrod;
 }
 .rating-form label.active,
 .rating-form .static.active {
   color: #fef606;
-  text-shadow: 1px 1px goldenrod;
+  text-shadow: 0.1rem 0.1rem goldenrod;
 }
 
 .report-button {
   background-color: inherit;
   border: none;
   color: #282726;
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: bold;
   cursor: pointer;
 }
@@ -1803,14 +1794,14 @@ header nav .user .messages .link {
   z-index: 9999;
 }
 .popup-block .popup {
-  padding: 25px;
+  padding: 2.5rem;
   background-color: #ffffff;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 400px;
-  min-height: 200px;
+  width: 40rem;
+  min-height: 20rem;
 }
 .popup-block span {
   font-weight: bold;
@@ -1820,24 +1811,24 @@ header nav .user .messages .link {
   flex-direction: column;
 }
 .popup-block form textarea {
-  min-height: 100px;
-  margin-bottom: 10px;
+  min-height: 10rem;
+  margin-bottom: 1rem;
 }
 .popup-block form .buttons input[type=submit] {
-  margin-right: 5px;
+  margin-right: 0.5rem;
   border: none;
   background-color: #ff5252;
   color: white;
-  height: 30px;
-  width: 125px;
+  height: 3rem;
+  width: 12.5rem;
   cursor: pointer;
 }
 .popup-block form .buttons input[type=submit]:hover {
   background-color: #d44444;
 }
 .popup-block form .buttons button {
-  height: 30px;
-  width: 125px;
+  height: 3rem;
+  width: 12.5rem;
   border: none;
   background-color: #6e6e6e;
   color: white;
