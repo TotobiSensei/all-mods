@@ -3,16 +3,16 @@
 .pagination-wrap {
     display: flex;
     justify-content: center;
-    margin: 15px 0px;
+    margin: 1.5rem 0;
     .pagination {
-      font-size: 18px;
+      font-size: variables.$common-font-size;;
       a {
-        margin: 0px 3px;
+        margin: 0 0.3rem;
         background-color: variables.$primary-black-bg-color;
-        padding: 3px 7px;
+        padding: 0.3rem 0.7rem;
         text-decoration: none;
         color: white;
-        border-radius: 5px;
+        border-radius: 0.5rem;
         &:hover {
           background-color: #d34444;
         }

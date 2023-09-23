@@ -1,16 +1,18 @@
+@use "/assets/scss/modules/variables.scss";
+
 .cropper-crop-box,
   .cropper-view-box {
     border-radius: 50%;
   }
   .cropper-view-box {
-    box-shadow: 0 0 0 1px #39f;
+    box-shadow: 0 0 0 0.1rem #39f;
     outline: 0;
   
-    height: 50px;
+    height: 5rem;
     nav {
       position: fixed;
       width: 100%;
-      height: 50px;
+      height: 5rem;
       margin: 0;
       background-color: #ff5252;
       z-index: 5;
@@ -24,7 +26,7 @@
         justify-content: flex-start;
         margin: 0;
         padding: 0;
-        height: 50px;
+        height: 5rem;
         .item {
           background-color: #ff5252;
           display: flex;
@@ -34,11 +36,11 @@
             background-color: #e14b4b;
           }
           .link {
-            padding: 0px 20px;
+            padding: 0 2rem;
             text-decoration: none;
             color: white;
             background-color: inherit;
-            font-size: 18px;
+            font-size: variables.$common-font-size;;
             font-weight: bold;
           }
         }
@@ -48,23 +50,23 @@
         justify-content: flex-end;
         .profile {
           img {
-            width: 27px;
-            height: 27px;
-            margin-left: 20px;
+            width: 2.7rem;
+            height: 2.7rem;
+            margin-left: 2rem;
           }
           .link {
-            padding: 0px 20px 0px 5px;
+            padding: 0 2rem 0 0.5rem;
           }
         }
         .log-out {
           .link {
-            font-size: 20px;
+            font-size: 2rem;
             font-weight: bold;
           }
         }
         .messages {
           .link {
-            font-size: 25px;
+            font-size: 2.5rem;
           }//INDEX
         }
       }

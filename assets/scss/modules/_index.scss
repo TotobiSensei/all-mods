@@ -1,12 +1,12 @@
-//menu
+@use "/assets/scss/modules/variables.scss";
  
 .home {
-    margin-top: 20px;
+    margin-top: 2rem;
     .header {
       display: flex;
       justify-content: center;
-      margin-bottom: 10px;
-      font-size: 20px;
+      margin-bottom: 1rem;
+      font-size: 2rem;
       font-weight: bold;
     }
     .top-mods {
@@ -14,8 +14,8 @@
         background: #EEE;
         .carousel-cell {
           width: 66%;
-          height: 250px;
-          margin-right: 10px;
+          height: 25rem;
+          margin-right: 1rem;
           background: #ffffff;
           .content {
             display: flex;
@@ -41,23 +41,23 @@
               flex-direction: column;
               width: 50%;
               height: 100%;
-              padding: 15px;
+              padding: 1.5rem;
               text-align: center;
               .name {
                 color: #000000;
-                font-size: 30px;
+                font-size: 3rem;
                 font-weight: bold;
-                margin-bottom: 5px;
+                margin-bottom: 0.5rem;
               }
               .description {
-                font-size: 20px;
+                font-size: 2rem;
                 word-wrap: break-word;
               }
               .button {
                 margin-top: auto;
-                height: 35px;
+                height: 3.5rem;
                 background-color: #ff5252;
-                padding-top: 5px;
+                padding-top: 0.5rem;
                 cursor: pointer;
                 &:hover {
                   background: #e44c4c;
@@ -65,7 +65,7 @@
                 }
                 a {
                   color: white;
-                  font-size: 18px;
+                  font-size: variables.$common-font-size;;
                   text-decoration: none;
                   cursor: pointer;
                 }

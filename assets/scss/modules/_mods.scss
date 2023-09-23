@@ -5,58 +5,58 @@
       display: flex;
       align-items: center;
       flex-direction: column;
-      height: 500px;
-      width: 300px;
+      height: 50rem;
+      width: 30rem;
       background-color: white;
-      margin-bottom: 15px;
+      margin-bottom: 1.5rem;
       cursor: pointer;
       &:hover {
-        box-shadow: 0 0 2px 4px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
         transition: 0.3s;
       }
       .img {
         height: 50%;
         width: 100%;
-        margin-bottom: 5px;
+        margin-bottom: 0.5rem;
         img {
           height: 100%;
           width: 100%;
         }
       }
       .name {
-        font-size: 20px;
+        font-size: 2rem;
         font-weight: bold;
-        margin-bottom: 5px;
+        margin-bottom: 0.5rem;
       }
       .rating {
         display: flex;
         align-items: center;
-        margin-bottom: 5px;
+        margin-bottom: 0.5rem;
         .rating-area {
           width: 100%;
         }
         span {
-          width: 30px !important;
-          font-size: 27px !important;
+          width: 3rem !important;
+          font-size: 2.7rem !important;
         }
       }
       .description {
-        padding: 0px 25px;
-        font-size: 17px;
+        padding: 0 2.5rem;
+        font-size: 1.7rem;
       }
       .date {
         display: flex;
         flex-direction: row;
         margin-top: auto;
         .upload {
-          margin-right: 5px;
+          margin-right: 0.5rem;
           span {
-            font-size: 14px;
+            font-size: 1.4rem;
           }
         }
         .updated {
           span {
-            font-size: 14px;
+            font-size: 1.4rem;
           }
         }
       }
@@ -64,15 +64,15 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 35px;
+        height: 3.5rem;
         width: 100%;
         background-color: variables.$primary-blue-bg-color;
         a {
           width: 100%;
           height: 100%;
-          padding-top: 5px;
+          padding-top: 0.5rem;
           text-align: center;
-          font-size: 16px;
+          font-size: 1.6rem;
           color: white;
           text-decoration: none;
           &:hover {
@@ -88,13 +88,13 @@
       display: flex;
       flex-direction: column;
       background-color: white;
-      margin-top: 15px;
-      padding: 20px;
+      margin-top: 1.5rem;
+      padding: 2rem;
       .top {
         display: flex;
         width: 100%;
-        max-height: 500px;
-        margin-bottom: 10px;
+        max-height: 50rem;
+        margin-bottom: 1rem;
         .left,
         .right {
           flex: 1;
@@ -107,13 +107,13 @@
           }
         }
         .right {
-          padding: 5px 10px;
+          padding: 0.5rem 1rem;
           .name {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 5px;
+            margin-bottom: 0.5rem;
             .edit {
               display: flex;
               align-items: center;
@@ -125,7 +125,7 @@
                 transition: background-color 1s;
               }
               span:nth-child(1) {
-                font-size: 18px;
+                font-size: variables.$common-font-size;;
                 font-weight: bold;
               }
               span:nth-child(2) {
@@ -135,11 +135,11 @@
             }
           }
           .description {
-            margin-bottom: 5px;
-            font-size: 18px;
+            margin-bottom: 0.5rem;
+            font-size:  1.8rem;
           }
           .author {
-            font-size: 18px;
+            font-size:  1.8rem;
             span:nth-child(1) {
               font-weight: bold;
             }
@@ -147,15 +147,15 @@
         }
       }
       .middle {
-        margin-bottom: 10px;
+        margin-bottom: 1rem;
         table {
           width: 100%;
           tr {
-            height: 35px;
-            border-top: 1px solid black;
+            height: 3.5rem;
+            border-top: 0.1rem solid black;
             td {
               width: 50%;
-              font-size: 18px;
+              font-size: variables.$common-font-size;;
               .rating-area {
                 margin: 0 !important;
                 margin-right: auto;
@@ -163,7 +163,7 @@
             }
           }
           tr:last-child {
-            border-bottom: 1px solid black;
+            border-bottom: 0.1rem solid black;
           }
         }
       }
@@ -172,13 +172,13 @@
         .button {
           display: block;
           width: 50%;
-          height: 35px;
+          height: 3.5rem;
           margin-left: auto;
-          padding-top: 4px;
+          padding-top: 0.4rem;
           text-align: center;
           text-decoration: none;
           color: white;
-          font-size: 17px;
+          font-size: 1.7rem;
           background-color: variables.$primary-blue-bg-color;
           &:hover {
             background-color: variables.$primary-black-bg-color;
@@ -187,15 +187,15 @@
         }
       }
       .warning {
-        margin: 0px auto;
-        box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.2);
+        margin: 0 auto;
+        box-shadow: 0 0.2rem 0.3rem 0.2rem rgba(0, 0, 0, 0.2);
         width: 80%;
-        height: 50px;
-        margin-bottom: 20px;
+        height: 5rem;
+        margin-bottom: 2rem;
         span {
           display: flex;
           justify-content: center;
-          padding: 10px 0px;
+          padding: 1rem 0;
         }		// .message
           // 	margin-bottom: 20px
           // 	form
@@ -207,7 +207,7 @@
           // 			color: white
           // 			background-color: #E09696
           // 			border: none
-          // 			border-radius: 30px
+          // 			border-radius: 3rem 
           // 			margin-top: 10px
           // 			margin-left: auto
           // 			display: block

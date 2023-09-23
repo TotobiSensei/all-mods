@@ -1,5 +1,7 @@
+@use "/assets/scss/modules/variables.scss";
+
 .private-messages {
-    margin: 15px;
+    margin: 1.5rem;
     .col,
     .col-4 {
       padding: 0 !important;
@@ -16,19 +18,19 @@
         justify-content: space-between;
         background-color: white;
         user-select: none;
-        height: 100px;
+        height: 10rem;
         width: 100%;
         display: flex;
-        border-bottom: 2px solid #9d9d9d;
+        border-bottom: 0.2rem solid #9d9d9d;
         &:hover {
           background-color: #b7b7b784;
           transition: 0.3s;
         }
         .left {
           img {
-            padding: 10px;
-            height: 100px;
-            width: 100px;
+            padding: 1rem;
+            height: 10rem;
+            width: 10rem;
           }
         }
         .right {
@@ -38,12 +40,12 @@
           .top {
             display: flex;
             justify-content: space-between;
-            margin: 5px 0px;
+            margin: 0.5rem 0;
             .author {
               font-weight: bold;
             }
             .date {
-              margin-right: 5px;
+              margin-right: 0.5rem;
             }
           }
         }
@@ -60,21 +62,21 @@
         flex-direction: column-reverse;
         flex-grow: 1;
         overflow: auto;
-        margin-bottom: 10px;
+        margin-bottom: 1rem;
         .top {
           display: flex;
           flex-direction: column;
-          margin: 10px 0px;
+          margin: 1rem 0;
           .message-body {
             display: flex;
             max-width: 50%;
-            min-height: 50px;
+            min-height: 5rem;
             .left {
               display: flex;
               align-items: flex-end;
               img {
-                height: 50px;
-                width: 50px;
+                height: 5rem;
+                width: 5rem;
               }
             }
             .right {
@@ -82,17 +84,17 @@
               flex-direction: column;
               height: 100%;
               width: 100%;
-              padding: 5px;
-              border-radius: 10px;
+              padding: 0.5rem;
+              border-radius: 1rem;
               flex-grow: 1;
               background-color: #fff;
               overflow-wrap: anywhere;
               .text {
-                padding: 5px;
-                font-size: 18px;
+                padding: 0.5rem;
+                font-size: variables.$common-font-size;;
               }
               .date {
-                font-size: 13px;
+                font-size: 1.3rem;
               }
               .unchecked,
               .checked {
@@ -110,10 +112,10 @@
         .my-message {
           align-items: flex-start;
           .left {
-            margin-left: 10px;
+            margin-left: 1rem;
           }
           .right {
-            margin-left: 5px;
+            margin-left: 0.5rem;
             span:nth-child(2) {
               display: flex;
               justify-content: flex-end;
@@ -126,10 +128,10 @@
             display: flex;
             flex-direction: row-reverse;
             .left {
-              margin-right: 10px;
+              margin-right: 1rem;
             }
             .right {
-              margin-right: 5px;
+              margin-right: 0.5rem;
               span:nth-child(2) {
                 display: flex;
                 justify-content: flex-end;
@@ -145,37 +147,34 @@
           position: relative;
           textarea {
             background-color: inherit;
-            font-size: 20px;
-            height: 60px;
+            font-size: 2rem;
+            height: 6rem;
             width: 100%;
-            padding: 15px 90px 15px 20px;
+            padding: 1.5rem 9rem 1.5rem 2rem;
             border: none;
             outline: none;
-            max-height: 320px;
+            max-height: 32rem;
             resize: none;
           }
           input[type="submit"] {
-            height: 40px;
-            width: 40px;
+            height: 4rem;
+            width: 4rem;
             position: fixed;
             top: 88.5%;
             right: 0;
             transform: translate(-50%, -50%);
-            border: 2px solid #ff5252;
-            border-radius: 20px;
+            border: 0.2rem solid #ff5252;
+            border-radius: 2rem;
             vertical-align: middle;
-            font-size: 27px;
+            font-size: 2.7rem;
             line-height: 1;
             color: #ff5252;
             cursor: pointer;
             &:hover {
-              border: 2px solid #e84b4b;
+              border: 0.2rem solid #e84b4b;
               color: #e84b4b;
               transition: 0.3s;
             }
-  
-  
-  //
           }
         }
       }

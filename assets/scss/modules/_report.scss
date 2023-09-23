@@ -4,7 +4,7 @@
     background-color: inherit;
     border: none;
     color: variables.$primary-black-bg-color;
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: bold;
     cursor: pointer;
     &:hover {
@@ -22,14 +22,14 @@
     background-color: #65656544;
     z-index: 9999;
     .popup {
-      padding: 25px;
+      padding: 2.5rem;
       background-color: #ffffff;
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 400px;
-      min-height: 200px;
+      width: 40rem;
+      min-height: 20rem;
     }
     span {
       font-weight: bold;
@@ -38,25 +38,25 @@
       display: flex;
       flex-direction: column;
       textarea {
-        min-height: 100px;
-        margin-bottom: 10px;
+        min-height: 10rem;
+        margin-bottom: 1rem;
       }
       .buttons {
         input[type="submit"] {
-          margin-right: 5px;
+          margin-right: 0.5rem;
           border: none;
           background-color: #ff5252;
           color: white;
-          height: 30px;
-          width: 125px;
+          height: 3rem;
+          width: 12.5rem;
           cursor: pointer;
           &:hover {
             background-color: #d44444;
           }
         }
         button {
-          height: 30px;
-          width: 125px;
+          height: 3rem;
+          width: 12.5rem;
           border: none;
           background-color: #6e6e6e;
           color: white;

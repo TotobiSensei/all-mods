@@ -32,11 +32,11 @@ header {
             background-color: variables.$primary-blue-bg-color;;
           }
           .link {
-            padding: 0px 20px;
+            padding: 0 2rem;
             text-decoration: none;
             color: white;
             background-color: inherit;
-            font-size: 1.8rem;
+            font-size: variables.$common-font-size;;
             font-weight: bold;
           }
         }
@@ -46,23 +46,23 @@ header {
         justify-content: flex-end;
         .profile {
           img {
-            width: 27px;
-            height: 27px;
-            margin-left: 20px;
+            width: 2.7rem;
+            height: 2.7rem;
+            margin-left: 2rem;
           }
           .link {
-            padding: 0px 20px 0px 5px;
+            padding: 0 2rem 0 0.5rem;
           }
         }
         .log-out {
           .link {
-            font-size: 20px;
+            font-size: 2rem;
             font-weight: bold;
           }
         }
         .messages {
           .link {
-            font-size: 25px;
+            font-size: 2.5rem;
           }//INDEX
         }
       }

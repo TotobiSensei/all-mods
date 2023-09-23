@@ -4,32 +4,32 @@
     form {
       display: flex;
       flex-direction: column;
-      margin: 10px auto;
-      padding: 20px;
-      width: 500px;
+      margin: 1rem auto;
+      padding: 2rem;
+      width: 50rem;
       background-color: white;
       input {
         border: none;
-        border-bottom: 1px solid black;
+        border-bottom: 0.1rem solid black;
         outline: none;
-        margin-bottom: 15px;
-        box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.2);
-        height: 35px;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 0 0.1rem 0.1rem rgba(0, 0, 0, 0.2);
+        height: 3.5rem;
       }
       textarea {
         outline: none;
       }
       select {
         border: none;
-        border-bottom: 1px solid black;
+        border-bottom: 0.1rem solid black;
         outline: none;
-        margin-bottom: 15px;
-        box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.2);
-        height: 35px;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 0 0.1rem 0.1rem rgba(0, 0, 0, 0.2);
+        height: 3.5rem;
       }
       input[type="submit"] {
         width: 50%;
-        margin: 0px auto;
+        margin: 0 auto;
         background-color: #ff5252;
         color: white;
         &:hover {
@@ -50,16 +50,16 @@
     .sort-wrap {
       display: flex;
       align-items: flex-start;
-      margin: 10px 0px;
+      margin: 1rem 0;
       form {
         select {
-          height: 35px;
-          min-width: 50px;
+          height: 3.5rem;
+          min-width: 5rem;
           text-align: center;
           float: left;
           outline: none;
           cursor: pointer;
-          font-size: 16px;
+          font-size: 1.6rem;
         }
         .sort-input {
           border-right: none;
@@ -73,16 +73,16 @@
         }
         input[type="submit"] {
           border-left: none;
-          border-top: 1px solid;
-          border-right: 1px solid;
-          border-bottom: 1px solid;
+          border-top: 0.1rem solid;
+          border-right: 0.1rem solid;
+          border-bottom: 0.1rem solid;
           border-color: black;
-          height: 35px;
-          min-width: 100px;
+          height: 3.5rem;
+          min-width: 10rem;
           cursor: pointer;
           background-color: variables.$primary-black-bg-color;
           color: #ffffff;
-          font-size: 16px;
+          font-size: 1.6rem;
           font-weight: bold;
           &:hover {
             background-color: variables.$primary-blue-bg-color;

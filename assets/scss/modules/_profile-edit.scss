@@ -1,42 +1,44 @@
+@use "/assets/scss/modules/variables.scss";
+
 .profile-edit {
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin: 10px;
+    margin: 1rem;
     form {
       display: flex;
       flex-direction: column;
-      width: 500px;
+      width: 50rem;
       background-color: white;
-      padding: 10px 20px;
+      padding: 1rem 2rem;
       label {
-        font-size: 19px;
+        font-size: 1.9rem;
         font-weight: bold;
         text-align: center;
       }
       input[type="text"] {
         border: none;
         outline: none;
-        height: 35px;
-        font-size: 19px;
-        border-bottom: 1px black solid;
-        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+        height: 3.5rem;
+        font-size: 1.9rem;
+        border-bottom: 0.1rem black solid;
+        box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, 0.2);
       }
       input[type="date"] {
         border: none;
         outline: none;
-        height: 35px;
-        font-size: 19px;
-        border-bottom: 1px black solid;
-        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+        height: 3.5rem;
+        font-size:  1.9rem;
+        border-bottom: 0.1rem black solid;
+        box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, 0.2);
       }
       textarea {
-        min-height: 125px;
+        min-height: 12.5rem;
       }
       input[type="submit"] {
-        width: 200px;
-        height: 35px;
-        font-size: 19px;
+        width: 20rem;
+        height: 3.5rem;
+        font-size: 1.9rem;
         border: none;
         background-color: #ff5252;
         color: white;
@@ -60,17 +62,17 @@
           max-height: 100%;
         }
         .user-image {
-          width: 250px;
-          height: 250px;
+          width: 25rem;
+          height: 25rem;
         }
         .add-img {
           position: absolute;
           bottom: 0%;
           left: 50%;
           transform: translate(-50%, 6%);
-          width: 250px;
-          height: 125px;
-          border-radius: 0 0 125px 125px;
+          width: 25rem;
+          height: 12.5rem;
+          border-radius: 0 0 12.5rem 12.5rem;
           background-color: rgba(0, 0, 0, 0.389);
           z-index: 1;
           cursor: pointer;
@@ -81,7 +83,7 @@
           span {
             color: white;
             font-weight: bold;
-            font-size: 20px;
+            font-size: 2rem;
             position: absolute;
             bottom: 35%;
             left: 50%;
@@ -93,9 +95,9 @@
             bottom: 0;
             left: 50%;
             transform: translate(-50%, 6%);
-            width: 250px;
-            height: 125px;
-            border-radius: 0 0 125px 125px;
+            width: 25rem;
+            height: 12.5rem;
+            border-radius: 0 0 12.5rem 12.5rem;
           }
         }
         .crop-button {
@@ -105,10 +107,10 @@
     }
     .load-profile-data {
       input {
-        margin-bottom: 20px;
+        margin-bottom: 2rem;
       }
       textarea {
-        margin-bottom: 20px;
+        margin-bottom: 2rem;
       }
     }
   }

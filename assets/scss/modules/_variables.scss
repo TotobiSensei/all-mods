@@ -1,3 +1,5 @@
+
+
 // Primary-bg-colors
 $primary-black-bg-color: #282726;
 $primary-red-bg-color: #A741A4;
@@ -6,8 +8,15 @@ $primar-dark_yelow-bg-color: #A37C27;
 $primary-purple-bg-color: #563838;
 
 // Font-sizes
-$common-font-size: 1.6rem;
-$medium-font-size: 2.3rem;
+$common-font-size: 1.8rem;
+$medium-font-size: 1.9rem;
 $large-font-size: 3.5rem;
 
 //Font-stacks
+
+
+// mixins 
+
+@mixin flex-height ($height, $amount){
+    #{$height}: $amount;
+}

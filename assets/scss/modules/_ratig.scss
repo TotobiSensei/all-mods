@@ -1,13 +1,15 @@
+@use "/assets/scss/modules/variables.scss";
+
 .rating-form {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    min-height: 20px;
+    min-height: 2rem;
     label,
     .static {
       position: relative;
-      font-size: 25px;
-      padding: 2px;
+      font-size: 2.5rem;
+      padding: 0.2rem;
       color: #a7a7a7;
       input[type="submit"] {
         height: 100%;
@@ -22,11 +24,11 @@
     label:hover,
     label:hover ~ label {
       color: #fef606;
-      text-shadow: 1px 1px goldenrod;
+      text-shadow: 0.1rem 0.1rem  goldenrod;
     }
     label.active,
     .static.active {
       color: #fef606;
-      text-shadow: 1px 1px goldenrod;
+      text-shadow: 0.1rem  0.1rem  goldenrod;
     }
   }
