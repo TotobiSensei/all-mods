@@ -1,5 +1,5 @@
     </main>
-    <footer>
+    <!-- <footer>
         <nav>
             <div class="container-fluid">
                 <div class="row">
@@ -25,7 +25,7 @@
                 </div>
             </div>
         </nav>
-    </footer>
+    </footer> -->
 </div>
 </body>
 </html>
