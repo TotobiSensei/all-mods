@@ -19,18 +19,18 @@ $pagination = new Pagination(8, count($read->games()));
                             echo '<div class="row">'; // Начало новой строки
                         }
                     ?>
-                                    <div class="col">
+                                    <div class="col item-holder">
                                         <div class="item">
                                             <div class="img-block">
-                                                <img src="<?= $games[$i]['img'] ?>" alt="">
-                                            </div>
-                                            <div class="action-block">
-                                                <span><?=  $games[$i]["name"] ?></span>
-                                                <div class="button">
-                                                    <a href="/view/mods.php?game=<?=  $games[$i]["id"] ?>">Открыть</a>
-                                                </div>
+                                                <a href="/view/mods.php?game=<?=  $games[$i]["id"] ?>"><img src="<?= $games[$i]['img'] ?>" alt=""></img></a>
                                             </div>
                                         </div>
+                                        <div class="action-block">
+                                                <span><?=  $games[$i]["name"] ?></span>
+                                                <!-- <div class="button">
+                                                    <a href="/view/mods.php?game=<?=  $games[$i]["id"] ?>">Открыть</a>
+                                                </div> -->
+                                            </div>
                                     </div>
                     <?php  
                         if ($i % 4 == 3 || $i == $count - 1) {
