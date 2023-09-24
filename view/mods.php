@@ -99,31 +99,38 @@ if(isset($_GET["game"]))
                         <div class="img">
                             <img src="<?= $mods[$i]["img"] ?>" alt="">
                         </div>
-                        <div class="name">
-                            <span><?= $mods[$i]["name"] ?></span>
-                        </div>
-                        <div class="rating">
-                            <?= Render::modsRating($mods[$i]["id"], "mod")?>
-                        </div>
-                        <div class="description">
-                            <span><?= mb_strimwidth($mods[$i]["description"], 0, 100, "...") ?></span>
-                        </div>
-                       <div class="date">
-                            <div class="upload">
-                                <span>Загружен</span>
-                                <span><?= $mods[$i]["upload"] ?></span>
+                    </div>
+                    <div class="mod-description">
+                        <div class="row mod-name_row">
+                            <div class="name">
+                                <span><?= $mods[$i]["name"] ?></span>
                             </div>
-                            <div class="updated">
-                                <?php if(isset($mods[$i]["updated"])):?>
-                                    <span>Обновлен</span>
-                                    <span><?=  $mods[$i]["updated"]  ?></span>
-                                <?php endif; ?>
+                            <div class="button">
+                                <a href="/view/template/mod_page.php?mod-id=<?= $mods[$i]["id"] ?>">Открыть</a>
                             </div>
-                       </div>
-                        <div class="button">
-                            <a href="/view/template/mod_page.php?mod-id=<?= $mods[$i]["id"] ?>">Подpобнее</a>
+                            <span class="open-description">Посмотреть описание</span>
                         </div>
-
+                        <div class="row mod-descr-block_row">
+                            <div class="rating">
+                                        <?= Render::modsRating($mods[$i]["id"], "mod")?>
+                            </div>
+                            <div class="description">
+                                        <span><?= mb_strimwidth($mods[$i]["description"], 0, 100, "...") ?></span>
+                            </div>
+                                <div class="date">
+                                    <div class="upload">
+                                        <span>Загружен</span>
+                                        <span><?= $mods[$i]["upload"] ?></span>
+                                    </div>
+                                    <div class="updated">
+                                        <?php if(isset($mods[$i]["updated"])):?>
+                                            <span>Обновлен</span>
+                                            <span><?=  $mods[$i]["updated"]  ?></span>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                        </div>
+                         
                     </div>
                 </div>
                 <?php

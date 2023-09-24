@@ -1,37 +1,60 @@
 @use "/assets/scss/modules/variables.scss";
 
+
 .mods {
+  margin: 6rem 0 0 0;
+    .col {
+      margin-bottom: 3rem;
+    }
     .mod {
       display: flex;
       align-items: center;
       flex-direction: column;
-      height: 50rem;
-      width: 30rem;
+      height: 40rem;
+      width: 27rem;
+      margin: 0 0 0.5rem 0;
       background-color: white;
-      margin-bottom: 1.5rem;
       cursor: pointer;
       &:hover {
-        box-shadow: 0 0 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
-        transition: 0.3s;
+        
+        box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.9);
+        transition: 0.3s ease-in-out;
+        
       }
       .img {
-        height: 50%;
+        height: 100%;
         width: 100%;
-        margin-bottom: 0.5rem;
         img {
           height: 100%;
           width: 100%;
         }
       }
+    }
+    .mod-description {
+      display: flex;
+      align-items: start;
+      flex-direction: column;
+      width: 27rem;
+      margin-bottom: 1.5rem;
+      padding-left: 1.3rem;
+
+      .mod-descr-block_row {
+        display: none;
+        flex-direction: column;
+      }
+      .open-description {
+        font-size: variables.$mini-font-size;
+        user-select: none;
+        cursor: pointer;
+      }
       .name {
-        font-size: 2rem;
+        font-size: variables.$medium-font-size;
         font-weight: bold;
-        margin-bottom: 0.5rem;
+        margin: 0.5rem 7.9rem 0 0;
       }
       .rating {
         display: flex;
         align-items: center;
-        margin-bottom: 0.5rem;
         .rating-area {
           width: 100%;
         }
@@ -41,15 +64,13 @@
         }
       }
       .description {
-        padding: 0 2.5rem;
         font-size: 1.7rem;
       }
       .date {
         display: flex;
         flex-direction: row;
-        margin-top: auto;
+        margin: 0 0 0.5rem 0;
         .upload {
-          margin-right: 0.5rem;
           span {
             font-size: 1.4rem;
           }
@@ -65,14 +86,15 @@
         align-items: center;
         justify-content: center;
         height: 3.5rem;
-        width: 100%;
+        width: 27rem;
         background-color: variables.$primary-blue-bg-color;
         a {
           width: 100%;
           height: 100%;
-          padding-top: 0.5rem;
+          padding-top: 0.3rem;
           text-align: center;
-          font-size: 1.6rem;
+          @include variables.use-font('Roboto-Bold', 500, normal);
+          font-size: variables.$medium-font-size;
           color: white;
           text-decoration: none;
           &:hover {
@@ -87,8 +109,6 @@
     .info-block {
       display: flex;
       flex-direction: column;
-      background-color: white;
-      margin-top: 1.5rem;
       padding: 2rem;
       .top {
         display: flex;
@@ -113,7 +133,10 @@
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 0.5rem;
+            font-size: variables.$medium-font-size;
+            h1 {
+              font-size: variables.$large-font-size;
+            }
             .edit {
               display: flex;
               align-items: center;
@@ -136,7 +159,7 @@
           }
           .description {
             margin-bottom: 0.5rem;
-            font-size:  1.8rem;
+            font-size: variables.$medium-font-size; 
           }
           .author {
             font-size:  1.8rem;
@@ -155,7 +178,7 @@
             border-top: 0.1rem solid black;
             td {
               width: 50%;
-              font-size: variables.$common-font-size;;
+              font-size: variables.$large-font-size;
               .rating-area {
                 margin: 0 !important;
                 margin-right: auto;
@@ -168,6 +191,7 @@
         }
       }
       .bottom {
+       
         width: 100%;
         .button {
           display: block;
@@ -178,7 +202,7 @@
           text-align: center;
           text-decoration: none;
           color: white;
-          font-size: 1.7rem;
+          font-size: variables.$medium-font-size;
           background-color: variables.$primary-blue-bg-color;
           &:hover {
             background-color: variables.$primary-black-bg-color;
@@ -188,7 +212,7 @@
       }
       .warning {
         margin: 0 auto;
-        box-shadow: 0 0.2rem 0.3rem 0.2rem rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.9);
         width: 80%;
         height: 5rem;
         margin-bottom: 2rem;
@@ -197,26 +221,36 @@
           justify-content: center;
           padding: 1rem 0;
         }		// .message
-          // 	margin-bottom: 20px
-          // 	form
+          	// form {
+            //   textarea {
+            //     min-height: 125px;
+            //     resize: vertical;
+            //   }
+              
+            // input[type="submit"] {
+            //   color: white;
+            //   background-color: #E09696;
+            //   border: none;
+            //   border-radius: 3rem ;
+            //   margin-top: 10px;
+            //   margin-left: auto;
+            //   display: block;
+            //   height: 45px;
+            //   width: 15%;
+            // }
+              
+            //   &:hover {
+            //     background-color: #880000;
+            //     transition: 0.3s};
+            //   }
+                
   
-          // 		textarea
-          // 			min-height: 125px
-          // 			resize: vertical
-          // 		input[type="submit"]
-          // 			color: white
-          // 			background-color: #E09696
-          // 			border: none
-          // 			border-radius: 3rem 
-          // 			margin-top: 10px
-          // 			margin-left: auto
-          // 			display: block
-          // 			height: 45px
-          // 			width: 15%
-          // 			&:hover
-          // 				background-color: #880000
-          // 				transition: 0.3s
+          		
   //PROFILE
       }
     }
+
+    .mod-page_send-message {
+      
+  }
   }

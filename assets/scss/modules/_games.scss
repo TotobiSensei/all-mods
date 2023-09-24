@@ -25,10 +25,6 @@
       width: 100%;
       a {
         @include variables.flex-height(height, 100%);
-        font-size: variables.$common-font-size;
-        font-weight: bold;
-        text-decoration: none;
-        color: white;
         width: 100%;
       }
       img {
@@ -40,10 +36,13 @@
       display: flex;
       flex-direction: column;
       align-items: start;
-      span {
+      a {
+        @include variables.use-font("Roboto-Medium", 550, normal);
         font-size: variables.$medium-font-size;
-        font-weight: bold;
+        color: variables.$primary-black-bg-color;
+        text-decoration: none;
       }
+      
       // .button {
       //   display: flex;
       //   align-items: center;

@@ -44,13 +44,13 @@ if(isset($_SESSION["error"]))
                                 <?php endif; ?>
                             </div>
                             <div class="description">
-                                <span>
-                                    <?= $data["description"] ?>
-                                </span>
-                            </div>
                             <div class="author">
                                 <span>Автор:</span>
                                 <span><?= $data["login"] ?></span>
+                            </div>
+                                <span>
+                                    <?= $data["description"] ?>
+                                </span>
                             </div>
                         </div>
                     </div>

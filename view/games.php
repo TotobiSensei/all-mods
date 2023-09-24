@@ -26,7 +26,8 @@ $pagination = new Pagination(8, count($read->games()));
                                             </div>
                                         </div>
                                         <div class="action-block">
-                                                <span><?=  $games[$i]["name"] ?></span>
+                                                
+                                                <a href="/view/mods.php?game=<?=  $games[$i]["id"] ?>"><span><?=  $games[$i]["name"] ?></span></a>
                                                 <!-- <div class="button">
                                                     <a href="/view/mods.php?game=<?=  $games[$i]["id"] ?>">Открыть</a>
                                                 </div> -->
@@ -44,4 +45,3 @@ $pagination = new Pagination(8, count($read->games()));
 
 <?php
 
-Render::footer();

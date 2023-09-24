@@ -6,17 +6,33 @@ $primary-red-bg-color: #A741A4;
 $primary-blue-bg-color: #6A8A82;
 $primar-dark_yelow-bg-color: #A37C27;
 $primary-purple-bg-color: #563838;
+$color-text-var: #8590aa;
 
 // Font-sizes
 $common-font-size: 1.8rem;
 $medium-font-size: 1.9rem;
-$large-font-size: 3.5rem;
+$large-font-size: 2.5rem;
+$mini-font-size: 1.4rem;
 
 //Font-stacks
 
-
 // mixins 
 
-@mixin flex-height ($height, $amount){
+@mixin flex-height ($height, $amount) {
     #{$height}: $amount;
+}
+
+
+@mixin font-face-rules ($font-family, $src, $format, $font-weight, $fotn-style) {
+    font-family: $font-family, Arial, Helvetica, sans-serif;
+    src: url($src) format($format);
+    font-weight: $font-weight;
+    font-style: $fotn-style;
+
+}
+
+@mixin use-font ($font-family, $font-weight, $fotn-style) {
+    font-family: $font-family;
+    font-weight: $font-weight;
+    font-style: $fotn-style;
 }

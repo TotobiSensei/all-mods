@@ -1,10 +1,12 @@
 @use "/assets/scss/modules/variables.scss";
 
 header {
-    position: realtive;
+  position: relative;
     height: 7rem;
+    width: 100%;  
     background-color: white;
-    border-bottom: 0.1rem solid gray;
+    box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.6);
+    z-index: 1;
     nav {
       width: 100%;
       height: 5rem;
@@ -22,22 +24,21 @@ header {
         padding: 0;
         height: 5rem;
         .item {
-          background-color: variables.$primary-black-bg-color;
           margin: 0 1rem 0 0;
-
           display: flex;
           align-items: center;
-          transition: background-color 0.3s ease-in-out;
-          &:hover {
-            background-color: variables.$primary-blue-bg-color;;
-          }
+          
+        
           .link {
-            padding: 0 2rem;
+            padding: 0 1rem;
+            @include variables.use-font("Roboto-Black", 600, bold);
             text-decoration: none;
-            color: white;
-            background-color: inherit;
-            font-size: variables.$common-font-size;;
-            font-weight: bold;
+            color: variables.$primary-black-bg-color;
+            font-size: variables.$common-font-size;
+            transition: background-color 0.3s ease-in-out;
+            &:hover {
+              color: variables.$primary-blue-bg-color;
+            }
           }
         }
       }

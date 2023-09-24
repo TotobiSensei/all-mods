@@ -82,8 +82,8 @@ class Render
                             <input type="hidden" name="objType" value="<?= $objType ?>">
                             <input type="hidden" name="userId" value="<?= $userId ?>">
                             <label for=""></label>
-                            <textarea name="message"></textarea>
-                            <input type="submit" name="sendMessage" value="Отправить">
+                            <textarea class="mod-page_message-input" name="message"></textarea>
+                            <input class="mod-page_send-message" type="submit" name="sendMessage" value="Отправить">
                         </form>
                     </div>
                 </div>

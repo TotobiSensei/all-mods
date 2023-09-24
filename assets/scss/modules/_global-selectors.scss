@@ -1,13 +1,31 @@
 @use "/assets/scss/modules/variables.scss";
 
-* {
-    font-family: "Roboto", sans-serif;
-  }
+@font-face {
+  //Roboto-regular
+  @include variables.font-face-rules("Roboto-Regular", '/assets/fonts/Roboto/Roboto-Regular.ttf', "ttf", 300, normal)
+}
+
+@font-face {
+  //Roboto-medium
+  @include variables.font-face-rules("Roboto-Medium", '/assets/fonts/Roboto/Roboto-Medium.ttf', "ttf", 500, normal)
+}
+
+@font-face {
+  //Roboto-bold
+  @include variables.font-face-rules("Roboto-Bold", '/assets/fonts/Roboto/Roboto-Bold.ttf', "ttf", 700, normal)
+}
+
+@font-face {
+  //Roboto-regular
+  @include variables.font-face-rules("Roboto-Regular", '/assets/fonts/Roboto/Roboto-Regular.ttf', "ttf", 300, normal)
+}
+ 
   html,
   body {
     height: 100%;
     margin: 0;
     font-size: 10px;
+    @include variables.use-font("Roboto-Regular", 400, normal)
   }
   .wrapper {
     min-height: 100%;
